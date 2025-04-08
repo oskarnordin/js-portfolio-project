@@ -1,46 +1,173 @@
 html {
-  --header-size: 125px;
-  --scrollbar-height: 3px;
-  --scrollbar-bg: #ddd;
-  --scrollbar-progress-color: #0089f2;
+  scroll-behavior: smooth;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  height: var(--header-size);
-  width: 100%;
-  background: white;
-  padding: 1rem 2rem;
-}
-
-main {
-  margin-top: calc(var(--header-size) + var(--scrollbar-height));
-  padding: 2rem;
+p {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-size: 26px;
 }
 
 body {
-  background: linear-gradient(
-    to right top,
-    var(--scrollbar-progress-color) 50%,
-    var(--scrollbar-bg) 50%
-  );
-  background-size: 100%
-    calc(100% - 100vh + var(--header-size) + var(--scrollbar-height) + 1px);
-  background-repeat: no-repeat;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-}
-body::before {
-  content: "";
-  position: fixed;
-  top: calc(var(--header-size) + var(--scrollbar-height));
-  bottom: 0;
-  width: 100%;
-  z-index: -1;
-  background: white;
+  padding: 0;
 }
 
-* {
-  box-sizing: border-box;
+.hero-video {
+  position: fixed; /* Keeps the video fixed at the top */
+  top: 0;
+  background-color: rgb(
+    227,
+    230,
+    255
+  ); /* Fallback color in case video doesn't load */
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  object-fit: cover; /* Ensures the video fills the viewport and crops if needed */
+  opacity: 90%;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.container {
+  position: relative; /* Allows absolute positioning of child elements */
+  width: 100%; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden; /* Hides overflow content */
+}
+
+.overlay {
+  position: fixed; /* Keeps the overlay fixed on top of the video */
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Matches the video height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 6em;
+  font-family: Teko;
+  font-weight: 400;
+  color: #f5f5f5;
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  color: #f5f5f5;
+  text-align: center;
+  margin: 0;
+}
+
+.selfie {
+  width: 200px;
+  margin: 36px auto;
+}
+
+.angle-down {
+  width: 50px;
+  height: 50px;
+  position: absolute; /* Position it absolutely within the section */
+  bottom: 20px; /* Adjust as needed */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Center it using transform */
+  animation: pulse 2s infinite ease-in-out; /* Add animation */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.angle-down-light {
+  width: 50px;
+  height: 50px;
+  position: absolute; /* Position it absolutely within the section */
+  bottom: 20px; /* Adjust as needed */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Center it using transform */
+  animation: pulse 2s infinite ease-in-out; /* Add animation */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  fill: white;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1); /* Normal size */
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1); /* Slightly bigger */
+  }
+}
+
+.sectionTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #06075e;
+  font-family: Teko, sans-serif; /* Ensure consistent font usage */
+  font-size: 2em;
+  color: #fafafa; /* Text color */
+  position: relative; /* Ensure it scrolls naturally */
+  z-index: 20;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal columns */
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal rows */
+  gap: 10px; /* Add spacing between grid items */
+  grid-template-areas:
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . .";
+}
+
+.techHeadline {
+  grid-area: 5 / 2 / 3 / 4; /* Position "Tech" in the second row and second column */
+  text-align: center;
+  font-size: 3em;
+  color: #fafafa; /* Text color */
+}
+
+.techStack {
+  grid-area: 3 / 4 / 5 / 6; /* Position the text block to the right of "Tech" */
+  text-align: left; /* Align text to the left */
+  color: #fafafa; /* Text color */
+  font-size: 1.2em; /* Adjust font size for readability */
+  line-height: 1.5; /* Add line spacing for better readability */
+}
+
+.sectionThree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #d3d3d3; /* Light gray background for Section 3 */
+  font-family: Teko, sans-serif; /* Ensure consistent font usage */
+  font-size: 2em;
+  color: #000000; /* Text color */
+  position: relative; /* Ensure it scrolls naturally */
+  z-index: 30; /* Lower z-index than the overlay */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal columns */
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal rows */
+  gap: 10px; /* Add spacing between grid items */
+  grid-template-areas:
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . .";
 }
