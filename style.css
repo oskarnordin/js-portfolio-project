@@ -4,7 +4,7 @@ html {
 
 p {
   font-family: "Inter", system-ui;
-  font-size: 26px;
+  font-size: 22px;
   margin: 1px;
   line-height: 1.2;
 }
@@ -223,7 +223,7 @@ h2 {
   height: 100vh; /* Full height of the viewport */
   background-color: #2b36c1; /* Background color */
   font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 2em;
+  font-size: 1.4em;
   color: #ffffff; /* Text color */
   position: relative; /* Ensure it scrolls naturally */
   z-index: 30; /* Ensure proper stacking order */
@@ -256,6 +256,11 @@ h2 {
   width: 100%; /* Full width of the container */
   height: 100%; /* Full height of the container */
   opacity: 1;
+}
+
+.skillsIcons {
+  width: 40px;
+  margin-top: 25px;
 }
 
 @media (max-width: 768px) {
