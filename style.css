@@ -1,59 +1,29 @@
-html {
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
+  height: 100%; /* Ensure the body and html take up the full height of the viewport */
 }
 
 p {
-  font-family: "Inter", system-ui;
-  font-size: 22px;
+  font-family: "DM Sans", system-ui;
+  font-size: 16px;
   margin: 1px;
   line-height: 1.2;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.hero-video {
-  position: fixed; /* Keeps the video fixed at the top */
-  top: 0;
-  background-color: rgb(
-    227,
-    230,
-    255
-  ); /* Fallback color in case video doesn't load */
-  left: 0;
-  width: 100vw; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  object-fit: cover; /* Ensures the video fills the viewport and crops if needed */
-  opacity: 90%;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 0;
-}
-
 .container {
-  position: relative; /* Allows absolute positioning of child elements */
-  width: 100%; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  overflow: hidden; /* Hides overflow content */
-}
-
-.overlay {
-  position: fixed; /* Keeps the overlay fixed on top of the video */
-  background-color: rgba(0, 0, 0, 0.3);
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100vh; /* Matches the video height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 10;
+  height: 100vh;
+  overflow: hidden;
 }
 
 h1 {
-  font-size: 6em;
+  font-size: 24px;
   font-family: Agdasima;
   font-weight: bold;
   color: #f5f5f5;
@@ -62,34 +32,25 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 28px;
   font-family: "Agdasima", sans-serif;
   font-weight: 400;
-  color: #f5f5f5;
+  color: white;
   text-align: center;
+  margin: 10px;
+}
+
+h3 {
+  font-size: 34px;
+  font-family: "Agdasima", sans-serif;
+  font-weight: 600;
+  color: #222222;
   margin: 0;
 }
 
-.highlighted-heading {
-  font-size: 100px;
-  line-height: 1.2;
-  line-height: 1.05;
-  color: white;
-  background: #2b36c1;
-  padding: 0em 0.2em 0.4em 0.2em; /* top, right, bottom, left */
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  display: inline;
-}
-
-.selfie {
-  width: 170px;
-  margin: 36px auto;
-}
-
 .angle-down {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   position: absolute; /* Position it absolutely within the section */
   bottom: 20px; /* Adjust as needed */
   left: 50%; /* Center it horizontally */
@@ -99,8 +60,8 @@ h2 {
 }
 
 .angle-down-light {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   position: absolute; /* Position it absolutely within the section */
   bottom: 20px; /* Adjust as needed */
   left: 50%; /* Center it horizontally */
@@ -118,77 +79,6 @@ h2 {
   50% {
     transform: translateX(-50%) scale(1.1); /* Slightly bigger */
   }
-}
-
-.angle-square-headline-techstack {
-  font-family: "Chewy", system-ui;
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  color: white;
-  position: absolute; /* Position it absolutely */
-  bottom: 80px; /* Position it above the .angle-down-light image */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Adjust for centering */
-  text-align: center; /* Center the text */
-  z-index: 15; /* Ensure it appears above other elements */
-}
-
-.angle-square-headline-techstack-dark {
-  font-family: "Chewy", system-ui;
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  color: rgb(0, 0, 0);
-  position: absolute; /* Position it absolutely */
-  bottom: 80px; /* Position it above the .angle-down-light image */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Adjust for centering */
-  text-align: center; /* Center the text */
-  z-index: 15; /* Ensure it appears above other elements */
-}
-
-.sectionTwo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full height of the viewport */
-  background-color: #2b36c1;
-  font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 2em;
-  color: #fafafa; /* Text color */
-  position: relative; /* Ensure it scrolls naturally */
-  z-index: 20;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal columns */
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal rows */
-  gap: 10px; /* Add spacing between grid items */
-  grid-template-areas:
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . .";
-}
-
-.techHeadline {
-  grid-area: 5 / 2 / 3 / 4;
-  font-family: "Agdasima", system-ui;
-  font-weight: bold;
-  text-align: center;
-  font-size: 3em;
-  color: #fafafa;
-}
-
-.techStack {
-  grid-area: 3 / 4 / 5 / 6; /* Position the text block to the right of "Tech" */
-  font-family: "Inter", system-ui;
-  text-align: left; /* Align text to the left */
-  color: #fafafa; /* Text color */
-  font-size: 1em; /* Adjust font size for readability */
-  line-height: 1.5; /* Add line spacing for better readability */
 }
 
 .sectionThree {
@@ -216,36 +106,7 @@ h2 {
     ". . . . . .";
 }
 
-.sectionFour {
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full height of the viewport */
-  background-color: #2b36c1; /* Background color */
-  font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 1.4em;
-  color: #ffffff; /* Text color */
-  position: relative; /* Ensure it scrolls naturally */
-  z-index: 30; /* Ensure proper stacking order */
-}
-
-.sectionFourContainer {
-  display: flex; /* Keep grid layout if needed */
-  flex-direction: row;
-  justify-content: center; /* Center content horizontally within the container */
-  text-align: center;
-  height: 600px; /* Set the height of the container */
-  width: 60vw; /* Set the width of the container */
-  /* background-color: #f0f0f3; */
-  font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 2em;
-  color: #ffffff; /* Text color */
-  position: relative; /* Ensure it scrolls naturally */
-  z-index: 30; /* Ensure proper stacking order */
-  opacity: 1; /* Adjust opacity */
-}
-
-.sectionFourCards {
+.sectionCards {
   display: flex;
   justify-content: top; /* Center content horizontally */
   align-items: center; /* Center content vertically */
@@ -270,13 +131,18 @@ h2 {
     font-size: 16px; /* Adjust base font size for readability */
   }
 
-  p {
+  j {
     font-size: 14px; /* Adjust paragraph font size for smaller screens */
   }
 
   .hero-video {
-    height: 100vh; /* Reduce video height for smaller screens */
-    width: 100vw; /* Reduce video width for smaller screens */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0; /* Ensure it stays behind the overlay */
   }
 
   .overlay h1 {
@@ -284,7 +150,7 @@ h2 {
   }
 
   .overlay h2 {
-    font-size: 1.5em; /* Reduce font size for subtitles */
+    font-size: 1em; /* Reduce font size for subtitles */
   }
 
   .selfie {
@@ -297,11 +163,15 @@ h2 {
     height: 40px;
   }
 
-  .sectionTwo,
-  .sectionThree,
+  .sectionTwo {
+    background-color: #f4f4f4;
+    padding: px;
+  }
+
   .sectionFour {
-    font-size: 1em; /* Adjust font size for sections */
-    padding: 20px; /* Add padding for better spacing */
+    background-color: #2b36c1;
+    color: #fff;
+    padding: 40px;
   }
 
   .techHeadline {
