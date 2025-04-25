@@ -22,13 +22,25 @@ const OverlayCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(245, 245, 245, 0.21);
+  max-width: 600px;
+  max-height: 600px;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 28px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
   -webkit-backdrop-filter: blur(7.1px);
   border-radius: 36px;
   padding: 50px;
+  border-left: 10px solid blue;
+  border-bottom: 10px solid blue;
+
+  @media (max-width: 768px) {
+    height: 100vh; /* Full viewport height on mobile */
+    width: 100vh; /* Full width on mobile */
+    border-radius: 0; /* Remove border radius for a full-screen effect */
+    padding: 0px;
+    margins: 0px;
+  }
 `;
 
 const SelfieImage = styled.img`
@@ -80,7 +92,7 @@ const H2overlay = styled.h2`
   font-size: 32px;
   font-family: "Agdasima", sans-serif;
   font-weight: 400;
-  color: #f5f5f5;
+  color: #000000;
   text-align: center;
   margin-bottom: 0px;
 `;
@@ -88,11 +100,38 @@ const H2overlay = styled.h2`
 const H1overlay = styled.h1`
   font-size: 64px;
   font-family: "Agdasima", sans-serif;
+  color: black;
+`;
+
+const Menu = styled.div`
+  /* Change from h2 to div for better semantics */
+  position: absolute;
+  top: 20px;
+  font-size: 24px;
+  font-family: "Agdasima", sans-serif;
+  color: #fcfcfc;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: row; /* Stack links vertically */
+  align-items: center; /* Center links horizontally */
+  gap: 14px; /* Add spacing between links */
+`;
+
+const MenuLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  margin: 5px 0; /* Optional: Add additional spacing if needed */
 `;
 
 function Overlay() {
   return (
     <OverlayContainer>
+      <Menu>
+        <a href="#techstack">Tech Stack</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#myWords">My Words</a>
+        <a href="#contact">Contact</a>
+      </Menu>
       <OverlayCard>
         <SelfieImage src="img/Selfie-round.png" alt="Selfie of Oskar Nordin" />
         <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
@@ -101,9 +140,8 @@ function Overlay() {
           With a background in A/B-testing and data analysis.
         </H2overlay>
       </OverlayCard>
-      <a href="#techStack">
+      <a href="#techstack">
         <CenteredContainer>
-          <h2>Tech Stack</h2>
           <AngleDownImage
             src="img/angle-square-light.webp"
             alt="Angle down icon"

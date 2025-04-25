@@ -35,7 +35,8 @@ h2 {
   font-size: 28px;
   font-family: "Agdasima", sans-serif;
   font-weight: 400;
-  color: white;
+  color: black;
+  font-weight: 600;
   text-align: center;
   margin: 10px;
 }
@@ -48,29 +49,6 @@ h3 {
   margin: 0;
 }
 
-.angle-down {
-  width: 30px;
-  height: 30px;
-  position: absolute; /* Position it absolutely within the section */
-  bottom: 20px; /* Adjust as needed */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Center it using transform */
-  animation: pulse 2s infinite ease-in-out; /* Add animation */
-  cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-.angle-down-light {
-  width: 30px;
-  height: 30px;
-  position: absolute; /* Position it absolutely within the section */
-  bottom: 20px; /* Adjust as needed */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Center it using transform */
-  animation: pulse 2s infinite ease-in-out; /* Add animation */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  fill: white;
-}
-
 @keyframes pulse {
   0%,
   100% {
@@ -81,42 +59,20 @@ h3 {
   }
 }
 
-.sectionThree {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full height of the viewport */
-  background-color: #f0f0f0; /* Light gray background for Section 3 */
-  font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 2em;
-  color: #000000; /* Text color */
-  position: relative; /* Ensure it scrolls naturally */
-  z-index: 30; /* Lower z-index than the overlay */
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal columns */
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; /* Six equal rows */
-  gap: 10px; /* Add spacing between grid items */
-  grid-template-areas:
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . .";
-}
-
 .sectionCards {
   display: flex;
-  justify-content: top; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  flex-direction: column; /* Align items in a row */
-  height: 100%; /* Full height of the container */
-  width: 20%;
-  gap: 20px; /* Space between cards */
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
-  opacity: 1;
+  border-radius: 28px;
+  align-items: center;
+  flex-direction: column;
+  min-height: 350px;
+  width: 450px;
+  gap: 20px;
+  padding: 30px;
+  grid-column: 12 / 7;
+  grid-row: 1 / 7;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px);
+  -webkit-backdrop-filter: blur(7.1px);
 }
 
 .skillsIcons {
@@ -131,62 +87,9 @@ h3 {
     font-size: 16px; /* Adjust base font size for readability */
   }
 
-  j {
-    font-size: 14px; /* Adjust paragraph font size for smaller screens */
-  }
-
-  .hero-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 0; /* Ensure it stays behind the overlay */
-  }
-
-  .overlay h1 {
-    font-size: 3em; /* Reduce font size for the main title */
-  }
-
-  .overlay h2 {
-    font-size: 1em; /* Reduce font size for subtitles */
-  }
-
-  .selfie {
-    width: 120px; /* Reduce the size of the selfie image */
-  }
-
-  .angle-down,
-  .angle-down-light {
-    width: 40px; /* Reduce the size of the arrow icons */
-    height: 40px;
-  }
-
   .sectionTwo {
     background-color: #f4f4f4;
     padding: px;
-  }
-
-  .sectionFour {
-    background-color: #2b36c1;
-    color: #fff;
-    padding: 40px;
-  }
-
-  .techHeadline {
-    font-size: 2em; /* Reduce font size for headlines */
-  }
-
-  .techStack {
-    font-size: 1em; /* Adjust font size for the tech stack */
-    line-height: 1.5; /* Improve readability */
-  }
-
-  .sectionFourContainer {
-    flex-direction: column; /* Stack items vertically */
-    width: 90%; /* Reduce width for smaller screens */
-    height: auto; /* Allow height to adjust dynamically */
   }
 
   .sectionFourCards {

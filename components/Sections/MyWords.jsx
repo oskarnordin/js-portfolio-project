@@ -1,37 +1,36 @@
 import React from "react";
-import MyWordsCard from "../Cards/MyWordsCard";
+import InfoCard from "../Cards/InfoCard";
 import styled from "styled-components";
 import { AngleDownImage } from "../SharedComponents";
 import { CenteredContainer } from "../SharedComponents";
 
+const GridLayout = styled.div`
+  height: 100vh;
+  background-color: #e8e8e8;
+  font-family: Teko, sans-serif;
+  font-size: 2em;
+  color: #000000;
+  position: relative;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  place-items: center;
+`;
+
 const MyWordsSection = () => {
   return (
-    <section
-      id="myWords"
-      className="flex justify-center items-center flex-col h-screen bg-gray-300 font-teko text-2xl text-gray-900 relative z-20 gap-4"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-1 grid-rows-1 gap-2 w-full max-w-6xl">
-        <MyWordsCard
-          icon="../img/weather-1.png"
-          title="My Words"
-          info={"Hello World"}
-        />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-1 grid-rows-1 gap-2 w-full max-w-6xl">
-        <MyWordsCard
-          icon="../img/weather-1.png"
-          title="My Words"
-          info={"Hello World"}
-        />
-      </div>
+    <GridLayout id="myWords">
+      <InfoCard
+        icon="../img/weather-1.png"
+        title="My Words"
+        info={["Hello World"]} // Changed to an array
+      />
       <CenteredContainer>
-        <h2>Contact me</h2>
-        <AngleDownImage
-          src="img/angle-square-light.webp"
-          alt="Angle down icon"
-        />
+        <AngleDownImage src="img/angle-square-down.png" alt="Angle down icon" />
       </CenteredContainer>
-    </section>
+    </GridLayout>
   );
 };
 

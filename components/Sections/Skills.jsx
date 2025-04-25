@@ -5,13 +5,47 @@ import styled from "styled-components";
 import { AngleDownImage } from "../SharedComponents";
 import { CenteredContainer } from "../SharedComponents";
 
+const Background = styled.div`
+  position: relative;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  min-width: 100%;
+  z-index: 20;
+`;
+
+const SkillsContainer = styled.div`
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  font-family: Teko, sans-serif;
+  color: #000000;
+  position: relative;
+  z-index: 30;
+  font-size: 16px;
+  font-weight: 300;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Dynamically adjust columns */
+  gap: 20px; /* Space between grid items */
+  padding: 2rem; /* Add padding for spacing */
+  margin: 0 auto; /* Center the grid container horizontally */
+  box-sizing: border-box; /* Include padding in width calculations */
+  justify-content: center; /* Center the grid items horizontally */
+  align-items: center; /* Center the grid items vertically */
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 card per row on smaller screens */
+    width: 100%; /* Make the container span the full width */
+  }
+`;
+
 const SkillsSection = () => {
   return (
-    <div
-      id="skills"
-      className="flex justify-center items-center flex-row h-screen bg-gray-300 font-teko text-2xl text-gray-900 relative z-20 gap-4"
-    >
-      <div className="grid grid-cols-4 grid-rows-1 gap-2 w-full max-w-6xl">
+    <Background>
+      <SkillsContainer id="skills">
         <InfoCard
           icon="img/cursor.webp"
           title="Frontend"
@@ -43,17 +77,16 @@ const SkillsSection = () => {
             "SQL",
           ]}
         />
-      </div>
-      <a href="#projectSection">
-        <CenteredContainer>
-          <h2>Projects</h2>
-          <AngleDownImage
-            src="img/angle-square-light.webp"
-            alt="Angle down icon"
-          />
-        </CenteredContainer>
-      </a>
-    </div>
+        <a href="#projects">
+          <CenteredContainer>
+            <AngleDownImage
+              src="img/angle-square-down.png"
+              alt="Angle down icon"
+            />
+          </CenteredContainer>
+        </a>
+      </SkillsContainer>
+    </Background>
   );
 };
 

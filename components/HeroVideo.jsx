@@ -34,7 +34,7 @@ function HeroVideo() {
         playsInline
         aria-label="Background video"
       >
-        <source src="img/bg-video-2.mp4" type="video/mp4" />
+        <source src="img/bg-video-3.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </HeroVideoStyle>
     </VideoContainer>

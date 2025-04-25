@@ -4,31 +4,45 @@ import ProjectCard from "../Cards/ProjectCard";
 import { AngleDownImage } from "../SharedComponents";
 import { CenteredContainer } from "../SharedComponents";
 
-const ProjectSection = styled.div`
+const ProjectContainer = styled.div`
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  font-family: Teko, sans-serif;
+  color: #000000;
   position: relative;
-  display: flex;
-  flex-direction: column; /* Ensure content stacks vertically */
-  align-items: center;
-  min-height: 100vh; /* Minimum height of the viewport */
-  background-color: aliceblue; /* Background color */
-  font-family: Teko, sans-serif; /* Ensure consistent font usage */
-  font-size: 1.4em;
-  color: #1f1f1f; /* Text color */
-  z-index: 30; /* Ensure proper stacking order */
-  overflow: visible; /* Allow content to expand */
+  z-index: 30;
+  font-size: 16px;
+  font-weight: 300;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Dynamically adjust columns */
+  gap: 20px; /* Space between grid items */
+  padding: 2rem; /* Add padding for spacing */
+  margin: 0 auto; /* Center the grid container horizontally */
+  box-sizing: border-box; /* Include padding in width calculations */
+  justify-content: center; /* Center the grid items horizontally */
+  align-items: center; /* Center the grid items vertically */
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 card per row on smaller screens */
+    width: 100%; /* Make the container span the full width */
+  }
 `;
 
 const SectionContainer = styled.section`
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  flex-direction: column; /* Stack items vertically */
+  min-height: 100vh; /* Full viewport height */
   padding: 2rem 1rem; /* Add padding for spacing */
-  background-color: aliceblue;
+  background-color: transparent;
+  text-align: center; /* Center text if needed */
 `;
 
 const SectionHeading = styled.h2`
@@ -38,79 +52,50 @@ const SectionHeading = styled.h2`
   margin-bottom: 10px;
 `;
 
-const ProjectGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
-  ); /* Dynamic wrapping */
-  gap: 2rem; /* Space between grid items */
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr); /* Equivalent to md:grid-cols-4 */
-  }
-`;
-
-const SectionCards = styled.div`
-  display: flex;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center; /* Center content vertically */
-  flex-direction: column; /* Stack items vertically */
-  gap: 20px; /* Space between cards */
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
-  opacity: 1;
-`;
-
 const FeaturedProjects = () => {
   return (
-    <ProjectSection id="projectSection">
-      <SectionContainer id="projects">
-        <SectionHeading>Featured Projects</SectionHeading>
-        <ProjectGrid>
-          <ProjectCard
-            title="Small Business Site"
-            description="A small site for a local business, showcasing their services and contact information."
-            stack={["HTML5", "CSS3", "Flexbox"]}
-            imgSrc="../img/placeholder.svg" // Replace with your actual image path
-            liveDemo="#"
-            codeLink="#"
+    <ProjectContainer id="projectSection">
+      <ProjectCard
+        title="Small Business Site"
+        description="A small site for a local business, showcasing their services and contact information."
+        stack={["HTML5", "CSS3", "Flexbox"]}
+        imgSrc="../img/placeholder.svg" // Replace with your actual image path
+        liveDemo="#"
+        codeLink="#"
+      />
+      <ProjectCard
+        title="Weather App"
+        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+        stack={["HTML5", "CSS3", "React", "Node"]}
+        imgSrc="../img/placeholder.svg" // Replace with your actual image path
+        liveDemo="#"
+        codeLink="#"
+      />
+      <ProjectCard
+        title="Accessibility Quiz"
+        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+        stack={["HTML5", "CSS3", "Node"]}
+        imgSrc="../img/placeholder.svg" // Replace with your actual image path
+        liveDemo="#"
+        codeLink="#"
+      />
+      <ProjectCard
+        title="This Portfolio"
+        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+        stack={["HTML5", "CSS3", "React", "Node"]}
+        imgSrc="../img/placeholder.svg" // Replace with your actual image path
+        liveDemo="#"
+        codeLink="#"
+      />
+      <a href="#myWords">
+        <CenteredContainer>
+          <AngleDownImage
+            src="img/angle-square-down.png"
+            alt="Angle down icon"
           />
-          <ProjectCard
-            title="Weather App"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "React", "Node"]}
-            imgSrc="../img/placeholder.svg" // Replace with your actual image path
-            liveDemo="#"
-            codeLink="#"
-          />
-          <ProjectCard
-            title="Accessibility Quiz"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "Node"]}
-            imgSrc="../img/placeholder.svg" // Replace with your actual image path
-            liveDemo="#"
-            codeLink="#"
-          />
-          <ProjectCard
-            title="This Portfolio"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "React", "Node"]}
-            imgSrc="../img/placeholder.svg" // Replace with your actual image path
-            liveDemo="#"
-            codeLink="#"
-          />
-        </ProjectGrid>
-        <a href="#myWords">
-          <CenteredContainer>
-            <h2>My Words</h2>
-            <AngleDownImage
-              src="img/angle-square-light.webp"
-              alt="Angle down icon"
-            />
-          </CenteredContainer>
-        </a>
-      </SectionContainer>
-    </ProjectSection>
+        </CenteredContainer>
+      </a>
+    </ProjectContainer>
   );
 };
 
