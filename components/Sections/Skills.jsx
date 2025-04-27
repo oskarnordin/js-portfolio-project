@@ -45,14 +45,7 @@ const SkillsSection = () => {
         <InfoCard
           icon="img/front.png"
           title="Frontend"
-          info={[
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "TypeScript",
-            "React",
-            "React Hooks",
-          ]}
+          info={["HTML5", "CSS3", "JavaScript", "TypeScript", "React"]}
         />
         <InfoCard icon="" title="Backend" info={["Node.js"]} />
         <InfoCard icon="" title="Methodologies" info={["Agile"]} />
