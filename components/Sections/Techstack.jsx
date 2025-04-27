@@ -21,7 +21,6 @@ const TechstackContainer = styled.div`
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
-  grid-column: span 4;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -29,8 +28,14 @@ const TechstackContainer = styled.div`
   padding: 2rem;
   margin: 0 auto;
   box-sizing: border-box;
-  justify-content: center;
   align-items: center;
+  max-width: 100%; /* Prevent container from exceeding screen width */
+  overflow: hidden; /* Prevent content overflow */
+
+  @media (max-width: 768px) {
+    padding: 1rem; /* Reduce padding on smaller screens */
+    font-size: 14px; /* Adjust font size for better readability */
+  }
 `;
 
 const TechstackSection = () => {

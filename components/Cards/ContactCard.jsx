@@ -36,6 +36,11 @@ const SelfieImage = styled.img`
   width: 300px;
   height: 300px;
   padding: 10px;
+
+  @media (max-width: 768px) {
+  width: 150px;
+  height: 150px;
+  padding: 6px;
 `;
 
 const ContactH2 = styled.h2`
@@ -58,6 +63,10 @@ const ContactH3 = styled.h3`
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const ContactCard = () => {

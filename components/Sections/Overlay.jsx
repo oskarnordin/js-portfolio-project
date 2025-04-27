@@ -44,7 +44,9 @@ const OverlayCard = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 80%;
+    background-color: transparent;
+    border: none;
+    height: 100%;
     width: 100%;
     border-radius: 0;
     padding: 0px;
@@ -57,6 +59,11 @@ const SelfieImage = styled.img`
   width: 180px;
   height: 180px;
   padding: 10px;
+
+  @media (max-width: 768px) {
+    width: 140px;
+    height: 140px;
+  }
 `;
 
 const H2overlay = styled.h2`
@@ -72,6 +79,10 @@ const H1overlay = styled.h1`
   font-size: 64px;
   font-family: "Agdasima", sans-serif;
   color: black;
+
+  @media (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 function Overlay() {

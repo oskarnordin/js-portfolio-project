@@ -25,20 +25,24 @@ const ProjectCardContainer = styled.div`
     opacity: 1;
     transform: translateY(0);
   }
-  @media (max-width: 1200x) {
-    height: 450px; /* Full viewport height on mobile */
+  @media (max-width: 768px) {
+    height: 600px; /* Full viewport height on mobile */
     min-width: 100%; /* Full width on mobile */
     border-radius: 18px; /* Remove border radius for a full-screen effect */
-    padding: 22px; /* Adjust padding for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
   }
 `;
 
 const ProjectImage = styled.img`
   border-radius: 28px;
-  width: 100%;
+  width: 90%;
   height: 250px;
 
   padding: 10px;
+
+  @media (max-width: 768px) {
+    height: 150px;
+  }
 `;
 
 const ProjectTitle = styled.h3`
@@ -89,6 +93,12 @@ const ButtonWrapper = styled.div`
   justify-content: left;
   flex-direction: row;
   align-items: flex-end;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center align buttons */
+    gap: 10px; /* Add spacing between buttons */
+  }
 `;
 
 const TechTagsWrapper = styled.div`
