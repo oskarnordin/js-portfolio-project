@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const ProjectCardContainer = styled.div`
   display: flex;
@@ -12,9 +13,18 @@ const ProjectCardContainer = styled.div`
   gap: 20px;
   text-align: center;
   padding: 40px;
+  margin-bottom: 50px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
   -webkit-backdrop-filter: blur(7.1px);
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start with offset */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   @media (max-width: 1200x) {
     height: 450px; /* Full viewport height on mobile */
     min-width: 100%; /* Full width on mobile */
@@ -96,8 +106,11 @@ const ProjectCard = ({
   liveDemo,
   codeLink,
 }) => {
+  const ref = useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+
   return (
-    <ProjectCardContainer>
+    <ProjectCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <ProjectImage src={imgSrc} alt={title} />
       <ProjectTitle>{title}</ProjectTitle>
       <ProjectDescription>{description}</ProjectDescription>

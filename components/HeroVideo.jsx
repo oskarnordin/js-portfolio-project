@@ -11,7 +11,7 @@ const VideoContainer = styled.div`
 `;
 
 const HeroVideoStyle = styled.video`
-  position: fixed; /* Ensure the video covers the entire viewport */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;

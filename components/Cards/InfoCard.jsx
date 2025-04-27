@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const InfoCardContainer = styled.div`
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   display: flex;
   border-radius: 28px;
   align-items: center;
@@ -10,17 +11,18 @@ const InfoCardContainer = styled.div`
   flex-wrap: wrap;
   height: 650px;
   padding: 40px;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   gap: 10px;
   text-align: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px); */
-  @media (max-width: 1200px) {
-    width: 100%;
-    height: 450px; /* Full viewport height on mobile */
-    border-radius: 18px; /* Remove border radius for a full-screen effect */
-    padding: 0px; /* Adjust padding for smaller screens */
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start with offset */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -79,10 +81,12 @@ const InfoPContainer = styled.div`
   flex-wrap: wrap; /* Allow wrapping if there are too many items */
 `;
 
-const InfoCard = ({ icon, title, info }) => {
+const InfoCard = ({ title, info }) => {
+  const ref = useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+
   return (
-    <InfoCardContainer>
-      <InfoIcons src={icon} alt={`${title} icon`} />
+    <InfoCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <InfoH2>{title}</InfoH2>
       <InfoPContainer>
         {info.map((info, index) => (

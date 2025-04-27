@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import { AngleDownImage } from "../SharedComponents";
 import { CenteredContainer } from "../SharedComponents";
 
@@ -33,6 +34,14 @@ const OverlayCard = styled.div`
   padding: 50px;
   border-left: 10px solid blue;
   border-bottom: 10px solid blue;
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start with offset */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (max-width: 768px) {
     height: 80%;
@@ -45,48 +54,9 @@ const OverlayCard = styled.div`
 
 const SelfieImage = styled.img`
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   padding: 10px;
-`;
-
-const Heading = styled.h2`
-  margin: 10px 0;
-`;
-
-const HighlightedHeading = styled.h1`
-  color: #f5f5f5; /* Example highlight color */
-  margin: 10px 0;
-  font-size: 5em;
-`;
-
-const TechStackLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-`;
-
-const TechStackContainer = styled.div`
-  font-size: 24px;
-  font-family: "Agdasima", sans-serif;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-`;
-
-const SectionCards = styled.div`
-  display: flex;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center; /* Center content vertically */
-  flex-direction: column; /* Stack items vertically */
-  gap: 20px; /* Space between cards */
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
-  opacity: 1;
 `;
 
 const H2overlay = styled.h2`
@@ -104,50 +74,18 @@ const H1overlay = styled.h1`
   color: black;
 `;
 
-const Menu = styled.div`
-  position: fixed;
-  position: absolute;
-  top: 20px;
-  font-size: 18px;
-  font-family: "DM sans", sans-serif;
-  font-weight: 400;
-  padding: 6px;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 40px;
-  z-index: 40;
-  padding-right: 20px;
-  padding-left: 20px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const MenuLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-  margin: 5px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 function Overlay() {
+  const overlayRef = useRef(null);
+  const isOverlayVisible = useIntersectionObserver(overlayRef, {
+    threshold: 0.1,
+  });
+
   return (
     <OverlayContainer>
-      <Menu>
-        <a href="#techstack">Tech Stack</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#myWords">My Words</a>
-        <a href="#contact">Contact</a>
-      </Menu>
-      <OverlayCard>
+      <OverlayCard
+        ref={overlayRef}
+        className={isOverlayVisible ? "visible" : ""}
+      >
         <SelfieImage src="img/Selfie-round.png" alt="Selfie of Oskar Nordin" />
         <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
         <H1overlay>Web Developer</H1overlay>

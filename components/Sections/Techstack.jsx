@@ -31,9 +31,6 @@ const TechstackContainer = styled.div`
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
-    grid-column: span 1;
-  }
 `;
 
 const TechstackSection = () => {

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const ContactCardContainer = styled.div`
   background-color: transparent;
@@ -13,14 +14,20 @@ const ContactCardContainer = styled.div`
   width: 450px;
   gap: 10px;
   text-align: center;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  /* backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px); */
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start with offset */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   @media (max-width: 1200px) {
     width: 100%;
-    height: 450px; /* Full viewport height on mobile */
-    border-radius: 18px; /* Remove border radius for a full-screen effect */
-    padding: 0px; /* Adjust padding for smaller screens */
+    height: 450px;
+    border-radius: 18px;
+    padding: 0px;
   }
 `;
 
@@ -29,12 +36,6 @@ const SelfieImage = styled.img`
   width: 300px;
   height: 300px;
   padding: 10px;
-`;
-
-const ContactImg = styled.img`
-  width: 70px;
-  height: 70px;
-  margin-bottom: 10px;
 `;
 
 const ContactH2 = styled.h2`
@@ -52,42 +53,19 @@ const ContactH3 = styled.h3`
   display: flex;
   color: #2d3748;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   padding: 10px;
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
-`;
-
-const ContactP = styled.p`
-  background-color: #e8e8e8;
-  justify-content: center;
-  display: flex;
-  color: #2d3748;
-  font-weight: 600;
-  width: 120px;
-  font-size: 16px;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 16px;
-  text-decoration: none;
-
-  @media (max-width: 1200px) {
-    padding: 0px;
-  }
-`;
-
-const ContactContainer = styled.div`
-  display: flex;
-  flex-direction: column; /* Arrange InfoH3 elements in a row */
-  gap: 10px; /* Add spacing between the elements */
-  justify-content: center; /* Center the row */
-  flex-wrap: wrap; /* Allow wrapping if there are too many items */
 `;
 
 const ContactCard = () => {
+  const ref = useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+
   return (
-    <ContactCardContainer>
+    <ContactCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <ContactH2>Let's talk</ContactH2>
       <SelfieImage src="../img/Selfie-round.png" alt="Selfie of Oskar Nordin" />
       <ContactH3>+46701774998</ContactH3>
