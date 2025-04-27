@@ -6,7 +6,7 @@ import { CenteredContainer } from "../SharedComponents";
 
 const Background = styled.div`
   position: relative;
-  background-color: #f8f8f8;
+  background-color: #eeeeee;
   min-height: 100vh;
   min-width: 100%;
   z-index: 20;
@@ -14,30 +14,25 @@ const Background = styled.div`
 
 const TechstackContainer = styled.div`
   min-height: 100vh;
-  background-color: #f8f8f8;
+  background-color: #eeeeee;
   font-family: Teko, sans-serif;
   color: #000000;
   position: relative;
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Dynamically adjust columns */
-  gap: 20px; /* Space between grid items */
-  padding: 2rem; /* Add padding for spacing */
-  margin: 0 auto; /* Center the grid container horizontally */
-  box-sizing: border-box; /* Include padding in width calculations */
-  justify-content: center; /* Center the grid items horizontally */
-  align-items: center; /* Center the grid items vertically */
+  grid-column: span 4;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 2rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 768px) {
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* 1 card per row on smaller screens */
-    width: 100%; /* Make the container span the full width */
+    grid-column: span 1;
   }
 `;
 
@@ -49,11 +44,22 @@ const TechstackSection = () => {
           icon=""
           title="Tech Stack"
           info={[
-            "HTML5, CSS3, JavaScript, TypeScript, React, React Hooks, Node.js, MongoDB, Python, GitHub, Web Accessibility, APIs.",
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "React Hooks",
+            "Node.js",
+            "MongoDB",
+            "Python",
+            "GitHub",
+            "Web Accessibility",
+            "APIs",
           ]}
         />
 
-        <a href="#skills">
+        <a href="#projects">
           <CenteredContainer>
             <AngleDownImage
               src="img/angle-square-down.png"

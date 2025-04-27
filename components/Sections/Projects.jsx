@@ -6,6 +6,7 @@ import { CenteredContainer } from "../SharedComponents";
 
 const ProjectContainer = styled.div`
   min-height: 100vh;
+  max-width: 100%;
   background-color: #f8f8f8;
   font-family: Teko, sans-serif;
   color: #000000;
@@ -13,23 +14,19 @@ const ProjectContainer = styled.div`
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Dynamically adjust columns */
-  gap: 20px; /* Space between grid items */
-  padding: 2rem; /* Add padding for spacing */
-  margin: 0 auto; /* Center the grid container horizontally */
-  box-sizing: border-box; /* Include padding in width calculations */
-  justify-content: center; /* Center the grid items horizontally */
-  align-items: center; /* Center the grid items vertically */
+  grid-column: span 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 2rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 768px) {
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* 1 card per row on smaller screens */
-    width: 100%; /* Make the container span the full width */
+    grid-column: span 1;
   }
 `;
 
@@ -54,38 +51,38 @@ const SectionHeading = styled.h2`
 
 const FeaturedProjects = () => {
   return (
-    <ProjectContainer id="projectSection">
+    <ProjectContainer id="projects">
       <ProjectCard
         title="Small Business Site"
         description="A small site for a local business, showcasing their services and contact information."
         stack={["HTML5", "CSS3", "Flexbox"]}
-        imgSrc="../img/placeholder.svg" // Replace with your actual image path
-        liveDemo="#"
-        codeLink="#"
+        imgSrc="../img/sushi.webp"
+        liveDemo="https://sushi-world-on.netlify.app/"
+        codeLink="https://github.com/oskarnordin/js-project-business-site"
       />
       <ProjectCard
         title="Weather App"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="../img/placeholder.svg" // Replace with your actual image path
-        liveDemo="#"
-        codeLink="#"
+        imgSrc="../img/weather.jpg"
+        liveDemo="https://heatherweather.netlify.app/"
+        codeLink="https://github.com/oskarnordin/js-project-weather-app"
       />
       <ProjectCard
         title="Accessibility Quiz"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "Node"]}
-        imgSrc="../img/placeholder.svg" // Replace with your actual image path
-        liveDemo="#"
-        codeLink="#"
+        imgSrc="../img/access.png"
+        liveDemo="https://js-project-accessibility-on.netlify.app/"
+        codeLink="https://github.com/oskarnordin/js-project-accessibility"
       />
       <ProjectCard
         title="This Portfolio"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="../img/placeholder.svg" // Replace with your actual image path
+        imgSrc="../img/portfolio.png"
         liveDemo="#"
-        codeLink="#"
+        codeLink="#https://github.com/oskarnordin/js-portfolio-project"
       />
       <a href="#myWords">
         <CenteredContainer>

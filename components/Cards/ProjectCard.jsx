@@ -2,26 +2,33 @@ import React from "react";
 import styled from "styled-components";
 
 const ProjectCardContainer = styled.div`
-  width: relative;
-  width: 100%; /* Important: Let grid control the width */
-  box-sizing: border-box;
-  color: white;
+  display: flex;
   border-radius: 28px;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 650px;
+  max-width: 450px;
+  gap: 20px;
+  text-align: center;
+  padding: 40px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
   -webkit-backdrop-filter: blur(7.1px);
-  padding: 15px;
-  position: relative;
-  height: 550px;
+  @media (max-width: 1200x) {
+    height: 450px; /* Full viewport height on mobile */
+    min-width: 100%; /* Full width on mobile */
+    border-radius: 18px; /* Remove border radius for a full-screen effect */
+    padding: 22px; /* Adjust padding for smaller screens */
+  }
 `;
 
 const ProjectImage = styled.img`
+  border-radius: 28px;
   width: 100%;
-  height: 12rem;
-  object-fit: cover;
-  border-radius: 16px;
-  border-left: 10px solid blue;
-  border-bottom: 10px solid blue;
+  height: 250px;
+
+  padding: 10px;
 `;
 
 const ProjectTitle = styled.h3`
@@ -38,8 +45,8 @@ const ProjectDescription = styled.p`
   font-size: 16px;
   color: #0e0e0e;
   margin-bottom: 1rem;
-  justify-content: left;
-  text-align: left;
+  justify-content: center;
+  text-align: center;
 `;
 
 const TechTag = styled.span`
@@ -74,6 +81,13 @@ const ButtonWrapper = styled.div`
   align-items: flex-end;
 `;
 
+const TechTagsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Matches Tailwind's gap-2 */
+  margin-bottom: 16px; /* Matches Tailwind's mb-4 */
+`;
+
 const ProjectCard = ({
   title,
   description,
@@ -87,7 +101,7 @@ const ProjectCard = ({
       <ProjectImage src={imgSrc} alt={title} />
       <ProjectTitle>{title}</ProjectTitle>
       <ProjectDescription>{description}</ProjectDescription>
-      <div className="flex flex-wrap gap-2 mb-4">
+      <TechTagsWrapper>
         {stack.map((tech, index) => (
           <TechTag key={index}>{tech}</TechTag>
         ))}
@@ -100,7 +114,7 @@ const ProjectCard = ({
             View code
           </Button>
         </ButtonWrapper>
-      </div>
+      </TechTagsWrapper>
     </ProjectCardContainer>
   );
 };

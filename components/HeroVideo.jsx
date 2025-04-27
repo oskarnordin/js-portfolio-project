@@ -17,8 +17,11 @@ const HeroVideoStyle = styled.video`
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  background-color: rgb(227, 230, 255);
+  background-color: rgb(233, 233, 233);
   z-index: 1;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 function HeroVideo() {

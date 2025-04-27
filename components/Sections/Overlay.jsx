@@ -35,9 +35,9 @@ const OverlayCard = styled.div`
   border-bottom: 10px solid blue;
 
   @media (max-width: 768px) {
-    height: 100vh; /* Full viewport height on mobile */
-    width: 100vh; /* Full width on mobile */
-    border-radius: 0; /* Remove border radius for a full-screen effect */
+    height: 80%;
+    width: 100%;
+    border-radius: 0;
     padding: 0px;
     margins: 0px;
   }
@@ -77,6 +77,7 @@ const TechStackContainer = styled.div`
   align-items: center;
   color: white;
 `;
+
 const SectionCards = styled.div`
   display: flex;
   justify-content: flex-start; /* Align content to the top */
@@ -89,7 +90,7 @@ const SectionCards = styled.div`
 `;
 
 const H2overlay = styled.h2`
-  font-size: 32px;
+  font-size: 26px;
   font-family: "Agdasima", sans-serif;
   font-weight: 400;
   color: #000000;
@@ -104,22 +105,36 @@ const H1overlay = styled.h1`
 `;
 
 const Menu = styled.div`
-  /* Change from h2 to div for better semantics */
+  position: fixed;
   position: absolute;
   top: 20px;
-  font-size: 24px;
-  font-family: "Agdasima", sans-serif;
-  color: #fcfcfc;
-  display: flex; /* Use flexbox for layout */
-  flex-direction: row; /* Stack links vertically */
-  align-items: center; /* Center links horizontally */
-  gap: 14px; /* Add spacing between links */
+  font-size: 18px;
+  font-family: "DM sans", sans-serif;
+  font-weight: 400;
+  padding: 6px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  z-index: 40;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuLink = styled.a`
   text-decoration: none;
   color: inherit;
-  margin: 5px 0; /* Optional: Add additional spacing if needed */
+  margin: 5px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 function Overlay() {

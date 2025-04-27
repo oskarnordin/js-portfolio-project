@@ -2,27 +2,57 @@ import React from "react";
 import styled from "styled-components";
 
 const MyWordsCardContainer = styled.div`
+  background-color: #F8F8F8; /* Match the background color of other cards */
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
-  padding: 15px;
-  position: relative;
-  height: 500px;
-  max-width: 450px;
+  flex-direction: column; /* Align content vertically */
+  align-items: center;
+  border-radius: 16px; /* Adjust to match other cards */
+  height: 454px; /* Adjust height */
+  width: 553px; /* Adjust width */
+  padding: 20px; /* Adjust padding */
+  text-align: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Match shadow style */
+
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
 `;
 
-const MyWordsCard = ({ icon, title, info }) => {
+const MyWordsImage = styled.img`
+  width: 100%;
+  height: 200px; /* Adjust height */
+  object-fit: cover;
+  border-radius: 12px; /* Match other cards */
+`;
+
+const MyWordsH2 = styled.h2`
+  color: #333; /* Adjust color */
+  font-size: 24px; /* Adjust font size */
+  font-weight: bold;
+  margin: 10px 0;
+`;
+
+const MyWordsH3 = styled.h3`
+  color: #666; /* Adjust color */
+  font-size: 16px; /* Adjust font size */
+  font-weight: normal;
+  margin: 5px 0;
+  font-family: "DM Sans", sans-serif;
+`;
+
+const MyWordsCard = ({ imgSrc, title, info }) => {
   return (
-    <div className="p-4 bg-white shadow-md rounded-md">
-      <img src={icon} alt={title} className="h-40 w-full object-cover" />
-      <h2 className="text-xl font-bold text-left">{title}</h2>
-      <p>{info}</p>
-    </div>
+    <MyWordsCardContainer>
+      <MyWordsImage src={imgSrc} alt={title} />
+      <MyWordsH2>{title}</MyWordsH2>
+      {info.map((info, index) => (
+        <MyWordsH3 key={index}>{info}</MyWordsH3>
+      ))}
+    </MyWordsCardContainer>
   );
 };
 
