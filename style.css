@@ -13,6 +13,11 @@ p {
   line-height: 1.2;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .container {
   position: relative;
   width: 100%;
