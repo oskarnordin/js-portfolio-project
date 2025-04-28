@@ -38,9 +38,10 @@ const SelfieImage = styled.img`
   padding: 10px;
 
   @media (max-width: 768px) {
-  width: 150px;
-  height: 150px;
-  padding: 6px;
+    width: 150px;
+    height: 150px;
+    padding: 6px;
+  }
 `;
 
 const ContactH2 = styled.h2`
@@ -76,7 +77,10 @@ const ContactCard = () => {
   return (
     <ContactCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <ContactH2>Let's talk</ContactH2>
-      <SelfieImage src="img/Selfie-round.png" alt="Selfie of Oskar Nordin" />
+      <SelfieImage
+        src="public/img/Selfie-round.png"
+        alt="Selfie of Oskar Nordin"
+      />
       <ContactH3>+46701774998</ContactH3>
       <ContactH3>oskarnordin1@gmail.com</ContactH3>
     </ContactCardContainer>
