@@ -98,7 +98,7 @@ function Overlay() {
         className={isOverlayVisible ? "visible" : ""}
       >
         <SelfieImage
-          src="/img/selfie-round.png" // Corrected path
+          src="/selfie-round.png" // Corrected path
           alt="Selfie of Oskar Nordin"
         />
         <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
@@ -110,7 +110,7 @@ function Overlay() {
       <a href="#techstack">
         <CenteredContainer>
           <AngleDownImage
-            src="/img/angle-square-light.webp" // Corrected path
+            src="/angle-square-light.webp" // Corrected path
             alt="Angle down icon"
           />
         </CenteredContainer>
