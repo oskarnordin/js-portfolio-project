@@ -77,10 +77,7 @@ const ContactCard = () => {
   return (
     <ContactCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <ContactH2>Let's talk</ContactH2>
-      <SelfieImage
-        src="public/img/Selfie-round.png"
-        alt="Selfie of Oskar Nordin"
-      />
+      <SelfieImage src="/img/selfie-round.png" alt="Selfie of Oskar Nordin" />
       <ContactH3>+46701774998</ContactH3>
       <ContactH3>oskarnordin1@gmail.com</ContactH3>
     </ContactCardContainer>

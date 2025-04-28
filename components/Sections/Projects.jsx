@@ -56,7 +56,7 @@ const FeaturedProjects = () => {
         title="Small Business Site"
         description="A small site for a local business, showcasing their services and contact information."
         stack={["HTML5", "CSS3", "Flexbox"]}
-        imgSrc="../img/sushi.webp"
+        imgSrc="./img/sushi.webp"
         liveDemo="https://sushi-world-on.netlify.app/"
         codeLink="https://github.com/oskarnordin/js-project-business-site"
       />
@@ -64,7 +64,7 @@ const FeaturedProjects = () => {
         title="Weather App"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="../img/weather.jpg"
+        imgSrc="./img/weather.jpg"
         liveDemo="https://heatherweather.netlify.app/"
         codeLink="https://github.com/oskarnordin/js-project-weather-app"
       />
@@ -72,7 +72,7 @@ const FeaturedProjects = () => {
         title="Accessibility Quiz"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "Node"]}
-        imgSrc="../img/access.png"
+        imgSrc="./img/access.png"
         liveDemo="https://js-project-accessibility-on.netlify.app/"
         codeLink="https://github.com/oskarnordin/js-project-accessibility"
       />
@@ -80,7 +80,7 @@ const FeaturedProjects = () => {
         title="This Portfolio"
         description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
         stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="../img/portfolio.png"
+        imgSrc="./img/portfolio.png"
         liveDemo="#"
         codeLink="#https://github.com/oskarnordin/js-portfolio-project"
       />
