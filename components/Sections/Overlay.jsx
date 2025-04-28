@@ -97,7 +97,10 @@ function Overlay() {
         ref={overlayRef}
         className={isOverlayVisible ? "visible" : ""}
       >
-        <SelfieImage src="img/Selfie-round.png" alt="Selfie of Oskar Nordin" />
+        <SelfieImage
+          src="public/img/Selfie-round.png"
+          alt="Selfie of Oskar Nordin"
+        />
         <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
         <H1overlay>Web Developer</H1overlay>
         <H2overlay>
