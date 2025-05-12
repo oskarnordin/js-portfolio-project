@@ -32,8 +32,8 @@ const OverlayCard = styled.div`
   -webkit-backdrop-filter: blur(7.1px);
   border-radius: 36px;
   padding: 50px;
-  border-left: 10px solid blue;
-  border-bottom: 10px solid blue;
+  /* border-left: 10px solid blue;
+  border-bottom: 10px solid blue; */
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start with offset */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -97,7 +97,7 @@ function Overlay() {
         ref={overlayRef}
         className={isOverlayVisible ? "visible" : ""}
       >
-        <SelfieImage src="/img/selfie-round.png" alt="Selfie of Oskar Nordin" />
+        <SelfieImage src="/img/selfie.png" alt="Selfie of Oskar Nordin" />
         <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
         <H1overlay>Web Developer</H1overlay>
         <H2overlay>
