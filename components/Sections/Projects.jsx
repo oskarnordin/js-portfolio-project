@@ -2,19 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import ProjectCard from "../Cards/ProjectCard";
 import { AngleDownImage } from "../SharedComponents";
-import { CenteredContainer } from "../SharedComponents";
+import { MarginArrowContainer } from "../SharedComponents";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+
+const Background = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 20;
+`;
 
 const ProjectContainer = styled.div`
-  min-height: 100vh;
-  max-width: 100%;
-  background-color: #f8f8f8;
+  width: 1080px;
+  background-color: transparent;
   font-family: Teko, sans-serif;
   color: #000000;
   position: relative;
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
-  grid-column: span 4;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,10 +33,23 @@ const ProjectContainer = styled.div`
   padding: 2rem;
   margin: 0 auto;
   box-sizing: border-box;
-  justify-content: center;
   align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    max-width: 100vw;
+    padding: 1rem;
+  }
   @media (max-width: 768px) {
-    grid-column: span 1;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 
@@ -36,8 +59,10 @@ const SectionContainer = styled.section`
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   flex-direction: column; /* Stack items vertically */
+  width: 100%;
   min-height: 100vh; /* Full viewport height */
-  padding: 2rem 1rem; /* Add padding for spacing */
+  gap: 32px;
+  padding: 2rem;
   background-color: transparent;
   text-align: center; /* Center text if needed */
 `;
@@ -49,50 +74,77 @@ const SectionHeading = styled.h2`
   margin-bottom: 10px;
 `;
 
+const ShowroomH3 = styled.h3`
+  font-family: "DM Sans";
+  width: 100%;
+  max-width: ${({ theme }) => theme.maxWidth};
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 34px;
+  padding: 32px;
+  margin: 5px;
+  border-radius: 16px;
+  text-decoration: none;
+  text-align: left;
+  align-self: flex-start;
+`;
+
 const FeaturedProjects = () => {
+  const ref = React.useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+
   return (
-    <ProjectContainer id="projects">
-      <ProjectCard
-        title="Small Business Site"
-        description="A small site for a local business, showcasing their services and contact information."
-        stack={["HTML5", "CSS3", "Flexbox"]}
-        imgSrc="./img/sushi.webp"
-        liveDemo="https://sushi-world-on.netlify.app/"
-        codeLink="https://github.com/oskarnordin/js-project-business-site"
-      />
-      <ProjectCard
-        title="Weather App"
-        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-        stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="./img/weather.jpg"
-        liveDemo="https://heatherweather.netlify.app/"
-        codeLink="https://github.com/oskarnordin/js-project-weather-app"
-      />
-      <ProjectCard
-        title="Accessibility Quiz"
-        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-        stack={["HTML5", "CSS3", "Node"]}
-        imgSrc="./img/access.png"
-        liveDemo="https://js-project-accessibility-on.netlify.app/"
-        codeLink="https://github.com/oskarnordin/js-project-accessibility"
-      />
-      <ProjectCard
-        title="This Portfolio"
-        description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-        stack={["HTML5", "CSS3", "React", "Node"]}
-        imgSrc="./img/portfolio.png"
-        liveDemo="#"
-        codeLink="#https://github.com/oskarnordin/js-portfolio-project"
-      />
-      <a href="#myWords">
-        <CenteredContainer>
-          <AngleDownImage
-            src="img/angle-square-down.png"
-            alt="Angle down icon"
+    <Background>
+      <SectionContainer>
+        <ProjectContainer
+          id="projects"
+          ref={ref}
+          className={isVisible ? "visible" : ""}
+        >
+          <ShowroomH3>Showroom</ShowroomH3>
+          <ProjectCard
+            title="Small Business Site"
+            description="A small site for a local business, showcasing their services and contact information."
+            stack={["HTML5", "CSS3", "Flexbox"]}
+            imgSrc="./img/sushi.png"
+            liveDemo="https://sushi-world-on.netlify.app/"
+            codeLink="https://github.com/oskarnordin/js-project-business-site"
           />
-        </CenteredContainer>
-      </a>
-    </ProjectContainer>
+          <ProjectCard
+            title="Weather App"
+            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+            stack={["HTML5", "CSS3", "React", "Node"]}
+            imgSrc="./img/weather.png"
+            liveDemo="https://heatherweather.netlify.app/"
+            codeLink="https://github.com/oskarnordin/js-project-weather-app"
+          />
+          <ProjectCard
+            title="Accessibility Quiz"
+            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+            stack={["HTML5", "CSS3", "Node"]}
+            imgSrc="./img/access.png"
+            liveDemo="https://js-project-accessibility-on.netlify.app/"
+            codeLink="https://github.com/oskarnordin/js-project-accessibility"
+          />
+          <ProjectCard
+            title="This Portfolio"
+            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
+            stack={["HTML5", "CSS3", "React", "Node"]}
+            imgSrc="./img/portfolio.png"
+            liveDemo="#"
+            codeLink="#https://github.com/oskarnordin/js-portfolio-project"
+          />
+        </ProjectContainer>
+        <a href="#moodboard">
+          <MarginArrowContainer>
+            <AngleDownImage
+              src="/img/angle-square-down.svg"
+              alt="Angle down icon"
+            />
+          </MarginArrowContainer>
+        </a>
+      </SectionContainer>
+    </Background>
   );
 };
 

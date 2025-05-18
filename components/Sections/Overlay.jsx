@@ -1,8 +1,40 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef, useState, useEffect } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import { AngleDownImage } from "../SharedComponents";
-import { CenteredContainer } from "../SharedComponents";
+import { MarginArrowContainer } from "../SharedComponents";
+import "hamburgers/dist/hamburgers.min.css";
+
+// Global styles for typewriter effect
+const GlobalStyle = createGlobalStyle`
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #4b4efc; }
+  }
+  .typewriter h1 {
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: normal;
+    animation:
+      typing 1.8s steps(20, end),
+      blink-caret .75s step-end infinite;
+    width: 100%;
+  }
+   .messenger-icon:hover {
+    transform: scale(1.1);
+  }
+  .hamburger--emphatic .hamburger-inner,
+  .hamburger--emphatic .hamburger-inner::before,
+  .hamburger--emphatic .hamburger-inner::after {
+    background-color: #fcfcfc !important; 
+  }
+`;
 
 const OverlayContainer = styled.div`
   position: fixed;
@@ -25,17 +57,14 @@ const OverlayCard = styled.div`
   align-items: center;
   max-width: 600px;
   max-height: 600px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 28px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
+  background: transparent;
   border-radius: 36px;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px); */
+  /* -webkit-backdrop-filter: blur(7.1px); */
   padding: 50px;
-  /* border-left: 10px solid blue;
-  border-bottom: 10px solid blue; */
-  opacity: 0; /* Start hidden */
-  transform: translateY(20px); /* Start with offset */
+  opacity: 0;
+  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
   &.visible {
@@ -50,7 +79,7 @@ const OverlayCard = styled.div`
     width: 100%;
     border-radius: 0;
     padding: 0px;
-    margins: 0px;
+    margin: 0px;
   }
 `;
 
@@ -67,7 +96,7 @@ const SelfieImage = styled.img`
 `;
 
 const H2overlay = styled.h2`
-  font-size: 26px;
+  font-size: 34px;
   font-family: "Agdasima", sans-serif;
   font-weight: 400;
   color: #000000;
@@ -76,12 +105,47 @@ const H2overlay = styled.h2`
 `;
 
 const H1overlay = styled.h1`
-  font-size: 64px;
+  font-size: 84px;
   font-family: "Agdasima", sans-serif;
-  color: black;
+  color: #f8f8f8;
 
   @media (max-width: 768px) {
     font-size: 48px;
+  }
+`;
+
+// Styled components for Hamburger and Menu
+const MenuOverlay = styled.div`
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px; /* Adjust as needed for your menu */
+  background: #4b4efc;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  z-index: 10000;
+  display: flex;
+  flex-direction: row;
+  padding: 24px 24px 24px 24px;
+  transition: transform 0.3s;
+  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
+`;
+
+const MenuLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+  font-family: "DM Sans", sans-serif;
+  color: #fbfbfb;
+  text-decoration: none;
+  margin: 0 24px;
+  font-weight: 600;
+  transition: color 0.2s;
+  &:hover {
+    color: #6f71ff;
   }
 `;
 
@@ -90,29 +154,105 @@ function Overlay() {
   const isOverlayVisible = useIntersectionObserver(overlayRef, {
     threshold: 0.1,
   });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showTypewriter, setShowTypewriter] = useState(false);
+
+  useEffect(() => {
+    if (isOverlayVisible) {
+      // Delay slightly to ensure transition is visible
+      const timeout = setTimeout(() => setShowTypewriter(true), 600);
+      return () => clearTimeout(timeout);
+    } else {
+      setShowTypewriter(false);
+    }
+  }, [isOverlayVisible]);
 
   return (
-    <OverlayContainer>
-      <OverlayCard
-        ref={overlayRef}
-        className={isOverlayVisible ? "visible" : ""}
+    <>
+      <button
+        className={`hamburger hamburger--emphatic
+${menuOpen ? " is-active" : ""}`}
+        type="button"
+        aria-label="Menu"
+        aria-controls="navigation"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+        style={{
+          position: "fixed",
+          top: "30px",
+          right: "30px",
+          zIndex: 10001,
+        }}
       >
-        <SelfieImage src="/img/selfie.png" alt="Selfie of Oskar Nordin" />
-        <H2overlay>Hi, I'm Oskar Nordin</H2overlay>
-        <H1overlay>Web Developer</H1overlay>
-        <H2overlay>
-          With a background in A/B-testing and data analysis.
-        </H2overlay>
-      </OverlayCard>
-      <a href="#techstack">
-        <CenteredContainer>
-          <AngleDownImage
-            src="/img/angle-square-light.webp"
-            alt="Angle down icon"
-          />
-        </CenteredContainer>
+        <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+        </span>
+      </button>
+      {/* Slide-out Menu */}
+      <MenuOverlay open={menuOpen}>
+        <MenuLink href="#prologue" onClick={() => setMenuOpen(false)}>
+          Prologue
+        </MenuLink>
+        <MenuLink href="#techstack" onClick={() => setMenuOpen(false)}>
+          Tech Stack
+        </MenuLink>
+        <MenuLink href="#projects" onClick={() => setMenuOpen(false)}>
+          Showroom
+        </MenuLink>
+        <MenuLink href="#moodboard" onClick={() => setMenuOpen(false)}>
+          Moodboard
+        </MenuLink>
+        <MenuLink href="#contact" onClick={() => setMenuOpen(false)}>
+          Let's Talk
+        </MenuLink>
+      </MenuOverlay>
+      <GlobalStyle />
+      <OverlayContainer>
+        <OverlayCard
+          ref={overlayRef}
+          className={isOverlayVisible ? "visible" : ""}
+        >
+          {showTypewriter && (
+            <div className="typewriter">
+              <H1overlay>I'm Oskar Nordin, a Web Developer.</H1overlay>
+            </div>
+          )}
+        </OverlayCard>
+        <a href="#prologue">
+          <MarginArrowContainer>
+            <AngleDownImage
+              src="/img/angle-square-light.webp"
+              alt="Angle down icon"
+            />
+          </MarginArrowContainer>
+        </a>
+      </OverlayContainer>
+      <a
+        href="https://m.me/id=1078076440"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "30px",
+          right: "30px",
+          zIndex: 9999,
+        }}
+      >
+        <img
+          src="/img/messenger.png"
+          style={{ width: "80px", transition: "transform 0.2s" }}
+          className="messenger-icon"
+          alt="Message me on Messenger"
+        />
       </a>
-    </OverlayContainer>
+      <style>
+        {`
+          .messenger-icon:hover {
+            transform: scale(1.1);
+          }
+        `}
+      </style>
+    </>
   );
 }
 

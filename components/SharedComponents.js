@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
-export const CenteredContainer = styled.div`
-  position: absolute;
+export const SectionContainer = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
   background-color: transparent;
-  margin-top: 30px;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   color: black;
 
   @media (max-width: 768px) {
@@ -18,10 +17,28 @@ export const CenteredContainer = styled.div`
   }
 `;
 
+export const MarginArrowContainer = styled.div`
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export const AngleDownImage = styled.img`
-  margin-top: 30px;
-  width: 30px;
-  height: 30px;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   animation: pulse 2s infinite ease-in-out;
 

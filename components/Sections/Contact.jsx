@@ -1,12 +1,13 @@
 import React from "react";
 import ContactCard from "../Cards/ContactCard";
 import styled from "styled-components";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const Background = styled.div`
   position: relative;
   background-color: #e6e6e6;
   min-height: 100vh;
-  min-width: 100%;
+  width: 100%;
   z-index: 20;
 `;
 
@@ -35,6 +36,17 @@ const GridLayout = styled.div`
 `;
 
 const ContactSection = () => {
+  const { ref, isVisible } = useIntersectionObserver({
+    threshold: 0.1,
+  });
+  const handleScroll = () => {
+    if (isVisible) {
+      ref.current.classList.add("visible");
+    } else {
+      ref.current.classList.remove("visible");
+    }
+  };
+  
   return (
     <Background>
       <GridLayout id="contact">

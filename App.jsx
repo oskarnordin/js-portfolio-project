@@ -1,23 +1,28 @@
 import React from "react";
 import Overlay from "./components/Sections/Overlay";
 import SkillsSection from "./components/Sections/Skills";
-import TechstackSection from "./components/Sections/Techstack";
+import PrologueSection from "./components/Sections/Prologue";
 import HeroVideo from "./components/HeroVideo";
 import FeaturedProjects from "./components/Sections/Projects";
-import MyWordsSection from "./components/Sections/MyWords";
+import MoodboardSection from "./components/Sections/Moodboard";
 import ContactSection from "./components/Sections/contact";
+import { ThemeProvider } from "styled-components";
+import { theme } from "/components/theme";
 import "./style.css";
+import "hamburgers/dist/hamburgers.css";
 
 function App() {
   return (
     <>
-      <HeroVideo />
-      <Overlay />
-      <TechstackSection />
-      <FeaturedProjects />
-      <MyWordsSection />
-      <SkillsSection />
-      <ContactSection />
+      <ThemeProvider theme={theme}>
+        <HeroVideo />
+        <Overlay />
+        <PrologueSection />
+        <FeaturedProjects />
+        <MoodboardSection />
+        <SkillsSection />
+        <ContactSection />
+      </ThemeProvider>
       <main></main>
     </>
   );

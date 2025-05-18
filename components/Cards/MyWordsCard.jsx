@@ -1,20 +1,24 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+
+const Title = styled.h1`
+  color: black;
+  font-size: 32px;
+  font-family: "DM Sans";
+`;
 
 const MyWordsCardContainer = styled.div`
-  background-color: #f8f8f8; /* Match the background color of other cards */
+  background-color: transp;
   display: flex;
   flex-direction: column; /* Align content vertically */
-  align-items: center;
+  align-items: left;
   border-radius: 16px; /* Adjust to match other cards */
   height: 454px; /* Adjust height */
-  width: 553px; /* Adjust width */
+  width: 450px; /* Adjust width */
   padding: 40px;
   margin-bottom: 50px;
   text-align: center;
   gap: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Match shadow style */
   transform: translateY(20px); /* Start with offset */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
@@ -32,41 +36,59 @@ const MyWordsCardContainer = styled.div`
 
 const MyWordsImage = styled.img`
   width: 100%; /* Ensure the image scales with the container */
-  height: 200px; /* Adjust height */
+  height: 300px; /* Adjust height */
   object-fit: cover; /* Maintain aspect ratio */
   border-radius: 12px; /* Match other cards */
 `;
 
 const MyWordsH2 = styled.h2`
   color: #333; /* Adjust color */
-  font-size: 24px; /* Adjust font size */
+  font-family: "DM Sans";
+  font-size: 28px; /* Adjust font size */
   font-weight: bold;
   margin: 10px 0;
-  word-wrap: break-word; /* Prevent long words from breaking layout */
-  text-align: center; /* Center text */
+  word-wrap: break-word;
+  text-align: left; /* Center text */
 `;
 
-const MyWordsH3 = styled.h3`
-  color: #666; /* Adjust color */
+const Description = styled.p`
+  color: #000000; /* Adjust color */
+  font-family: "DM Sans";
   font-size: 16px; /* Adjust font size */
   font-weight: normal;
   margin: 5px 0;
   font-family: "DM Sans", sans-serif;
   word-wrap: break-word; /* Prevent long words from breaking layout */
-  text-align: center; /* Center text */
+  text-align: left; /* Center text */
+`;
+
+const Button = styled.a`
+  background-color: #4b4efc;
+  justify-content: center;
+  display: flex;
+  color: white;
+  font-weight: 600;
+  width: 120px;
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #6f71ff;
+  }
 `;
 
 const MyWordsCard = ({ imgSrc, title, info }) => {
-  const ref = useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
-
   return (
-    <MyWordsCardContainer ref={ref} className={isVisible ? "visible" : ""}>
+    <MyWordsCardContainer>
       <MyWordsImage src={imgSrc} alt={title} />
       <MyWordsH2>{title}</MyWordsH2>
       {info.map((info, index) => (
-        <MyWordsH3 key={index}>{info}</MyWordsH3>
+        <Description key={index}>{info}</Description>
       ))}
+      <Button>Read more</Button>
     </MyWordsCardContainer>
   );
 };

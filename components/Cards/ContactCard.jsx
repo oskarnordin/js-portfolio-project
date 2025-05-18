@@ -70,6 +70,31 @@ const ContactH3 = styled.h3`
   }
 `;
 
+const ContactIconsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+  margin-top: 24px;
+`;
+
+const ContactIcon = styled.a`
+  display: flex;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+`;
+
 const ContactCard = () => {
   const ref = useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
@@ -77,9 +102,18 @@ const ContactCard = () => {
   return (
     <ContactCardContainer ref={ref} className={isVisible ? "visible" : ""}>
       <ContactH2>Let's talk</ContactH2>
-      <SelfieImage src="/img/selfie-round.png" alt="Selfie of Oskar Nordin" />
-      <ContactH3>+46701774998</ContactH3>
-      <ContactH3>oskarnordin1@gmail.com</ContactH3>
+      <SelfieImage src="/img/selfie.png" alt="Selfie of Oskar Nordin" />
+      <ContactIconsWrapper>
+        <ContactIcon href="https://www.facebook.com/profile.php?id=1078076440">
+          <img src="/img/fb-logo.svg" alt="Facebook" width="60" height="60" />
+        </ContactIcon>
+        <ContactIcon href="https://www.instagram.com/oskaralexander/">
+          <img src="/img/ig-logo.svg" alt="Instagram" width="60" height="60" />
+        </ContactIcon>
+        <ContactIcon href="https://www.linkedin.com/in/oskarnordin/">
+          <img src="/img/li-logo.svg" alt="LinkedIn" width="60" height="60" />
+        </ContactIcon>
+      </ContactIconsWrapper>
     </ContactCardContainer>
   );
 };
