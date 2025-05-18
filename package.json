@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "@headlessui/react": "^2.2.2",
+    "@heroicons/react": "^2.2.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "hamburgers": "^1.2.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "styled-components": "^6.1.17",
+    "tech-stack-icons": "^2.1.0"
+  },
+  "name": "testing-repo",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oskarnordin/testing-repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oskarnordin/testing-repo/issues"
+  },
+  "homepage": "https://github.com/oskarnordin/testing-repo#readme",
+  "description": "",
+  "devDependencies": {
+    "@remix-run/dev": "^2.16.6",
+    "@remix-run/react": "^2.16.6",
+    "vite": "^6.2.6"
+  }
+}
