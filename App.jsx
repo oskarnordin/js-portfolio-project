@@ -5,7 +5,7 @@ import PrologueSection from "./components/Sections/Prologue";
 import HeroVideo from "./components/HeroVideo";
 import FeaturedProjects from "./components/Sections/Projects";
 import MoodboardSection from "./components/Sections/Moodboard";
-import ContactSection from "./components/Sections/contact";
+import ContactSection from "./components/Sections/Contact";
 import { ThemeProvider } from "styled-components";
 import { theme } from "/components/theme";
 import "./style.css";

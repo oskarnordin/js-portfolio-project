@@ -146,14 +146,10 @@ node_modules/nanoid/nanoid.js
 node_modules/nanoid/non-secure/index.cjs
 node_modules/nanoid/non-secure/index.d.ts
 node_modules/nanoid/non-secure/index.js
-node_modules/nanoid/non-secure/package.json
-node_modules/nanoid/package.json
 node_modules/nanoid/README.md
 node_modules/nanoid/url-alphabet/index.cjs
 node_modules/nanoid/url-alphabet/index.js
-node_modules/nanoid/url-alphabet/package.json
 node_modules/picocolors/LICENSE
-node_modules/picocolors/package.json
 node_modules/picocolors/picocolors.browser.js
 node_modules/picocolors/picocolors.d.ts
 node_modules/picocolors/picocolors.js
@@ -166,7 +162,6 @@ node_modules/postcss-value-parser/lib/stringify.js
 node_modules/postcss-value-parser/lib/unit.js
 node_modules/postcss-value-parser/lib/walk.js
 node_modules/postcss-value-parser/LICENSE
-node_modules/postcss-value-parser/package.json
 node_modules/postcss-value-parser/README.md
 node_modules/postcss/lib/at-rule.d.ts
 node_modules/postcss/lib/at-rule.js
@@ -221,7 +216,6 @@ node_modules/postcss/lib/warn-once.js
 node_modules/postcss/lib/warning.d.ts
 node_modules/postcss/lib/warning.js
 node_modules/postcss/LICENSE
-node_modules/postcss/package.json
 node_modules/postcss/README.md
 node_modules/react-dom/cjs/react-dom-client.development.js
 node_modules/react-dom/cjs/react-dom-client.production.js
@@ -249,7 +243,7 @@ node_modules/react-dom/client.js
 node_modules/react-dom/client.react-server.js
 node_modules/react-dom/index.js
 node_modules/react-dom/LICENSE
-node_modules/react-dom/package.json
+
 node_modules/react-dom/profiling.js
 node_modules/react-dom/profiling.react-server.js
 node_modules/react-dom/react-dom.react-server.js
@@ -290,7 +284,7 @@ node_modules/react/jsx-dev-runtime.react-server.js
 node_modules/react/jsx-runtime.js
 node_modules/react/jsx-runtime.react-server.js
 node_modules/react/LICENSE
-node_modules/react/package.json
+
 node_modules/react/react.react-server.js
 node_modules/react/README.md
 node_modules/scheduler/cjs/scheduler-unstable_mock.development.js
@@ -304,7 +298,7 @@ node_modules/scheduler/cjs/scheduler.production.js
 node_modules/scheduler/index.js
 node_modules/scheduler/index.native.js
 node_modules/scheduler/LICENSE
-node_modules/scheduler/package.json
+
 node_modules/scheduler/README.md
 node_modules/scheduler/unstable_mock.js
 node_modules/scheduler/unstable_post_task.js
@@ -312,7 +306,7 @@ node_modules/shallowequal/index.js
 node_modules/shallowequal/index.js.flow
 node_modules/shallowequal/index.original.js
 node_modules/shallowequal/LICENSE
-node_modules/shallowequal/package.json
+
 node_modules/shallowequal/README.md
 node_modules/source-map-js/lib/array-set.js
 node_modules/source-map-js/lib/base64-vlq.js
@@ -328,7 +322,7 @@ node_modules/source-map-js/lib/source-node.d.ts
 node_modules/source-map-js/lib/source-node.js
 node_modules/source-map-js/lib/util.js
 node_modules/source-map-js/LICENSE
-node_modules/source-map-js/package.json
+
 node_modules/source-map-js/README.md
 node_modules/source-map-js/source-map.d.ts
 node_modules/source-map-js/source-map.js
@@ -538,19 +532,18 @@ node_modules/styled-components/native/dist/utils/mixinDeep.d.ts
 node_modules/styled-components/native/dist/utils/nonce.d.ts
 node_modules/styled-components/native/dist/utils/setToString.d.ts
 node_modules/styled-components/native/dist/utils/stylis.d.ts
-node_modules/styled-components/native/package.json
-node_modules/styled-components/package.json
+
 node_modules/styled-components/README.md
 node_modules/styled-components/test-utils/index.ts
 node_modules/styled-components/test-utils/setupTestFramework.ts
 node_modules/stylis/dist/stylis.mjs
 node_modules/stylis/dist/stylis.mjs.map
-node_modules/stylis/dist/umd/package.json
+
 node_modules/stylis/dist/umd/stylis.js
 node_modules/stylis/dist/umd/stylis.js.map
 node_modules/stylis/index.js
 node_modules/stylis/LICENSE
-node_modules/stylis/package.json
+
 node_modules/stylis/README.md
 node_modules/stylis/src/Enum.js
 node_modules/stylis/src/Middleware.js
@@ -563,8 +556,7 @@ node_modules/tslib/CopyrightNotice.txt
 node_modules/tslib/LICENSE.txt
 node_modules/tslib/modules/index.d.ts
 node_modules/tslib/modules/index.js
-node_modules/tslib/modules/package.json
-node_modules/tslib/package.json
+
 node_modules/tslib/README.md
 node_modules/tslib/SECURITY.md
 node_modules/tslib/tslib.d.ts
@@ -573,8 +565,6 @@ node_modules/tslib/tslib.es6.js
 node_modules/tslib/tslib.es6.mjs
 node_modules/tslib/tslib.html
 node_modules/tslib/tslib.js
-package-lock.json
-package.json
 script.js
 style.css
 test.html
