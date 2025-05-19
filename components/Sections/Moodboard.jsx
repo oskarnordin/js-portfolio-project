@@ -86,7 +86,7 @@ const MoodboardSection = () => {
         <MoodboardH3>Moodboard</MoodboardH3>
         <a
           data-pin-do="embedBoard"
-          data-pin-board-width="1080"
+          data-pin-board-width="1000"
           data-pin-scale-height="800"
           data-pin-scale-width="140"
           href="https://se.pinterest.com/oskarnordin/tech/"
