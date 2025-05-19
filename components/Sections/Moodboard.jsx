@@ -25,7 +25,7 @@ const GridLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 32px;
   margin: 0 auto;
   box-sizing: border-box;
   opacity: 0;
@@ -84,16 +84,13 @@ const MoodboardSection = () => {
     <Background id="moodboard">
       <GridLayout ref={ref} className={isVisible ? "visible" : ""}>
         <MoodboardH3>Moodboard</MoodboardH3>
-        <div
+        <a
           data-pin-do="embedBoard"
-          data-pin-board-width="900"
-          data-pin-scale-height="200"
-          data-pin-scale-width="80"
-        >
-          <a href="https://se.pinterest.com/oskarnordin/inredning/">
-            View my Pinterest board
-          </a>
-        </div>
+          data-pin-board-width="1080"
+          data-pin-scale-height="800"
+          data-pin-scale-width="140"
+          href="https://se.pinterest.com/oskarnordin/tech/"
+        ></a>
       </GridLayout>
       <a href="#techstack">
         <MarginArrowContainer>
