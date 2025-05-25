@@ -10,7 +10,7 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.div`
   position: relative;
   background-color: #f4f4f4;
-  min-height: 100vh; /* Changed from height to min-height */
+  min-height: 100vh;
   width: 100%;
   z-index: 20;
 `;
@@ -55,6 +55,7 @@ const TechstackH3 = styled.h3`
   text-decoration: none;
   text-align: left;
   width: 100%;
+  text-align: center;
 `;
 
 const techStack = [
@@ -76,6 +77,7 @@ const SkillsSection = () => {
   return (
     <Background>
       <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
+        <TechstackH3>Tech Stack</TechstackH3>
         {techStack.map((item) => (
           <div key={item.name}>{item.label}</div>
         ))}
