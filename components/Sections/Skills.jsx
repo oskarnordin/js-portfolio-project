@@ -49,7 +49,7 @@ const TechstackH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 10px;
+  padding: 32px;
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
@@ -75,7 +75,7 @@ const SkillsSection = () => {
   });
 
   return (
-    <Background>
+    <Background id='techstack'>
       <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
         <TechstackH3>Tech Stack</TechstackH3>
         {techStack.map((item) => (

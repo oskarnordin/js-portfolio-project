@@ -19,7 +19,7 @@ const Background = styled.div`
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 1080px; /* Changed from width: 1080px to max-width */
+  max-width: 1080px;
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #000000;
@@ -61,16 +61,9 @@ const SectionContainer = styled.section`
   width: 100%;
   min-height: 100vh; /* Full viewport height */
   gap: 32px;
-  padding: 2rem;
+  padding: 32px;
   background-color: transparent;
   text-align: center; /* Center text if needed */
-`;
-
-const SectionHeading = styled.h2`
-  color: black;
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
 `;
 
 const ShowroomH3 = styled.h3`
@@ -133,15 +126,15 @@ const FeaturedProjects = () => {
             codeLink='https://github.com/oskarnordin/js-portfolio-project'
           />
         </ProjectContainer>
-        <a href='#moodboard'>
-          <MarginArrowContainer>
-            <AngleDownImage
-              src='/img/angle-square-down.svg'
-              alt='Angle down icon'
-            />
-          </MarginArrowContainer>
-        </a>
       </SectionContainer>
+      <a href='#moodboard'>
+        <MarginArrowContainer>
+          <AngleDownImage
+            src='/img/angle-square-down.svg'
+            alt='Angle down icon'
+          />
+        </MarginArrowContainer>
+      </a>
     </Background>
   );
 };

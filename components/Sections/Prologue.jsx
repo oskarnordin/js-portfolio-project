@@ -11,7 +11,7 @@ const Background = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #eeeeee;
-  min-height: 100%;
+  height: 100vh;
   width: 100%;
   z-index: 20;
   padding: 0 0 2rem 0;
@@ -22,17 +22,8 @@ const Background = styled.div`
   }
 `;
 
-const ProjectContainer = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  /* Add responsive padding if needed */
-  @media (max-width: 768px) {
-    padding: 0 0.5rem;
-  }
-`;
-
 const MarginArrowContainer = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,19 +54,14 @@ const PrologueSection = () => {
 
   return (
     <Background id='prologue'>
-      <SectionContainer style={{ width: '100%', padding: 0 }}>
-        {/* <FadeInContainer ref={ref} className={isVisible ? "visible" : ""}> */}
-        <PrologueCard />
-        {/* </FadeInContainer> */}
+      <SectionContainer style={{ position: 'relative', zIndex: 30 }}>
+        <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>
+          <PrologueCard />
+        </FadeInContainer>
       </SectionContainer>
-      <MarginArrowContainer>
-        <a href='#projects'>
-          <AngleDownImage
-            src='img/angle-square-down.png'
-            alt='Angle down icon'
-          />
-        </a>
-      </MarginArrowContainer>
+      <a href='#projects'>
+        <AngleDownImage src='img/angle-square-down.png' alt='Angle down icon' />
+      </a>
     </Background>
   );
 };

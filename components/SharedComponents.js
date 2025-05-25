@@ -1,9 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SectionContainer = styled.div`
   position: relative;
   width: 100%;
-  min-height: 100vh;
   height: 100%;
   background-color: transparent;
   display: flex;
@@ -25,6 +24,8 @@ export const MarginArrowContainer = styled.div`
   height: 48px;
   padding: 0;
   margin: 0;
+  z-index: 1000;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: none;

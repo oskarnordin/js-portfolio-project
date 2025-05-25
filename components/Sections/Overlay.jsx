@@ -18,12 +18,12 @@ const GlobalStyle = createGlobalStyle`
   .typewriter h1 {
     overflow: hidden;
     border-right: .15em solid orange;
-    white-space: nowrap; /* Force single line */
+    white-space: nowrap;
     letter-spacing: normal;
     animation:
       typing 2.4s steps(32, end),
       blink-caret .75s step-end infinite;
-    width: 100vw; /* Ensure it never overflows */
+    width: fit-content;
     max-width: 100vw;
     text-align: center;
     margin: 0 auto;
@@ -51,7 +51,7 @@ const OverlayContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Ensure full viewport width */
+  width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
   z-index: 20;
@@ -59,7 +59,7 @@ const OverlayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 `;
 
 const OverlayCard = styled.div`
@@ -67,7 +67,7 @@ const OverlayCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw; /* Take full width, prevent overflow */
+  width: 100vw;
   max-width: 100vw;
   background: transparent;
   border-radius: 36px;
@@ -95,17 +95,17 @@ const OverlayCard = styled.div`
 `;
 
 const H1overlay = styled.h1`
-  font-size: 84px;
+  font-size: 72px;
   font-family: 'Agdasima', sans-serif;
   color: #f8f8f8;
-  white-space: nowrap; /* Force single line */
+  white-space: nowrap;
 
   @media (max-width: 768px) {
     font-size: 32px;
     text-align: center;
     line-height: 1.1;
     padding: 0 8px;
-    white-space: nowrap; /* Still single line on mobile */
+    white-space: nowrap;
   }
 `;
 
@@ -144,7 +144,7 @@ const MenuLink = styled.a`
   font-family: 'DM Sans', sans-serif;
   color: #fbfbfb;
   text-decoration: none;
-  margin: 0 12px; /* Reduced margin for closer links */
+  margin: 0 12px;
   font-weight: 600;
   transition: color 0.2s;
   &:hover {
