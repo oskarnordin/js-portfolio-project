@@ -197,8 +197,6 @@ ${menuOpen ? ' is-active' : ''}`}
           width: '56px',
           height: '56px',
           borderRadius: '50%',
-          background: 'rgba(200, 200, 219, 0)',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
           border: 'none',
           display: 'flex',
           alignItems: 'center',

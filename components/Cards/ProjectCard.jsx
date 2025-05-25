@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const ProjectCardContainer = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ const ProjectTitle = styled.h3`
   display: flex;
   justify-content: left;
   text-align: left;
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 6px;
@@ -102,8 +102,8 @@ const ButtonWrapper = styled.div`
   width: 100%;
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Stack buttons vertically */
-    align-items: center; /* Center align buttons */
+    flex-direction: row; /* Stack buttons vertically */
+    align-items: left; /* Center align buttons */
     gap: 10px; /* Add spacing between buttons */
   }
 `;
@@ -135,7 +135,7 @@ const ProjectCard = ({
   codeLink,
 }) => {
   return (
-    <ProjectCardContainer className={"visible"}>
+    <ProjectCardContainer className={'visible'}>
       <ProjectImage src={imgSrc} alt={title} />
       <ProjectTitle>{title}</ProjectTitle>
       <ProjectDescription>{description}</ProjectDescription>
@@ -145,10 +145,10 @@ const ProjectCard = ({
         ))}
 
         <ButtonWrapper>
-          <Button href={liveDemo} target="_blank" rel="noopener noreferrer">
+          <Button href={liveDemo} target='_blank' rel='noopener noreferrer'>
             Live demo
           </Button>
-          <Button href={codeLink} target="_blank" rel="noopener noreferrer">
+          <Button href={codeLink} target='_blank' rel='noopener noreferrer'>
             View code
           </Button>
         </ButtonWrapper>
@@ -164,43 +164,43 @@ const FeaturedProjects = () => {
         <ShowroomH3>Projects</ShowroomH3>
         <ProjectsGrid>
           <ProjectCard
-            title="Small Business Site"
-            description="A small site for a local business, showcasing their services and contact information."
-            stack={["HTML5", "CSS3", "Flexbox"]}
-            imgSrc="./img/sushi.png"
-            liveDemo="https://sushi-world-on.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-business-site"
+            title='Small Business Site'
+            description='A small site for a local business, showcasing their services and contact information.'
+            stack={['HTML5', 'CSS3', 'Flexbox']}
+            imgSrc='./img/sushi.png'
+            liveDemo='https://sushi-world-on.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-business-site'
           />
           <ProjectCard
-            title="Weather App"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "React", "Node"]}
-            imgSrc="./img/weather.png"
-            liveDemo="https://heatherweather.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-weather-app"
+            title='Weather App'
+            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+            stack={['HTML5', 'CSS3', 'React', 'Node']}
+            imgSrc='./img/weather.png'
+            liveDemo='https://heatherweather.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-weather-app'
           />
           <ProjectCard
-            title="Accessibility Quiz"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "Node"]}
-            imgSrc="./img/access.png"
-            liveDemo="https://js-project-accessibility-on.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-accessibility"
+            title='Accessibility Quiz'
+            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+            stack={['HTML5', 'CSS3', 'Node']}
+            imgSrc='./img/access.png'
+            liveDemo='https://js-project-accessibility-on.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-accessibility'
           />
           <ProjectCard
-            title="This Portfolio"
-            description="The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries."
-            stack={["HTML5", "CSS3", "React", "Node"]}
-            imgSrc="./img/portfolio.png"
-            liveDemo="#"
-            codeLink="#https://github.com/oskarnordin/js-portfolio-project"
+            title='This Portfolio'
+            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+            stack={['HTML5', 'CSS3', 'React', 'Node']}
+            imgSrc='./img/portfolio.png'
+            liveDemo='#'
+            codeLink='#https://github.com/oskarnordin/js-portfolio-project'
           />
         </ProjectsGrid>
-        <a href="#myWords">
+        <a href='#myWords'>
           <CenteredContainer>
             <AngleDownImage
-              src="img/angle-square-down.png"
-              alt="Angle down icon"
+              src='img/angle-square-down.png'
+              alt='Angle down icon'
             />
           </CenteredContainer>
         </a>
