@@ -10,7 +10,7 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 const Background = styled.div`
   position: relative;
   background-color: #f4f4f4;
-  height: 100vh;
+  min-height: 100vh; /* Changed from height to min-height */
   width: 100%;
   z-index: 20;
 `;
@@ -20,29 +20,27 @@ const SkillsContainer = styled.div`
   background-color: #f4f4f4;
   font-family: Teko, sans-serif;
   color: #000000;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
   display: flex;
-  flex-direction: column; /* Stack heading and icons vertically */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px; /* Space between heading and icons */
+  gap: 32px;
   padding: 2rem;
   margin: 0 auto;
   box-sizing: border-box;
   width: 100%;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
   opacity: 0;
-  transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
-    transform: translateY(0);
   }
 `;
 
@@ -59,35 +57,6 @@ const TechstackH3 = styled.h3`
   width: 100%;
 `;
 
-const IconContainer = styled.div`
-  background-color: transparent;
-  width: 80px;
-  height: 80px;
-  padding: 20px;
-`;
-
-const IconLabel = styled.div`
-  font-size: 16px;
-  color: #444;
-  text-align: center;
-  margin-top: 6px;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 600;
-`;
-
-const IconsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  width: 100%;
-  background: transparent;
-  position: relative;
-  margin: 0;
-  overflow: visible;
-`;
-
 const techStack = [
   { name: "html5", label: "HTML" },
   { name: "css3", label: "CSS" },
@@ -95,7 +64,7 @@ const techStack = [
   { name: "typescript", label: "TypeScript" },
   { name: "reactjs", label: "React" },
   { name: "npm", label: "NPM" },
-  { name: "mongodb", label: "MongoBD" },
+  { name: "mongodb", label: "MongoDB" }, // fixed typo
 ];
 
 const SkillsSection = () => {
@@ -106,19 +75,11 @@ const SkillsSection = () => {
 
   return (
     <Background>
-      <SectionContainer id="techstack">
-        <SkillsContainer ref={ref} className={visible ? "visible" : ""}>
-          <TechstackH3>Tech Stack</TechstackH3>
-          <IconsGrid>
-            {techStack.map((tech) => (
-              <IconContainer key={tech.name}>
-                <StackIcon name={tech.name} />
-                <IconLabel>{tech.label}</IconLabel>
-              </IconContainer>
-            ))}
-          </IconsGrid>
-        </SkillsContainer>
-      </SectionContainer>
+      <SkillsContainer ref={ref} className={visible ? "visible" : ""}>
+        {techStack.map((item) => (
+          <div key={item.name}>{item.label}</div>
+        ))}
+      </SkillsContainer>
       <a href="#contact">
         <MarginArrowContainer>
           <AngleDownImage

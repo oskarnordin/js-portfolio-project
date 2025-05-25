@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import ProjectCard from "../Cards/ProjectCard";
-import { AngleDownImage } from "../SharedComponents";
-import { MarginArrowContainer } from "../SharedComponents";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import React from 'react';
+import styled from 'styled-components';
+import ProjectCard from '../Cards/ProjectCard';
+import { AngleDownImage } from '../SharedComponents';
+import { MarginArrowContainer } from '../SharedComponents';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
@@ -11,13 +11,15 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f8f8f8;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
+  overflow-x: hidden;
   z-index: 20;
 `;
 
 const ProjectContainer = styled.div`
-  width: 1080px;
+  width: 100%;
+  max-width: 1080px; /* Changed from width: 1080px to max-width */
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #000000;
@@ -37,6 +39,7 @@ const ProjectContainer = styled.div`
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow-x: hidden; /* Prevent horizontal scroll */
 
   &.visible {
     opacity: 1;
@@ -44,12 +47,8 @@ const ProjectContainer = styled.div`
   }
 
   @media (max-width: 900px) {
-    max-width: 100vw;
+    max-width: 100%;
     padding: 1rem;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
   }
 `;
 
@@ -75,7 +74,7 @@ const SectionHeading = styled.h2`
 `;
 
 const ShowroomH3 = styled.h3`
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   width: 100%;
   max-width: ${({ theme }) => theme.maxWidth};
   color: #2d3748;
@@ -83,9 +82,8 @@ const ShowroomH3 = styled.h3`
   font-size: 34px;
   padding: 32px;
   margin: 5px;
-  border-radius: 16px;
   text-decoration: none;
-  text-align: left;
+  text-align: center;
   align-self: flex-start;
 `;
 
@@ -97,49 +95,49 @@ const FeaturedProjects = () => {
     <Background>
       <SectionContainer>
         <ProjectContainer
-          id="projects"
+          id='projects'
           ref={ref}
-          className={isVisible ? "visible" : ""}
+          className={isVisible ? 'visible' : ''}
         >
           <ShowroomH3>Showroom</ShowroomH3>
           <ProjectCard
-            title="Small Business Site"
-            description="A small site for a local business, showcasing their services and contact information."
-            stack={["HTML5", "CSS3", "Flexbox"]}
-            imgSrc="./img/sushi.png"
-            liveDemo="https://sushi-world-on.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-business-site"
+            title='Small Business Site'
+            description='A small site for a local business, showcasing their services and contact information.'
+            stack={['HTML5', 'CSS3', 'Flexbox']}
+            imgSrc='./img/sushi.png'
+            liveDemo='https://sushi-world-on.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-business-site'
           />
           <ProjectCard
-            title="Weather App"
-            description="A weather app that provides real-time weather information and forecasts for any location."
-            stack={["HTML5", "CSS3", "JavaScript", "API"]}
-            imgSrc="./img/weather.png"
-            liveDemo="https://heatherweather.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-weather-app"
+            title='Weather App'
+            description='A weather app that provides real-time weather information and forecasts for any location.'
+            stack={['HTML5', 'CSS3', 'JavaScript', 'API']}
+            imgSrc='./img/weather.png'
+            liveDemo='https://heatherweather.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-weather-app'
           />
           <ProjectCard
-            title="Accessibility Quiz"
-            description="An interactive quiz application designed to educate users about web accessibility best practices."
-            stack={["HTML5", "CSS3", "JavaScript"]}
-            imgSrc="./img/access.png"
-            liveDemo="https://js-project-accessibility-on.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-project-accessibility"
+            title='Accessibility Quiz'
+            description='An interactive quiz application designed to educate users about web accessibility best practices.'
+            stack={['HTML5', 'CSS3', 'JavaScript']}
+            imgSrc='./img/access.png'
+            liveDemo='https://js-project-accessibility-on.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-accessibility'
           />
           <ProjectCard
-            title="This Portfolio"
-            description="This portfolio showcases my work and skills as a developer."
-            stack={["HTML5", "CSS3", "React"]}
-            imgSrc="./img/portfolio.png"
-            liveDemo="https://js-portfoliotwo.netlify.app/"
-            codeLink="https://github.com/oskarnordin/js-portfolio-project"
+            title='This Portfolio'
+            description='This portfolio showcases my work and skills as a developer.'
+            stack={['HTML5', 'CSS3', 'React']}
+            imgSrc='./img/portfolio.png'
+            liveDemo='https://js-portfoliotwo.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-portfolio-project'
           />
         </ProjectContainer>
-        <a href="#moodboard">
+        <a href='#moodboard'>
           <MarginArrowContainer>
             <AngleDownImage
-              src="/img/angle-square-down.svg"
-              alt="Angle down icon"
+              src='/img/angle-square-down.svg'
+              alt='Angle down icon'
             />
           </MarginArrowContainer>
         </a>

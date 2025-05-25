@@ -1,38 +1,52 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
-  background-color: transparent;
-  display: flex;
-  border-radius: 28px;
-  flex-wrap: wrap;
-  height: 100%;
   padding: 40px;
   padding-bottom: 70px;
   width: 100%;
   max-width: 1000px;
   gap: 10px;
   text-align: left;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (max-width: 768px) {
+    width: 100vw; /* Ensure it doesn't overflow */
+    max-width: 100vw;
+    background-color: transparent;
+    padding: 16px 0 32px 0; /* Reduce padding on mobile */
+    margin: 0;
+  }
 `;
 
 const ColumnsContainer = styled.div`
   display: grid;
-  grid-template-columns: 4fr 4fr; // Each column is now twice as wide as before
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   width: 100%;
-  height: 600px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100vw; /* Prevent overflow */
+    max-width: 100vw;
+    padding: 0 8px; /* Add a little horizontal padding */
+    box-sizing: border-box;
+  }
 `;
 
 const PrologueH3 = styled.h3`
   font-family: DM sans;
   display: flex;
-  justify-content: center; // Center horizontally
-  align-items: center; // Center vertically (optional)
+  justify-content: center;
+  align-items: center;
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
@@ -40,38 +54,60 @@ const PrologueH3 = styled.h3`
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    font-size: 34px;
+    padding: 32px;
+    margin: 5px 0;
+  }
 `;
 
 const InfoP = styled.p`
-  display: -webkit-box;
-  line-height: normal;
-  -webkit-line-clamp: 32; /* Adjust number of lines as needed */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: #2d3748;
   font-size: 16px;
   padding: 10px;
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
+  line-height: 1.5;
 
   @media (max-width: 1200px) {
     padding: 0px;
   }
+  @media (max-width: 768px) {
+    color: black;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 4px;
+    margin: 2px 0;
+  }
 `;
 
 const InfoPContainer = styled.div`
+  background-color: #eeeeee;
   display: flex;
-  flex-direction: column; /* Arrange InfoH3 elements in a row */
-  gap: 10px; /* Add spacing between the elements */
-  justify-content: center; /* Center the row */
-  flex-wrap: wrap; /* Allow wrapping if there are too many items */
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+const SignatureImg = styled.img`
+  width: 220px;
+  margin-top: 12px;
+  display: block;
+
+  @media (max-width: 768px) {
+    width: 120px;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const PrologueCard = ({ title, info }) => {
   return (
-    <PrologueCardContainer className="visible">
+    <PrologueCardContainer className='visible'>
       <PrologueH3>Prologue</PrologueH3>
       <ColumnsContainer>
         <div>
@@ -115,7 +151,7 @@ const PrologueCard = ({ title, info }) => {
             with apps I build, thoughts I have about programming, and, of
             course, ways for you to connect with me.
           </InfoP>
-          <img src="/img/sign.png" style={{ width: "220px" }} alt="Signature" />
+          <SignatureImg src='/img/sign.png' alt='Signature' />
         </div>
       </ColumnsContainer>
     </PrologueCardContainer>

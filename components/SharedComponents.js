@@ -11,10 +11,6 @@ export const SectionContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const MarginArrowContainer = styled.div`

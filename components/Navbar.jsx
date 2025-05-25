@@ -7,14 +7,11 @@ const NavbarContainer = styled.div`
   font-size: 20px;
   font-family: Agdasima;
   border-radius: 0px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
-  width: 100%;
+  width: 50%;
   height: 60px; /* Adjusted height */
   padding: 0 20px; /* Horizontal padding */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   z-index: 100;
   position: fixed;
@@ -22,14 +19,23 @@ const NavbarContainer = styled.div`
   left: 0; /* Ensure it spans the full width */
 `;
 
+const LinksWrapper = styled.div`
+  display: flex;
+  gap: 32px; /* Adjust spacing between links as needed */
+  align-items: center;
+  justify-content: center;
+`;
+
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <a href="#techStack">Tech Stack</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#myWords">My Words</a>
-      <a href="#contact">Contact</a>
+      <LinksWrapper>
+        <a href="#techStack">Tech Stack</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#myWords">My Words</a>
+        <a href="#contact">Contact</a>
+      </LinksWrapper>
     </NavbarContainer>
   );
 };

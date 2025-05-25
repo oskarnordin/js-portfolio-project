@@ -22,7 +22,7 @@ const ProjectCardContainer = styled.div`
     transform: translateY(0);
   }
   @media (max-width: 768px) {
-    height: 600px; /* Full viewport height on mobile */
+    min-height: 600px; /* Full viewport height on mobile */
     min-width: 100%; /* Full width on mobile */
     border-radius: 18px; /* Remove border radius for a full-screen effect */
     padding: 10px; /* Adjust padding for smaller screens */
@@ -32,11 +32,11 @@ const ProjectCardContainer = styled.div`
 const ProjectImage = styled.img`
   border-radius: 28px;
   width: 100%;
+  max-width: 100%;
+  max-height: 300px;
   height: 300px;
-
-  @media (max-width: 768px) {
-    height: 150px;
-  }
+  object-fit: cover; // Keeps aspect ratio, fills container, may crop
+  display: block;
 `;
 
 const ProjectTitle = styled.h3`
@@ -100,9 +100,6 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   width: 100%;
-  position: absolute;
-  bottom: 40px;
-  left: 0;
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack buttons vertically */
@@ -112,6 +109,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const TechTagsWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 8px; /* Matches Tailwind's gap-2 */

@@ -93,24 +93,6 @@ h3 {
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-  body {
-    margin: 0;
-    padding: 0;
-    font-size: 16px; /* Adjust base font size for readability */
-  }
-
-  .sectionTwo {
-    background-color: #f4f4f4;
-    padding: px;
-  }
-
-  .sectionFourCards {
-    width: 100%; /* Make cards take full width */
-    gap: 10px; /* Reduce gap between cards */
-  }
-}
-
 /* Media query for devices with a max width of 480px (phones) */
 @media (max-width: 480px) {
   .overlay h1 {
@@ -144,6 +126,7 @@ h3 {
     gap: 5px; /* Reduce gap between cards */
   }
 }
-/* * {
+
+* {
   outline: 1px solid red;
-} */
+}

@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
-import styled from "styled-components";
-import { AngleDownImage } from "../SharedComponents";
-import { MarginArrowContainer } from "../SharedComponents";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import React, { useRef, useEffect } from 'react';
+import styled from 'styled-components';
+import { AngleDownImage } from '../SharedComponents';
+import { MarginArrowContainer } from '../SharedComponents';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
@@ -36,10 +36,14 @@ const GridLayout = styled.div`
     opacity: 1;
     transform: translateY(0);
   }
+  @media (max-width: 768px) {
+    max-width: 80%;
+    padding: 1rem;
+  }
 `;
 
 const MoodboardH3 = styled.h3`
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
@@ -48,12 +52,17 @@ const MoodboardH3 = styled.h3`
   border-radius: 16px;
   text-decoration: none;
   text-align: left;
-  width: 100%;
+  width: 100;
+
+  @media (max-width: 768px) {
+    width: 100;
+  }
 `;
 
 const MoodboardSection = () => {
   const ref = useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+  const boardRef = useRef(null);
 
   useEffect(() => {
     // Add Pinterest script if not already present
@@ -62,8 +71,8 @@ const MoodboardSection = () => {
         'script[src="https://assets.pinterest.com/js/pinit.js"]'
       )
     ) {
-      const script = document.createElement("script");
-      script.src = "https://assets.pinterest.com/js/pinit.js";
+      const script = document.createElement('script');
+      script.src = 'https://assets.pinterest.com/js/pinit.js';
       script.async = true;
       script.defer = true;
       script.onload = () => {
@@ -80,23 +89,45 @@ const MoodboardSection = () => {
     }
   }, []);
 
+  // Responsive Pinterest board width
+  useEffect(() => {
+    const updateBoardWidth = () => {
+      if (boardRef.current) {
+        if (window.innerWidth <= 768) {
+          boardRef.current.setAttribute('data-pin-board-width', '100%');
+        } else {
+          boardRef.current.setAttribute('data-pin-board-width', '1000');
+        }
+        // Rebuild Pinterest widget if script is loaded
+        if (window.PinUtils && window.PinUtils.build) {
+          window.PinUtils.build();
+        }
+      }
+    };
+    updateBoardWidth();
+    window.addEventListener('resize', updateBoardWidth);
+    return () => window.removeEventListener('resize', updateBoardWidth);
+  }, []);
+
   return (
-    <Background id="moodboard">
-      <GridLayout ref={ref} className={isVisible ? "visible" : ""}>
+    <Background id='moodboard'>
+      <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
         <MoodboardH3>Moodboard</MoodboardH3>
         <a
-          data-pin-do="embedBoard"
-          data-pin-board-width="1000"
-          data-pin-scale-height="800"
-          data-pin-scale-width="140"
-          href="https://se.pinterest.com/oskarnordin/tech/"
+          ref={boardRef}
+          data-pin-do='embedBoard'
+          data-pin-board-width='1000'
+          data-pin-scale-height='800'
+          data-pin-scale-width='140'
+          href='https://se.pinterest.com/oskarnordin/tech/'
+          style={{ width: '100%' }}
         ></a>
       </GridLayout>
-      <a href="#techstack">
+      <a href='#techstack'>
         <MarginArrowContainer>
           <AngleDownImage
-            src="img/angle-square-down.png"
-            alt="Angle down icon"
+            src='img/angle-square-down.png'
+            alt='Angle down icon'
           />
         </MarginArrowContainer>
       </a>

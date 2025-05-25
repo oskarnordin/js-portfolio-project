@@ -1,9 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-import { AngleDownImage } from "../SharedComponents";
-import { MarginArrowContainer } from "../SharedComponents";
-import "hamburgers/dist/hamburgers.min.css";
+import React, { useRef, useState, useEffect } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import { AngleDownImage } from '../SharedComponents';
+import { MarginArrowContainer } from '../SharedComponents';
+import 'hamburgers/dist/hamburgers.min.css';
 
 // Global styles for typewriter effect
 const GlobalStyle = createGlobalStyle`
@@ -18,15 +18,17 @@ const GlobalStyle = createGlobalStyle`
   .typewriter h1 {
     overflow: hidden;
     border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
+    white-space: nowrap; /* Force single line */
     letter-spacing: normal;
     animation:
-      typing 1.8s steps(20, end),
+      typing 2.4s steps(32, end),
       blink-caret .75s step-end infinite;
-    width: 100%;
+    width: 100vw; /* Ensure it never overflows */
+    max-width: 100vw;
+    text-align: center;
+    margin: 0 auto;
   }
-   .messenger-icon:hover {
+  .messenger-icon:hover {
     transform: scale(1.1);
   }
   .hamburger--emphatic .hamburger-inner,
@@ -34,13 +36,22 @@ const GlobalStyle = createGlobalStyle`
   .hamburger--emphatic .hamburger-inner::after {
     background-color: #fcfcfc !important; 
   }
+
+  @media (max-width: 768px) {
+    .typewriter h1 {
+      font-size: 32px;
+      width: 100vw;
+      max-width: 100vw;
+      padding: 0 8px;
+    }
+  }
 `;
 
 const OverlayContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw; /* Ensure full viewport width */
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
   z-index: 20;
@@ -48,6 +59,7 @@ const OverlayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 `;
 
 const OverlayCard = styled.div`
@@ -55,14 +67,11 @@ const OverlayCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
-  max-height: 600px;
+  width: 100vw; /* Take full width, prevent overflow */
+  max-width: 100vw;
   background: transparent;
   border-radius: 36px;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px); */
-  /* -webkit-backdrop-filter: blur(7.1px); */
-  padding: 50px;
+  padding: 0; /* Remove extra padding */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -75,42 +84,28 @@ const OverlayCard = styled.div`
   @media (max-width: 768px) {
     background-color: transparent;
     border: none;
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: 100vw;
     border-radius: 0;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    max-height: none;
   }
-`;
-
-const SelfieImage = styled.img`
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  padding: 10px;
-
-  @media (max-width: 768px) {
-    width: 140px;
-    height: 140px;
-  }
-`;
-
-const H2overlay = styled.h2`
-  font-size: 34px;
-  font-family: "Agdasima", sans-serif;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  margin-bottom: 0px;
 `;
 
 const H1overlay = styled.h1`
   font-size: 84px;
-  font-family: "Agdasima", sans-serif;
+  font-family: 'Agdasima', sans-serif;
   color: #f8f8f8;
+  white-space: nowrap; /* Force single line */
 
   @media (max-width: 768px) {
-    font-size: 48px;
+    font-size: 32px;
+    text-align: center;
+    line-height: 1.1;
+    padding: 0 8px;
+    white-space: nowrap; /* Still single line on mobile */
   }
 `;
 
@@ -122,7 +117,7 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px; /* Adjust as needed for your menu */
+  height: 200px;
   background: #4b4efc;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 10000;
@@ -130,7 +125,15 @@ const MenuOverlay = styled.div`
   flex-direction: row;
   padding: 24px 24px 24px 24px;
   transition: transform 0.3s;
-  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+
+  @media (max-width: 768px) {
+    height: 100dvh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
 `;
 
 const MenuLink = styled.a`
@@ -138,14 +141,23 @@ const MenuLink = styled.a`
   justify-content: center;
   align-items: center;
   font-size: 34px;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: #fbfbfb;
   text-decoration: none;
-  margin: 0 24px;
+  margin: 0 12px; /* Reduced margin for closer links */
   font-weight: 600;
   transition: color 0.2s;
   &:hover {
     color: #6f71ff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin: 18px 0;
+    width: 100vw;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    justify-content: center;
   }
 `;
 
@@ -171,38 +183,47 @@ function Overlay() {
     <>
       <button
         className={`hamburger hamburger--emphatic
-${menuOpen ? " is-active" : ""}`}
-        type="button"
-        aria-label="Menu"
-        aria-controls="navigation"
+${menuOpen ? ' is-active' : ''}`}
+        type='button'
+        aria-label='Menu'
+        aria-controls='navigation'
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((open) => !open)}
         style={{
-          position: "fixed",
-          top: "30px",
-          right: "30px",
+          position: 'fixed',
+          top: '30px',
+          right: '30px',
           zIndex: 10001,
+          width: '56px',
+          height: '56px',
+          borderRadius: '50%',
+          background: 'rgba(200, 200, 219, 0)',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+          border: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        <span className="hamburger-box">
-          <span className="hamburger-inner"></span>
+        <span className='hamburger-box'>
+          <span className='hamburger-inner'></span>
         </span>
       </button>
       {/* Slide-out Menu */}
       <MenuOverlay open={menuOpen}>
-        <MenuLink href="#prologue" onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#prologue' onClick={() => setMenuOpen(false)}>
           Prologue
         </MenuLink>
-        <MenuLink href="#techstack" onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#techstack' onClick={() => setMenuOpen(false)}>
           Tech Stack
         </MenuLink>
-        <MenuLink href="#projects" onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#projects' onClick={() => setMenuOpen(false)}>
           Showroom
         </MenuLink>
-        <MenuLink href="#moodboard" onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#moodboard' onClick={() => setMenuOpen(false)}>
           Moodboard
         </MenuLink>
-        <MenuLink href="#contact" onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#contact' onClick={() => setMenuOpen(false)}>
           Let's Talk
         </MenuLink>
       </MenuOverlay>
@@ -210,45 +231,56 @@ ${menuOpen ? " is-active" : ""}`}
       <OverlayContainer>
         <OverlayCard
           ref={overlayRef}
-          className={isOverlayVisible ? "visible" : ""}
+          className={isOverlayVisible ? 'visible' : ''}
         >
           {showTypewriter && (
-            <div className="typewriter">
+            <div className='typewriter'>
               <H1overlay>I'm Oskar Nordin, a Web Developer.</H1overlay>
             </div>
           )}
         </OverlayCard>
-        <a href="#prologue">
+        <a href='#prologue'>
           <MarginArrowContainer>
             <AngleDownImage
-              src="/img/angle-square-light.webp"
-              alt="Angle down icon"
+              src='/img/angle-square-light.webp'
+              alt='Angle down icon'
             />
           </MarginArrowContainer>
         </a>
       </OverlayContainer>
       <a
-        href="https://m.me/id=1078076440"
-        target="_blank"
-        rel="noopener noreferrer"
+        href='https://m.me/id=1078076440'
+        target='_blank'
+        rel='noopener noreferrer'
         style={{
-          position: "fixed",
-          bottom: "30px",
-          right: "30px",
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
           zIndex: 9999,
         }}
       >
         <img
-          src="/img/messenger.png"
-          style={{ width: "80px", transition: "transform 0.2s" }}
-          className="messenger-icon"
-          alt="Message me on Messenger"
+          src='/img/messenger.png'
+          style={{
+            width: '80px',
+            transition: 'transform 0.2s',
+            maxWidth: '18vw',
+            minWidth: '48px',
+          }}
+          className='messenger-icon'
+          alt='Message me on Messenger'
         />
       </a>
       <style>
         {`
           .messenger-icon:hover {
             transform: scale(1.1);
+          }
+          @media (max-width: 768px) {
+            .messenger-icon {
+              width: 56px !important;
+              min-width: 40px !important;
+            }
           }
         `}
       </style>

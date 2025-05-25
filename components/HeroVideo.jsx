@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const VideoContainer = styled.div`
   position: relative;
@@ -15,16 +15,14 @@ const HeroVideoStyle = styled.video`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto;
-  display: block;
-  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: 100%;
   object-fit: cover;
   background-color: rgb(233, 233, 233);
   z-index: 1;
-  @media (max-width: 768px) {
-    display: none;
-  }
+  overflow: hidden !important;
 `;
 
 function HeroVideo() {
@@ -38,9 +36,9 @@ function HeroVideo() {
         loop
         muted
         playsInline
-        aria-label="Background video"
+        aria-label='Background video'
       >
-        <source src="/img/bgvideo4.mp4" type="video/mp4" />
+        <source src='/img/bgvideo4.mp4' type='video/mp4' />
         Your browser does not support the video tag.
       </HeroVideoStyle>
     </VideoContainer>
