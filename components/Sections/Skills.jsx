@@ -1,11 +1,11 @@
 // components/SkillsSection.jsx
-import React from "react";
-import styled from "styled-components";
-import { AngleDownImage } from "../SharedComponents";
-import { MarginArrowContainer } from "../SharedComponents";
-import { SectionContainer } from "../SharedComponents";
-import StackIcon from "tech-stack-icons";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import React from 'react';
+import styled from 'styled-components';
+import { AngleDownImage } from '../SharedComponents';
+import { MarginArrowContainer } from '../SharedComponents';
+import { SectionContainer } from '../SharedComponents';
+import StackIcon from 'tech-stack-icons';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
@@ -45,7 +45,7 @@ const SkillsContainer = styled.div`
 `;
 
 const TechstackH3 = styled.h3`
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
@@ -58,13 +58,13 @@ const TechstackH3 = styled.h3`
 `;
 
 const techStack = [
-  { name: "html5", label: "HTML" },
-  { name: "css3", label: "CSS" },
-  { name: "js", label: "JavaScript" },
-  { name: "typescript", label: "TypeScript" },
-  { name: "reactjs", label: "React" },
-  { name: "npm", label: "NPM" },
-  { name: "mongodb", label: "MongoDB" }, // fixed typo
+  { name: 'html5', label: 'HTML' },
+  { name: 'css3', label: 'CSS' },
+  { name: 'js', label: 'JavaScript' },
+  { name: 'typescript', label: 'TypeScript' },
+  { name: 'reactjs', label: 'React' },
+  { name: 'npm', label: 'NPM' },
+  { name: 'mongodb', label: 'MongoDB' },
 ];
 
 const SkillsSection = () => {
@@ -75,16 +75,16 @@ const SkillsSection = () => {
 
   return (
     <Background>
-      <SkillsContainer ref={ref} className={visible ? "visible" : ""}>
+      <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
         {techStack.map((item) => (
           <div key={item.name}>{item.label}</div>
         ))}
       </SkillsContainer>
-      <a href="#contact">
+      <a href='#contact'>
         <MarginArrowContainer>
           <AngleDownImage
-            src="img/angle-square-down.png"
-            alt="Angle down icon"
+            src='img/angle-square-down.png'
+            alt='Angle down icon'
           />
         </MarginArrowContainer>
       </a>
