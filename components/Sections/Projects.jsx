@@ -22,7 +22,7 @@ const ProjectContainer = styled.div`
   max-width: 1080px;
   background-color: transparent;
   font-family: Teko, sans-serif;
-  color: #000000;
+  color: #2d3748;
   position: relative;
   z-index: 30;
   font-size: 16px;

@@ -41,6 +41,7 @@ const ProjectImage = styled.img`
 
 const ProjectTitle = styled.h3`
   display: flex;
+  color: #2d3748;
   justify-content: left;
   text-align: left;
   font-family: 'DM Sans';
@@ -52,7 +53,7 @@ const ProjectTitle = styled.h3`
 
 const ProjectDescription = styled.p`
   font-size: 16px;
-  color: #0e0e0e;
+  color: #2d3748;
   margin-bottom: 1rem;
   justify-content: left;
   text-align: left;

@@ -3,9 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { AngleDownImage } from '../SharedComponents';
 import { MarginArrowContainer } from '../SharedComponents';
-import { SectionContainer } from '../SharedComponents';
-import StackIcon from 'tech-stack-icons';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import StackIcon from 'tech-stack-icons';
 
 const Background = styled.div`
   position: relative;
@@ -19,7 +18,7 @@ const SkillsContainer = styled.div`
   max-width: 1080px;
   background-color: #f4f4f4;
   font-family: Teko, sans-serif;
-  color: #000000;
+  color: #2d3748;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,15 +57,26 @@ const TechstackH3 = styled.h3`
   text-align: center;
 `;
 
-const techStack = [
-  { name: 'html5', label: 'HTML' },
-  { name: 'css3', label: 'CSS' },
-  { name: 'js', label: 'JavaScript' },
-  { name: 'typescript', label: 'TypeScript' },
-  { name: 'reactjs', label: 'React' },
-  { name: 'npm', label: 'NPM' },
-  { name: 'mongodb', label: 'MongoDB' },
-];
+const techStack = {
+  frontend: [
+    { name: 'html5', label: 'HTML' },
+    { name: 'css3', label: 'CSS' },
+    { name: 'js', label: 'JavaScript' },
+    { name: 'typescript', label: 'TypeScript' },
+    { name: 'reactjs', label: 'React' },
+  ],
+  backend: [
+    { name: 'nodejs', label: 'Node.js' },
+    { name: 'mongodb', label: 'MongoDB' },
+  ],
+  misc: [
+    { name: 'npm', label: 'NPM' },
+    { name: 'git', label: 'Git' },
+    { name: 'github', label: 'GitHub' },
+    { name: 'vitejs', label: 'Vite' },
+    { name: 'eslint', label: 'ESLint' },
+  ],
+};
 
 const SkillsSection = () => {
   const ref = React.useRef(null);
@@ -74,13 +84,102 @@ const SkillsSection = () => {
     threshold: 0.1,
   });
 
+  const ColumnsWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  `;
+
+  const Column = styled.div`
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  `;
+
+  const IconGrid = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  `;
+
+  const ColumnTitle = styled.h4`
+    font-size: 24px;
+    margin-bottom: 1rem;
+    color: #2d3748;
+  `;
+
+  const SkillItem = styled.div`
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 24px;
+    color: black;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: #ebebeb;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  `;
+
   return (
     <Background id='techstack'>
       <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
         <TechstackH3>Tech Stack</TechstackH3>
-        {techStack.map((item) => (
-          <div key={item.name}>{item.label}</div>
-        ))}
+        <ColumnsWrapper>
+          <Column>
+            <ColumnTitle>Frontend</ColumnTitle>
+            <IconGrid>
+              {techStack.frontend.map((item) => (
+                <SkillItem key={item.name}>
+                  <StackIcon name={item.name} size={32} />
+                  <span>{item.label}</span>
+                </SkillItem>
+              ))}
+            </IconGrid>
+          </Column>
+          <Column>
+            <ColumnTitle>Backend</ColumnTitle>
+            <IconGrid>
+              {techStack.backend.map((item) => (
+                <SkillItem key={item.name}>
+                  <StackIcon name={item.name} size={32} />
+                  <span>{item.label}</span>
+                </SkillItem>
+              ))}
+            </IconGrid>
+          </Column>
+          <Column>
+            <ColumnTitle>Misc</ColumnTitle>
+            <IconGrid>
+              {techStack.misc.map((item) => (
+                <SkillItem key={item.name}>
+                  <StackIcon name={item.name} size={32} />
+                  <span>{item.label}</span>
+                </SkillItem>
+              ))}
+            </IconGrid>
+          </Column>
+        </ColumnsWrapper>
       </SkillsContainer>
       <a href='#contact'>
         <MarginArrowContainer>

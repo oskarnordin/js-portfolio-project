@@ -1,7 +1,7 @@
-import React from "react";
-import ContactCard from "../Cards/ContactCard";
-import styled from "styled-components";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import React from 'react';
+import ContactCard from '../Cards/ContactCard';
+import styled from 'styled-components';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
@@ -41,15 +41,15 @@ const ContactSection = () => {
   });
   const handleScroll = () => {
     if (isVisible) {
-      ref.current.classList.add("visible");
+      ref.current.classList.add('visible');
     } else {
-      ref.current.classList.remove("visible");
+      ref.current.classList.remove('visible');
     }
   };
-  
+
   return (
     <Background>
-      <GridLayout id="contact">
+      <GridLayout id='contact'>
         <ContactCard />
       </GridLayout>
     </Background>

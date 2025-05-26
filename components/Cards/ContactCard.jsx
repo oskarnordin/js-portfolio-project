@@ -33,8 +33,8 @@ const ContactCardContainer = styled.div`
 
 const SelfieImage = styled.img`
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   padding: 10px;
 
   @media (max-width: 768px) {
@@ -45,9 +45,9 @@ const SelfieImage = styled.img`
 `;
 
 const ContactH2 = styled.h2`
-  font-family: DM sans;
+  font-family: 'DM Sans', sans-serif;
   color: black;
-  font-size: 48px;
+  font-size: 34px;
   margin-bottom: 10px;
 `;
 
@@ -55,7 +55,7 @@ const ContactH3 = styled.h3`
   background-color: #e2e8f0;
   justify-content: center;
   align-items: center;
-  font-family: DM sans;
+  font-family: 'DM Sans', sans-serif;
   display: flex;
   color: #2d3748;
   font-weight: 600;
@@ -80,8 +80,8 @@ const ContactIconsWrapper = styled.div`
 
 const ContactIcon = styled.a`
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -95,22 +95,40 @@ const ContactIcon = styled.a`
   }
 `;
 
+const SocialsIcon = styled.img`
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 const ContactCard = () => {
   const ref = useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
-      <ContactH2>Let's talk</ContactH2>
+      <ContactH2>Let's Talk</ContactH2>
       <SelfieImage src='/img/selfie.png' alt='Selfie of Oskar Nordin' />
       <ContactIconsWrapper>
-        <ContactIcon href='https://www.facebook.com/profile.php?id=1078076440'>
+        <ContactIcon
+          id='SocialsIcon'
+          href='https://www.facebook.com/profile.php?id=1078076440'
+        >
           <img src='/img/fb-logo.svg' alt='Facebook' width='60' height='60' />
         </ContactIcon>
-        <ContactIcon href='https://www.instagram.com/oskaralexander/'>
+        <ContactIcon
+          id='SocialsIcon'
+          href='https://www.instagram.com/oskaralexander/'
+        >
           <img src='/img/ig-logo.svg' alt='Instagram' width='60' height='60' />
         </ContactIcon>
-        <ContactIcon href='https://www.linkedin.com/in/oskarnordin/'>
+        <ContactIcon
+          id='SocialsIcon'
+          href='https://www.linkedin.com/in/oskarnordin/'
+        >
           <img src='/img/li-logo.svg' alt='LinkedIn' width='60' height='60' />
         </ContactIcon>
       </ContactIconsWrapper>

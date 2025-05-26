@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
   padding: 40px;
-  padding-bottom: 70px;
+  padding-bottom: 40px;
   width: 100%;
   max-width: 1000px;
   gap: 10px;
@@ -50,7 +50,7 @@ const PrologueH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 10px;
+  padding: 32px;
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
