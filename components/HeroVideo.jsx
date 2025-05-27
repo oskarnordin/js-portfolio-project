@@ -18,7 +18,7 @@ const HeroVideoStyle = styled.video`
   min-width: 100%;
   min-height: 100%;
   width: auto;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
   background-color: rgb(233, 233, 233);
   z-index: 1;

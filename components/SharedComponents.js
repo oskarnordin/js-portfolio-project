@@ -33,6 +33,7 @@ export const MarginArrowContainer = styled.div`
 `;
 
 export const AngleDownImage = styled.img`
+  display: none;
   margin: 0px;
   width: 40px;
   height: 40px;

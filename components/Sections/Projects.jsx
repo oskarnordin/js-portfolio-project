@@ -125,6 +125,22 @@ const FeaturedProjects = () => {
             liveDemo='https://js-portfoliotwo.netlify.app/'
             codeLink='https://github.com/oskarnordin/js-portfolio-project'
           />
+          <ProjectCard
+            title='Win 98 Style To-Do App'
+            description='A to-do app with a touch of retro.'
+            stack={['HTML5', 'CSS3', 'React']}
+            imgSrc='./img/w98.png'
+            liveDemo='https://windows98-todo.netlify.app/'
+            codeLink='https://github.com/oskarnordin/project-to-dos-zustand-vite'
+          />
+          <ProjectCard
+            title='Recipe Library'
+            description='A library of recipes with filters for dietary restrictions, time to cook and random recipe.'
+            stack={['HTML5', 'CSS3', 'JavaScript', 'API']}
+            imgSrc='./img/cooking.jpg'
+            liveDemo='https://recipe-libary-on.netlify.app/'
+            codeLink='https://github.com/oskarnordin/js-project-recipe-library'
+          />
         </ProjectContainer>
       </SectionContainer>
       <a href='#moodboard'>

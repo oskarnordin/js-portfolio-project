@@ -123,7 +123,7 @@ const MenuOverlay = styled.div`
   height: 200px;
   background: #4b4efc;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  z-index: 10000;
+  z-index: 8000;
   display: flex;
   flex-direction: row;
   padding: 24px 24px 24px 24px;
