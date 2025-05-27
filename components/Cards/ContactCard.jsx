@@ -29,6 +29,16 @@ const ContactCardContainer = styled.div`
     border-radius: 18px;
     padding: 0px;
   }
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-width: 100%;
+    border-radius: 18px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const SelfieImage = styled.img`
@@ -49,25 +59,6 @@ const ContactH2 = styled.h2`
   color: black;
   font-size: 34px;
   margin-bottom: 10px;
-`;
-
-const ContactH3 = styled.h3`
-  background-color: #e2e8f0;
-  justify-content: center;
-  align-items: center;
-  font-family: 'DM Sans', sans-serif;
-  display: flex;
-  color: #2d3748;
-  font-weight: 600;
-  font-size: 24px;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 16px;
-  text-decoration: none;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
 `;
 
 const ContactIconsWrapper = styled.div`
@@ -93,6 +84,15 @@ const ContactIcon = styled.a`
   &:hover img {
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
 `;
 
 const SocialsIcon = styled.img`
@@ -101,6 +101,12 @@ const SocialsIcon = styled.img`
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
   }
 `;
 

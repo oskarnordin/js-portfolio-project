@@ -12,6 +12,15 @@ const Background = styled.div`
   min-height: 100vh;
   width: 100%;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 0 0 2rem 0;
+  }
 `;
 
 const SkillsContainer = styled.div`
@@ -19,10 +28,7 @@ const SkillsContainer = styled.div`
   background-color: #f4f4f4;
   font-family: Teko, sans-serif;
   color: #2d3748;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
@@ -53,7 +59,7 @@ const TechstackH3 = styled.h3`
   border-radius: 16px;
   text-decoration: none;
   text-align: left;
-  width: 100%;
+  width: auto;
   text-align: center;
 `;
 
@@ -141,6 +147,11 @@ const SkillsSection = () => {
     }
   `;
 
+  const Label = styled.p`
+    font-size: 14px;
+    color: #2c2c2c;
+  `;
+
   return (
     <Background id='techstack'>
       <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
@@ -152,7 +163,7 @@ const SkillsSection = () => {
               {techStack.frontend.map((item) => (
                 <SkillItem key={item.name}>
                   <StackIcon name={item.name} size={32} />
-                  <span>{item.label}</span>
+                  <Label>{item.label}</Label>
                 </SkillItem>
               ))}
             </IconGrid>
@@ -163,7 +174,7 @@ const SkillsSection = () => {
               {techStack.backend.map((item) => (
                 <SkillItem key={item.name}>
                   <StackIcon name={item.name} size={32} />
-                  <span>{item.label}</span>
+                  <Label>{item.label}</Label>
                 </SkillItem>
               ))}
             </IconGrid>
@@ -174,7 +185,7 @@ const SkillsSection = () => {
               {techStack.misc.map((item) => (
                 <SkillItem key={item.name}>
                   <StackIcon name={item.name} size={32} />
-                  <span>{item.label}</span>
+                  <Label>{item.label}</Label>
                 </SkillItem>
               ))}
             </IconGrid>

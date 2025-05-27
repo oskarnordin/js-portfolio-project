@@ -10,11 +10,18 @@ const Background = styled.div`
   height: 100vh;
   width: 100%;
   z-index: 20;
+
+  @media (max-width: 768px) {
+    height: auto;
+    width: auto;
+    padding: 0 0 1rem 0;
+  }
 `;
 
 const GridLayout = styled.div`
-  height: 90%;
+  height: 100%;
   max-width: 1080px;
+  width: auto;
   background-color: #eeeeee;
   font-family: Teko, sans-serif;
   color: #000000;
@@ -37,7 +44,8 @@ const GridLayout = styled.div`
     transform: translateY(0);
   }
   @media (max-width: 768px) {
-    max-width: 100%;
+    width: auto;
+    height: auto;
     padding: 1rem;
   }
 `;
@@ -52,11 +60,6 @@ const MoodboardH3 = styled.h3`
   border-radius: 16px;
   text-decoration: none;
   text-align: left;
-  width: 100;
-
-  @media (max-width: 768px) {
-    width: 100;
-  }
 `;
 
 const MoodboardSection = () => {

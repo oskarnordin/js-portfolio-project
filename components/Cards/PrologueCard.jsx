@@ -17,8 +17,7 @@ const PrologueCardContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100vw; /* Ensure it doesn't overflow */
-    max-width: 100vw;
+    width: auto;
     background-color: transparent;
     padding: 16px 0 32px 0; /* Reduce padding on mobile */
     margin: 0;
@@ -35,9 +34,9 @@ const ColumnsContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 12px;
-    width: 100vw; /* Prevent overflow */
+    width: auto; /* Prevent overflow */
     max-width: 100vw;
-    padding: 0 8px; /* Add a little horizontal padding */
+    padding: 0 16px; /* Add a little horizontal padding */
     box-sizing: border-box;
   }
 `;
@@ -98,8 +97,8 @@ const SignatureImg = styled.img`
   display: block;
 
   @media (max-width: 768px) {
-    width: 120px;
-    margin-top: 8px;
+    width: 160px;
+    margin-top: 18px;
     margin-left: auto;
     margin-right: auto;
   }

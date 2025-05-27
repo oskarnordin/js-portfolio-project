@@ -22,10 +22,13 @@ const ProjectCardContainer = styled.div`
     transform: translateY(0);
   }
   @media (max-width: 768px) {
-    min-height: 600px; /* Full viewport height on mobile */
-    min-width: 100%; /* Full width on mobile */
+    height: auto; /* Full viewport height on mobile */
+    width: auto; /* Full width on mobile */
     border-radius: 18px; /* Remove border radius for a full-screen effect */
     padding: 10px; /* Adjust padding for smaller screens */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
   }
 `;
 
@@ -37,6 +40,9 @@ const ProjectImage = styled.img`
   height: 300px;
   object-fit: cover; // Keeps aspect ratio, fills container, may crop
   display: block;
+
+  @media (max-width: 768px) {
+    height: 200px; /* Adjust height for smaller screens */
 `;
 
 const ProjectTitle = styled.h3`
@@ -49,6 +55,12 @@ const ProjectTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 6px;
   margin-top: 8px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -65,6 +77,12 @@ const TechTag = styled.span`
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
 `;
 
 const Button = styled.a`
@@ -82,6 +100,12 @@ const Button = styled.a`
   transition: background-color 0.2s ease;
   &:hover {
     background-color: #6f71ff;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Full width on mobile */
   }
 `;
 
@@ -115,6 +139,12 @@ const TechTagsWrapper = styled.div`
   flex-wrap: wrap;
   gap: 8px; /* Matches Tailwind's gap-2 */
   margin-bottom: 16px; /* Matches Tailwind's mb-4 */
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center; /* Center tags on smaller screens */
+    align-items: center; /* Center tags vertically */
+  }
 `;
 
 const ProjectsGrid = styled.div`

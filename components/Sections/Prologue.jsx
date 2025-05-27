@@ -12,13 +12,13 @@ const Background = styled.div`
   align-items: center;
   background-color: #eeeeee;
   height: 100vh;
-  width: 100%;
+  width: auto;
   z-index: 20;
   padding: 0 0 2rem 0;
 
   @media (max-width: 768px) {
     padding: 0 0 1rem 0;
-    min-height: 100vh;
+    height: auto;
   }
 `;
 

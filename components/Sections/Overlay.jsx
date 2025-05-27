@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
   .messenger-icon:hover {
     transform: scale(1.1);
   }
+
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
   .hamburger--emphatic .hamburger-inner::after {
@@ -43,6 +44,9 @@ const GlobalStyle = createGlobalStyle`
       width: 100vw;
       max-width: 100vw;
       padding: 0 8px;
+    }
+    .messenger-icon{
+      display: none;
     }
   }
 `;
@@ -85,12 +89,10 @@ const OverlayCard = styled.div`
     background-color: transparent;
     border: none;
     height: auto;
-    width: 100vw;
+    width: auto;
     border-radius: 0;
     padding: 0;
     margin: 0;
-    max-width: 100vw;
-    max-height: none;
   }
 `;
 
@@ -109,11 +111,12 @@ const H1overlay = styled.h1`
   }
 `;
 
-// Styled components for Hamburger and Menu
 const MenuOverlay = styled.div`
   position: fixed;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  border: none;
   top: 0;
   left: 0;
   width: 100%;
@@ -128,7 +131,9 @@ const MenuOverlay = styled.div`
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
 
   @media (max-width: 768px) {
-    height: 100dvh;
+    height: 100vh;
+    margin: 0;
+    border: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -153,10 +158,9 @@ const MenuLink = styled.a`
 
   @media (max-width: 768px) {
     font-size: 28px;
-    margin: 18px 0;
+    margin: 14px 0;
     width: 100vw;
     padding: 18px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     justify-content: center;
   }
 `;
