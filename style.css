@@ -130,8 +130,3 @@ h3 {
 /* * {
   border: 1px solid red;
 } */
-
-body,
-* {
-  cursor: none !important;
-}
