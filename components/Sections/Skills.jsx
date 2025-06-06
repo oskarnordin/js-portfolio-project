@@ -126,30 +126,26 @@ const SkillsSection = () => {
   `;
 
   const SkillItem = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 6px;
     padding: 24px;
-    color: black;
+    color: #f8f8f8;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     text-align: center;
-    background-color: #ebebeb;
+    background-color: #4b4efc;
     border-radius: 12px;
     transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   `;
 
   const Label = styled.p`
     font-size: 14px;
-    color: #2c2c2c;
+    color: #f8f8f8;
   `;
 
   return (
@@ -162,7 +158,6 @@ const SkillsSection = () => {
             <IconGrid>
               {techStack.frontend.map((item) => (
                 <SkillItem key={item.name}>
-                  <StackIcon name={item.name} size={32} />
                   <Label>{item.label}</Label>
                 </SkillItem>
               ))}
@@ -173,7 +168,6 @@ const SkillsSection = () => {
             <IconGrid>
               {techStack.backend.map((item) => (
                 <SkillItem key={item.name}>
-                  <StackIcon name={item.name} size={32} />
                   <Label>{item.label}</Label>
                 </SkillItem>
               ))}
@@ -184,7 +178,6 @@ const SkillsSection = () => {
             <IconGrid>
               {techStack.misc.map((item) => (
                 <SkillItem key={item.name}>
-                  <StackIcon name={item.name} size={32} />
                   <Label>{item.label}</Label>
                 </SkillItem>
               ))}
