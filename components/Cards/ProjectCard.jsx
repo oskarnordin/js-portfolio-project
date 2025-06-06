@@ -65,6 +65,7 @@ const ProjectTitle = styled.h3`
 
 const ProjectDescription = styled.p`
   font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
   color: #2d3748;
   margin-bottom: 1rem;
   justify-content: left;
@@ -72,10 +73,11 @@ const ProjectDescription = styled.p`
 `;
 
 const TechTag = styled.span`
-  background-color: #4b4efc;
+  background-color: #331993;
+  font-family: 'Courier New', Courier, monospace;
   color: #fafafa;
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
+  font-size: 14px;
+  padding: 8px;
   border-radius: 0.5rem;
 
   @media (max-width: 768px) {
@@ -86,7 +88,7 @@ const TechTag = styled.span`
 `;
 
 const Button = styled.a`
-  background-color: #4b4efc;
+  background-color: #331993;
   justify-content: center;
   display: flex;
   color: white;
@@ -99,7 +101,7 @@ const Button = styled.a`
   text-decoration: none;
   transition: background-color 0.2s ease;
   &:hover {
-    background-color: #6f71ff;
+    background-color: #4220bd;
   }
 
   @media (max-width: 768px) {
@@ -110,7 +112,7 @@ const Button = styled.a`
 `;
 
 const ShowroomH3 = styled.h3`
-  font-family: DM sans;
+  font-family: 'DM Sans';
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
   background: rgba(245, 245, 245, 0.21);
@@ -30,11 +30,11 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <LinksWrapper>
-        <a href="#techStack">Tech Stack</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#myWords">My Words</a>
-        <a href="#contact">Contact</a>
+        <a href='#techStack'>Tech Stack</a>
+        <a href='#skills'>Skills</a>
+        <a href='#projects'>Projects</a>
+        <a href='#myWords'>My Words</a>
+        <a href='#contact'>Contact</a>
       </LinksWrapper>
     </NavbarContainer>
   );

@@ -8,14 +8,15 @@ import StackIcon from 'tech-stack-icons';
 
 const Background = styled.div`
   position: relative;
-  background-color: #f4f4f4;
-  min-height: 100vh;
+  background-color: #331993;
+  min-height: 80vh;
   width: 100%;
   z-index: 20;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 72px;
 
   @media (max-width: 768px) {
     height: auto;
@@ -25,7 +26,7 @@ const Background = styled.div`
 
 const SkillsContainer = styled.div`
   max-width: 1080px;
-  background-color: #f4f4f4;
+  background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
   position: relative;
@@ -35,7 +36,7 @@ const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   gap: 32px;
   padding: 2rem;
   margin: 0 auto;
@@ -51,14 +52,14 @@ const SkillsContainer = styled.div`
 
 const TechstackH3 = styled.h3`
   font-family: 'DM Sans', sans-serif;
-  color: #2d3748;
+  color: #f8f8f8;
   font-weight: 600;
   font-size: 34px;
   padding: 32px;
   margin: 5px;
   border-radius: 16px;
   text-decoration: none;
-  text-align: left;
+
   width: auto;
   text-align: center;
 `;
@@ -81,6 +82,13 @@ const techStack = {
     { name: 'github', label: 'GitHub' },
     { name: 'vitejs', label: 'Vite' },
     { name: 'eslint', label: 'ESLint' },
+  ],
+  analysis: [
+    { name: 'Python', label: 'Python' },
+    { name: 'Pandas', label: 'Pandas' },
+    { name: 'Matplotlib', label: 'Matplotlib' },
+    { name: 'Seaborn', label: 'Seaborn' },
+    { name: 'Jupyter', label: 'Jupyter' },
   ],
 };
 
@@ -108,8 +116,16 @@ const SkillsSection = () => {
     min-width: 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* changed from center */
     gap: 16px;
+  `;
+
+  const ColumnTitle = styled.h4`
+    font-size: 28px;
+    margin-bottom: 1rem;
+    color: #f8f8f8;
+    text-align: left; /* ensure text is aligned left */
+    width: 100%; /* optional, but ensures alignment within the full column */
   `;
 
   const IconGrid = styled.div`
@@ -119,32 +135,25 @@ const SkillsSection = () => {
     gap: 16px;
   `;
 
-  const ColumnTitle = styled.h4`
-    font-size: 24px;
-    margin-bottom: 1rem;
-    color: #2d3748;
-  `;
-
   const SkillItem = styled.div`
     width: 100%;
-    height: 10px;
+    height: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
-    gap: 6px;
-    padding: 24px;
     color: #f8f8f8;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
-    text-align: center;
-    background-color: #4b4efc;
-    border-radius: 12px;
+    text-align: left;
+    background-color: transp;
+    border-radius: 16px;
     transition: transform 0.2s ease;
   `;
 
   const Label = styled.p`
-    font-size: 14px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
     color: #f8f8f8;
   `;
 
@@ -177,6 +186,16 @@ const SkillsSection = () => {
             <ColumnTitle>Misc</ColumnTitle>
             <IconGrid>
               {techStack.misc.map((item) => (
+                <SkillItem key={item.name}>
+                  <Label>{item.label}</Label>
+                </SkillItem>
+              ))}
+            </IconGrid>
+          </Column>
+          <Column>
+            <ColumnTitle>Analysis</ColumnTitle>
+            <IconGrid>
+              {techStack.analysis.map((item) => (
                 <SkillItem key={item.name}>
                   <Label>{item.label}</Label>
                 </SkillItem>

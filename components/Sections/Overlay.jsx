@@ -121,7 +121,7 @@ const MenuOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 200px;
-  background: #4b4efc;
+  background: #4527b1;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
@@ -235,57 +235,14 @@ ${menuOpen ? ' is-active' : ''}`}
           ref={overlayRef}
           className={isOverlayVisible ? 'visible' : ''}
         >
-          {showTypewriter && (
+          {/* {showTypewriter && (
             <div className='typewriter'>
               <H1overlay>I'm Oskar Nordin, a Web Developer.</H1overlay>
             </div>
-          )}
+          )} */}
         </OverlayCard>
-        <a href='#prologue'>
-          <MarginArrowContainer>
-            <AngleDownImage
-              src='/img/angle-square-light.webp'
-              alt='Angle down icon'
-            />
-          </MarginArrowContainer>
-        </a>
+
       </OverlayContainer>
-      <a
-        href='https://m.me/id=1078076440'
-        target='_blank'
-        rel='noopener noreferrer'
-        style={{
-          position: 'fixed',
-          bottom: '30px',
-          right: '30px',
-          zIndex: 9999,
-        }}
-      >
-        <img
-          src='/img/messenger.png'
-          style={{
-            width: '80px',
-            transition: 'transform 0.2s',
-            maxWidth: '18vw',
-            minWidth: '48px',
-          }}
-          className='messenger-icon'
-          alt='Message me on Messenger'
-        />
-      </a>
-      <style>
-        {`
-          .messenger-icon:hover {
-            transform: scale(1.1);
-          }
-          @media (max-width: 768px) {
-            .messenger-icon {
-              width: 56px !important;
-              min-width: 40px !important;
-            }
-          }
-        `}
-      </style>
     </>
   );
 }

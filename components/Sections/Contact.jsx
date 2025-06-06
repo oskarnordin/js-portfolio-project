@@ -6,13 +6,13 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.div`
   position: relative;
   background-color: #e6e6e6;
-  min-height: 100vh;
+  max-height: 90vh;
   width: 100%;
   z-index: 20;
 `;
 
 const GridLayout = styled.div`
-  min-height: 100vh;
+  height: 90vh;
   background-color: #eeeeee;
   font-family: Teko, sans-serif;
   color: #000000;

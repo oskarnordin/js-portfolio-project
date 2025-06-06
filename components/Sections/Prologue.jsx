@@ -59,9 +59,6 @@ const PrologueSection = () => {
           <PrologueCard />
         </FadeInContainer>
       </SectionContainer>
-      <a href='#projects'>
-        <AngleDownImage src='img/angle-square-down.png' alt='Angle down icon' />
-      </a>
     </Background>
   );
 };

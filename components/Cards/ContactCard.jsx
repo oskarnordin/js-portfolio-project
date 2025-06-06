@@ -57,7 +57,7 @@ const SelfieImage = styled.img`
 const ContactH2 = styled.h2`
   font-family: 'DM Sans', sans-serif;
   color: black;
-  font-size: 34px;
+  font-size: 44px;
   margin-bottom: 10px;
 `;
 
@@ -71,8 +71,8 @@ const ContactIconsWrapper = styled.div`
 
 const ContactIcon = styled.a`
   display: flex;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -89,24 +89,9 @@ const ContactIcon = styled.a`
     width: 40px;
     height: 40px;
     img {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
     }
-  }
-`;
-
-const SocialsIcon = styled.img`
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
   }
 `;
 
@@ -121,21 +106,30 @@ const ContactCard = () => {
       <ContactIconsWrapper>
         <ContactIcon
           id='SocialsIcon'
+          href='https://www.linkedin.com/in/oskarnordin/'
+        >
+          <img src='/img/mail-logo.png' alt='LinkedIn' width='60' height='60' />
+        </ContactIcon>
+        <ContactIcon id='SocialsIcon' href='mailto:oskarnordin1@gmail.com'>
+          <img src='/img/call-logo.png' alt='LinkedIn' width='60' height='60' />
+        </ContactIcon>
+        <ContactIcon
+          id='SocialsIcon'
           href='https://www.facebook.com/profile.php?id=1078076440'
         >
-          <img src='/img/fb-logo.svg' alt='Facebook' width='60' height='60' />
+          <img src='/img/fb-logo.png' alt='Facebook' width='60' height='60' />
         </ContactIcon>
         <ContactIcon
           id='SocialsIcon'
           href='https://www.instagram.com/oskaralexander/'
         >
-          <img src='/img/ig-logo.svg' alt='Instagram' width='60' height='60' />
+          <img src='/img/ig-logo.png' alt='Instagram' width='60' height='60' />
         </ContactIcon>
         <ContactIcon
           id='SocialsIcon'
           href='https://www.linkedin.com/in/oskarnordin/'
         >
-          <img src='/img/li-logo.svg' alt='LinkedIn' width='60' height='60' />
+          <img src='/img/li-logo.png' alt='LinkedIn' width='60' height='60' />
         </ContactIcon>
       </ContactIconsWrapper>
     </ContactCardContainer>

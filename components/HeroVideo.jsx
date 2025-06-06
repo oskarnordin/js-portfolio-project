@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const VideoContainer = styled.div`
+const Container = styled.div`
   position: relative;
-  background-color: #cdcdcd;
+  background-color: #3912a5;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -11,38 +11,62 @@ const VideoContainer = styled.div`
   overflow: hidden;
 `;
 
-const HeroVideoStyle = styled.video`
+const OverlayBackground = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: 90%;
-  object-fit: cover;
-  background-color: rgb(233, 233, 233);
-  z-index: 1;
-  overflow: hidden !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40ch; /* FIXED width for entire ASCII art */
+  color: #e0e0e0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  white-space: pre;
+  padding: 2rem;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+  background: transparent;
+  text-align: center;
 `;
 
-function HeroVideo() {
-  const videoRef = useRef(null);
+const asciiArt = `
+My name is
+
+
+░█████╗░░██████╗██╗░░██╗░█████╗░██████╗░
+██╔══██╗██╔════╝██║░██╔╝██╔══██╗██╔══██╗
+██║░░██║╚█████╗░█████═╝░███████║██████╔╝
+██║░░██║░╚═══██╗██╔═██╗░██╔══██║██╔══██╗
+╚█████╔╝██████╔╝██║░╚██╗██║░░██║██║░░██║
+░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝      
+
+and I’m a web developer.
+
+
+Scroll to learn more about me
+and what I've been working on.
+`;
+
+const HeroVideo = () => {
+  const [typedText, setTypedText] = useState('');
+  const typingSpeed = 10;
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setTypedText(asciiArt.substring(0, i));
+      if (i >= asciiArt.length) clearInterval(interval);
+    }, typingSpeed);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <VideoContainer>
-      <HeroVideoStyle
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-label='Background video'
-      >
-        <source src='/img/bgvideo4.mp4' type='video/mp4' />
-        Your browser does not support the video tag.
-      </HeroVideoStyle>
-    </VideoContainer>
+    <Container>
+      <OverlayBackground>{typedText}</OverlayBackground>
+    </Container>
   );
-}
+};
 
 export default HeroVideo;

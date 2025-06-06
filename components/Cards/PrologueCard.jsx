@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
-  padding: 40px;
-  padding-bottom: 40px;
+  padding: 32px;
+  padding-bottom: 32px;
   width: 100%;
   max-width: 1000px;
   gap: 10px;
@@ -42,7 +42,7 @@ const ColumnsContainer = styled.div`
 `;
 
 const PrologueH3 = styled.h3`
-  font-family: DM sans;
+  font-family: 'DM Sans';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,8 +50,6 @@ const PrologueH3 = styled.h3`
   font-weight: 600;
   font-size: 34px;
   padding: 32px;
-  margin: 5px;
-  border-radius: 16px;
   text-decoration: none;
 
   @media (max-width: 768px) {
@@ -63,10 +61,9 @@ const PrologueH3 = styled.h3`
 
 const InfoP = styled.p`
   color: #2d3748;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 16px;
+
   text-decoration: none;
   line-height: 1.5;
 
@@ -75,7 +72,6 @@ const InfoP = styled.p`
   }
   @media (max-width: 768px) {
     color: black;
-    font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     padding: 4px;
     margin: 2px 0;
@@ -150,7 +146,6 @@ const PrologueCard = ({ title, info }) => {
             with apps I build, thoughts I have about programming, and, of
             course, ways for you to connect with me.
           </InfoP>
-          <SignatureImg src='/img/sign.png' alt='Signature' />
         </div>
       </ColumnsContainer>
     </PrologueCardContainer>
