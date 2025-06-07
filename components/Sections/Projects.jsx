@@ -10,7 +10,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #f8f7f7;
   min-height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -143,14 +143,6 @@ const FeaturedProjects = () => {
           />
         </ProjectContainer>
       </SectionContainer>
-      <a href='#moodboard'>
-        <MarginArrowContainer>
-          <AngleDownImage
-            src='/img/angle-square-down.svg'
-            alt='Angle down icon'
-          />
-        </MarginArrowContainer>
-      </a>
     </Background>
   );
 };

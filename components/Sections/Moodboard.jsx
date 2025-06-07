@@ -6,7 +6,7 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
-  background-color: #eeeeee;
+  background-color: #fffbf9;
   height: 100vh;
   width: 100%;
   z-index: 20;
@@ -22,7 +22,7 @@ const GridLayout = styled.div`
   height: 100%;
   max-width: 1080px;
   width: auto;
-  background-color: #eeeeee;
+  background-color: #fffbf9;
   font-family: Teko, sans-serif;
   color: #000000;
   position: relative;
@@ -126,14 +126,6 @@ const MoodboardSection = () => {
           style={{ width: '100%' }}
         ></a>
       </GridLayout>
-      <a href='#techstack'>
-        <MarginArrowContainer>
-          <AngleDownImage
-            src='img/angle-square-down.png'
-            alt='Angle down icon'
-          />
-        </MarginArrowContainer>
-      </a>
     </Background>
   );
 };

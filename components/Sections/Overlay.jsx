@@ -120,8 +120,8 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px;
-  background: #4527b1;
+  height: 150px;
+  background: #291080;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
@@ -151,9 +151,9 @@ const MenuLink = styled.a`
   text-decoration: none;
   margin: 0 12px;
   font-weight: 600;
-  transition: color 0.2s;
+  transition: color 0.4s;
   &:hover {
-    color: #6f71ff;
+    color: #afabc2;
   }
 
   @media (max-width: 768px) {
@@ -216,14 +216,14 @@ ${menuOpen ? ' is-active' : ''}`}
         <MenuLink href='#prologue' onClick={() => setMenuOpen(false)}>
           Prologue
         </MenuLink>
-        <MenuLink href='#techstack' onClick={() => setMenuOpen(false)}>
-          Tech Stack
-        </MenuLink>
         <MenuLink href='#projects' onClick={() => setMenuOpen(false)}>
           Showroom
         </MenuLink>
         <MenuLink href='#moodboard' onClick={() => setMenuOpen(false)}>
           Moodboard
+        </MenuLink>
+        <MenuLink href='#techstack' onClick={() => setMenuOpen(false)}>
+          Tech Stack
         </MenuLink>
         <MenuLink href='#contact' onClick={() => setMenuOpen(false)}>
           Let's Talk
@@ -241,7 +241,6 @@ ${menuOpen ? ' is-active' : ''}`}
             </div>
           )} */}
         </OverlayCard>
-
       </OverlayContainer>
     </>
   );

@@ -19,8 +19,8 @@ function App() {
         <Overlay />
         <PrologueSection />
         <FeaturedProjects />
-        <MoodboardSection />
         <SkillsSection />
+        <MoodboardSection />
         <ContactSection />
       </ThemeProvider>
       <main></main>

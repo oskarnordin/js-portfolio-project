@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const ProjectCardContainer = styled.div`
   display: flex;
-  border-radius: 28px;
+  border-radius: 4px;
   align-items: left;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 600px;
+  background-color: transparent;
+  height: 480px;
   max-width: 450px;
   gap: 5px;
   text-align: center;
@@ -32,17 +33,29 @@ const ProjectCardContainer = styled.div`
   }
 `;
 
-const ProjectImage = styled.img`
-  border-radius: 28px;
+const ProjectImageWrapper = styled.div`
   width: 100%;
-  max-width: 100%;
-  max-height: 300px;
-  height: 300px;
-  object-fit: cover; // Keeps aspect ratio, fills container, may crop
+  height: 220px;
+  border-radius: 4px;
+  overflow: hidden;
   display: block;
 
   @media (max-width: 768px) {
-    height: 200px; /* Adjust height for smaller screens */
+    height: 200px;
+  }
+
+  &:hover img {
+    transform: scale(1.1); // Zoom 10% on hover
+  }
+`;
+
+const ProjectImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  transition: transform 0.3s ease;
 `;
 
 const ProjectTitle = styled.h3`
@@ -78,7 +91,7 @@ const TechTag = styled.span`
   color: #fafafa;
   font-size: 14px;
   padding: 8px;
-  border-radius: 0.5rem;
+  border-radius: 4px;
 
   @media (max-width: 768px) {
     display: flex;
@@ -96,8 +109,7 @@ const Button = styled.a`
   width: 120px;
   font-size: 16px;
   padding: 10px;
-  margin: 5px;
-  border-radius: 16px;
+  border-radius: 4px;
   text-decoration: none;
   transition: background-color 0.2s ease;
   &:hover {
@@ -127,6 +139,7 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   width: 100%;
+  gap: 5px; // Add this line
 
   @media (max-width: 768px) {
     flex-direction: row; /* Stack buttons vertically */
@@ -169,7 +182,9 @@ const ProjectCard = ({
 }) => {
   return (
     <ProjectCardContainer className={'visible'}>
-      <ProjectImage src={imgSrc} alt={title} />
+      <ProjectImageWrapper>
+        <ProjectImage src={imgSrc} alt={title} />
+      </ProjectImageWrapper>
       <ProjectTitle>{title}</ProjectTitle>
       <ProjectDescription>{description}</ProjectDescription>
       <TechTagsWrapper>

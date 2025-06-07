@@ -8,7 +8,7 @@ import StackIcon from 'tech-stack-icons';
 
 const Background = styled.div`
   position: relative;
-  background-color: #331993;
+  background-color: #240e66;
   min-height: 80vh;
   width: 100%;
   z-index: 20;
@@ -108,16 +108,22 @@ const SkillsSection = () => {
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
   `;
 
   const Column = styled.div`
-    flex: 1;
-    min-width: 200px;
+    width: 200px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* changed from center */
-    gap: 16px;
+    align-items: flex-start;
+    gap: 0px;
+
+    @media (max-width: 768px) {
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+    }
   `;
 
   const ColumnTitle = styled.h4`
@@ -126,6 +132,11 @@ const SkillsSection = () => {
     color: #f8f8f8;
     text-align: left; /* ensure text is aligned left */
     width: 100%; /* optional, but ensures alignment within the full column */
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      text-align: center; /* center text on smaller screens */
+    }
   `;
 
   const IconGrid = styled.div`
@@ -136,7 +147,7 @@ const SkillsSection = () => {
   `;
 
   const SkillItem = styled.div`
-    width: 100%;
+    width: 90%;
     height: 20px;
     display: flex;
     flex-direction: column;
@@ -149,6 +160,14 @@ const SkillsSection = () => {
     background-color: transp;
     border-radius: 16px;
     transition: transform 0.2s ease;
+
+    @media screen {
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   `;
 
   const Label = styled.p`
@@ -204,14 +223,6 @@ const SkillsSection = () => {
           </Column>
         </ColumnsWrapper>
       </SkillsContainer>
-      <a href='#contact'>
-        <MarginArrowContainer>
-          <AngleDownImage
-            src='img/angle-square-down.png'
-            alt='Angle down icon'
-          />
-        </MarginArrowContainer>
-      </a>
     </Background>
   );
 };

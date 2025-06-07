@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  background-color: #3912a5;
+  background-color: #281071;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -27,6 +27,11 @@ const OverlayBackground = styled.div`
   user-select: none;
   background: transparent;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 90vw; /* Responsive width for smaller screens */
+    font-size: 14px; /* Slightly smaller font size */
+  }
 `;
 
 const asciiArt = `
