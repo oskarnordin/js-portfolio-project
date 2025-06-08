@@ -15,22 +15,6 @@ const GlobalStyle = createGlobalStyle`
     from, to { border-color: transparent }
     50% { border-color: #4b4efc; }
   }
-  .typewriter h1 {
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    letter-spacing: normal;
-    animation:
-      typing 2.4s steps(32, end),
-      blink-caret .75s step-end infinite;
-    width: fit-content;
-    max-width: 100vw;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .messenger-icon:hover {
-    transform: scale(1.1);
-  }
 
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
@@ -47,14 +31,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  @media (max-width: 768px) {
-    .typewriter h1 {
-      font-size: 32px;
-      width: 100vw;
-      max-width: 100vw;
-      padding: 0 8px;
-    }
-  }
+
 `;
 
 const OverlayContainer = styled.div`
@@ -182,6 +159,16 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen {
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10001;
+      background-color: #240e66;
+    }
+  }
 `;
 
 function Overlay() {
