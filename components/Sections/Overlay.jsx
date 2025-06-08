@@ -38,15 +38,21 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fcfcfc !important; 
   }
 
+  .hamburger-box {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
   @media (max-width: 768px) {
     .typewriter h1 {
       font-size: 32px;
       width: 100vw;
       max-width: 100vw;
       padding: 0 8px;
-    }
-    .messenger-icon{
-      display: none;
     }
   }
 `;
@@ -165,6 +171,19 @@ const MenuLink = styled.a`
   }
 `;
 
+const HamburgerContainer = styled.div`
+  background: ${({ open }) => (open ? '#2A1480' : '#240e66')};
+  border-radius: 4px;
+  padding: 3px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 function Overlay() {
   const overlayRef = useRef(null);
   const isOverlayVisible = useIntersectionObserver(overlayRef, {
@@ -185,32 +204,33 @@ function Overlay() {
 
   return (
     <>
-      <button
-        className={`hamburger hamburger--emphatic
-${menuOpen ? ' is-active' : ''}`}
-        type='button'
-        aria-label='Menu'
-        aria-controls='navigation'
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen((open) => !open)}
-        style={{
-          position: 'fixed',
-          top: '30px',
-          right: '30px',
-          zIndex: 10001,
-          width: '56px',
-          height: '56px',
-          borderRadius: '50%',
-          border: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <span className='hamburger-box'>
-          <span className='hamburger-inner'></span>
-        </span>
-      </button>
+      <HamburgerContainer open={menuOpen}>
+        <button
+          className={`hamburger hamburger--emphatic${
+            menuOpen ? ' is-active' : ''
+          }`}
+          type='button'
+          aria-label='Menu'
+          aria-controls='navigation'
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            border: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'transparent',
+            boxShadow: 'none',
+          }}
+        >
+          <span className='hamburger-box'>
+            <span className='hamburger-inner'></span>
+          </span>
+        </button>
+      </HamburgerContainer>
       {/* Slide-out Menu */}
       <MenuOverlay open={menuOpen}>
         <MenuLink href='#prologue' onClick={() => setMenuOpen(false)}>
