@@ -63,9 +63,9 @@ const InfoP = styled.p`
   color: #2d3748;
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
-
   text-decoration: none;
   line-height: 1.5;
+  margin-bottom: 18px; /* Add space between paragraphs */
 
   @media (max-width: 1200px) {
     padding: 0px;
@@ -74,29 +74,7 @@ const InfoP = styled.p`
     color: black;
     font-size: 14px;
     padding: 4px;
-    margin: 2px 0;
-  }
-`;
-
-const InfoPContainer = styled.div`
-  background-color: #eeeeee;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
-
-const SignatureImg = styled.img`
-  width: 220px;
-  margin-top: 12px;
-  display: block;
-
-  @media (max-width: 768px) {
-    width: 160px;
-    margin-top: 18px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2px 0 14px 0; /* Add bottom margin on mobile too */
   }
 `;
 

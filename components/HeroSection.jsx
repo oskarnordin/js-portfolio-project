@@ -52,7 +52,7 @@ Scroll to learn more about me
 and what I've been working on.
 `;
 
-const HeroVideo = () => {
+const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
   const typingSpeed = 10;
 
@@ -74,4 +74,4 @@ const HeroVideo = () => {
   );
 };
 
-export default HeroVideo;
+export default HeroSection;

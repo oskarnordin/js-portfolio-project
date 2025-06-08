@@ -2,7 +2,7 @@ import React from 'react';
 import Overlay from './components/Sections/Overlay';
 import SkillsSection from './components/Sections/Skills';
 import PrologueSection from './components/Sections/Prologue';
-import HeroVideo from './components/HeroVideo';
+import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/Sections/Projects';
 import MoodboardSection from './components/Sections/Moodboard';
 import ContactSection from './components/Sections/Contact';
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <HeroVideo />
+        <HeroSection />
         <Overlay />
         <PrologueSection />
         <FeaturedProjects />
