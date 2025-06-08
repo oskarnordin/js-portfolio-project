@@ -126,7 +126,7 @@ const ContactCard = () => {
       <SelfieImage src='/img/selfie.png' alt='Selfie of Oskar Nordin' />
       <ContactIconsWrapper>
         <Button href='mailto:oskarnordin1@gmail.com'>Email</Button>
-        <Button href='tel:+46701234567'>Call</Button>
+        <Button href='tel:+46701774998'>Call</Button>
         <Button href='https://www.linkedin.com/in/oskarnordin/'>
           LinkedIn
         </Button>
