@@ -32,7 +32,7 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 2rem;
+  padding: 32px 32px 64px 32px;
   margin: 0 auto;
   box-sizing: border-box;
   align-items: center;
@@ -60,7 +60,6 @@ const SectionContainer = styled.section`
   flex-direction: column; /* Stack items vertically */
   width: 100%;
   min-height: 100vh; /* Full viewport height */
-  gap: 32px;
   background-color: transparent;
   text-align: center; /* Center text if needed */
 `;
@@ -72,10 +71,10 @@ const ShowroomH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 32px 32px 32px 32px;
+  padding: 64px 32px 32px 32px;
   text-decoration: none;
   text-align: center;
-  align-self: flex-start;
+  align-self: center;
 `;
 
 const ShowroomP = styled.p`
@@ -98,12 +97,13 @@ const FeaturedProjects = () => {
   return (
     <Background>
       <SectionContainer>
+        <ShowroomH3>Showroom</ShowroomH3>
+        <ShowroomP>Here are some projects I've been working on</ShowroomP>
         <ProjectContainer
           id='projects'
           ref={ref}
           className={isVisible ? 'visible' : ''}
         >
-          <ShowroomH3>Showroom</ShowroomH3>
           <ProjectCard
             title='Small Business Site'
             description='A small site for a local business, showcasing their services and contact information.'

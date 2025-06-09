@@ -3,11 +3,8 @@ import styled from 'styled-components';
 
 const ProjectCardContainer = styled.div`
   display: flex;
-  border-radius: 4px;
-  align-items: left;
   flex-direction: column;
-  flex-wrap: wrap;
-  background-color: transparent;
+  justify-content: space-between; // Push content to top and bottom
   height: 480px;
   max-width: 450px;
   gap: 5px;
@@ -172,6 +169,14 @@ const ProjectsGrid = styled.div`
   margin: 0 auto;
 `;
 
+// Add a new wrapper for the bottom section
+const CardBottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+`;
+
 const ProjectCard = ({
   title,
   description,
@@ -182,16 +187,19 @@ const ProjectCard = ({
 }) => {
   return (
     <ProjectCardContainer className={'visible'}>
-      <ProjectImageWrapper>
-        <ProjectImage src={imgSrc} alt={title} />
-      </ProjectImageWrapper>
-      <ProjectTitle>{title}</ProjectTitle>
-      <ProjectDescription>{description}</ProjectDescription>
-      <TechTagsWrapper>
-        {stack.map((tech, index) => (
-          <TechTag key={index}>{tech}</TechTag>
-        ))}
-
+      <div>
+        <ProjectImageWrapper>
+          <ProjectImage src={imgSrc} alt={title} />
+        </ProjectImageWrapper>
+        <ProjectTitle>{title}</ProjectTitle>
+        <ProjectDescription>{description}</ProjectDescription>
+      </div>
+      <CardBottom>
+        <TechTagsWrapper>
+          {stack.map((tech, index) => (
+            <TechTag key={index}>{tech}</TechTag>
+          ))}
+        </TechTagsWrapper>
         <ButtonWrapper>
           <Button href={liveDemo} target='_blank' rel='noopener noreferrer'>
             Live demo
@@ -200,7 +208,7 @@ const ProjectCard = ({
             View code
           </Button>
         </ButtonWrapper>
-      </TechTagsWrapper>
+      </CardBottom>
     </ProjectCardContainer>
   );
 };

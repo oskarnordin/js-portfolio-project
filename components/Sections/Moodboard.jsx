@@ -32,7 +32,7 @@ const GridLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px;
+  padding: 32px 32px 64px 32px;
   margin: 0 auto;
   box-sizing: border-box;
   opacity: 0;
