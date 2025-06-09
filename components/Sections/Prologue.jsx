@@ -22,21 +22,6 @@ const Background = styled.div`
   }
 `;
 
-const MarginArrowContainer = styled.div`
-  margin-bottom: 0rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1rem;
-    img {
-      width: 36px !important;
-      height: 36px !important;
-    }
-  }
-`;
-
 const FadeInContainer = styled.div`
   opacity: 0;
   transform: translateY(30px);

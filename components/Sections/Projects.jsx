@@ -61,7 +61,6 @@ const SectionContainer = styled.section`
   width: 100%;
   min-height: 100vh; /* Full viewport height */
   gap: 32px;
-  padding: 32px;
   background-color: transparent;
   text-align: center; /* Center text if needed */
 `;
@@ -73,11 +72,24 @@ const ShowroomH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 32px;
+  padding: 32 32 12px 32px;
   margin: 5px;
   text-decoration: none;
   text-align: center;
   align-self: flex-start;
+`;
+
+const ShowroomP = styled.p`
+  font-family: 'Courier New', Courier, monospace;
+  color: #2d3748;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+  }
 `;
 
 const FeaturedProjects = () => {

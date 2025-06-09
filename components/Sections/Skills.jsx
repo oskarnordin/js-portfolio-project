@@ -39,7 +39,7 @@ const SkillsContainer = styled.div`
   align-items: left;
   gap: 32px;
   padding: 2rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   box-sizing: border-box;
   width: 100%;
   opacity: 0;
@@ -55,13 +55,24 @@ const TechstackH3 = styled.h3`
   color: #f8f8f8;
   font-weight: 600;
   font-size: 34px;
-  padding: 32px;
-  margin: 5px;
+  padding: 32px 32px 12px 32px;
   border-radius: 16px;
   text-decoration: none;
 
   width: auto;
   text-align: center;
+`;
+
+const TechstackP = styled.p`
+  font-family: 'Courier New', Courier, monospace;
+  color: #f8f8f8;
+  font-size: 16px;
+  text-align: center;
+  padding: 0px 32px 32px 32px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const techStack = {
@@ -180,6 +191,7 @@ const SkillsSection = () => {
     <Background id='techstack'>
       <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
         <TechstackH3>Tech Stack</TechstackH3>
+        <TechstackP>Here are some of the technologies I work with.</TechstackP>
         <ColumnsWrapper>
           <Column>
             <ColumnTitle>Frontend</ColumnTitle>

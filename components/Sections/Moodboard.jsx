@@ -55,11 +55,22 @@ const MoodboardH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 32px;
-  margin: 5px;
-  border-radius: 16px;
+  padding: 32px 32px 12px 32px;
   text-decoration: none;
   text-align: left;
+`;
+
+const MoodboardP = styled.p`
+  font-family: 'Courier New', Courier, monospace;
+  color: #4a5568;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 32px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+  }
 `;
 
 const MoodboardSection = () => {
@@ -116,6 +127,7 @@ const MoodboardSection = () => {
     <Background id='moodboard'>
       <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
         <MoodboardH3>Moodboard</MoodboardH3>
+        <MoodboardP>My collection of inspirational tech content</MoodboardP>
         <a
           ref={boardRef}
           data-pin-do='embedBoard'

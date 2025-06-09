@@ -66,15 +66,18 @@ const InfoP = styled.p`
   text-decoration: none;
   line-height: 1.5;
   margin-bottom: 18px; /* Add space between paragraphs */
+`;
 
-  @media (max-width: 1200px) {
-    padding: 0px;
-  }
+const PrologueP = styled.p`
+  font-family: 'Courier New', Courier, monospace;
+  color: #2d3748;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 32px;
+
   @media (max-width: 768px) {
-    color: black;
-    font-size: 14px;
-    padding: 4px;
-    margin: 2px 0 14px 0; /* Add bottom margin on mobile too */
+    font-size: 16px;
+    margin: 0 0 12px 0;
   }
 `;
 
@@ -82,6 +85,7 @@ const PrologueCard = ({ title, info }) => {
   return (
     <PrologueCardContainer className='visible'>
       <PrologueH3>Prologue</PrologueH3>
+      <PrologueP>Some forewords before we start</PrologueP>
       <ColumnsContainer>
         <div>
           <InfoP>

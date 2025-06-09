@@ -53,8 +53,21 @@ const SelfieImage = styled.img`
 const ContactH2 = styled.h2`
   font-family: 'DM Sans', sans-serif;
   color: #f8f8f8;
-  font-size: 44px;
+  font-size: 34px;
   margin-bottom: 10px;
+`;
+
+const ContactP = styled.p`
+  font-family: 'Courier New', Courier, monospace;
+  color: ##F8F8F8;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+  }
 `;
 
 const ContactIconsWrapper = styled.div`
@@ -63,33 +76,6 @@ const ContactIconsWrapper = styled.div`
   align-items: center;
   gap: 20px;
   margin-top: 18px;
-`;
-
-const ContactIcon = styled.a`
-  display: flex;
-  flex-direction: column;
-  width: 70px;
-  height: 55px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    transition: transform 0.3s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    width: 40px;
-    height: 40px;
-    img {
-      width: 40px;
-      height: 40px;
-    }
-  }
 `;
 
 const Button = styled.a`
@@ -123,6 +109,10 @@ const ContactCard = () => {
   return (
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
       <ContactH2>Let's Talk</ContactH2>
+      <ContactP>
+        I'm always open to discussing new projects, creative ideas, or
+        opportunities to be part of your vision.
+      </ContactP>
       <SelfieImage src='/img/selfie.png' alt='Selfie of Oskar Nordin' />
       <ContactIconsWrapper>
         <Button href='mailto:oskarnordin1@gmail.com'>Email</Button>
