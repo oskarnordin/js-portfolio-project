@@ -72,8 +72,7 @@ const ShowroomH3 = styled.h3`
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
-  padding: 32 32 12px 32px;
-  margin: 5px;
+  padding: 32px 32px 32px 32px;
   text-decoration: none;
   text-align: center;
   align-self: flex-start;
