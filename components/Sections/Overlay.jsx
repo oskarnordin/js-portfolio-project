@@ -252,7 +252,7 @@ function Overlay() {
       </MenuOverlay>
       {/* Desktop Menu */}
       <DesktopMenu>
-        <MenuLink href='#prologue'>Prologue</MenuLink>
+        <MenuLink href='#prologue'>Prologue</MenuLink>  
         <MenuLink href='#showroom'>Showroom</MenuLink>
         <MenuLink href='#moodboard'>Moodboard</MenuLink>
         <MenuLink href='#techstack'>Tech Stack</MenuLink>
@@ -263,13 +263,7 @@ function Overlay() {
         <OverlayCard
           ref={overlayRef}
           className={isOverlayVisible ? 'visible' : ''}
-        >
-          {/* {showTypewriter && (
-            <div className='typewriter'>
-              <H1overlay>I'm Oskar Nordin, a Web Developer.</H1overlay>
-            </div>
-          )} */}
-        </OverlayCard>
+        ></OverlayCard>
       </OverlayContainer>
     </>
   );

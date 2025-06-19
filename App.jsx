@@ -6,6 +6,7 @@ import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/Sections/Projects';
 import MoodboardSection from './components/Sections/Moodboard';
 import ContactSection from './components/Sections/Contact';
+import BlurCursor from './components/Mouse';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '/components/theme';
 import './style.css';
@@ -22,6 +23,7 @@ function App() {
         <SkillsSection />
         <MoodboardSection />
         <ContactSection />
+        <BlurCursor />
       </ThemeProvider>
       <main></main>
     </>

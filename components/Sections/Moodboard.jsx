@@ -119,7 +119,6 @@ const MoodboardSection = () => {
       }
     };
 
-    // Load Pinterest script if not already present
     if (
       !document.querySelector(
         'script[src="https://assets.pinterest.com/js/pinit.js"]'
@@ -138,13 +137,11 @@ const MoodboardSection = () => {
 
   return (
     <Background id='moodboard'>
-      {/* <GridLayout ref={ref} className={isVisible ? 'visible' : ''}> */}
       <MoodboardH3>Moodboard</MoodboardH3>
       <MoodboardP>My collection of inspirational tech content</MoodboardP>
       <PinterestBoardContainer
         ref={boardContainerRef}
       ></PinterestBoardContainer>
-      {/* </GridLayout> */}
     </Background>
   );
 };
