@@ -7,6 +7,8 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import StackIcon from 'tech-stack-icons';
 
 const Background = styled.div`
+  scroll-margin-top: 90px; // Adjust to your navbar height
+
   position: relative;
   background-color: #240e66;
   min-height: 80vh;
@@ -63,9 +65,10 @@ const TechstackH3 = styled.h3`
 `;
 
 const TechstackP = styled.p`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
   color: #f8f8f8;
   font-size: 16px;
+  font-weight: 400;
   text-align: center;
   padding: 0px 32px 32px 32px;
 
@@ -111,7 +114,7 @@ const SkillsSection = () => {
   const ColumnsWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%; */
+    width: 100%;
     flex-wrap: wrap;
 
     @media (max-width: 768px) {
@@ -181,7 +184,8 @@ const SkillsSection = () => {
 
   const Label = styled.p`
     font-size: 18px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
     color: #f8f8f8;
   `;
 

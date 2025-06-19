@@ -7,13 +7,16 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
+  scroll-margin-top: 90px; // Adjust to your navbar height
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFBF9;
+  background-color: #fffbf9;
   height: 100vh;
   width: auto;
   z-index: 20;
+
   padding: 0 0 2rem 0;
 
   @media (max-width: 768px) {

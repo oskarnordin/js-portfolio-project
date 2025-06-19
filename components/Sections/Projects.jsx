@@ -8,12 +8,13 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.div`
   position: relative;
   display: flex;
+  scroll-margin-top: 90px; // Adjust to your navbar height
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #f8f7f7;
   min-height: 100%;
   width: 100%;
-  overflow-x: hidden;
   z-index: 20;
 `;
 
@@ -65,9 +66,10 @@ const SectionContainer = styled.section`
 `;
 
 const ShowroomH3 = styled.h3`
-  font-family: 'DM Sans';
-  width: 100%;
+  scroll-margin-top: 90px; /* Match or exceed navbar height */
   max-width: ${({ theme }) => theme.maxWidth};
+  font-family: 'DM Sans', sans-serif;
+  background-color: transparent;
   color: #2d3748;
   font-weight: 600;
   font-size: 34px;
@@ -78,11 +80,13 @@ const ShowroomH3 = styled.h3`
 `;
 
 const ShowroomP = styled.p`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
+  flex-direction: column;
   color: #2d3748;
   font-size: 16px;
   text-align: center;
-  padding-bottom: 16px;
+  font-weight: 400;
+  padding: 0px 16px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -97,13 +101,9 @@ const FeaturedProjects = () => {
   return (
     <Background>
       <SectionContainer>
-        <ShowroomH3>Showroom</ShowroomH3>
+        <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
         <ShowroomP>Here are some projects I've been working on</ShowroomP>
-        <ProjectContainer
-          id='projects'
-          ref={ref}
-          className={isVisible ? 'visible' : ''}
-        >
+        <ProjectContainer ref={ref} className={isVisible ? 'visible' : ''}>
           <ProjectCard
             title='Small Business Site'
             description='A small site for a local business, showcasing their services and contact information.'

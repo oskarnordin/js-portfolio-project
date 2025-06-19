@@ -61,16 +61,18 @@ const PrologueH3 = styled.h3`
 
 const InfoP = styled.p`
   color: #2d3748;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
   font-size: 16px;
   text-decoration: none;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 18px; /* Add space between paragraphs */
 `;
 
 const PrologueP = styled.p`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
   color: #2d3748;
+  font-weight: 400;
   font-size: 16px;
   text-align: center;
   padding-bottom: 32px;

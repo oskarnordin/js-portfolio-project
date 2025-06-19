@@ -1,14 +1,15 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { AngleDownImage } from '../SharedComponents';
-import { MarginArrowContainer } from '../SharedComponents';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
-  position: relative;
-  background-color: #fffbf9;
-  height: 100vh;
   width: 100%;
+  min-height: 100vh;
+  background-color: #fffbf9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   z-index: 20;
 
   @media (max-width: 768px) {
@@ -18,20 +19,23 @@ const Background = styled.div`
   }
 `;
 
+const SectionContainer = styled.section`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GridLayout = styled.div`
-  height: 100%;
-  max-width: 1080px;
-  width: auto;
+  width: 100%;
   background-color: #fffbf9;
   font-family: Teko, sans-serif;
   color: #000000;
-  position: relative;
+
   z-index: 30;
   font-size: 16px;
   font-weight: 300;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 32px 32px 64px 32px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -43,9 +47,9 @@ const GridLayout = styled.div`
     opacity: 1;
     transform: translateY(0);
   }
+
   @media (max-width: 768px) {
-    width: auto;
-    height: auto;
+    width: 100%;
     padding: 1rem;
   }
 `;
@@ -57,11 +61,12 @@ const MoodboardH3 = styled.h3`
   font-size: 34px;
   padding: 32px 32px 12px 32px;
   text-decoration: none;
-  text-align: left;
+  text-align: center;
 `;
 
 const MoodboardP = styled.p`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
   color: #4a5568;
   font-size: 16px;
   text-align: center;
@@ -73,13 +78,48 @@ const MoodboardP = styled.p`
   }
 `;
 
+const PinterestWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const PinterestBoardContainer = styled.div`
+  width: 1080px;
+
+  @media (max-width: 768px) {
+    width: 360px;
+  }
+`;
+
 const MoodboardSection = () => {
-  const ref = useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
-  const boardRef = useRef(null);
+  const boardContainerRef = useRef(null);
 
   useEffect(() => {
-    // Add Pinterest script if not already present
+    const renderPinterestBoard = () => {
+      if (boardContainerRef.current) {
+        boardContainerRef.current.innerHTML = '';
+        const a = document.createElement('a');
+        a.setAttribute('data-pin-do', 'embedBoard');
+        a.setAttribute(
+          'data-pin-board-width',
+          window.innerWidth <= 768 ? '360' : '1080'
+        );
+        a.setAttribute('data-pin-scale-height', '800');
+        a.setAttribute(
+          'data-pin-scale-width',
+          window.innerWidth <= 768 ? '80' : '120'
+        );
+        a.href = 'https://se.pinterest.com/oskarnordin/tech/';
+        a.style.width = '100%';
+        boardContainerRef.current.appendChild(a);
+        if (window.PinUtils && window.PinUtils.build) {
+          window.PinUtils.build();
+        }
+      }
+    };
+
+    // Load Pinterest script if not already present
     if (
       !document.querySelector(
         'script[src="https://assets.pinterest.com/js/pinit.js"]'
@@ -89,55 +129,22 @@ const MoodboardSection = () => {
       script.src = 'https://assets.pinterest.com/js/pinit.js';
       script.async = true;
       script.defer = true;
-      script.onload = () => {
-        if (window.PinUtils && window.PinUtils.build) {
-          window.PinUtils.build();
-        }
-      };
+      script.onload = renderPinterestBoard;
       document.body.appendChild(script);
     } else {
-      // If script is already loaded, build widgets
-      if (window.PinUtils && window.PinUtils.build) {
-        window.PinUtils.build();
-      }
+      renderPinterestBoard();
     }
-  }, []);
-
-  // Responsive Pinterest board width
-  useEffect(() => {
-    const updateBoardWidth = () => {
-      if (boardRef.current) {
-        if (window.innerWidth <= 768) {
-          boardRef.current.setAttribute('data-pin-board-width', '100%');
-        } else {
-          boardRef.current.setAttribute('data-pin-board-width', '1000');
-        }
-        // Rebuild Pinterest widget if script is loaded
-        if (window.PinUtils && window.PinUtils.build) {
-          window.PinUtils.build();
-        }
-      }
-    };
-    updateBoardWidth();
-    window.addEventListener('resize', updateBoardWidth);
-    return () => window.removeEventListener('resize', updateBoardWidth);
   }, []);
 
   return (
     <Background id='moodboard'>
-      <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
-        <MoodboardH3>Moodboard</MoodboardH3>
-        <MoodboardP>My collection of inspirational tech content</MoodboardP>
-        <a
-          ref={boardRef}
-          data-pin-do='embedBoard'
-          data-pin-board-width='1000'
-          data-pin-scale-height='800'
-          data-pin-scale-width='140'
-          href='https://se.pinterest.com/oskarnordin/tech/'
-          style={{ width: '100%' }}
-        ></a>
-      </GridLayout>
+      {/* <GridLayout ref={ref} className={isVisible ? 'visible' : ''}> */}
+      <MoodboardH3>Moodboard</MoodboardH3>
+      <MoodboardP>My collection of inspirational tech content</MoodboardP>
+      <PinterestBoardContainer
+        ref={boardContainerRef}
+      ></PinterestBoardContainer>
+      {/* </GridLayout> */}
     </Background>
   );
 };

@@ -58,9 +58,10 @@ const ContactH2 = styled.h2`
 `;
 
 const ContactP = styled.p`
-  font-family: 'Courier New', Courier, monospace;
-  color: ##F8F8F8;
+  font-family: 'Source Code Pro', monospace;
+  color: #f8f8f8;
   font-size: 16px;
+  font-weight: 400;
   text-align: center;
   padding-bottom: 16px;
 

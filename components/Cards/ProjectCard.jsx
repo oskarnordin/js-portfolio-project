@@ -4,15 +4,15 @@ import styled from 'styled-components';
 const ProjectCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Push content to top and bottom
+  justify-content: space-between;
   height: 480px;
-  max-width: 450px;
+  width: 450px;
   gap: 5px;
   text-align: center;
   padding: 10px;
   margin: 5px;
-  opacity: 0; /* Start hidden */
-  transform: translateY(20px); /* Start with offset */
+  opacity: 0;
+  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
   &.visible {
@@ -20,13 +20,12 @@ const ProjectCardContainer = styled.div`
     transform: translateY(0);
   }
   @media (max-width: 768px) {
-    height: auto; /* Full viewport height on mobile */
-    width: auto; /* Full width on mobile */
-    border-radius: 18px; /* Remove border radius for a full-screen effect */
-    padding: 10px; /* Adjust padding for smaller screens */
+    height: auto;
+    width: auto;
+    border-radius: 18px;
     display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -42,7 +41,7 @@ const ProjectImageWrapper = styled.div`
   }
 
   &:hover img {
-    transform: scale(1.1); // Zoom 10% on hover
+    transform: scale(1.1);
   }
 `;
 
@@ -75,7 +74,8 @@ const ProjectTitle = styled.h3`
 
 const ProjectDescription = styled.p`
   font-size: 16px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
   color: #2d3748;
   margin-bottom: 1rem;
   justify-content: left;
@@ -84,7 +84,8 @@ const ProjectDescription = styled.p`
 
 const TechTag = styled.span`
   background-color: #331993;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
   color: #fafafa;
   font-size: 14px;
   padding: 8px;
@@ -100,6 +101,8 @@ const TechTag = styled.span`
 const Button = styled.a`
   background-color: #331993;
   justify-content: center;
+  align-items: center;
+  height: 26px;
   display: flex;
   color: white;
   font-weight: 600;
@@ -116,7 +119,7 @@ const Button = styled.a`
   @media (max-width: 768px) {
     display: flex;
     justify-content: center;
-    width: 100%; /* Full width on mobile */
+    width: 100%;
   }
 `;
 
@@ -136,12 +139,12 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   width: 100%;
-  gap: 5px; // Add this line
+  gap: 5px;
 
   @media (max-width: 768px) {
-    flex-direction: row; /* Stack buttons vertically */
-    align-items: left; /* Center align buttons */
-    gap: 10px; /* Add spacing between buttons */
+    flex-direction: row;
+    align-items: left;
+    gap: 10px;
   }
 `;
 
@@ -149,13 +152,13 @@ const TechTagsWrapper = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* Matches Tailwind's gap-2 */
-  margin-bottom: 16px; /* Matches Tailwind's mb-4 */
+  gap: 8px;
+  margin-bottom: 16px;
 
   @media (max-width: 768px) {
     display: flex;
-    justify-content: center; /* Center tags on smaller screens */
-    align-items: center; /* Center tags vertically */
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -165,11 +168,10 @@ const ProjectsGrid = styled.div`
   gap: 40px;
   width: 100%;
   max-width: ${({ theme }) => theme.maxWidth};
-  justify-content: center; // Center cards horizontally
+  justify-content: center;
   margin: 0 auto;
 `;
 
-// Add a new wrapper for the bottom section
 const CardBottom = styled.div`
   display: flex;
   flex-direction: column;

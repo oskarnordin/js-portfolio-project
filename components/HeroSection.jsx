@@ -17,9 +17,10 @@ const OverlayBackground = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40ch; /* FIXED width for entire ASCII art */
-  color: #e0e0e0;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 16px;
+  color: #f0f0f0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 18px;
+  font-weight: 400;
   white-space: pre;
   padding: 2rem;
   z-index: 10;
@@ -43,7 +44,7 @@ My name is
 ██║░░██║╚█████╗░█████═╝░███████║██████╔╝
 ██║░░██║░╚═══██╗██╔═██╗░██╔══██║██╔══██╗
 ╚█████╔╝██████╔╝██║░╚██╗██║░░██║██║░░██║
-░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝      
+ ░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝      
 
 and I’m a web developer.
 

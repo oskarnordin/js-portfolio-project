@@ -122,13 +122,17 @@ const MenuOverlay = styled.div`
     align-items: center;
     padding: 0;
   }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 `;
 
 const MenuLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 34px;
+  font-size: 32px;
   font-family: 'DM Sans', sans-serif;
   color: #fbfbfb;
   text-decoration: none;
@@ -149,7 +153,7 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#2A1480' : '#240e66')};
+  background: ${({ open }) => (open ? '#2A0064' : '#2A0064')};
   border-radius: 4px;
   padding: 3px;
   position: fixed;
@@ -160,14 +164,24 @@ const HamburgerContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen {
-    @media (max-width: 768px) {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10001;
-      background-color: #240e66;
-    }
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+const DesktopMenu = styled.nav`
+  display: none;
+  @media (min-width: 769px) {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: #240e65;
+    z-index: 8000;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -218,12 +232,12 @@ function Overlay() {
           </span>
         </button>
       </HamburgerContainer>
-      {/* Slide-out Menu */}
+      {/* Slide-out Menu for mobile */}
       <MenuOverlay open={menuOpen}>
         <MenuLink href='#prologue' onClick={() => setMenuOpen(false)}>
           Prologue
         </MenuLink>
-        <MenuLink href='#projects' onClick={() => setMenuOpen(false)}>
+        <MenuLink href='#showroom' onClick={() => setMenuOpen(false)}>
           Showroom
         </MenuLink>
         <MenuLink href='#moodboard' onClick={() => setMenuOpen(false)}>
@@ -236,6 +250,14 @@ function Overlay() {
           Let's Talk
         </MenuLink>
       </MenuOverlay>
+      {/* Desktop Menu */}
+      <DesktopMenu>
+        <MenuLink href='#prologue'>Prologue</MenuLink>
+        <MenuLink href='#showroom'>Showroom</MenuLink>
+        <MenuLink href='#moodboard'>Moodboard</MenuLink>
+        <MenuLink href='#techstack'>Tech Stack</MenuLink>
+        <MenuLink href='#contact'>Let's Talk</MenuLink>
+      </DesktopMenu>
       <GlobalStyle />
       <OverlayContainer>
         <OverlayCard
