@@ -1,20 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import { AngleDownImage } from '../SharedComponents';
-import { MarginArrowContainer } from '../SharedComponents';
 import 'hamburgers/dist/hamburgers.min.css';
 
 // Global styles for typewriter effect
 const GlobalStyle = createGlobalStyle`
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #4b4efc; }
-  }
 
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
@@ -30,8 +20,6 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     margin: 0 auto;
   }
-
-
 `;
 
 const OverlayContainer = styled.div`
@@ -103,7 +91,6 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 150px;
   background: #291080;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
@@ -177,7 +164,7 @@ const DesktopMenu = styled.nav`
     top: 0;
     left: 0;
     width: 100%;
-    height: 90px;
+    height: 160px;
     background: #240e65;
     z-index: 8000;
     align-items: center;
@@ -251,13 +238,13 @@ function Overlay() {
         </MenuLink>
       </MenuOverlay>
       {/* Desktop Menu */}
-      <DesktopMenu>
-        <MenuLink href='#prologue'>Prologue</MenuLink>  
+      {/* <DesktopMenu>
+        <MenuLink href='#prologue'>Prologue</MenuLink>
         <MenuLink href='#showroom'>Showroom</MenuLink>
         <MenuLink href='#moodboard'>Moodboard</MenuLink>
         <MenuLink href='#techstack'>Tech Stack</MenuLink>
         <MenuLink href='#contact'>Let's Talk</MenuLink>
-      </DesktopMenu>
+      </DesktopMenu> */}
       <GlobalStyle />
       <OverlayContainer>
         <OverlayCard

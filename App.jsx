@@ -11,11 +11,13 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '/components/theme';
 import './style.css';
 import 'hamburgers/dist/hamburgers.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Navbar />
         <HeroSection />
         <Overlay />
         <PrologueSection />

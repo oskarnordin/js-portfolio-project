@@ -16,7 +16,7 @@ const OverlayBackground = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40ch; /* FIXED width for entire ASCII art */
+  width: 40ch;
   color: #f0f0f0;
   font-family: 'Source Code Pro', monospace;
   font-size: 18px;
