@@ -62,11 +62,11 @@ const Navbar = () => {
 
   return (
     <DesktopMenu shrunk={shrunk}>
-      <MenuLink href='#techStack'>Tech Stack</MenuLink>
-      <MenuLink href='#skills'>Skills</MenuLink>
-      <MenuLink href='#showroom'>Projects</MenuLink>
-      <MenuLink href='#myWords'>My Words</MenuLink>
-      <MenuLink href='#contact'>Contact</MenuLink>
+      <MenuLink href='#prologue'>Prologue</MenuLink>
+      <MenuLink href='#showroom'>Showroom</MenuLink>
+      <MenuLink href='#techstack'>Tech Stack</MenuLink>
+      <MenuLink href='#moodboard'>Moodboard</MenuLink>
+      <MenuLink href='#contact'>Let's Talk</MenuLink>
     </DesktopMenu>
   );
 };
