@@ -25,7 +25,7 @@ function App() {
         <SkillsSection />
         <MoodboardSection />
         <ContactSection />
-        <BlurCursor />
+        {/* <BlurCursor /> */}
       </ThemeProvider>
       <main></main>
     </>
