@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Background = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #240e65;
+  background-color: #240e66;
   display: flex;
 `;
 
@@ -17,7 +17,7 @@ const DesktopMenu = styled.nav`
     left: 0;
     width: 100%;
     height: ${(props) => (props.shrunk ? '90px' : '160px')};
-    background: #240e65; /* Set background color */
+    background-color: #240e66;
     z-index: 8000;
     align-items: center;
     justify-content: center;

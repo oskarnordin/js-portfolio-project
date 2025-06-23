@@ -26,7 +26,7 @@ function App() {
         <SkillsSection />
         <MoodboardSection />
         <ContactSection />
-        <Footer />
+        {/* <Footer /> */}
         {/* <BlurCursor /> */}
       </ThemeProvider>
       <main></main>
