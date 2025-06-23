@@ -79,15 +79,19 @@ const TechstackP = styled.p`
 
 const techStack = {
   frontend: [
-    { name: 'html5', label: 'HTML' },
-    { name: 'css3', label: 'CSS' },
+    { name: 'html5', label: 'HTML5' },
+    { name: 'css3', label: 'CSS3' },
     { name: 'js', label: 'JavaScript' },
     { name: 'typescript', label: 'TypeScript' },
     { name: 'reactjs', label: 'React' },
+    { name: 'tailwindcss', label: 'Tailwind CSS' },
+    { name: 'styled-components', label: 'Styled Comp.' },
+    { name: 'zustand', label: 'Zustand' },
   ],
   backend: [
     { name: 'nodejs', label: 'Node.js' },
     { name: 'mongodb', label: 'MongoDB' },
+    { name: 'expressjs', label: 'Express.js' },
   ],
   misc: [
     { name: 'npm', label: 'NPM' },
@@ -125,8 +129,8 @@ const SkillsSection = () => {
   `;
 
   const Column = styled.div`
-    width: 23%;
-    min-width: 250px;
+    width: 15%;
+    min-width: 120px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -159,12 +163,12 @@ const SkillsSection = () => {
   `;
 
   const SkillItem = styled.div`
-    width: 90%;
+    width: 100%;
     height: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: left;
-    justify-content: center;
+    justify-content: left;
     color: #f8f8f8;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;

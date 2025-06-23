@@ -29,7 +29,7 @@ const MenuLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
+  font-size: 28px;
   font-family: 'DM Sans', sans-serif;
   color: #fbfbfb;
   text-decoration: none;
