@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const InfoCardContainer = styled.div`
   background-color: transparent;
@@ -89,7 +89,7 @@ const InfoPContainer = styled.div`
 
 const InfoCard = ({ title, info }) => {
   return (
-    <InfoCardContainer className={"visible"}>
+    <InfoCardContainer className={'visible'}>
       <InfoH2>{title}</InfoH2>
       <InfoPContainer>
         {info.map((info, index) => (

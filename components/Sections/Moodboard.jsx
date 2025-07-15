@@ -84,10 +84,13 @@ const PinterestWrapper = styled.div`
 `;
 
 const PinterestBoardContainer = styled.div`
-  width: 1080px;
+  width: 100%;
+  max-width: 1080px;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
-    width: 360px;
+    max-width: 360px;
+    width: 100%;
   }
 `;
 
