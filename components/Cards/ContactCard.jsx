@@ -58,7 +58,7 @@ const ContactH2 = styled.h2`
 `;
 
 const ContactP = styled.p`
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'DM Sans', sans-serif;
   color: #f8f8f8;
   font-size: 16px;
   font-weight: 400;
@@ -80,19 +80,21 @@ const ContactIconsWrapper = styled.div`
 `;
 
 const Button = styled.a`
-  background-color: #331993;
+  background-color: #fffbf9;
   justify-content: center;
   display: flex;
-  color: white;
+  color: #2d3748;
   font-weight: 600;
   width: 120px;
+  height: 26px;
+  align-items: center;
   font-size: 16px;
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
   &:hover {
-    background-color: #4220bd;
+    background-color: #afabc2;
   }
 
   @media (max-width: 768px) {
@@ -110,8 +112,10 @@ const ButtonIcon = styled.span`
   svg {
     width: 18px;
     height: 18px;
-    fill: #f8f8f8;
+    fill: #2d3748;
   }
+
+  
 `;
 
 const Socials = styled.div`
@@ -123,7 +127,7 @@ const Socials = styled.div`
 
 const SocialIcon = styled.a`
   display: inline-block;
-  transition: transform 0.2s;
+  transition: transform 0.3s;
   &:hover {
     transform: scale(1.15);
     opacity: 0.8;

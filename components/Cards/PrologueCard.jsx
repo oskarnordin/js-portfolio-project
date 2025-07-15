@@ -61,7 +61,7 @@ const PrologueH3 = styled.h3`
 
 const InfoP = styled.p`
   color: #2d3748;
-  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Source Code Pro', monospace; */
   font-weight: 400;
   font-size: 16px;
   text-decoration: none;
@@ -70,7 +70,7 @@ const InfoP = styled.p`
 `;
 
 const PrologueP = styled.p`
-  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Source Code Pro', monospace; */
   color: #2d3748;
   font-weight: 400;
   font-size: 16px;
@@ -87,7 +87,7 @@ const PrologueCard = ({ title, info }) => {
   return (
     <PrologueCardContainer className='visible'>
       <PrologueH3>Prologue</PrologueH3>
-      <PrologueP>Some forewords before we start</PrologueP>
+      <PrologueP>Some forewords before we start.</PrologueP>
       <ColumnsContainer>
         <div>
           <InfoP>

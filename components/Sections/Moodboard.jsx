@@ -65,7 +65,6 @@ const MoodboardH3 = styled.h3`
 `;
 
 const MoodboardP = styled.p`
-  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
   color: #4a5568;
   font-size: 16px;
@@ -138,7 +137,9 @@ const MoodboardSection = () => {
   return (
     <Background id='moodboard'>
       <MoodboardH3>Moodboard</MoodboardH3>
-      <MoodboardP>My collection of inspirational tech content</MoodboardP>
+      <MoodboardP>
+        My collection of tech content I draw inspiration from.
+      </MoodboardP>
       <PinterestBoardContainer
         ref={boardContainerRef}
       ></PinterestBoardContainer>

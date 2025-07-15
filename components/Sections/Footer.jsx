@@ -41,7 +41,7 @@ const SubText = styled.p`
   font-size: 13px;
   margin-top: 18px;
   color: #bdbdbd;
-  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Source Code Pro', monospace; */
 `;
 
 const Copyright = styled.p`

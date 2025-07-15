@@ -65,7 +65,6 @@ const TechstackH3 = styled.h3`
 `;
 
 const TechstackP = styled.p`
-  font-family: 'Source Code Pro', monospace;
   color: #f8f8f8;
   font-size: 16px;
   font-weight: 400;
@@ -188,9 +187,13 @@ const SkillsSection = () => {
 
   const Label = styled.p`
     font-size: 18px;
-    font-family: 'Source Code Pro', monospace;
+    /* font-family: 'Source Code Pro', monospace; */
     font-weight: 400;
     color: #f8f8f8;
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
   `;
 
   return (

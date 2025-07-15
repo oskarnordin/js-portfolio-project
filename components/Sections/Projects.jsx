@@ -80,7 +80,6 @@ const ShowroomH3 = styled.h3`
 `;
 
 const ShowroomP = styled.p`
-  font-family: 'Source Code Pro', monospace;
   flex-direction: column;
   color: #2d3748;
   font-size: 16px;
@@ -102,7 +101,7 @@ const FeaturedProjects = () => {
     <Background>
       <SectionContainer>
         <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
-        <ShowroomP>Here are some projects I've been working on</ShowroomP>
+        <ShowroomP>Here are some projects I've been working on.</ShowroomP>
         <ProjectContainer ref={ref} className={isVisible ? 'visible' : ''}>
           <ProjectCard
             title='Small Business Site'

@@ -74,7 +74,6 @@ const ProjectTitle = styled.h3`
 
 const ProjectDescription = styled.p`
   font-size: 16px;
-  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
   color: #2d3748;
   margin-bottom: 1rem;
@@ -84,7 +83,6 @@ const ProjectDescription = styled.p`
 
 const TechTag = styled.span`
   background-color: #331993;
-  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
   color: #fafafa;
   font-size: 14px;

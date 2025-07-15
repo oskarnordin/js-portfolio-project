@@ -13,11 +13,13 @@ import './style.css';
 import 'hamburgers/dist/hamburgers.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Sections/Footer';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <ProgressBar />
         <Navbar />
         <HeroSection />
         <Overlay />
