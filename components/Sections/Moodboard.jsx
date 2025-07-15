@@ -87,6 +87,7 @@ const PinterestBoardContainer = styled.div`
   width: 100%;
   max-width: 1080px;
   box-sizing: border-box;
+  overflow-x: auto;
 
   @media (max-width: 768px) {
     max-width: 360px;
