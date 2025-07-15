@@ -104,7 +104,10 @@ const MoodboardSection = () => {
           'data-pin-board-width',
           window.innerWidth <= 768 ? '360' : '1080'
         );
-        a.setAttribute('data-pin-scale-height', '800');
+        a.setAttribute(
+          'data-pin-scale-height',
+          window.innerWidth <= 768 ? '400' : '800'
+        );
         a.setAttribute(
           'data-pin-scale-width',
           window.innerWidth <= 768 ? '80' : '120'

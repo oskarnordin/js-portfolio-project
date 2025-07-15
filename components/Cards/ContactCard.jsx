@@ -114,8 +114,6 @@ const ButtonIcon = styled.span`
     height: 18px;
     fill: #2d3748;
   }
-
-  
 `;
 
 const Socials = styled.div`

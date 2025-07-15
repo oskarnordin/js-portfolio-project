@@ -90,13 +90,13 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: #291080;
+  background: #240e66;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
   flex-direction: row;
   padding: 24px 24px 24px 24px;
-  transition: transform 0.3s;
+  transition: transform 0.4s;
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
 
   @media (max-width: 768px) {
@@ -139,7 +139,7 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#2A0064' : '#2A0064')};
+  background: ${({ open }) => (open ? '#240E66' : '#240E66')};
   border-radius: 4px;
   padding: 3px;
   position: fixed;
@@ -164,7 +164,7 @@ const DesktopMenu = styled.nav`
     left: 0;
     width: 100%;
     height: 160px;
-    background: #240e65;
+    background: #240e66;
     z-index: 8000;
     align-items: center;
     justify-content: center;
