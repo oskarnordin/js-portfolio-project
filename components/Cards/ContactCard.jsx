@@ -80,7 +80,7 @@ const ContactIconsWrapper = styled.div`
 `;
 
 const Button = styled.a`
-  background-color: #fffbf9;
+  background-color: #f8f8f8;
   justify-content: center;
   display: flex;
   color: #2d3748;

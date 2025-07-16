@@ -9,6 +9,12 @@ const BarContainer = styled.div`
   height: 6px;
   background: #240e66;
   z-index: 9999;
+
+  @media screen {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 `;
 
 const Progress = styled.div`

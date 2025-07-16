@@ -13,25 +13,31 @@ const Container = styled.div`
 
 const OverlayBackground = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40ch;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   color: #f0f0f0;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'DM Sans', monospace, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  white-space: pre;
+  white-space: pre-wrap;
   padding: 2rem;
   z-index: 10;
   pointer-events: none;
   user-select: none;
   background: transparent;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: auto;
 
   @media (max-width: 768px) {
-    width: 90vw; /* Responsive width for smaller screens */
-    font-size: 14px; /* Slightly smaller font size */
+    font-size: 16px;
+    padding: 0rem;
   }
 `;
 
@@ -49,7 +55,7 @@ My name is
 and I’m a web developer.
 
 
-Scroll to learn more about me
+Scroll down to learn more about me
 and what I've been working on.
 `;
 
