@@ -87,12 +87,19 @@ const PinterestBoardContainer = styled.div`
   width: 100%;
   max-width: 1080px;
   box-sizing: border-box;
-  overflow-x: auto;
+  overflow-x: hidden; // changed from auto to hidden
 
   @media (max-width: 768px) {
     max-width: 360px;
     width: 100%;
   }
+`;
+
+// Add this styled-component for the Pinterest embed anchor
+const PinterestEmbed = styled.a`
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block;
 `;
 
 const MoodboardSection = () => {
@@ -118,6 +125,8 @@ const MoodboardSection = () => {
         );
         a.href = 'https://se.pinterest.com/oskarnordin/tech/';
         a.style.width = '100%';
+        a.style.maxWidth = '100%'; // ensure it doesn't overflow
+        a.style.display = 'block';
         boardContainerRef.current.appendChild(a);
         if (window.PinUtils && window.PinUtils.build) {
           window.PinUtils.build();

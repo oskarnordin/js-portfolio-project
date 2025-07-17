@@ -38,6 +38,10 @@ const OverlayBackground = styled.div`
   @media (max-width: 768px) {
     font-size: 16px;
     padding: 0rem;
+    overflow-x: auto;
+    max-width: 100vw;
+    box-sizing: border-box;
+    text-align: center; // Optional: better for ASCII art
   }
 `;
 

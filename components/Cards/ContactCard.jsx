@@ -125,9 +125,8 @@ const Socials = styled.div`
 
 const SocialIcon = styled.a`
   display: inline-block;
-  transition: transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s; // Add opacity to transition
   &:hover {
-    transform: scale(1.15);
     opacity: 0.8;
   }
   svg {
