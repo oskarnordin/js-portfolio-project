@@ -66,7 +66,7 @@ const ContactP = styled.p`
   padding-bottom: 16px;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 0 12px 0;
   }
 `;
