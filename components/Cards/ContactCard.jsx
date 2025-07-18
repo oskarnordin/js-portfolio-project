@@ -66,7 +66,7 @@ const ContactP = styled.p`
   padding-bottom: 16px;
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 0 12px 0;
   }
 `;
@@ -88,7 +88,7 @@ const Button = styled.a`
   width: 120px;
   height: 26px;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;

@@ -46,7 +46,7 @@ const GridLayout = styled.div`
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-
+  overflow-x: hidden; /* Prevent horizontal scroll */
   &.visible {
     opacity: 1;
     transform: translateY(0);
