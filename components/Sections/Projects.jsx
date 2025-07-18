@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../Cards/ProjectCard';
-import { AngleDownImage } from '../SharedComponents';
-import { MarginArrowContainer } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
@@ -68,11 +66,12 @@ const SectionContainer = styled.section`
 const ShowroomH3 = styled.h3`
   scroll-margin-top: 90px; /* Match or exceed navbar height */
   max-width: ${({ theme }) => theme.maxWidth};
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DX Slight Medium', sans-serif;
   background-color: transparent;
   color: #2d3748;
-  font-weight: 600;
-  font-size: 34px;
+  font-style: italic ;
+  font-size: 64px;
+  letter-spacing: 4px;
   padding: 64px 32px 32px 32px;
   text-decoration: none;
   text-align: center;

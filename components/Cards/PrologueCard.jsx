@@ -42,18 +42,20 @@ const ColumnsContainer = styled.div`
 `;
 
 const PrologueH3 = styled.h3`
-  font-family: 'DM Sans';
+  font-family: 'DX Slight Medium';
+  font-style: italic;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #2d3748;
-  font-weight: 600;
-  font-size: 34px;
+  font-size: 64px;
+  letter-spacing: 4px;
   padding: 32px;
   text-decoration: none;
+  letter-spacing: 2px;
 
   @media (max-width: 768px) {
-    font-size: 34px;
+    font-size: 64px;
     padding: 32px;
     margin: 5px 0;
   }

@@ -51,9 +51,11 @@ const SelfieImage = styled.img`
 `;
 
 const ContactH2 = styled.h2`
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DX Slight Medium';
+  font-style: italic;
+  letter-spacing: 4px;
   color: #f8f8f8;
-  font-size: 34px;
+  font-size: 64px;
   margin-bottom: 10px;
 `;
 

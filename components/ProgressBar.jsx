@@ -19,7 +19,7 @@ const BarContainer = styled.div`
 
 const Progress = styled.div`
   height: 100%;
-  background: #ffb4b4;
+  background: #FFE1BB;
   width: ${({ progress }) => progress}%;
   transition: width 0.2s ease;
   border-radius: 0 0 5px 0px;

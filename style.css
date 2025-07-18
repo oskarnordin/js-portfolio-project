@@ -100,6 +100,11 @@ h3 {
   }
 }
 
-/* * {
-  border: 1px solid red;
-} */
+@font-face {
+  font-family: 'DX Slight Extra';
+  src: url('./fonts/dxslight-extbdultraslant.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DX Slight Medium';
+  src: url('./fonts/dxslight-mediumultra.otf') format('opentype');
+}

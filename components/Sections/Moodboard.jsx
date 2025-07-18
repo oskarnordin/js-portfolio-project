@@ -59,10 +59,12 @@ const GridLayout = styled.div`
 `;
 
 const MoodboardH3 = styled.h3`
-  font-family: 'DM Sans', sans-serif;
   color: #2d3748;
-  font-weight: 600;
-  font-size: 34px;
+    font-family: 'DX Slight Medium';
+  font-style: italic;
+  letter-spacing: 4px;
+  font-size: 64px;
+  margin-bottom: 10px;
   padding: 32px 32px 12px 32px;
   text-decoration: none;
   text-align: center;

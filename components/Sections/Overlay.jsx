@@ -140,7 +140,7 @@ const MenuLink = styled.a`
 
 const HamburgerContainer = styled.div`
   background: ${({ open }) => (open ? '#240E66' : '#240E66')};
-  border-radius: 4px;
+  border-radius: 50%;
   padding: 3px;
   position: fixed;
   top: 20px;

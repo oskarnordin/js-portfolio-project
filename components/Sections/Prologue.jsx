@@ -8,7 +8,6 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.div`
   position: relative;
   scroll-margin-top: 90px; // Adjust to your navbar height
-
   display: flex;
   flex-direction: column;
   align-items: center;

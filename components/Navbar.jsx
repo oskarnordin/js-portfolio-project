@@ -9,7 +9,7 @@ const Background = styled.div`
 `;
 
 const DesktopMenu = styled.nav`
-  display: none;
+  display: flex;
   @media (min-width: 769px) {
     display: flex;
     position: fixed;

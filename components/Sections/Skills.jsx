@@ -52,10 +52,12 @@ const SkillsContainer = styled.div`
 `;
 
 const TechstackH3 = styled.h3`
-  font-family: 'DM Sans', sans-serif;
   color: #f8f8f8;
-  font-weight: 600;
-  font-size: 34px;
+  font-family: 'DX Slight Medium';
+  font-style: italic;
+  letter-spacing: 4px;
+  color: #f8f8f8;
+  font-size: 64px;
   padding: 32px 32px;
   border-radius: 16px;
   text-decoration: none;
