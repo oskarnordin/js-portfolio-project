@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   width: 100%;
@@ -29,6 +30,9 @@ const SectionContainer = styled.section`
 
 const GridLayout = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #fffbf9;
   font-family: Teko, sans-serif;
   color: #000000;
@@ -103,6 +107,8 @@ const PinterestEmbed = styled.a`
 `;
 
 const MoodboardSection = () => {
+  const ref = React.useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
   const boardContainerRef = useRef(null);
 
   useEffect(() => {
@@ -152,13 +158,15 @@ const MoodboardSection = () => {
 
   return (
     <Background id='moodboard'>
-      <MoodboardH3>Moodboard</MoodboardH3>
-      <MoodboardP>
-        My collection of tech content I draw inspiration from.
-      </MoodboardP>
-      <PinterestBoardContainer
-        ref={boardContainerRef}
-      ></PinterestBoardContainer>
+      <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
+        <MoodboardH3>Moodboard</MoodboardH3>
+        <MoodboardP>
+          My collection of tech content I draw inspiration from.
+        </MoodboardP>
+        <PinterestBoardContainer
+          ref={boardContainerRef}
+        ></PinterestBoardContainer>
+      </GridLayout>
     </Background>
   );
 };
