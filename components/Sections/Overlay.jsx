@@ -13,8 +13,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .hamburger-box {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
