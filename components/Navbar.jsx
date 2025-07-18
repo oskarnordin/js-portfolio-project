@@ -44,7 +44,6 @@ const MenuLink = styled.a`
     font-size: 28px;
     margin: 14px 0;
     width: 100vw;
-    padding: 18px 0;
     justify-content: center;
   }
 `;

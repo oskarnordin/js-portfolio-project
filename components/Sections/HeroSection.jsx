@@ -22,7 +22,6 @@ const OverlayBackground = styled.div`
   font-size: 18px;
   font-weight: 400;
   white-space: pre-wrap;
-  padding: 2rem;
   z-index: 10;
   pointer-events: none;
   user-select: none;
@@ -39,7 +38,7 @@ const OverlayBackground = styled.div`
     font-size: 16px;
     padding: 1rem;
     overflow-x: auto;
-    max-width: 100vw;
+    max-width: 90vw;
     box-sizing: border-box;
     text-align: center;
   }
