@@ -36,7 +36,7 @@ const OverlayBackground = styled.div`
   overflow: auto;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
     padding: 1rem;
     overflow-x: auto;
     max-width: 100vw;
