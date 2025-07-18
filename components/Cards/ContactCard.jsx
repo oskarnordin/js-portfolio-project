@@ -88,7 +88,7 @@ const Button = styled.a`
   width: 120px;
   height: 26px;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;
