@@ -41,7 +41,7 @@ const OverlayBackground = styled.div`
     overflow-x: auto;
     max-width: 100vw;
     box-sizing: border-box;
-    text-align: center; // Optional: better for ASCII art
+    text-align: center;
   }
 `;
 
@@ -54,7 +54,7 @@ My name is
 ██║░░██║╚█████╗░█████═╝░███████║██████╔╝
 ██║░░██║░╚═══██╗██╔═██╗░██╔══██║██╔══██╗
 ╚█████╔╝██████╔╝██║░╚██╗██║░░██║██║░░██║
- ░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝      
+░╚════╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝      
 
 and I’m a web developer.
 
