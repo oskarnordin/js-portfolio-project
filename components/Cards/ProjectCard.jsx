@@ -9,8 +9,8 @@ const ProjectCardContainer = styled.div`
   width: 450px;
   gap: 5px;
   text-align: center;
-  padding: 10px;
-  margin: 5px;
+  padding: 10px 10px;
+  margin: 5px 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -88,6 +88,16 @@ const TechTag = styled.span`
   font-size: 14px;
   padding: 8px;
   border-radius: 4px;
+  transition: background-color 0.2s ease,
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    &:hover {
+      transform: none;
+    }
+  }
 
   @media (max-width: 768px) {
     display: flex;
@@ -100,24 +110,28 @@ const Button = styled.a`
   background-color: #ff6b6b;
   justify-content: center;
   align-items: center;
-  height: 26px;
+  height: 40px;
   display: flex;
   color: white;
   font-weight: 600;
-  width: 120px;
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
   font-size: 16px;
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease,
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-sizing: border-box;
   &:hover {
     opacity: 0.8;
+    transform: scale(1.05);
   }
-
   @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
@@ -133,16 +147,16 @@ const ShowroomH3 = styled.h3`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: left;
   flex-direction: row;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: stretch;
   width: 100%;
-  gap: 5px;
+  gap: 10px;
 
   @media (max-width: 768px) {
     flex-direction: row;
-    align-items: left;
     gap: 10px;
+    width: 100%;
   }
 `;
 
@@ -151,7 +165,6 @@ const TechTagsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
 
   @media (max-width: 768px) {
     display: flex;
@@ -172,6 +185,7 @@ const ProjectsGrid = styled.div`
 
 const CardBottom = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 12px;
   margin-top: auto;
