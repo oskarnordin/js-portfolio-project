@@ -59,9 +59,9 @@ const ProjectTitle = styled.h3`
   color: #2d3748;
   justify-content: left;
   text-align: left;
-  font-family: 'DM Sans';
+  font-family: 'Tomorrow', sans-serif;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 6px;
   margin-top: 8px;
 
@@ -82,7 +82,7 @@ const ProjectDescription = styled.p`
 `;
 
 const TechTag = styled.span`
-  background-color: #331993;
+  background-color: #ff6b6b;
   font-weight: 400;
   color: #fafafa;
   font-size: 14px;
@@ -97,7 +97,7 @@ const TechTag = styled.span`
 `;
 
 const Button = styled.a`
-  background-color: #331993;
+  background-color: #ff6b6b;
   justify-content: center;
   align-items: center;
   height: 26px;
@@ -111,7 +111,7 @@ const Button = styled.a`
   text-decoration: none;
   transition: background-color 0.2s ease;
   &:hover {
-    background-color: #4220bd;
+    opacity: 0.8;
   }
 
   @media (max-width: 768px) {

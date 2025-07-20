@@ -13,7 +13,7 @@ const Background = styled.div`
 
 const GridLayout = styled.div`
   height: 90vh;
-  background-color: #240e66;
+  background-color: #FF6B6B;
   font-family: Teko, sans-serif;
   color: #f8f8f8;
   position: relative;

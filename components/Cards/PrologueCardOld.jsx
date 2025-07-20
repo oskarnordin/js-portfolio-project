@@ -74,7 +74,7 @@ const InfoP = styled.p`
 const WordSpan = styled.span`
   transition: font-style 0.2s ease;
   cursor: default;
-  
+
   &:hover {
     font-style: italic;
   }
@@ -82,7 +82,7 @@ const WordSpan = styled.span`
 
 const PrologueP = styled.p`
   /* font-family: 'Source Code Pro', monospace; */
-  color: #F8F7F7;
+  color: #f8f7f7;
   font-weight: 400;
   font-size: 16px;
   text-align: center;
@@ -95,6 +95,16 @@ const PrologueP = styled.p`
 `;
 
 const PrologueCard = ({ title, info }) => {
+  // Helper function to wrap each word in a span
+  const wrapWordsInSpans = (text) => {
+    return text.split(' ').map((word, index, array) => (
+      <React.Fragment key={index}>
+        <WordSpan>{word}</WordSpan>
+        {index < array.length - 1 && ' '}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <PrologueCardContainer className='visible'>
       <PrologueH3>Prologue</PrologueH3>

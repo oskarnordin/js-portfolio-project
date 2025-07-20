@@ -90,7 +90,7 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: #240e66;
+  background: #FF6B6B;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
@@ -139,7 +139,7 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#240E66' : '#240E66')};
+  background: ${({ open }) => (open ? '##FF6B6B' : '#FF6B6B')};
   border-radius: 50%;
   padding: 3px;
   position: fixed;

@@ -96,7 +96,7 @@ const Button = styled.a`
   text-decoration: none;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #afabc2;
+    opacity: 0.8;
   }
 
   @media (max-width: 768px) {
@@ -114,7 +114,7 @@ const ButtonIcon = styled.span`
   svg {
     width: 18px;
     height: 18px;
-    fill: #2d3748;
+    fill: #ff6b6b;
   }
 `;
 

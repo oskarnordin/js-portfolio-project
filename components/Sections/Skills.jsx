@@ -10,7 +10,7 @@ const Background = styled.div`
   scroll-margin-top: 90px; // Adjust to your navbar height
 
   position: relative;
-  background-color: #240e66;
+  background-color: #ff6b6b;
   min-height: 80vh;
   width: 100%;
   z-index: 20;
@@ -145,6 +145,8 @@ const SkillsSection = () => {
 
   const ColumnTitle = styled.h4`
     font-size: 28px;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 400;
     margin-bottom: 1rem;
     color: #f8f8f8;
     text-align: left; /* ensure text is aligned left */
