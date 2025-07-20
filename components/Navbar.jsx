@@ -10,20 +10,16 @@ const Background = styled.div`
 
 const DesktopMenu = styled.nav`
   display: flex;
-  @media (min-width: 769px) {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: ${(props) => (props.shrunk ? '90px' : '160px')};
-    background-color: #f8f7f7;
-    z-index: 8000;
-    align-items: center;
-    justify-content: center;
-    transition: height 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  @media (max-width: 800px) {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: #F8F7F7;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-bottom: 0;
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -62,15 +58,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <DesktopMenu shrunk={shrunk}>
-      <MenuLink href='#prologue'>Prologue</MenuLink>
-      <MenuLink href='#showroom'>Showroom</MenuLink>
-      <MenuLink href='#techstack'>Tech Stack</MenuLink>
-      <MenuLink href='#moodboard'>Moodboard</MenuLink>
-      <MenuLink href='#contact'>Let's Talk</MenuLink>
-    </DesktopMenu>
-  );
+  return <DesktopMenu shrunk={shrunk}></DesktopMenu>;
 };
 
 export default Navbar;

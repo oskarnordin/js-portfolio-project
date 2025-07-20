@@ -12,6 +12,11 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 `;
 
 const CenteredContent = styled.div`
@@ -22,6 +27,11 @@ const CenteredContent = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 180px;
+
+  @media (max-width: 768px) {
+    padding-top: 40px; /* Add top padding for mobile */
+    padding-bottom: 60px; /* Reduce bottom padding on mobile */
+  }
 `;
 
 const AvatarImg = styled.img`
@@ -32,40 +42,22 @@ const AvatarImg = styled.img`
   z-index: 999;
 `;
 
-const OverlayBackground = styled.div`
-  color: #f0f0f0;
-  font-family: 'DX Slight Extra';
-  font-size: 82px;
-  font-weight: 400;
-  white-space: pre-wrap;
-  text-align: center;
-  user-select: none;
-  background: transparent;
-  max-width: 100vw;
-  max-height: 100vh;
-  overflow: auto;
-  z-index: 10;
-
-  @media (max-width: 768px) {
-    font-size: 44px;
-    padding: 1rem;
-    overflow-x: auto;
-    max-width: 90vw;
-    box-sizing: border-box;
-    text-align: center;
-  }
-`;
-
 const Bigtext = styled.p`
-  font-size: 112px;
+  font-size: 154px;
   font-weight: 400;
   white-space: pre-wrap;
   text-align: center;
   font-family: 'DX Slight Extra';
   color: #111111;
-  z-index: 20;
+  z-index: 120;
   opacity: 70%;
   line-height: 1.4;
+  padding-right: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 106px;
+    line-height: 1.3;
+  }
 `;
 
 const Heart = styled.sup`
@@ -77,6 +69,11 @@ const Heart = styled.sup`
   margin: 5px;
   opacity: 100%;
   font-style: italic;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+    top: -50px; /* Keep same positioning for larger text */
+  }
 `;
 
 const asciiArt = `Hello, I’m Oskar,
@@ -194,17 +191,16 @@ const HeroSection = () => {
         <div
           style={{
             position: 'relative',
-            color: '#f0f0f0',
+            color: '#111111', // Dark text on light background
             fontFamily: 'DX Slight Extra',
             zIndex: 100,
+            paddingTop: '60px', // Add top padding
           }}
         >
           <Bigtext>I'm Oskar,</Bigtext>
           <Bigtext>a web developer </Bigtext>
-          <Bigtext>
-            from Sweden.
-            <Heart as='sup'></Heart>
-          </Bigtext>
+          <Bigtext>from Sweden.</Bigtext>
+          {/* <BlobCanvas /> */}
         </div>
         <BlobCanvas />
       </CenteredContent>

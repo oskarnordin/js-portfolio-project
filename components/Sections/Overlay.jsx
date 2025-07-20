@@ -83,34 +83,45 @@ const H1overlay = styled.h1`
 
 const MenuOverlay = styled.div`
   position: fixed;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  border: none;
   top: 0;
   left: 0;
   width: 100%;
-  background: #FF6B6B;
+  background: #ff6b6b;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
   flex-direction: row;
-  padding: 24px 24px 24px 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
   transition: transform 0.4s;
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+  height: 100vh;
+
+  @media (min-width: 769px) {
+    height: 150px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    background: #ff6b6b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8000;
+    transition: transform 0.4s;
+    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+    display: flex;
+  }
 
   @media (max-width: 768px) {
     height: 100vh;
-    margin: 0;
-    border: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;
-  }
-
-  @media (min-width: 769px) {
-    display: none;
   }
 `;
 
@@ -119,11 +130,11 @@ const MenuLink = styled.a`
   justify-content: center;
   align-items: center;
   font-size: 32px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Tomorrow', sans-serif;
   color: #fbfbfb;
   text-decoration: none;
   margin: 0 12px;
-  font-weight: 600;
+  font-weight: 400;
   transition: color 0.4s;
   &:hover {
     color: #afabc2;
@@ -149,26 +160,6 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-
-const DesktopMenu = styled.nav`
-  display: none;
-  @media (min-width: 769px) {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 160px;
-    background: #240e66;
-    z-index: 8000;
-    align-items: center;
-    justify-content: center;
-  }
 `;
 
 function Overlay() {
@@ -177,6 +168,16 @@ function Overlay() {
     threshold: 0.1,
   });
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Hide menu overlay on scroll
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleScroll = () => {
+      setMenuOpen(false);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [menuOpen]);
   const [showTypewriter, setShowTypewriter] = useState(false);
 
   useEffect(() => {

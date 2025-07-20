@@ -110,10 +110,13 @@ const Button = styled.a`
 const ButtonIcon = styled.span`
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  transition: opacity 0.3s, transform 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
   svg {
-    width: 18px;
-    height: 18px;
+    width: 34px;
+    height: 32px;
     fill: #ff6b6b;
   }
 `;
@@ -151,21 +154,19 @@ const ContactCard = () => {
       </ContactP>
       <SelfieImage src='/img/selfie.jpg' alt='Selfie of Oskar Nordin' />
       <ContactIconsWrapper>
-        <Button href='mailto:oskarnordin1@gmail.com'>
+        <Button href='mailto:oskarnordin1@gmail.com' id='email-button'>
           <ButtonIcon>
             <svg viewBox='0 0 24 24'>
               <path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z' />
             </svg>
           </ButtonIcon>
-          Email
         </Button>
-        <Button href='tel:+46701774998'>
+        <Button href='tel:+46701774998' id='phone-button'>
           <ButtonIcon>
             <svg viewBox='0 0 24 24'>
               <path d='M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z' />
             </svg>
           </ButtonIcon>
-          Call
         </Button>
       </ContactIconsWrapper>
       <Socials>
