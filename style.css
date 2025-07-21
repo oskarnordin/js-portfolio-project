@@ -1,3 +1,7 @@
+/* * {
+  border: 1px solid #36fdcb;
+} */
+
 html,
 body {
   background-color: #f8f7f7;
@@ -107,4 +111,9 @@ h3 {
 @font-face {
   font-family: 'DX Slight Medium';
   src: url('./fonts/dxslight-mediumultra.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Tomorrow';
+  src: url('./fonts/Tomorrow-Regular.ttf') format('truetype');
 }

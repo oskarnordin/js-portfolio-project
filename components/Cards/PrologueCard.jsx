@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
-  padding: 32px;
-  padding-bottom: 32px;
   width: 100%;
   max-width: 1000px;
   gap: 10px;
@@ -50,7 +48,7 @@ const PrologueH3 = styled.h3`
   color: #f8f8f8;
   font-size: 64px;
   letter-spacing: 4px;
-  padding: 32px;
+  padding: 16px;
   text-decoration: none;
   letter-spacing: 2px;
 

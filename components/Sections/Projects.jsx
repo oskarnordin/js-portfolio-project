@@ -14,11 +14,12 @@ const Background = styled.div`
   min-height: 100%;
   width: 100%;
   z-index: 20;
+  padding-bottom: 32px;
 `;
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 1080px;
+  max-width: 1000px;
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
@@ -31,7 +32,7 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 32px 32px 64px 32px;
+  padding: 32px 0px 64px 0px;
   margin: 0 auto;
   box-sizing: border-box;
   align-items: center;
@@ -69,7 +70,7 @@ const ShowroomH3 = styled.h3`
   font-family: 'DX Slight Medium', sans-serif;
   background-color: transparent;
   color: #2d3748;
-  font-style: italic ;
+  font-style: italic;
   font-size: 64px;
   letter-spacing: 4px;
   padding: 64px 32px 32px 32px;
@@ -104,7 +105,7 @@ const FeaturedProjects = () => {
         <ProjectContainer ref={ref} className={isVisible ? 'visible' : ''}>
           <ProjectCard
             title='Small Business Site'
-            description='A small site for a local business, showcasing their services and contact information.'
+            description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly and to work well on both desktop and mobile devices.'
             stack={['HTML5', 'CSS3', 'Flexbox']}
             imgSrc='./img/sushi.png'
             liveDemo='https://sushi-world-on.netlify.app/'
@@ -112,7 +113,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='Weather App'
-            description='A weather app that provides real-time weather information and forecasts for any location.'
+            description='A weather app that provides real-time weather information and forecasts for any location. It uses an API to fetch weather data and displays it in a user-friendly interface.'
             stack={['HTML5', 'CSS3', 'JavaScript', 'API']}
             imgSrc='./img/weather.png'
             liveDemo='https://heatherweather.netlify.app/'
@@ -120,7 +121,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='Accessibility Quiz'
-            description='An interactive quiz application designed to educate users about web accessibility best practices.'
+            description='An interactive quiz application designed to educate users about web accessibility best practices. It includes multiple-choice questions and provides feedback on answers.'
             stack={['HTML5', 'CSS3', 'JavaScript']}
             imgSrc='./img/access.png'
             liveDemo='https://js-project-accessibility-on.netlify.app/'
@@ -128,7 +129,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='This Portfolio'
-            description='This portfolio showcases my work and skills as a developer.'
+            description='This portfolio showcases my work and skills as a developer. It includes various projects, a blog, and information about my background and experience.'
             stack={['HTML5', 'CSS3', 'React']}
             imgSrc='./img/portfolio.png'
             liveDemo='https://js-portfoliotwo.netlify.app/'
@@ -136,7 +137,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='Win 98 Style To-Do App'
-            description='A to-do app with a touch of retro.'
+            description='A to-do app with a touch of retro. It mimics the look and feel of Windows 98, allowing users to manage their tasks in a nostalgic interface.'
             stack={['HTML5', 'CSS3', 'React']}
             imgSrc='./img/w98.png'
             liveDemo='https://windows98-todo.netlify.app/'
@@ -144,7 +145,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='Recipe Library'
-            description='A library of recipes with filters for dietary restrictions, time to cook and random recipe.'
+            description='A library of recipes with filters for dietary restrictions, time to cook and random recipe. It allows users to easily find and save their favorite recipes.'
             stack={['HTML5', 'CSS3', 'JavaScript', 'API']}
             imgSrc='./img/cooking.jpg'
             liveDemo='https://recipe-libary-on.netlify.app/'

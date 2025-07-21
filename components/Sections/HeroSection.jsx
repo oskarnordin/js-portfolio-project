@@ -191,7 +191,7 @@ const HeroSection = () => {
         <div
           style={{
             position: 'relative',
-            color: '#111111', // Dark text on light background
+            color: '#111111',
             fontFamily: 'DX Slight Extra',
             zIndex: 100,
             paddingTop: '60px', // Add top padding

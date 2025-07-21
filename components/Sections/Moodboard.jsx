@@ -12,6 +12,7 @@ const Background = styled.div`
   align-items: center;
   position: relative;
   z-index: 20;
+  padding-bottom: 32px;
 
   @media (max-width: 768px) {
     height: auto;
@@ -54,13 +55,12 @@ const GridLayout = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 1rem;
   }
 `;
 
 const MoodboardH3 = styled.h3`
   color: #2d3748;
-    font-family: 'DX Slight Medium';
+  font-family: 'DX Slight Medium';
   font-style: italic;
   letter-spacing: 4px;
   font-size: 64px;

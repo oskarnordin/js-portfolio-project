@@ -4,6 +4,9 @@ export const BlobCanvas = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Helper to determine if desktop
+    const isDesktop = () => window.innerWidth > 768;
+
     class Blob {
       constructor() {
         this.points = [];
@@ -231,20 +234,29 @@ export const BlobCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Responsive blob size
+    const setBlobSize = () => {
+      if (isDesktop()) {
+        canvas.width = 1000;
+        canvas.height = 1000;
+        blob.radius = 340;
+      } else {
+        canvas.width = 1000;
+        canvas.height = 1000;
+        blob.radius = 270;
+      }
+    };
+
     const resize = () => {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
+      setBlobSize();
     };
 
     window.addEventListener('resize', resize);
-
-    // Use setTimeout to ensure the canvas is properly sized after DOM updates
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
     blob.color = '#ff6b6b'; // Set custom color here
-    blob.radius = 270;
+    setBlobSize();
     blob.init();
     blob.render();
 
@@ -318,8 +330,8 @@ export const BlobCanvas = () => {
         top: '45%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '1000px',
-        height: '1000px',
+        width: window.innerWidth > 768 ? '1200px' : '1000px',
+        height: window.innerWidth > 768 ? '1200px' : '1000px',
         zIndex: 1, // Lower z-index to place behind text
         pointerEvents: 'auto', // Enable pointer events for mouse interaction
       }}

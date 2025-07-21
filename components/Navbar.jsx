@@ -13,7 +13,7 @@ const DesktopMenu = styled.nav`
   position: relative;
   width: 100%;
   height: 80px;
-  background-color: #F8F7F7;
+  background-color: #f8f7f7;
   z-index: 10;
   align-items: center;
   justify-content: center;
@@ -35,9 +35,6 @@ const MenuLink = styled.a`
   margin: 0 12px;
   font-weight: 00;
   transition: color 0.4s;
-  &:hover {
-    color: #ff6b6b;
-  }
 
   @media (max-width: 768px) {
     font-size: 28px;

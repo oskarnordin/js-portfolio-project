@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
   .hamburger--emphatic .hamburger-inner::after {
-    background-color: #fcfcfc !important; 
+    background-color: #FC716E !important; /* Red hamburger icon */
   }
 
   .hamburger-box {
@@ -86,7 +86,8 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: #ff6b6b;
+  background: #fc716e;
+  opacity: 0.96;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
@@ -106,7 +107,9 @@ const MenuOverlay = styled.div`
     padding: 0 24px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     width: 100%;
-    background: #ff6b6b;
+    background: #fc716e;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -137,7 +140,7 @@ const MenuLink = styled.a`
   font-weight: 400;
   transition: color 0.4s;
   &:hover {
-    color: #afabc2;
+    color: #fc716e;
   }
 
   @media (max-width: 768px) {
@@ -150,7 +153,7 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '##FF6B6B' : '#FF6B6B')};
+  background: ${({ open }) => (open ? '#fff' : '#fff')};
   border-radius: 50%;
   padding: 3px;
   position: fixed;
@@ -160,6 +163,7 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(252, 113, 110, 0.15);
 `;
 
 function Overlay() {

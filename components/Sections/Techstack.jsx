@@ -18,7 +18,6 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 72px;
 
   @media (max-width: 768px) {
     height: auto;

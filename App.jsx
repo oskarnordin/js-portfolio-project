@@ -1,6 +1,6 @@
 import React from 'react';
 import Overlay from './components/Sections/Overlay';
-import SkillsSection from './components/Sections/Skills';
+import SkillsSection from './components/Sections/Techstack';
 import PrologueSection from './components/Sections/Prologue';
 import HeroSection from './components/Sections/HeroSection';
 import FeaturedProjects from './components/Sections/Projects';

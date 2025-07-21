@@ -6,10 +6,8 @@ const ProjectCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 480px;
-  width: 450px;
-  gap: 5px;
+  width: 48%;
   text-align: center;
-  padding: 10px 10px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -75,7 +73,6 @@ const ProjectDescription = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #2d3748;
-  margin-bottom: 1rem;
   justify-content: left;
   text-align: left;
 `;
@@ -86,6 +83,7 @@ const TechTag = styled.span`
   color: #fafafa;
   font-size: 14px;
   padding: 8px;
+  margin-top: 16px;
   border-radius: 4px;
   transition: background-color 0.2s ease,
     transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -114,7 +112,6 @@ const Button = styled.a`
   color: white;
   font-weight: 600;
   width: 50%;
-  min-width: 50%;
   max-width: 50%;
   font-size: 16px;
   border-radius: 4px;
@@ -176,7 +173,6 @@ const ProjectsGrid = styled.div`
   flex-wrap: wrap;
   gap: 40px;
   width: 100%;
-  max-width: ${({ theme }) => theme.maxWidth};
   justify-content: center;
   margin: 0 auto;
 `;
@@ -233,7 +229,7 @@ const FeaturedProjects = () => {
         <ProjectsGrid>
           <ProjectCard
             title='Small Business Site'
-            description='A small site for a local business, showcasing their services and contact information.'
+            description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly.'
             stack={['HTML5', 'CSS3', 'Flexbox']}
             imgSrc='./img/sushi.png'
             liveDemo='https://sushi-world-on.netlify.app/'
