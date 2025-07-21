@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <ProgressBar />
+        {/* <ProgressBar /> */}
         <Navbar />
         <HeroSection />
         <Overlay />

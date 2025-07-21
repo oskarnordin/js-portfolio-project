@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
   .hamburger--emphatic .hamburger-inner::after {
-    background-color: #ff5656 !important; /* Pink hamburger icon */
+    background-color: #F7F6F6 !important;
   }
 
   .hamburger-box {
@@ -135,13 +135,13 @@ const MenuLink = styled.a`
   align-items: center;
   font-size: 32px;
   font-family: 'Tomorrow', sans-serif;
-  color: #fbfbfb;
+  color: #f8f7f7;
   text-decoration: none;
   margin: 0 12px;
   font-weight: 400;
   transition: color 0.4s;
   &:hover {
-    color: #ff5656;
+    color: #ffc8c8;
   }
 
   @media (max-width: 768px) {
@@ -154,7 +154,7 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#fff' : '#fff')};
+  background: ${({ open }) => (open ? '#ff5656' : '#ff5656')};
   border-radius: 50%;
   padding: 3px;
   position: fixed;
@@ -164,7 +164,6 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(252, 113, 110, 0.15);
 `;
 
 function Overlay() {
