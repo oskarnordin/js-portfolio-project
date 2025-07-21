@@ -61,12 +61,6 @@ const ProjectTitle = styled.h3`
   font-weight: 400;
   margin-bottom: 6px;
   margin-top: 8px;
-
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
 `;
 
 const ProjectDescription = styled.p`
@@ -78,7 +72,7 @@ const ProjectDescription = styled.p`
 `;
 
 const TechTag = styled.span`
-  background-color: #ff6b6b;
+  background-color: #ff5656;
   font-weight: 400;
   color: #fafafa;
   font-size: 14px;
@@ -95,16 +89,10 @@ const TechTag = styled.span`
       transform: none;
     }
   }
-
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-  }
 `;
 
 const Button = styled.a`
-  background-color: #ff6b6b;
+  background-color: #ff5656;
   justify-content: center;
   align-items: center;
   height: 40px;
@@ -160,12 +148,6 @@ const TechTagsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const ProjectsGrid = styled.div`

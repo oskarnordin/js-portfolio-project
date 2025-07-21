@@ -106,7 +106,7 @@ const FeaturedProjects = () => {
           <ProjectCard
             title='Small Business Site'
             description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly and to work well on both desktop and mobile devices.'
-            stack={['HTML5', 'CSS3', 'Flexbox']}
+            stack={['HTML5', 'CSS3']}
             imgSrc='./img/sushi.png'
             liveDemo='https://sushi-world-on.netlify.app/'
             codeLink='https://github.com/oskarnordin/js-project-business-site'
@@ -129,7 +129,7 @@ const FeaturedProjects = () => {
           />
           <ProjectCard
             title='This Portfolio'
-            description='This portfolio showcases my work and skills as a developer. It includes various projects, a blog, and information about my background and experience.'
+            description='This portfolio showcases my work and skills as a developer. It includes various projects and information about my background and experience.'
             stack={['HTML5', 'CSS3', 'React']}
             imgSrc='./img/portfolio.png'
             liveDemo='https://js-portfoliotwo.netlify.app/'

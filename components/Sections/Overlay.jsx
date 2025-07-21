@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   .hamburger--emphatic .hamburger-inner,
   .hamburger--emphatic .hamburger-inner::before,
   .hamburger--emphatic .hamburger-inner::after {
-    background-color: #FC716E !important; /* Red hamburger icon */
+    background-color: #ff5656 !important; /* Pink hamburger icon */
   }
 
   .hamburger-box {
@@ -86,8 +86,9 @@ const MenuOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background: #fc716e;
-  opacity: 0.96;
+  background: #ff5656;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
@@ -99,7 +100,7 @@ const MenuOverlay = styled.div`
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   height: 100vh;
 
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     height: 150px;
     flex-direction: row;
     justify-content: center;
@@ -107,7 +108,7 @@ const MenuOverlay = styled.div`
     padding: 0 24px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     width: 100%;
-    background: #fc716e;
+    background: #ff5656;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     position: fixed;
@@ -140,7 +141,7 @@ const MenuLink = styled.a`
   font-weight: 400;
   transition: color 0.4s;
   &:hover {
-    color: #fc716e;
+    color: #ff5656;
   }
 
   @media (max-width: 768px) {

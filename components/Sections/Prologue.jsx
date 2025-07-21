@@ -11,7 +11,7 @@ const Background = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FF6B6B;
+  background-color: #ff5656;
   height: 100vh;
   width: auto;
   z-index: 20;

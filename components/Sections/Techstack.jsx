@@ -10,7 +10,7 @@ const Background = styled.div`
   scroll-margin-top: 90px; // Adjust to your navbar height
 
   position: relative;
-  background-color: #ff6b6b;
+  background-color: #ff5656;
   min-height: 80vh;
   width: 100%;
   z-index: 20;

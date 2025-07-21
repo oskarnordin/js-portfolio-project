@@ -116,7 +116,7 @@ const ButtonIcon = styled.span`
   svg {
     width: 34px;
     height: 32px;
-    fill: #ff6b6b;
+    fill: #ff5656;
   }
 `;
 

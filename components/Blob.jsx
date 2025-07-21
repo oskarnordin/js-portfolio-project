@@ -84,7 +84,7 @@ export const BlobCanvas = () => {
         this._color = value;
       }
       get color() {
-        return this._color || '#ff6b6b'; // Changed to a red color
+        return this._color || '#ff5656'; // Changed to a red color
       }
 
       set canvas(value) {
@@ -255,7 +255,7 @@ export const BlobCanvas = () => {
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
-    blob.color = '#ff6b6b'; // Set custom color here
+    blob.color = '#ff5656'; // Set custom color here
     setBlobSize();
     blob.init();
     blob.render();
