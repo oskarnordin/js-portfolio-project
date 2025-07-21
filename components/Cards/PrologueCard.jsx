@@ -20,7 +20,7 @@ const PrologueCardContainer = styled.div`
     width: auto;
     background-color: transparent;
     padding: 16px 0 32px 0; /* Reduce padding on mobile */
-    margin: 0;
+    margin: 0 16px; /* Add margin to prevent overflow */
   }
 `;
 
@@ -74,7 +74,7 @@ const InfoP = styled.p`
 const WordSpan = styled.span`
   transition: font-style 0.2s ease;
   cursor: default;
-  
+
   &:hover {
     font-style: italic;
   }
@@ -82,7 +82,7 @@ const WordSpan = styled.span`
 
 const PrologueP = styled.p`
   /* font-family: 'Source Code Pro', monospace; */
-  color: #F8F7F7;
+  color: #f8f7f7;
   font-weight: 400;
   font-size: 16px;
   text-align: center;

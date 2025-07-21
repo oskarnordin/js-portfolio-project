@@ -10,7 +10,6 @@ const ProjectCardContainer = styled.div`
   gap: 5px;
   text-align: center;
   padding: 10px 10px;
-  margin: 5px 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -118,7 +117,6 @@ const Button = styled.a`
   min-width: 50%;
   max-width: 50%;
   font-size: 16px;
-  padding: 10px;
   border-radius: 4px;
   text-decoration: none;
   transition: background-color 0.2s ease,
