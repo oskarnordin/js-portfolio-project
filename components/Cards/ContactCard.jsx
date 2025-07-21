@@ -42,12 +42,6 @@ const SelfieImage = styled.img`
   border-radius: 12px;
   width: 240px;
   height: 240px;
-
-  @media (max-width: 768px) {
-    width: 150px;
-    height: 150px;
-    padding: 6px;
-  }
 `;
 
 const ContactH2 = styled.h2`
