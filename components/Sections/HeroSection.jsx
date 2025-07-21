@@ -199,7 +199,7 @@ const HeroSection = () => {
         >
           <Bigtext>I'm Oskar,</Bigtext>
           <Bigtext>a web</Bigtext>
-          <Bigtext>developer</Bigtext>
+          <Bigtext>developer </Bigtext>
           <Bigtext>from Sweden.</Bigtext>
           {/* <BlobCanvas /> */}
         </div>
