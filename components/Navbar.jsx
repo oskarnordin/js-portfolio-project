@@ -12,8 +12,7 @@ const DesktopMenu = styled.nav`
   display: flex;
   position: relative;
   width: 100%;
-  height: 80px;
-  background-color: #f8f7f7;
+  background-color: transparent;
   z-index: 10;
   align-items: center;
   justify-content: center;

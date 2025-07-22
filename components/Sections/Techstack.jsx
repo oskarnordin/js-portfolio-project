@@ -5,6 +5,10 @@ import { AngleDownImage } from '../SharedComponents';
 import { MarginArrowContainer } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import StackIcon from 'tech-stack-icons';
+import databaseIcon from '../../public/img/database.svg'; // Adjust path if needed
+import frontendIcon from '../../public/img/frontend.svg'; // Add this line
+import analysisIcon from '../../public/img/analysis.svg'; // Add this line if you have an analysis icon
+import miscIcon from '../../public/img/misc.svg'; // Add this import at the top with the others
 
 const Background = styled.div`
   scroll-margin-top: 90px; // Adjust to your navbar height
@@ -37,9 +41,8 @@ const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: center; /* Center horizontally */
   padding: 2rem;
-  /* margin: 0 auto; */
   box-sizing: border-box;
   width: 100%;
   opacity: 0;
@@ -117,14 +120,17 @@ const SkillsSection = () => {
 
   const ColumnsWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center columns horizontally */
+    align-items: flex-start;
     width: 100%;
     flex-wrap: wrap;
+    gap: 12%; /* Add some space between columns */
 
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0;
     }
   `;
 
@@ -133,7 +139,8 @@ const SkillsSection = () => {
     min-width: 120px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Center content in column */
+    justify-content: center;
 
     @media (max-width: 768px) {
       align-items: center;
@@ -146,14 +153,14 @@ const SkillsSection = () => {
     font-size: 28px;
     font-family: 'Tomorrow', sans-serif;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-top: 6px;
     color: #f8f8f8;
-    text-align: left; /* ensure text is aligned left */
-    width: 100%; /* optional, but ensures alignment within the full column */
+    text-align: center;
+    width: 100%;
 
     @media (max-width: 768px) {
-      font-size: 24px;
-      text-align: center; /* center text on smaller screens */
+      font-size: 26px;
+      text-align: center;
     }
   `;
 
@@ -161,42 +168,72 @@ const SkillsSection = () => {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center; /* Center vertically */
     gap: 14px;
   `;
 
   const SkillItem = styled.div`
     width: 100%;
-    height: 20px;
     display: flex;
-    flex-direction: row;
-    align-items: left;
-    justify-content: left;
+    flex-direction: column; /* Stack label vertically */
+    align-items: center; /* Center label horizontally */
+    justify-content: center;
     color: #f8f8f8;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
-    text-align: left;
-    background-color: transp;
+    text-align: center;
+    background-color: transparent;
     border-radius: 16px;
     transition: transform 0.2s ease;
-
-    @media screen {
-      @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-    }
   `;
 
   const Label = styled.p`
     font-size: 18px;
-    /* font-family: 'Source Code Pro', monospace; */
     font-weight: 400;
     color: #f8f8f8;
+    text-align: center;
     &:hover {
       transform: scale(1.1);
       transition: transform 0.3s ease;
     }
+  `;
+
+  const FrontendIcon = styled.img`
+    display: block;
+
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-top: 42px;
+  `;
+
+  const BackendIcon = styled.img`
+    display: block;
+
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-top: 42px;
+  `;
+
+  const AnalysisIcon = styled.img`
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-top: 42px;
+  `;
+
+  const MiscIcon = styled.img`
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-top: 42px;
   `;
 
   return (
@@ -206,6 +243,7 @@ const SkillsSection = () => {
         <TechstackP>Here are some of the technologies I work with.</TechstackP>
         <ColumnsWrapper>
           <Column>
+            <FrontendIcon src={frontendIcon} alt='Frontend Icon' />
             <ColumnTitle>Frontend</ColumnTitle>
             <IconGrid>
               {techStack.frontend.map((item) => (
@@ -216,6 +254,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
+            <BackendIcon src={databaseIcon} alt='Database Icon' />
             <ColumnTitle>Backend</ColumnTitle>
             <IconGrid>
               {techStack.backend.map((item) => (
@@ -226,6 +265,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
+            <MiscIcon src={miscIcon} alt='Misc Icon' />
             <ColumnTitle>Misc</ColumnTitle>
             <IconGrid>
               {techStack.misc.map((item) => (
@@ -236,6 +276,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
+            <AnalysisIcon src={analysisIcon} alt='Analysis Icon' />
             <ColumnTitle>Analysis</ColumnTitle>
             <IconGrid>
               {techStack.analysis.map((item) => (

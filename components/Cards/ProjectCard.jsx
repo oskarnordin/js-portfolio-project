@@ -6,7 +6,8 @@ const ProjectCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 480px;
-  width: 48%;
+  margin: 12px;
+  width: 45%;
   text-align: center;
   opacity: 0;
   transform: translateY(20px);

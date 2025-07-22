@@ -40,8 +40,8 @@ const ContactCardContainer = styled.div`
 
 const SelfieImage = styled.img`
   border-radius: 12px;
-  width: 240px;
-  height: 240px;
+  width: 255px;
+  height: 255px;
 
   @media (max-width: 768px) {
     width: 200px;
@@ -81,19 +81,16 @@ const ContactIconsWrapper = styled.div`
 `;
 
 const Button = styled.a`
-  background-color: #f8f8f8;
   justify-content: center;
   display: flex;
   color: #2d3748;
   font-weight: 600;
-  width: 120px;
-  height: 26px;
   align-items: center;
   font-size: 16px;
-  padding: 10px;
   border-radius: 4px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  /* Remove fixed width/height */
   &:hover {
     opacity: 0.8;
   }
@@ -101,8 +98,7 @@ const Button = styled.a`
   @media (max-width: 768px) {
     display: flex;
     justify-content: center;
-
-    width: 30%; /* Full width on mobile */
+    width: auto;
   }
 `;
 
@@ -114,17 +110,10 @@ const ButtonIcon = styled.span`
     opacity: 0.8;
   }
   svg {
-    width: 34px;
-    height: 32px;
-    fill: #ff5656;
+    width: 48px; // Match SocialIcon size
+    height: 48px;
+    fill: #f8f8f8;
   }
-`;
-
-const Socials = styled.div`
-  margin: 16px 0 0 0;
-  display: flex;
-  gap: 24px;
-  justify-content: center;
 `;
 
 const SocialIcon = styled.a`
@@ -155,20 +144,22 @@ const ContactCard = () => {
       <ContactIconsWrapper>
         <Button href='mailto:oskarnordin1@gmail.com' id='email-button'>
           <ButtonIcon>
-            <svg viewBox='0 0 24 24'>
-              <path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z' />
-            </svg>
+            <img
+              src='/img/mail.svg'
+              alt='Mail icon'
+              style={{ width: 48, height: 48 }}
+            />
           </ButtonIcon>
         </Button>
         <Button href='tel:+46701774998' id='phone-button'>
           <ButtonIcon>
-            <svg viewBox='0 0 24 24'>
-              <path d='M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z' />
-            </svg>
+            <img
+              src='/img/call.svg'
+              alt='Phone icon'
+              style={{ width: 48, height: 48 }}
+            />
           </ButtonIcon>
         </Button>
-      </ContactIconsWrapper>
-      <Socials>
         <SocialIcon
           href='https://github.com/oskarnordin'
           target='_blank'
@@ -187,7 +178,7 @@ const ContactCard = () => {
             <path d='M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z' />
           </svg>
         </SocialIcon>
-      </Socials>
+      </ContactIconsWrapper>
     </ContactCardContainer>
   );
 };

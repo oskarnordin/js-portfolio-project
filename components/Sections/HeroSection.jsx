@@ -2,9 +2,50 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BlobCanvas } from '../Blob';
 
+const GradientBackground = styled.div`
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.2;
+  background: linear-gradient(
+    120deg,
+    #ffb347,
+    #ff5e62,
+    #ff9966,
+    #ff512f,
+    #f7971e,
+    #ffd200,
+    #ffb347
+  );
+  background-size: 300% 300%;
+  animation: warmGradient 8s ease-in-out infinite;
+
+  @keyframes warmGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 100%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 0%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
+
 const Container = styled.div`
   position: relative;
-  background-color: #f8f7f7;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -60,29 +101,14 @@ const Bigtext = styled.p`
   }
 `;
 
-const Heart = styled.sup`
-  font-size: 40px;
-  vertical-align: super;
-  line-height: 0;
-  position: relative;
-  top: -50px; /* Moves the heart higher */
-  margin: 5px;
-  opacity: 100%;
-  font-style: italic;
-
-  @media (max-width: 768px) {
-    font-size: 40px;
-    top: -50px; /* Keep same positioning for larger text */
-  }
-`;
-
-const asciiArt = `Hello, I’m Oskar,
- a web developer from Sweden. 
-`;
+const introText = `I'm Oskar,
+a web
+developer
+from Sweden.`;
 
 const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
-  const typingSpeed = 70;
+  const typingSpeed = 50;
   const [avatarVisible, setAvatarVisible] = useState(false);
   const [textColor, setTextColor] = useState('#f0f0f0'); // Start with white
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -91,8 +117,8 @@ const HeroSection = () => {
     let i = 0;
     const interval = setInterval(() => {
       i++;
-      setTypedText(asciiArt.substring(0, i));
-      if (i >= asciiArt.length) clearInterval(interval);
+      setTypedText(introText.substring(0, i));
+      if (i >= introText.length) clearInterval(interval);
     }, typingSpeed);
 
     return () => clearInterval(interval);
@@ -187,6 +213,7 @@ const HeroSection = () => {
 
   return (
     <Container>
+      <GradientBackground />
       <CenteredContent>
         <div
           style={{
@@ -194,14 +221,10 @@ const HeroSection = () => {
             color: '#111111',
             fontFamily: 'DX Slight Extra',
             zIndex: 100,
-            paddingTop: '60px', // Add top padding
+            paddingTop: '60px',
           }}
         >
-          <Bigtext>I'm Oskar,</Bigtext>
-          <Bigtext>a web</Bigtext>
-          <Bigtext>developer </Bigtext>
-          <Bigtext>from Sweden.</Bigtext>
-          {/* <BlobCanvas /> */}
+          <Bigtext>{typedText}</Bigtext>
         </div>
         <BlobCanvas />
       </CenteredContent>
