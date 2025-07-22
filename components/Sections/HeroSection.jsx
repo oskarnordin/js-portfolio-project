@@ -11,19 +11,22 @@ const GradientBackground = styled.div`
   height: 100%;
   z-index: 10;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.15;
   background: linear-gradient(
     120deg,
     #ffb347,
-    #ff5e62,
-    #ff9966,
-    #ff512f,
-    #f7971e,
-    #ffd200,
-    #ffb347
+    /* warm orange */ #ff9966,
+    /* orange */ #ff5e62,
+    /* reddish pink */ #ff5858,
+    /* red-orange */ #ff7e5f,
+    /* coral */ #ff6a88,
+    /* pinkish red */ #ffb347,
+    /* warm orange */ #ff512f,
+    /* deep orange */ #ff5e62,
+    /* reddish pink */ #ffb347 /* warm orange */
   );
-  background-size: 300% 300%;
-  animation: warmGradient 8s ease-in-out infinite;
+  background-size: 400% 400%;
+  animation: warmGradient 10s ease-in-out infinite;
 
   @keyframes warmGradient {
     0% {
@@ -107,22 +110,9 @@ developer
 from Sweden.`;
 
 const HeroSection = () => {
-  const [typedText, setTypedText] = useState('');
-  const typingSpeed = 50;
   const [avatarVisible, setAvatarVisible] = useState(false);
   const [textColor, setTextColor] = useState('#f0f0f0'); // Start with white
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      setTypedText(introText.substring(0, i));
-      if (i >= introText.length) clearInterval(interval);
-    }, typingSpeed);
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     // Fade in avatar after mount
@@ -224,7 +214,7 @@ const HeroSection = () => {
             paddingTop: '60px',
           }}
         >
-          <Bigtext>{typedText}</Bigtext>
+          <Bigtext>{introText}</Bigtext>
         </div>
         <BlobCanvas />
       </CenteredContent>
