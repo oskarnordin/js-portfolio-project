@@ -11,42 +11,8 @@ const GradientBackground = styled.div`
   height: 100%;
   z-index: 10;
   pointer-events: none;
-  opacity: 0.15;
-  background: linear-gradient(
-    120deg,
-    #ffb347,
-    /* warm orange */ #ff9966,
-    /* orange */ #ff5e62,
-    /* reddish pink */ #ff5858,
-    /* red-orange */ #ff7e5f,
-    /* coral */ #ff6a88,
-    /* pinkish red */ #ffb347,
-    /* warm orange */ #ff512f,
-    /* deep orange */ #ff5e62,
-    /* reddish pink */ #ffb347 /* warm orange */
-  );
-  background-size: 400% 400%;
-  animation: warmGradient 10s ease-in-out infinite;
-
-  @keyframes warmGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    25% {
-      background-position: 50% 100%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    75% {
-      background-position: 50% 0%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  opacity: 0.35;
 `;
-
 const Container = styled.div`
   position: relative;
   width: 100%;

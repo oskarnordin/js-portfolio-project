@@ -61,12 +61,16 @@ const PrologueH3 = styled.h3`
 
 const InfoP = styled.p`
   color: #f8f8f8;
-  /* font-family: 'Source Code Pro', monospace; */
+
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   line-height: 1.6;
   margin-bottom: 18px; /* Add space between paragraphs */
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const WordSpan = styled.span`
@@ -79,10 +83,9 @@ const WordSpan = styled.span`
 `;
 
 const PrologueP = styled.p`
-  /* font-family: 'Source Code Pro', monospace; */
   color: #f8f7f7;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 22px;
   text-align: center;
   padding-bottom: 32px;
 

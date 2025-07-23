@@ -65,7 +65,7 @@ const MoodboardH3 = styled.h3`
   letter-spacing: 4px;
   font-size: 64px;
   margin-bottom: 10px;
-  padding: 32px 32px 12px 32px;
+  padding: 32px 32px 16px 32px;
   text-decoration: none;
   text-align: center;
 `;
@@ -73,7 +73,7 @@ const MoodboardH3 = styled.h3`
 const MoodboardP = styled.p`
   font-weight: 400;
   color: #4a5568;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   padding-bottom: 32px;
 

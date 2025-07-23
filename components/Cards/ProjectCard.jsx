@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 const ProjectCardContainer = styled.div`
   display: flex;
+  background-color: #;
+  box-shadow: 10px 10px 28px rgba(155, 155, 155, 0.22);
   flex-direction: column;
   justify-content: space-between;
   height: 480px;
   margin: 12px;
-  width: 45%;
+  width: 40%;
   text-align: center;
-  opacity: 0;
+  padding: 20px;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 

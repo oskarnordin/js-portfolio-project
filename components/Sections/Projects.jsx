@@ -73,7 +73,7 @@ const ShowroomH3 = styled.h3`
   font-style: italic;
   font-size: 64px;
   letter-spacing: 4px;
-  padding: 64px 32px 32px 32px;
+  padding: 64px 32px 16px 32px;
   text-decoration: none;
   text-align: center;
   align-self: center;
@@ -82,10 +82,9 @@ const ShowroomH3 = styled.h3`
 const ShowroomP = styled.p`
   flex-direction: column;
   color: #2d3748;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   font-weight: 400;
-  padding: 0px 16px;
 
   @media (max-width: 768px) {
     font-size: 16px;

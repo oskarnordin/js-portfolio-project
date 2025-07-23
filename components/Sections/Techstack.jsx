@@ -60,7 +60,7 @@ const TechstackH3 = styled.h3`
   letter-spacing: 4px;
   color: #f8f8f8;
   font-size: 64px;
-  padding: 32px 32px;
+  padding: 16px 32px;
   border-radius: 16px;
   text-decoration: none;
 
@@ -70,10 +70,10 @@ const TechstackH3 = styled.h3`
 
 const TechstackP = styled.p`
   color: #f8f8f8;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   text-align: center;
-  padding: 0px 32px 32px 32px;
+  padding: 0px 32px px 32px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -141,6 +141,8 @@ const SkillsSection = () => {
     flex-direction: column;
     align-items: center; /* Center content in column */
     justify-content: center;
+    background-color: #ff5656;
+    border-radius: 16px;
 
     @media (max-width: 768px) {
       align-items: center;

@@ -39,9 +39,10 @@ const ContactCardContainer = styled.div`
 `;
 
 const SelfieImage = styled.img`
-  border-radius: 12px;
+  border-radius: 40%;
   width: 255px;
   height: 255px;
+  padding: 16px;
 
   @media (max-width: 768px) {
     width: 200px;
@@ -59,12 +60,10 @@ const ContactH2 = styled.h2`
 `;
 
 const ContactP = styled.p`
-  font-family: 'DM Sans', sans-serif;
   color: #f8f8f8;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
   text-align: center;
-  padding-bottom: 16px;
 
   @media (max-width: 768px) {
     font-size: 16px;
