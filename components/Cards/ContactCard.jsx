@@ -11,6 +11,7 @@ const ContactCardContainer = styled.div`
   flex-wrap: wrap;
   padding: 40px;
   width: 450px;
+  max-width: 540;
   gap: 10px;
   text-align: center;
   opacity: 0;

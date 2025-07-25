@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   gap: 10px;
   text-align: left;
   box-sizing: border-box;
@@ -64,12 +64,14 @@ const InfoP = styled.p`
 
   font-weight: 400;
   font-size: 18px;
+  width: 540px;
   text-decoration: none;
   line-height: 1.6;
   margin-bottom: 18px; /* Add space between paragraphs */
 
   @media (max-width: 768px) {
     font-size: 16px;
+    width: 100%;
   }
 `;
 

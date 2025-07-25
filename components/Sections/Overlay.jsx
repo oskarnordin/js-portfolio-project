@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .hamburger-box {
+    display: none;
     width: 28px;
     height: 28px;
     display: flex;
@@ -164,6 +165,10 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 1500px) {
+    display: none;
+  }
 `;
 
 function Overlay() {

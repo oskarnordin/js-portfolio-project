@@ -3,17 +3,19 @@ import styled from 'styled-components';
 
 const ProjectCardContainer = styled.div`
   display: flex;
-  background-color: #;
+  background-color: #fff;
   box-shadow: 10px 10px 28px rgba(155, 155, 155, 0.22);
   flex-direction: column;
   justify-content: space-between;
   height: 480px;
-  margin: 12px;
-  width: 40%;
+  min-width: 40%;
+  max-width: 480px;
   text-align: center;
   padding: 20px;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  border-radius: 5%;
+  margin-bottom: 40px;
 
   &.visible {
     opacity: 1;
@@ -24,6 +26,7 @@ const ProjectCardContainer = styled.div`
     width: auto;
     border-radius: 18px;
     display: flex;
+    box-shadow: none;
     align-items: center;
     justify-content: center;
   }
@@ -49,7 +52,7 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 4%;
   display: block;
   transition: transform 0.3s ease;
 `;
@@ -81,7 +84,7 @@ const TechTag = styled.span`
   font-size: 14px;
   padding: 8px;
   margin-top: 16px;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: background-color 0.2s ease,
     transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   &:hover {
@@ -105,7 +108,7 @@ const Button = styled.a`
   width: 50%;
   max-width: 50%;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 10px;
   text-decoration: none;
   transition: background-color 0.2s ease,
     transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);

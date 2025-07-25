@@ -91,7 +91,7 @@ const PinterestWrapper = styled.div`
 
 const PinterestBoardContainer = styled.div`
   width: 100%;
-  max-width: 1080px;
+  max-width: 1100px;
   box-sizing: border-box;
   overflow-x: hidden; // changed from auto to hidden
 
@@ -110,7 +110,7 @@ const PinterestEmbed = styled.a`
 
 const MoodboardSection = () => {
   const ref = React.useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
   const boardContainerRef = useRef(null);
 
   useEffect(() => {

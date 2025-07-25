@@ -37,7 +37,7 @@ const FadeInContainer = styled.div`
 
 const PrologueSection = () => {
   const ref = React.useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
 
   return (
     <Background id='prologue'>

@@ -30,7 +30,7 @@ const Background = styled.div`
 `;
 
 const SkillsContainer = styled.div`
-  max-width: 1080px;
+  max-width: 1100px;
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
@@ -115,7 +115,7 @@ const techStack = {
 const SkillsSection = () => {
   const ref = React.useRef(null);
   const visible = useIntersectionObserver(ref, {
-    threshold: 0.1,
+    threshold: 0.4,
   });
 
   const ColumnsWrapper = styled.div`

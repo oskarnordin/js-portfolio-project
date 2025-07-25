@@ -37,6 +37,8 @@ const CenteredContent = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 180px;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   @media (max-width: 768px) {
     padding-top: 40px; /* Add top padding for mobile */
@@ -63,6 +65,7 @@ const Bigtext = styled.p`
   opacity: 70%;
   line-height: 1.4;
   padding-right: 10px;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 
   @media (max-width: 768px) {
     font-size: 106px;
@@ -79,10 +82,18 @@ const HeroSection = () => {
   const [avatarVisible, setAvatarVisible] = useState(false);
   const [textColor, setTextColor] = useState('#f0f0f0'); // Start with white
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
     // Fade in avatar after mount
     const timeout = setTimeout(() => setAvatarVisible(true), 200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    // Smooth in content on mount
+    const timeout = setTimeout(() => setContentVisible(true), 100);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -167,10 +178,18 @@ const HeroSection = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [magneticStrength, magneticRadius]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <Container>
+    <Container id='herosection'>
       <GradientBackground />
-      <CenteredContent>
+      <CenteredContent visible={contentVisible}>
         <div
           style={{
             position: 'relative',
@@ -180,7 +199,13 @@ const HeroSection = () => {
             paddingTop: '60px',
           }}
         >
-          <Bigtext>{introText}</Bigtext>
+          <Bigtext
+            style={{
+              transform: `translateY(${scrollY * 0.3}px)`,
+            }}
+          >
+            {introText}
+          </Bigtext>
         </div>
         <BlobCanvas />
       </CenteredContent>

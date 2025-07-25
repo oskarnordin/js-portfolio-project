@@ -10,7 +10,7 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f8f7f7;
+  background-color: #fffbf9;
   min-height: 100%;
   width: 100%;
   z-index: 20;
@@ -19,7 +19,7 @@ const Background = styled.div`
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
@@ -32,7 +32,6 @@ const ProjectContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 32px 0px 64px 0px;
   margin: 0 auto;
   box-sizing: border-box;
   align-items: center;
@@ -94,14 +93,14 @@ const ShowroomP = styled.p`
 
 const FeaturedProjects = () => {
   const ref = React.useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
 
   return (
     <Background>
       <SectionContainer>
-        <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
-        <ShowroomP>Here are some projects I've been working on.</ShowroomP>
         <ProjectContainer ref={ref} className={isVisible ? 'visible' : ''}>
+          <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
+          <ShowroomP>Here are some projects I've been working on.</ShowroomP>
           <ProjectCard
             title='Small Business Site'
             description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly and to work well on both desktop and mobile devices.'
