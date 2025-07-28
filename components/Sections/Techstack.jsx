@@ -109,7 +109,7 @@ const techStack = {
 
 const SkillsSection = () => {
   const ref = useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   const ColumnsWrapper = styled.div`
     display: flex;

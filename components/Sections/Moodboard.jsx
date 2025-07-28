@@ -110,7 +110,7 @@ const PinterestEmbed = styled.a`
 
 const MoodboardSection = () => {
   const ref = useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
   const boardContainerRef = useRef(null);
 
   useEffect(() => {

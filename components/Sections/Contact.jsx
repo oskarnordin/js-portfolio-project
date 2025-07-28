@@ -37,7 +37,7 @@ const GridLayout = styled.div`
 
 const ContactSection = () => {
   const { ref, isVisible } = useIntersectionObserver({
-    threshold: 0.4,
+    threshold: 0.1,
   });
   const handleScroll = () => {
     if (isVisible) {

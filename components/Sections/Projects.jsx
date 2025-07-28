@@ -16,6 +16,11 @@ const Background = styled.div`
   width: 100%;
   z-index: 20;
   padding-bottom: 32px;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    /* ...existing mobile styles... */
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -72,6 +77,10 @@ const SectionContainer = styled.section`
   min-height: 100vh; /* Full viewport height */
   background-color: transparent;
   text-align: center; /* Center text if needed */
+
+  @media (max-width: 768px) {
+    min-height: auto;
+  }
 `;
 
 const ShowroomH3 = styled.h3`
@@ -121,7 +130,7 @@ const HeaderWrapper = styled.div`
 
 const FeaturedProjects = () => {
   const ref = useRef(null);
-  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
     <Background id='showroom' ref={ref}>
