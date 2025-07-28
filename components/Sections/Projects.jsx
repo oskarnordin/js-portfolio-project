@@ -95,10 +95,27 @@ const ShowroomP = styled.p`
   font-size: 20px;
   text-align: center;
   font-weight: 400;
+  padding-bottom: 32px;
 
   @media (max-width: 768px) {
     font-size: 16px;
     margin: 0 0 12px 0;
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  transform: ${({ $visible }) =>
+    $visible ? 'translateY(0)' : 'translateY(30px)'};
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -107,14 +124,18 @@ const FeaturedProjects = () => {
   const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
 
   return (
-    <Background id='showroom'>
-      <ProjectContainer
-        ref={ref}
+    <Background id='showroom' ref={ref}>
+      <HeaderWrapper
         className={isVisible ? 'visible' : ''}
         $visible={isVisible}
       >
         <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
         <ShowroomP>Here are some projects I've been working on.</ShowroomP>
+      </HeaderWrapper>
+      <ProjectContainer
+        className={isVisible ? 'visible' : ''}
+        $visible={isVisible}
+      >
         <ProjectCard
           title='Small Business Site'
           description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly and to work well on both desktop and mobile devices.'
