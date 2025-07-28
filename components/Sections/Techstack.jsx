@@ -1,14 +1,9 @@
 // components/SkillsSection.jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { AngleDownImage } from '../SharedComponents';
 import { MarginArrowContainer } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import StackIcon from 'tech-stack-icons';
-import databaseIcon from '../../public/img/database.svg'; // Adjust path if needed
-import frontendIcon from '../../public/img/frontend.svg'; // Add this line
-import analysisIcon from '../../public/img/analysis.svg'; // Add this line if you have an analysis icon
-import miscIcon from '../../public/img/misc.svg'; // Add this import at the top with the others
 
 const Background = styled.div`
   scroll-margin-top: 90px; // Adjust to your navbar height
@@ -113,10 +108,8 @@ const techStack = {
 };
 
 const SkillsSection = () => {
-  const ref = React.useRef(null);
-  const visible = useIntersectionObserver(ref, {
-    threshold: 0.4,
-  });
+  const ref = useRef(null);
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.4 });
 
   const ColumnsWrapper = styled.div`
     display: flex;
@@ -240,12 +233,16 @@ const SkillsSection = () => {
 
   return (
     <Background id='techstack'>
-      <SkillsContainer ref={ref} className={visible ? 'visible' : ''}>
+      <SkillsContainer
+        ref={ref}
+        className={isVisible ? 'visible' : ''}
+        $visible={isVisible}
+      >
         <TechstackH3>Tech Stack</TechstackH3>
         <TechstackP>Here are some of the technologies I work with.</TechstackP>
         <ColumnsWrapper>
           <Column>
-            <FrontendIcon src={frontendIcon} alt='Frontend Icon' />
+            <FrontendIcon src='/img/frontend.svg' alt='Frontend Icon' />
             <ColumnTitle>Frontend</ColumnTitle>
             <IconGrid>
               {techStack.frontend.map((item) => (
@@ -256,7 +253,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <BackendIcon src={databaseIcon} alt='Database Icon' />
+            <BackendIcon src='/img/database.svg' alt='Database Icon' />
             <ColumnTitle>Backend</ColumnTitle>
             <IconGrid>
               {techStack.backend.map((item) => (
@@ -267,7 +264,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <MiscIcon src={miscIcon} alt='Misc Icon' />
+            <MiscIcon src='/img/misc.svg' alt='Misc Icon' />
             <ColumnTitle>Misc</ColumnTitle>
             <IconGrid>
               {techStack.misc.map((item) => (
@@ -278,7 +275,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <AnalysisIcon src={analysisIcon} alt='Analysis Icon' />
+            <AnalysisIcon src='/img/analysis.svg' alt='Analysis Icon' />
             <ColumnTitle>Analysis</ColumnTitle>
             <IconGrid>
               {techStack.analysis.map((item) => (

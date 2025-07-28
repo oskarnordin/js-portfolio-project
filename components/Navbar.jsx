@@ -55,7 +55,7 @@ const TimelineLink = styled.a`
     color: ${(props) =>
       ['prologue', 'techstack', 'contact'].includes(props.activeSection)
         ? '#ffcfcf'
-        : '#a3a3a3'};
+        : '#8a8a8a'};
   }
 `;
 

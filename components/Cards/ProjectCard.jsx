@@ -1,10 +1,23 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
+const Background = styled.div`
+  position: relative;
+  display: flex;
+  scroll-margin-top: 90px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffbf9;
+  min-height: 100%;
+  width: 100%;
+  z-index: 20;
+  padding-bottom: 32px;
+`;
+
 const ProjectCardContainer = styled.div`
   display: flex;
   background-color: #fff;
-  box-shadow: 10px 10px 28px rgba(155, 155, 155, 0.22);
   flex-direction: column;
   justify-content: space-between;
   height: 480px;
@@ -16,19 +29,24 @@ const ProjectCardContainer = styled.div`
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   border-radius: 5%;
   margin-bottom: 40px;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 28px rgba(155, 155, 155, 0.22);
 
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
   @media (max-width: 768px) {
     height: auto;
-    width: auto;
-    border-radius: 18px;
+    width: 100%;
+    border-radius: 0;
     display: flex;
     box-shadow: none;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    box-sizing: border-box;
   }
 `;
 
@@ -141,12 +159,6 @@ const ButtonWrapper = styled.div`
   align-items: stretch;
   width: 100%;
   gap: 10px;
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-  }
 `;
 
 const TechTagsWrapper = styled.div`
@@ -209,56 +221,49 @@ const ProjectCard = ({
   );
 };
 
-const FeaturedProjects = () => {
-  return (
-    <Background>
-      <SectionContainer>
-        <ShowroomH3>Projects</ShowroomH3>
-        <ProjectsGrid>
-          <ProjectCard
-            title='Small Business Site'
-            description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly.'
-            stack={['HTML5', 'CSS3', 'Flexbox']}
-            imgSrc='./img/sushi.png'
-            liveDemo='https://sushi-world-on.netlify.app/'
-            codeLink='https://github.com/oskarnordin/js-project-business-site'
-          />
-          <ProjectCard
-            title='Weather App'
-            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-            stack={['HTML5', 'CSS3', 'React', 'Node']}
-            imgSrc='./img/weather.png'
-            liveDemo='https://heatherweather.netlify.app/'
-            codeLink='https://github.com/oskarnordin/js-project-weather-app'
-          />
-          <ProjectCard
-            title='Accessibility Quiz'
-            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-            stack={['HTML5', 'CSS3', 'Node']}
-            imgSrc='./img/access.png'
-            liveDemo='https://js-project-accessibility-on.netlify.app/'
-            codeLink='https://github.com/oskarnordin/js-project-accessibility'
-          />
-          <ProjectCard
-            title='This Portfolio'
-            description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-            stack={['HTML5', 'CSS3', 'React', 'Node']}
-            imgSrc='./img/portfolio.png'
-            liveDemo='#'
-            codeLink='#https://github.com/oskarnordin/js-portfolio-project'
-          />
-        </ProjectsGrid>
-        <a href='#myWords'>
-          <CenteredContainer>
-            <AngleDownImage
-              src='img/angle-square-down.png'
-              alt='Angle down icon'
-            />
-          </CenteredContainer>
-        </a>
-      </SectionContainer>
-    </Background>
-  );
-};
+// const ProjectCard = () => {
+//   return (
+//     <Background>
+//       <SectionContainer>
+//         <ShowroomH3>Projects</ShowroomH3>
+//         <ProjectsGrid>
+//           <ProjectCard
+//             title='Small Business Site'
+//             description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly.'
+//             stack={['HTML5', 'CSS3', 'Flexbox']}
+//             imgSrc='./img/sushi.png'
+//             liveDemo='https://sushi-world-on.netlify.app/'
+//             codeLink='https://github.com/oskarnordin/js-project-business-site'
+//           />
+//           <ProjectCard
+//             title='Weather App'
+//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+//             stack={['HTML5', 'CSS3', 'React', 'Node']}
+//             imgSrc='./img/weather.png'
+//             liveDemo='https://heatherweather.netlify.app/'
+//             codeLink='https://github.com/oskarnordin/js-project-weather-app'
+//           />
+//           <ProjectCard
+//             title='Accessibility Quiz'
+//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+//             stack={['HTML5', 'CSS3', 'Node']}
+//             imgSrc='./img/access.png'
+//             liveDemo='https://js-project-accessibility-on.netlify.app/'
+//             codeLink='https://github.com/oskarnordin/js-project-accessibility'
+//           />
+//           <ProjectCard
+//             title='This Portfolio'
+//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
+//             stack={['HTML5', 'CSS3', 'React', 'Node']}
+//             imgSrc='./img/portfolio.png'
+//             liveDemo='#'
+//             codeLink='#https://github.com/oskarnordin/js-portfolio-project'
+//           />
+//         </ProjectsGrid>
+//         <a href='#myWords'></a>
+//       </SectionContainer>
+//     </Background>
+//   );
+// };
 
 export default ProjectCard;

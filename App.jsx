@@ -18,8 +18,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {/* <ProgressBar /> */}
-        <Navbar />
+        {/* <Navbar /> */}
         <HeroSection />
         <Overlay />
         <PrologueSection />
@@ -27,8 +26,6 @@ function App() {
         <SkillsSection />
         <MoodboardSection />
         <ContactSection />
-        {/* <Footer /> */}
-        {/* <BlurCursor /> */}
       </ThemeProvider>
       <main></main>
     </>

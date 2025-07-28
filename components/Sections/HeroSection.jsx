@@ -41,8 +41,8 @@ const CenteredContent = styled.div`
   transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   @media (max-width: 768px) {
-    padding-top: 40px; /* Add top padding for mobile */
-    padding-bottom: 60px; /* Reduce bottom padding on mobile */
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
 `;
 
@@ -80,19 +80,17 @@ from Sweden.`;
 
 const HeroSection = () => {
   const [avatarVisible, setAvatarVisible] = useState(false);
-  const [textColor, setTextColor] = useState('#f0f0f0'); // Start with white
+  const [textColor, setTextColor] = useState('#f0f0f0');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    // Fade in avatar after mount
     const timeout = setTimeout(() => setAvatarVisible(true), 200);
     return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
-    // Smooth in content on mount
     const timeout = setTimeout(() => setContentVisible(true), 100);
     return () => clearTimeout(timeout);
   }, []);
@@ -100,8 +98,8 @@ const HeroSection = () => {
   const avatarInitial = {
     size: 270,
   };
-  const magneticRadius = 400; // px
-  const [magneticStrength, setMagneticStrength] = useState(0.01); // Start small
+  const magneticRadius = 400;
+  const [magneticStrength, setMagneticStrength] = useState(0.01);
 
   useEffect(() => {
     if (avatarVisible) {
@@ -113,7 +111,7 @@ const HeroSection = () => {
           clearInterval(interval);
         }
         setMagneticStrength(strength);
-      }, 30); // Adjust speed for smoothness
+      }, 30);
       return () => clearInterval(interval);
     }
   }, [avatarVisible]);
@@ -136,17 +134,15 @@ const HeroSection = () => {
       const dy = mouseY - avatarCenterY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Check if mouse is near the text area (rough estimation)
-      const textAreaTop = window.innerHeight / 2 - 100; // Approximate text area
+      const textAreaTop = window.innerHeight / 2 - 100;
       const textAreaBottom = window.innerHeight / 2 + 100;
-      const textAreaLeft = window.innerWidth / 2 - 400; // Approximate text width
+      const textAreaLeft = window.innerWidth / 2 - 400;
       const textAreaRight = window.innerWidth / 2 + 400;
 
-      const blobRadius = 270; // Match the blob radius from Blob.jsx
+      const blobRadius = 270;
       const blobCenterX = window.innerWidth / 2;
-      const blobCenterY = window.innerHeight * 0.4; // Match blob position (40% from top)
+      const blobCenterY = window.innerHeight * 0.4;
 
-      // Check if blob overlaps with text area
       const blobOverlapsText =
         mouseX > textAreaLeft - blobRadius &&
         mouseX < textAreaRight + blobRadius &&
@@ -154,16 +150,14 @@ const HeroSection = () => {
         mouseY < textAreaBottom + blobRadius &&
         distance < blobRadius;
 
-      // Set text color based on blob proximity to text
       if (blobOverlapsText) {
-        setTextColor('#000000'); // Black when blob is behind text
+        setTextColor('#000000');
       } else {
-        setTextColor('#f0f0f0'); // White on regular background
+        setTextColor('#f0f0f0');
       }
 
       if (distance < magneticRadius) {
-        // Strength increases as you get closer to the center
-        const normalized = 1 - distance / magneticRadius; // 0 (edge) to 1 (center)
+        const normalized = 1 - distance / magneticRadius;
         const dynamicStrength = magneticStrength * normalized;
         setAvatarPos({
           top: dy * dynamicStrength,
@@ -201,7 +195,7 @@ const HeroSection = () => {
         >
           <Bigtext
             style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
+              transform: `translateY(${scrollY * 0.45}px)`,
             }}
           >
             {introText}

@@ -165,10 +165,6 @@ const HamburgerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (min-width: 1500px) {
-    display: none;
-  }
 `;
 
 function Overlay() {
