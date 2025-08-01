@@ -46,7 +46,7 @@ const PrologueH3 = styled.h3`
   justify-content: center;
   align-items: center;
   color: #f8f8f8;
-  font-size: 64px;
+  font-size: 84px;
   letter-spacing: 4px;
   padding: 16px;
   text-decoration: none;
@@ -54,8 +54,6 @@ const PrologueH3 = styled.h3`
 
   @media (max-width: 768px) {
     font-size: 64px;
-    padding: 32px;
-    margin: 5px 0;
   }
 `;
 

@@ -46,7 +46,7 @@ const GridLayout = styled.div`
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   overflow-x: hidden; /* Prevent horizontal scroll */
   &.visible {
     opacity: 1;
@@ -63,11 +63,15 @@ const MoodboardH3 = styled.h3`
   font-family: 'DX Slight Medium';
   font-style: italic;
   letter-spacing: 4px;
-  font-size: 64px;
+  font-size: 84px;
   margin-bottom: 10px;
   padding: 32px 32px 16px 32px;
   text-decoration: none;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
 `;
 
 const MoodboardP = styled.p`

@@ -51,13 +51,17 @@ const SelfieImage = styled.img`
   }
 `;
 
-const ContactH2 = styled.h2`
+const ContactH3 = styled.h3`
   font-family: 'DX Slight Medium';
   font-style: italic;
   letter-spacing: 4px;
   color: #f8f8f8;
-  font-size: 64px;
+  font-size: 84px;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
 `;
 
 const ContactP = styled.p`
@@ -105,14 +109,24 @@ const Button = styled.a`
 const ButtonIcon = styled.span`
   display: flex;
   align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 6px;
   transition: opacity 0.3s, transform 0.3s;
   &:hover {
     opacity: 0.8;
   }
+  img {
+    width: 36px;
+    height: 36px;
+    /* Make icon white */
+    filter: invert(1) brightness(2);
+  }
+  /* For SVG icons, if you use them in the future */
   svg {
-    width: 48px; // Match SocialIcon size
-    height: 48px;
-    fill: #f8f8f8;
+    width: 20px;
+    height: 20px;
+    fill: #fff;
   }
 `;
 
@@ -135,7 +149,7 @@ const ContactCard = () => {
 
   return (
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
-      <ContactH2>Let's Talk</ContactH2>
+      <ContactH3>Let's Talk</ContactH3>
       <ContactP>
         I'm always open to discussing new projects, creative ideas, or
         opportunities to be part of your vision.
@@ -145,18 +159,24 @@ const ContactCard = () => {
         <Button href='mailto:oskarnordin1@gmail.com' id='email-button'>
           <ButtonIcon>
             <img
-              src='/img/mail.svg'
+              src='/img/mail.png'
               alt='Mail icon'
-              style={{ width: 48, height: 48 }}
+              style={{
+                width: 48,
+                height: 49,
+              }}
             />
           </ButtonIcon>
         </Button>
         <Button href='tel:+46701774998' id='phone-button'>
           <ButtonIcon>
             <img
-              src='/img/call.svg'
+              src='/img/call.png'
               alt='Phone icon'
-              style={{ width: 48, height: 48 }}
+              style={{
+                width: 48,
+                height: 48,
+              }}
             />
           </ButtonIcon>
         </Button>

@@ -221,49 +221,4 @@ const ProjectCard = ({
   );
 };
 
-// const ProjectCard = () => {
-//   return (
-//     <Background>
-//       <SectionContainer>
-//         <ShowroomH3>Projects</ShowroomH3>
-//         <ProjectsGrid>
-//           <ProjectCard
-//             title='Small Business Site'
-//             description='A small site for a local business, showcasing their services and contact information. Designed to be responsive and user-friendly.'
-//             stack={['HTML5', 'CSS3', 'Flexbox']}
-//             imgSrc='./img/sushi.png'
-//             liveDemo='https://sushi-world-on.netlify.app/'
-//             codeLink='https://github.com/oskarnordin/js-project-business-site'
-//           />
-//           <ProjectCard
-//             title='Weather App'
-//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-//             stack={['HTML5', 'CSS3', 'React', 'Node']}
-//             imgSrc='./img/weather.png'
-//             liveDemo='https://heatherweather.netlify.app/'
-//             codeLink='https://github.com/oskarnordin/js-project-weather-app'
-//           />
-//           <ProjectCard
-//             title='Accessibility Quiz'
-//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-//             stack={['HTML5', 'CSS3', 'Node']}
-//             imgSrc='./img/access.png'
-//             liveDemo='https://js-project-accessibility-on.netlify.app/'
-//             codeLink='https://github.com/oskarnordin/js-project-accessibility'
-//           />
-//           <ProjectCard
-//             title='This Portfolio'
-//             description='The chat bot app is a conversational AI-powered tool designed to enhance user experience by providing instant, personalized, and automated responses to user inquiries.'
-//             stack={['HTML5', 'CSS3', 'React', 'Node']}
-//             imgSrc='./img/portfolio.png'
-//             liveDemo='#'
-//             codeLink='#https://github.com/oskarnordin/js-portfolio-project'
-//           />
-//         </ProjectsGrid>
-//         <a href='#myWords'></a>
-//       </SectionContainer>
-//     </Background>
-//   );
-// };
-
 export default ProjectCard;

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { BlobCanvas } from '../Blob';
+import ScrollAni from '../ScrollAnimation';
 
 const GradientBackground = styled.div`
   position: absolute;
@@ -75,7 +76,7 @@ const Bigtext = styled.p`
 
 const introText = `I'm Oskar,
 a web
-developer
+developer 
 from Sweden.`;
 
 const HeroSection = () => {
@@ -83,6 +84,8 @@ const HeroSection = () => {
   const [textColor, setTextColor] = useState('#f0f0f0');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
+  const [scrollDir, setScrollDir] = useState('up');
+  const scrollYRef = useRef(0);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
@@ -174,7 +177,10 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const currentY = window.scrollY;
+      setScrollDir(currentY > scrollYRef.current ? 'down' : 'up');
+      setScrollY(currentY);
+      scrollYRef.current = currentY;
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -187,7 +193,7 @@ const HeroSection = () => {
         <div
           style={{
             position: 'relative',
-            color: '#111111',
+            color: '#585756',
             fontFamily: 'DX Slight Extra',
             zIndex: 100,
             paddingTop: '60px',
@@ -203,6 +209,7 @@ const HeroSection = () => {
         </div>
         <BlobCanvas />
       </CenteredContent>
+      <ScrollAni scrollY={scrollY} fade={scrollY > 10} />
     </Container>
   );
 };

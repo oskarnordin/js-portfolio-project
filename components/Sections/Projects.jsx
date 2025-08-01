@@ -90,12 +90,16 @@ const ShowroomH3 = styled.h3`
   background-color: transparent;
   color: #2d3748;
   font-style: italic;
-  font-size: 64px;
+  font-size: 84px;
   letter-spacing: 4px;
   padding: 64px 32px 16px 32px;
   text-decoration: none;
   text-align: center;
   align-self: center;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
 `;
 
 const ShowroomP = styled.p`
@@ -120,7 +124,7 @@ const HeaderWrapper = styled.div`
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) =>
     $visible ? 'translateY(0)' : 'translateY(30px)'};
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;

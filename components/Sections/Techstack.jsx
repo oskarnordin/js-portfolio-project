@@ -41,7 +41,7 @@ const SkillsContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   opacity: 0;
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
@@ -54,13 +54,17 @@ const TechstackH3 = styled.h3`
   font-style: italic;
   letter-spacing: 4px;
   color: #f8f8f8;
-  font-size: 64px;
+  font-size: 84px;
   padding: 16px 32px;
   border-radius: 16px;
   text-decoration: none;
 
   width: auto;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
 `;
 
 const TechstackP = styled.p`

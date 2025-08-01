@@ -66,9 +66,9 @@ export const BlobCanvas = () => {
         // ctx.lineTo(_p2.x, _p2.y);
 
         // ctx.closePath();
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = '#FF5656'; // Use your preferred grey color
         ctx.fill();
-        ctx.strokeStyle = '#000000';
+
         // ctx.stroke();
 
         requestAnimationFrame(this.render.bind(this));
