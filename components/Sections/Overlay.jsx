@@ -85,47 +85,27 @@ const H1overlay = styled.h1`
 const MenuOverlay = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 300px; // changed from 600px to 300px
+  max-width: 100vw;
   background: #ff5656;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
-  flex-direction: row;
+  flex-direction: column; // column layout
   justify-content: center;
   align-items: center;
-  padding: 24px;
+  padding: 24px 0;
   transition: transform 0.4s;
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+  transform: ${({ open }) =>
+    open ? 'translateX(0)' : 'translateX(100%)'}; // slide from right
   height: 100vh;
 
-  @media (min-width: 768px) {
-    height: 150px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 24px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  @media (max-width: 758px) {
     width: 100%;
-    background: #ff5656;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 8000;
-    transition: transform 0.4s;
-    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
-    display: flex;
-  }
-
-  @media (max-width: 768px) {
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 100vw;
     padding: 0;
   }
 `;
@@ -138,7 +118,7 @@ const MenuLink = styled.a`
   font-family: 'Tomorrow', sans-serif;
   color: #f8f7f7;
   text-decoration: none;
-  margin: 0 12px;
+  margin: 32px 0; // increased vertical gap between links
   font-weight: 400;
   transition: color 0.4s;
   &:hover {
