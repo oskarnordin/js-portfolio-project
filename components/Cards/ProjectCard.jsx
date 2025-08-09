@@ -20,9 +20,9 @@ const ProjectCardContainer = styled.div`
   background-color: #fff;
   flex-direction: column;
   justify-content: space-between;
-  height: 480px;
-  min-width: 40%;
-  max-width: 480px;
+  align-content: space-between;
+  height: 530px;
+ width: 45%; // changed from min-width/max-width to width: 100%
   text-align: center;
   padding: 20px;
   transform: translateY(20px);
@@ -169,12 +169,15 @@ const TechTagsWrapper = styled.div`
 `;
 
 const ProjectsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // exactly two columns
   gap: 40px;
   width: 100%;
-  justify-content: center;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // stack cards on mobile
+  }
 `;
 
 const CardBottom = styled.div`
