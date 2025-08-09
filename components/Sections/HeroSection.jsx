@@ -19,10 +19,11 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   margin: 0;
-  overflow: hidden;
+  overflow: visible; // <-- change this line
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 
   @media (max-width: 768px) {
     padding-top: 30px;
@@ -56,28 +57,42 @@ const AvatarImg = styled.img`
 `;
 
 const Bigtext = styled.p`
-  font-size: 154px;
+  font-size: 156px;
   font-weight: 400;
   white-space: pre-wrap;
   text-align: center;
   font-family: 'DX Slight Extra';
-  color: #111111;
-  z-index: 120;
-  opacity: 70%;
+  color: #2d3748;
+  z-index: ;
   line-height: 1.4;
   padding-right: 10px;
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 
   @media (max-width: 768px) {
-    font-size: 106px;
+    font-size: 82px;
     line-height: 1.3;
   }
 `;
 
-const introText = `I'm Oskar,
-a web
-developer 
-from Sweden.`;
+const Cursor = styled.span`
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+`;
+
+const introText = `I'm Oskar
+a web developer
+from Sweden`;
 
 const HeroSection = () => {
   const [avatarVisible, setAvatarVisible] = useState(false);
@@ -87,6 +102,8 @@ const HeroSection = () => {
   const [scrollDir, setScrollDir] = useState('up');
   const scrollYRef = useRef(0);
   const [contentVisible, setContentVisible] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const timeout = setTimeout(() => setAvatarVisible(true), 200);
@@ -96,6 +113,22 @@ const HeroSection = () => {
   useEffect(() => {
     const timeout = setTimeout(() => setContentVisible(true), 100);
     return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    let current = 0;
+    setTypedText('');
+    setShowCursor(true);
+    const typeInterval = setInterval(() => {
+      setTypedText(introText.slice(0, current + 1));
+      current++;
+      if (current === introText.length) {
+        clearInterval(typeInterval);
+        // Remove this to keep the cursor blinking:
+        // setTimeout(() => setShowCursor(false), 1000);
+      }
+    }, 100); // adjust speed here
+    return () => clearInterval(typeInterval);
   }, []);
 
   const avatarInitial = {
@@ -204,12 +237,13 @@ const HeroSection = () => {
               transform: `translateY(${scrollY * 0.45}px)`,
             }}
           >
-            {introText}
+            {typedText}
+            {showCursor && <Cursor>|</Cursor>}
           </Bigtext>
         </div>
         <BlobCanvas />
       </CenteredContent>
-      <ScrollAni scrollY={scrollY} fade={scrollY > 10} />
+      {/* <ScrollAni scrollY={scrollY} fade={scrollY > 10} /> */}
     </Container>
   );
 };
