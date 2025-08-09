@@ -35,9 +35,9 @@ const ProjectContainer = styled.div`
   font-weight: 300;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   margin: 0 auto;
   box-sizing: border-box;
   align-items: center;
