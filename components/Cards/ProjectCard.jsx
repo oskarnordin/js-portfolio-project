@@ -1,18 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Background = styled.div`
   position: relative;
-  display: flex;
   scroll-margin-top: 90px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: #fffbf9;
   min-height: 100%;
   width: 100%;
   z-index: 20;
   padding-bottom: 32px;
+  text-align: center;
 `;
 
 const ProjectCardContainer = styled.div`
@@ -22,7 +19,7 @@ const ProjectCardContainer = styled.div`
   justify-content: space-between;
   align-content: space-between;
   height: 530px;
- width: 45%; // changed from min-width/max-width to width: 100%
+  width: auto; // changed from min-width/max-width to width: 100%
   text-align: center;
   padding: 20px;
   transform: translateY(20px);

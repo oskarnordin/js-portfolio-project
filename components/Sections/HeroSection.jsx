@@ -4,6 +4,7 @@ import { BlobCanvas } from '../Blob';
 import ScrollAni from '../ScrollAnimation';
 
 const GradientBackground = styled.div`
+  color: grey;
   position: absolute;
   inset: 0;
   margin: 0;
@@ -14,6 +15,7 @@ const GradientBackground = styled.div`
   pointer-events: none;
   opacity: 0.35;
 `;
+
 const Container = styled.div`
   position: relative;
   width: 100%;
@@ -38,7 +40,6 @@ const CenteredContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 180px;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
@@ -72,7 +73,7 @@ const Bigtext = styled.p`
   @media (max-width: 768px) {
     font-size: 109px;
     line-height: 1.3;
-    margin-right: 30px;
+    margin-right: px;
   }
 `;
 

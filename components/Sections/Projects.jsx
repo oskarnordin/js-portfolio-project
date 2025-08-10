@@ -31,16 +31,11 @@ const ProjectContainer = styled.div`
   color: #2d3748;
   position: relative;
   z-index: 30;
-  font-size: 16px;
-  font-weight: 300;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   margin: 0 auto;
   box-sizing: border-box;
-  align-items: center;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) =>
     $visible ? 'translateY(0)' : 'translateY(30px)'};
@@ -55,11 +50,11 @@ const ProjectContainer = styled.div`
   @media (max-width: 900px) {
     max-width: 100%;
     padding: 1rem;
+    gap: 20px;
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
     max-width: 100%;
     width: 100%;
     padding: 0.5rem;
