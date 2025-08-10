@@ -327,7 +327,7 @@ export const BlobCanvas = () => {
       ref={canvasRef}
       style={{
         position: 'absolute',
-        top: '45%',
+        top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: window.innerWidth > 768 ? '1200px' : '1000px',
