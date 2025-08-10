@@ -57,36 +57,22 @@ const AvatarImg = styled.img`
 `;
 
 const Bigtext = styled.p`
-  font-size: 156px;
+  font-size: 164px;
   font-weight: 400;
   white-space: pre-wrap;
   text-align: center;
   font-family: 'DX Slight Extra';
-  color: #2d3748;
-  z-index: ;
+  color: #2d2f35;
   line-height: 1.4;
-  padding-right: 10px;
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 
   @media (max-width: 768px) {
-    font-size: 82px;
+    font-size: 109px;
     line-height: 1.3;
-  }
-`;
-
-const Cursor = styled.span`
-  display: inline-block;
-  width: 1ch;
-  animation: blink 1s steps(1) infinite;
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
+    margin-right: 30px;
   }
 `;
 
@@ -102,8 +88,6 @@ const HeroSection = () => {
   const [scrollDir, setScrollDir] = useState('up');
   const scrollYRef = useRef(0);
   const [contentVisible, setContentVisible] = useState(false);
-  const [typedText, setTypedText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const timeout = setTimeout(() => setAvatarVisible(true), 200);
@@ -113,22 +97,6 @@ const HeroSection = () => {
   useEffect(() => {
     const timeout = setTimeout(() => setContentVisible(true), 100);
     return () => clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    let current = 0;
-    setTypedText('');
-    setShowCursor(true);
-    const typeInterval = setInterval(() => {
-      setTypedText(introText.slice(0, current + 1));
-      current++;
-      if (current === introText.length) {
-        clearInterval(typeInterval);
-        // Remove this to keep the cursor blinking:
-        // setTimeout(() => setShowCursor(false), 1000);
-      }
-    }, 100); // adjust speed here
-    return () => clearInterval(typeInterval);
   }, []);
 
   const avatarInitial = {
@@ -237,8 +205,7 @@ const HeroSection = () => {
               transform: `translateY(${scrollY * 0.45}px)`,
             }}
           >
-            {typedText}
-            {showCursor && <Cursor>|</Cursor>}
+            {introText}
           </Bigtext>
         </div>
         <BlobCanvas />
