@@ -63,6 +63,7 @@ const Bigtext = styled.p`
   white-space: pre-wrap;
   text-align: center;
   font-family: 'DX Slight Extra';
+  font-weight: 600;
   color: #2d2f35;
   line-height: 1.4;
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
@@ -71,9 +72,9 @@ const Bigtext = styled.p`
   overflow-wrap: break-word;
 
   @media (max-width: 768px) {
-    font-size: 109px;
+    font-size: 104px;
     line-height: 1.3;
-    margin-right: px;
+    margin-right: 35px;
   }
 `;
 
