@@ -61,7 +61,7 @@ const InfoP = styled.p`
   color: #f8f8f8;
 
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   width: 540px;
   text-decoration: none;
   line-height: 1.6;

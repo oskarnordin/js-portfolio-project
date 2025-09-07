@@ -187,7 +187,7 @@ const SkillsSection = () => {
   `;
 
   const Label = styled.p`
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #f8f8f8;
     text-align: center;
