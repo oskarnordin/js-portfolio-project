@@ -18,7 +18,7 @@ const ProjectCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
-  height: 530px;
+  height: 500px;
   width: auto; // changed from min-width/max-width to width: 100%
   text-align: center;
   padding: 20px;
@@ -67,7 +67,6 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 4%;
   display: block;
   transition: transform 0.3s ease;
 `;
