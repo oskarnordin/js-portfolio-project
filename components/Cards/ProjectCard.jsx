@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Background = styled.div`
@@ -18,8 +17,8 @@ const ProjectCardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
-  height: 500px;
-  width: auto; // changed from min-width/max-width to width: 100%
+  height: 550px;
+  width: auto;
   text-align: center;
   padding: 20px;
   transform: translateY(20px);
@@ -89,15 +88,15 @@ const ProjectDescription = styled.p`
   color: #2d3748;
   justify-content: left;
   text-align: left;
+  padding-bottom: 10px;
 `;
 
 const TechTag = styled.span`
-  background-color: #ff5656;
+  background-color: #ff4646;
   font-weight: 400;
   color: #fafafa;
   font-size: 14px;
   padding: 8px;
-  margin-top: 16px;
   border-radius: 8px;
   transition: background-color 0.2s ease,
     transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
