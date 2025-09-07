@@ -192,6 +192,22 @@ const FeaturedProjects = () => {
           liveDemo='https://recipe-libary-on.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-recipe-library'
         />
+        <ProjectCard
+          title='Happy Thoughts'
+          description='A simple app where users can share their happy thoughts and like others. It uses a backend API to store and retrieve messages.'
+          stack={['HTML5', 'CSS3', 'React', 'API']}
+          imgSrc='/img/happy.jpg'
+          liveDemo='https://smilezone78.netlify.app/'
+          codeLink='https://github.com/oskarnordin/js-project-api'
+        />
+        <ProjectCard
+          title='Movie App'
+          description='A simple app where users can search for movies, view details, and save their favorites. It uses a backend API to fetch movie data.'
+          stack={['HTML5', 'CSS3', 'React', 'API']}
+          imgSrc={'/img/cinema.png'}
+          liveDemo='https://effervescent-praline-71a88e.netlify.app/'
+          codeLink='https://github.com/oskarnordin/js-project-movies'
+        />
       </ProjectContainer>
     </Background>
   );
