@@ -1,221 +1,140 @@
 import styled from 'styled-components';
 
-const Background = styled.div`
-  position: relative;
-  scroll-margin-top: 90px;
-  background-color: #fffbf9;
-  min-height: 100%;
-  width: 100%;
-  z-index: 20;
-  padding-bottom: 32px;
-  text-align: center;
-`;
-
-const ProjectCardContainer = styled.div`
+// Hero-like card design using local styled-components (safe, no external API calls)
+const Card = styled.article`
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
   display: flex;
-  background-color: #fff;
   flex-direction: column;
-  justify-content: space-between;
-  align-content: space-between;
-  height: 550px;
-  width: auto;
-  text-align: center;
-  padding: 20px;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  border-radius: 5%;
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  box-shadow: 10px 10px 28px rgba(155, 155, 155, 0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+  min-height: 420px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: cardFadeIn 0.6s ease forwards;
 
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
+  &:hover {
+    transform: translateY(-6px);
   }
 
-  @media (max-width: 768px) {
-    height: auto;
-    width: 100%;
-    border-radius: 0;
-    display: flex;
-    box-shadow: none;
-    align-items: stretch;
-    justify-content: flex-start;
-    margin-bottom: 24px;
-    box-sizing: border-box;
+  @keyframes cardFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
-const ProjectImageWrapper = styled.div`
+const CardMedia = styled.div`
   width: 100%;
   height: 220px;
-  border-radius: 4px;
+  background: transparent;
+  display: block;
   overflow: hidden;
-  display: block;
-
-  @media (max-width: 768px) {
-    height: 200px;
-  }
-
-  &:hover img {
-    transform: scale(1.1);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 20px;
+    padding: 12px;
   }
 `;
 
-const ProjectImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-`;
-
-const ProjectTitle = styled.h3`
+const CardBody = styled.div`
+  padding: 18px 18px 14px 18px;
   display: flex;
-  color: #2d3748;
-  justify-content: left;
-  text-align: left;
-  font-family: 'Tomorrow', sans-serif;
-  font-size: 30px;
-  font-weight: 400;
-  margin-bottom: 6px;
-  margin-top: 8px;
-`;
-
-const ProjectDescription = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  color: #2d3748;
-  justify-content: left;
-  text-align: left;
-  padding-bottom: 10px;
-`;
-
-const TechTag = styled.span`
-  background-color: #ff4646;
-  font-weight: 400;
-  color: #fafafa;
-  font-size: 14px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease,
-    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  &:hover {
-    transform: scale(1.1);
-  }
-  @media (max-width: 768px) {
-    &:hover {
-      transform: none;
-    }
-  }
-`;
-
-const Button = styled.a`
-  background-color: #ff5656;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  display: flex;
-  color: white;
-  font-weight: 600;
-  width: 50%;
-  max-width: 50%;
-  font-size: 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: background-color 0.2s ease,
-    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  box-sizing: border-box;
-  &:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-  @media (max-width: 768px) {
-    &:hover {
-      transform: none;
-    }
-  }
-`;
-
-const ShowroomH3 = styled.h3`
-  font-family: 'DM Sans';
-  color: #2d3748;
-  font-weight: 600;
-  font-size: 34px;
-  margin: 5px;
-  padding: 10px;
-  text-decoration: none;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  width: 100%;
-  gap: 10px;
-`;
-
-const TechTagsWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const ProjectsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); // exactly two columns
-  gap: 40px;
-  width: 100%;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; // stack cards on mobile
-  }
-`;
-
-const CardBottom = styled.div`
-  display: flex;
-  width: 100%;
   flex-direction: column;
   gap: 12px;
-  margin-top: auto;
+  flex: 1 1 auto;
 `;
 
-const ProjectCard = ({
-  title,
-  description,
-  stack,
-  imgSrc,
-  liveDemo,
-  codeLink,
-}) => {
+const Title = styled.h4`
+  margin: 0;
+  font-size: 16px;
+  color: #2E3647;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  color: #2E3647;
+  font-size: 14px;
+  line-height: 1.2;
+  flex: 0 0 auto;
+`;
+
+const Tags = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+`;
+
+const Tag = styled.span`
+  background: #5438F7;
+  color: #ffffff;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+`;
+
+const CardFooter = styled.div`
+  padding: 14px 18px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(15,23,42,0.04);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+`;
+
+const Action = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+`;
+
+const Primary = styled(Action)`
+  background: #3D4CFB;
+`;
+
+const Secondary = styled(Action)`
+  background: transparent;
+  color: #374151;
+  border: 1px solid rgba(55,65,81,0.08);
+`;
+
+const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
   return (
-    <ProjectCardContainer className={'visible'}>
-      <div>
-        <ProjectImageWrapper>
-          <ProjectImage src={imgSrc} alt={title} />
-        </ProjectImageWrapper>
-        <ProjectTitle>{title}</ProjectTitle>
-        <ProjectDescription>{description}</ProjectDescription>
-      </div>
-      <CardBottom>
-        <TechTagsWrapper>
-          {stack.map((tech, index) => (
-            <TechTag key={index}>{tech}</TechTag>
+    <Card className="project-card">
+      <CardMedia>
+        {imgSrc ? <img src={imgSrc} alt={title} /> : null}
+      </CardMedia>
+      <CardBody>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Tags>
+          {stack.map((s, i) => (
+            <Tag key={i}>{s}</Tag>
           ))}
-        </TechTagsWrapper>
-        <ButtonWrapper>
-          <Button href={liveDemo} target='_blank' rel='noopener noreferrer'>
-            Live demo
-          </Button>
-          <Button href={codeLink} target='_blank' rel='noopener noreferrer'>
-            View code
-          </Button>
-        </ButtonWrapper>
-      </CardBottom>
-    </ProjectCardContainer>
+        </Tags>
+      </CardBody>
+      <CardFooter>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <Secondary href={codeLink} target="_blank" rel="noopener noreferrer">Code</Secondary>
+          <Primary href={liveDemo} target="_blank" rel="noopener noreferrer">Live</Primary>
+        </div>
+      </CardFooter>
+    </Card>
   );
 };
 
