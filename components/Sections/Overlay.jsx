@@ -1,34 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import 'hamburgers/dist/hamburgers.min.css';
 
-// Global styles for typewriter effect
-const GlobalStyle = createGlobalStyle`
-
-  .hamburger--emphatic .hamburger-inner,
-  .hamburger--emphatic .hamburger-inner::before,
-  .hamburger--emphatic .hamburger-inner::after {
-    background-color: #F7F6F6 !important;
-  }
-
-  .hamburger-box {
-    display: none;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
-`;
+// Keep empty GlobalStyle placeholder for future global overrides
+const GlobalStyle = createGlobalStyle``;
 
 const OverlayContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  /* Participate in normal document flow so header/navbar remains above and
+     content below is pushed when the overlay area grows */
+  position: relative;
+  width: 100%;
+  height: auto;
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -83,29 +65,28 @@ const H1overlay = styled.h1`
 `;
 
 const MenuOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px; // changed from 600px to 300px
-  max-width: 100vw;
-  background: #ff5656;
+  /* Make the slide-out menu part of the page flow so it pushes content
+     instead of covering it. Using relative positioning keeps it in flow. */
+  position: relative;
+  width: 300px; /* changed from 600px to 300px */
+  max-width: 100%;
+  background: #3D4CFB;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
-  flex-direction: column; // column layout
+  flex-direction: column; /* column layout */
   justify-content: center;
   align-items: center;
   padding: 24px 0;
   transition: transform 0.4s;
-  transform: ${({ open }) =>
-    open ? 'translateX(0)' : 'translateX(100%)'}; // slide from right
-  height: 100vh;
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')}; /* slide from right */
+  height: auto;
 
   @media (max-width: 758px) {
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     padding: 0;
   }
 `;
@@ -122,7 +103,7 @@ const MenuLink = styled.a`
   font-weight: 400;
   transition: color 0.4s;
   &:hover {
-    color: #ffc8c8;
+    color: #c6ccff;
   }
 
   @media (max-width: 768px) {
@@ -135,12 +116,12 @@ const MenuLink = styled.a`
 `;
 
 const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#ff5656' : '#ff5656')};
+  background: ${({ open }) => (open ? '#3D4CFB' : '#3D4CFB')};
   border-radius: 50%;
   padding: 3px;
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  /* Keep the hamburger in the document flow so it doesn't overlap the navbar */
+  position: relative;
+  margin: 8px; /* small offset from surrounding content */
   z-index: 10001;
   display: flex;
   align-items: center;
@@ -177,59 +158,6 @@ function Overlay() {
 
   return (
     <>
-      <HamburgerContainer open={menuOpen}>
-        <button
-          className={`hamburger hamburger--emphatic${
-            menuOpen ? ' is-active' : ''
-          }`}
-          type='button'
-          aria-label='Menu'
-          aria-controls='navigation'
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-          style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'transparent',
-            boxShadow: 'none',
-          }}
-        >
-          <span className='hamburger-box'>
-            <span className='hamburger-inner'></span>
-          </span>
-        </button>
-      </HamburgerContainer>
-      {/* Slide-out Menu for mobile */}
-      <MenuOverlay open={menuOpen}>
-        <MenuLink href='#prologue' onClick={() => setMenuOpen(false)}>
-          Prologue
-        </MenuLink>
-        <MenuLink href='#showroom' onClick={() => setMenuOpen(false)}>
-          Showroom
-        </MenuLink>
-        <MenuLink href='#moodboard' onClick={() => setMenuOpen(false)}>
-          Moodboard
-        </MenuLink>
-        <MenuLink href='#techstack' onClick={() => setMenuOpen(false)}>
-          Tech Stack
-        </MenuLink>
-        <MenuLink href='#contact' onClick={() => setMenuOpen(false)}>
-          Let's Talk
-        </MenuLink>
-      </MenuOverlay>
-      {/* Desktop Menu */}
-      {/* <DesktopMenu>
-        <MenuLink href='#prologue'>Prologue</MenuLink>
-        <MenuLink href='#showroom'>Showroom</MenuLink>
-        <MenuLink href='#moodboard'>Moodboard</MenuLink>
-        <MenuLink href='#techstack'>Tech Stack</MenuLink>
-        <MenuLink href='#contact'>Let's Talk</MenuLink>
-      </DesktopMenu> */}
       <GlobalStyle />
       <OverlayContainer>
         <OverlayCard
