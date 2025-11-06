@@ -66,7 +66,7 @@ export const BlobCanvas = () => {
         // ctx.lineTo(_p2.x, _p2.y);
 
         // ctx.closePath();
-        ctx.fillStyle = '#FF5656'; // Use your preferred grey color
+        ctx.fillStyle = 'var(--color-primary)'; // Use your preferred grey color
         ctx.fill();
 
         // ctx.stroke();
@@ -84,7 +84,7 @@ export const BlobCanvas = () => {
         this._color = value;
       }
       get color() {
-        return this._color || '#ff5656'; // Changed to a red color
+        return this._color || 'var(--color-primary)'; // Changed to a red color
       }
 
       set canvas(value) {
@@ -255,7 +255,7 @@ export const BlobCanvas = () => {
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
-    blob.color = '#ff5656'; // Set custom color here
+  blob.color = '#3D4CFB'; // Set custom color here
     setBlobSize();
     blob.init();
     blob.render();
@@ -332,8 +332,8 @@ export const BlobCanvas = () => {
         transform: 'translate(-50%, -50%)',
         width: window.innerWidth > 768 ? '1200px' : '1000px',
         height: window.innerWidth > 768 ? '1200px' : '1000px',
-        zIndex: 1, // Lower z-index to place behind text
-        pointerEvents: 'auto', // Enable pointer events for mouse interaction
+        zIndex: 0, // ensure canvas sits behind positioned text inside the same container
+        pointerEvents: 'none', // disable pointer events so it doesn't block UI (mouse is tracked via window)
       }}
     />
   );
