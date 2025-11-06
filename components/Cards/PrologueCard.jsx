@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const PrologueCardContainer = styled.div`
   width: 100%;
-  max-width: 1100px;
+  max-width: 100%;
   gap: 10px;
   text-align: left;
   box-sizing: border-box;
@@ -39,15 +39,11 @@ const ColumnsContainer = styled.div`
   }
 `;
 
-const PrologueH3 = styled.h3`
-  font-family: 'DX Slight Medium';
-  font-style: italic;
+const PrologueH3 = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #f8f8f8;
-  font-size: 84px;
-  letter-spacing: 4px;
+  font-size: 60px;
   padding: 16px;
   text-decoration: none;
   letter-spacing: 2px;
@@ -58,10 +54,7 @@ const PrologueH3 = styled.h3`
 `;
 
 const InfoP = styled.p`
-  color: #f8f8f8;
-
   font-weight: 400;
-  font-size: 16px;
   width: 540px;
   text-decoration: none;
   line-height: 1.6;
@@ -78,14 +71,13 @@ const WordSpan = styled.span`
   cursor: default;
 
   &:hover {
-    font-style: italic;
+    font-style: ;
   }
 `;
 
 const PrologueP = styled.p`
   color: #f8f7f7;
   font-weight: 400;
-  font-size: 22px;
   text-align: center;
   padding-bottom: 32px;
 
@@ -99,7 +91,6 @@ const PrologueCard = ({ title, info }) => {
   return (
     <PrologueCardContainer className='visible'>
       <PrologueH3>Prologue</PrologueH3>
-      <PrologueP>Some forewords before we start.</PrologueP>
       <ColumnsContainer>
         <div>
           <InfoP>
