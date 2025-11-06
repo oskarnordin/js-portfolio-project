@@ -1,16 +1,14 @@
 // components/SkillsSection.jsx
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { AngleDownImage } from '../SharedComponents';
+import { AngleDownImage, Inner } from '../SharedComponents';
 import { MarginArrowContainer } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   scroll-margin-top: 90px; // Adjust to your navbar height
-
   position: relative;
-  background-color: #ff5656;
-  min-height: 80vh;
+  height: 80vh;
   width: 100%;
   z-index: 20;
   display: flex;
@@ -25,7 +23,8 @@ const Background = styled.div`
 `;
 
 const SkillsContainer = styled.div`
-  max-width: 1100px;
+  max-width: 100%; 
+
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
@@ -39,22 +38,19 @@ const SkillsContainer = styled.div`
   align-items: center; /* Center horizontally */
   padding: 2rem;
   box-sizing: border-box;
-  width: 100%;
+
   opacity: 0;
-  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
+    transform: translateY(0);
   }
 `;
 
-const TechstackH3 = styled.h3`
-  color: #f8f8f8;
-  font-family: 'DX Slight Medium';
-  font-style: italic;
-  letter-spacing: 4px;
-  color: #f8f8f8;
-  font-size: 84px;
+const TechstackH1 = styled.h1`
+  font-size: 60px;
   padding: 16px 32px;
   border-radius: 16px;
   text-decoration: none;
@@ -68,11 +64,11 @@ const TechstackH3 = styled.h3`
 `;
 
 const TechstackP = styled.p`
-  color: #f8f8f8;
-  font-size: 20px;
+
+  font-size: 14px;
   font-weight: 400;
   text-align: center;
-  padding: 0px 32px px 32px;
+  padding: 0 32px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -138,7 +134,7 @@ const SkillsSection = () => {
     flex-direction: column;
     align-items: center; /* Center content in column */
     justify-content: center;
-    background-color: #ff5656;
+    background-color:transparent;
     border-radius: 16px;
 
     @media (max-width: 768px) {
@@ -149,11 +145,10 @@ const SkillsSection = () => {
   `;
 
   const ColumnTitle = styled.h4`
-    font-size: 28px;
-    font-family: 'Tomorrow', sans-serif;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin-top: 6px;
-    color: #f8f8f8;
     text-align: center;
     width: 100%;
 
@@ -177,9 +172,7 @@ const SkillsSection = () => {
     flex-direction: column; /* Stack label vertically */
     align-items: center; /* Center label horizontally */
     justify-content: center;
-    color: #f8f8f8;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     background-color: transparent;
     border-radius: 16px;
@@ -187,66 +180,35 @@ const SkillsSection = () => {
   `;
 
   const Label = styled.p`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    color: #f8f8f8;
     text-align: center;
-    &:hover {
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
-    }
   `;
 
-  const FrontendIcon = styled.img`
+  // Single shared icon component for tech stack icons
+  const TechstackIcon = styled.img`
     display: block;
-
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     object-fit: contain;
     border-radius: 50%;
     margin-top: 42px;
-  `;
-
-  const BackendIcon = styled.img`
-    display: block;
-
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-top: 42px;
-  `;
-
-  const AnalysisIcon = styled.img`
-    display: block;
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-top: 42px;
-  `;
-
-  const MiscIcon = styled.img`
-    display: block;
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-top: 42px;
+    /* Force icon to render dark regardless of source colors */
+    filter: brightness(0.2) saturate(100%);
   `;
 
   return (
     <Background id='techstack'>
-      <SkillsContainer
-        ref={ref}
-        className={isVisible ? 'visible' : ''}
-        $visible={isVisible}
-      >
-        <TechstackH3>Tech Stack</TechstackH3>
-        <TechstackP>Here are some of the technologies I work with.</TechstackP>
-        <ColumnsWrapper>
+      <Inner>
+        <SkillsContainer
+          ref={ref}
+          className={isVisible ? 'visible' : ''}
+          $visible={isVisible}
+        >
+          <TechstackH1>Tech Stack</TechstackH1>
+          <ColumnsWrapper>
           <Column>
-            <FrontendIcon src='/img/frontend.svg' alt='Frontend Icon' />
+            <TechstackIcon src='/img/frontend.svg' alt='Frontend Icon' />
             <ColumnTitle>Frontend</ColumnTitle>
             <IconGrid>
               {techStack.frontend.map((item) => (
@@ -257,7 +219,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <BackendIcon src='/img/database.svg' alt='Database Icon' />
+            <TechstackIcon src='/img/database.svg' alt='Database Icon' />
             <ColumnTitle>Backend</ColumnTitle>
             <IconGrid>
               {techStack.backend.map((item) => (
@@ -268,7 +230,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <MiscIcon src='/img/misc.svg' alt='Misc Icon' />
+            <TechstackIcon src='/img/misc.svg' alt='Misc Icon' />
             <ColumnTitle>Misc</ColumnTitle>
             <IconGrid>
               {techStack.misc.map((item) => (
@@ -279,7 +241,7 @@ const SkillsSection = () => {
             </IconGrid>
           </Column>
           <Column>
-            <AnalysisIcon src='/img/analysis.svg' alt='Analysis Icon' />
+            <TechstackIcon src='/img/analysis.svg' alt='Analysis Icon' />
             <ColumnTitle>Analysis</ColumnTitle>
             <IconGrid>
               {techStack.analysis.map((item) => (
@@ -291,6 +253,7 @@ const SkillsSection = () => {
           </Column>
         </ColumnsWrapper>
       </SkillsContainer>
+      </Inner>
     </Background>
   );
 };
