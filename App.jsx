@@ -29,6 +29,7 @@ function App() {
       </ThemeProvider>
       <main></main>
     </>
+            <Route path="/showroom" element={<FeaturedProjects />} />
   );
 }
 
