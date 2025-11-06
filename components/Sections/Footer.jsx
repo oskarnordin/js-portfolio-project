@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Inner } from '../SharedComponents';
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -52,10 +53,12 @@ const Copyright = styled.p`
 
 const Footer = () => (
   <FooterContainer>
-    <SubText>Built with React & styled-components</SubText>
-    <Copyright>
-      &copy; {new Date().getFullYear()} Oskar Nordin. All rights reserved.
-    </Copyright>
+    <Inner>
+      <SubText>Built with React & styled-components</SubText>
+      <Copyright>
+        &copy; {new Date().getFullYear()} Oskar Nordin. All rights reserved.
+      </Copyright>
+    </Inner>
   </FooterContainer>
 );
 

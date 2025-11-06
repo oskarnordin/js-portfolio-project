@@ -12,6 +12,15 @@ export const SectionContainer = styled.div`
   color: black;
 `;
 
+// Reusable inner content container: centers content and caps width to 1100px
+export const Inner = styled.div`
+  width: min(1100px, 100%);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px; /* breathing room on small viewports */
+  box-sizing: border-box;
+`;
+
 export const MarginArrowContainer = styled.div`
   position: absolute;
   bottom: 32px;
