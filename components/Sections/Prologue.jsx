@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { AngleDownImage } from '../SharedComponents';
 import { SectionContainer } from '../SharedComponents';
 import PrologueCard from '../Cards/PrologueCard';
+import { Inner } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
@@ -11,8 +12,7 @@ const Background = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ff5656;
-  height: 100vh;
+  height: 80vh;
   width: auto;
   z-index: 20;
 
@@ -42,9 +42,11 @@ const PrologueSection = () => {
   return (
     <Background id='prologue'>
       <SectionContainer style={{ position: 'relative', zIndex: 30 }}>
-        <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>
-          <PrologueCard />
-        </FadeInContainer>
+        <Inner>
+          <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>
+            <PrologueCard />
+          </FadeInContainer>
+        </Inner>
       </SectionContainer>
     </Background>
   );
