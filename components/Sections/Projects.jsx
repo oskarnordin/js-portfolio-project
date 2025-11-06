@@ -1,17 +1,16 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../Cards/ProjectCard';
+import { Inner } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
-  background-color: #2d3748;
   position: relative;
   display: flex;
   scroll-margin-top: 90px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fffbf9;
   min-height: 100%;
   width: 100%;
   z-index: 20;
@@ -25,15 +24,15 @@ const Background = styled.div`
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;
   position: relative;
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
   margin: 0 auto;
   box-sizing: border-box;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
@@ -41,25 +40,44 @@ const ProjectContainer = styled.div`
     $visible ? 'translateY(0)' : 'translateY(30px)'};
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   overflow-x: hidden;
+  overflow-y: hidden; /* prevent transient vertical scrollbar while cards animate in */
 
   &.visible {
     opacity: 1;
     transform: translateY(0);
+    overflow-y: visible; /* enable normal vertical overflow once visible */
   }
 
   @media (max-width: 900px) {
-    max-width: 100%;
-    padding: 1rem;
     gap: 20px;
+    padding: 0 12px;
   }
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    width: 100%;
-    padding: 0.5rem;
+  @media (max-width: 480px) {
     gap: 16px;
+    padding: 0 8px;
   }
+
+  /* hide scrollbars visually while keeping overflow behavior */
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* Stagger child card animations */
+  > * {
+    animation-delay: 0s;
+  }
+  > *:nth-child(1) { animation-delay: 0s; }
+  > *:nth-child(2) { animation-delay: 0.08s; }
+  > *:nth-child(3) { animation-delay: 0.16s; }
+  > *:nth-child(4) { animation-delay: 0.24s; }
+  > *:nth-child(5) { animation-delay: 0.32s; }
+  > *:nth-child(6) { animation-delay: 0.40s; }
+  > *:nth-child(7) { animation-delay: 0.48s; }
+  > *:nth-child(8) { animation-delay: 0.56s; }
 `;
 
 const SectionContainer = styled.section`
@@ -81,12 +99,8 @@ const SectionContainer = styled.section`
 const ShowroomH3 = styled.h3`
   scroll-margin-top: 90px; /* Match or exceed navbar height */
   max-width: ${({ theme }) => theme.maxWidth};
-  font-family: 'DX Slight Medium', sans-serif;
-  background-color: transparent;
   color: #2d3748;
-  font-style: italic;
-  font-size: 84px;
-  letter-spacing: 4px;
+  font-size: 60px;
   padding: 64px 32px 16px 32px;
   text-decoration: none;
   text-align: center;
@@ -140,13 +154,14 @@ const FeaturedProjects = () => {
         <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
         <ShowroomP>Here are some projects I've been working on.</ShowroomP>
       </HeaderWrapper>
-      <ProjectContainer
-        className={isVisible ? 'visible' : ''}
-        $visible={isVisible}
-      >
+      <Inner>
+        <ProjectContainer
+          className={isVisible ? 'visible' : ''}
+          $visible={isVisible}
+        >
         <ProjectCard
-          title='SubscriBee Final Project'
-          description='A simple app where users can subscribe to their favorite content creators and receive updates. It uses a backend API to manage subscriptions and notifications.'
+          title='Subscribee Final Project'
+          description='An app where users can add their subscriptions and manage them easily. It uses a backend API to manage subscriptions and notifications via email before due dates.'
           stack={[
             'HTML5',
             'CSS3',
@@ -160,21 +175,21 @@ const FeaturedProjects = () => {
             'Bcrypt',
             'Zustand',
           ]}
-          imgSrc={'/img/subs.png'}
+          imgSrc={'/img/netflix.png'}
           liveDemo='https://subscribee-project.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-movies'
         />
         <ProjectCard
           title='Movie App'
-          description='A simple app where users can search for movies, view details, and save their favorites. It uses a backend API to fetch movie data.'
+          description='An app where users can search for movies, view details, and save their favorites. It uses a backend API to fetch movie data.'
           stack={['HTML5', 'CSS3', 'React', 'API']}
-          imgSrc={'/img/cinema.png'}
+          imgSrc={'/img/movie.png'}
           liveDemo='https://effervescent-praline-71a88e.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-movies'
         />
         <ProjectCard
           title='Happy Thoughts'
-          description='A simple app where users can share their happy thoughts and like others. It uses a backend API to store and retrieve messages.'
+          description='An app where users can share their happy thoughts and like others. It uses a backend API to store and retrieve messages.'
           stack={['HTML5', 'CSS3', 'React', 'API']}
           imgSrc='/img/happy.jpg'
           liveDemo='https://smilezone78.netlify.app/'
@@ -220,7 +235,8 @@ const FeaturedProjects = () => {
           liveDemo='https://heatherweather.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-weather-app'
         />
-      </ProjectContainer>
+        </ProjectContainer>
+      </Inner>
     </Background>
   );
 };
