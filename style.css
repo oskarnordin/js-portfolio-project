@@ -1,88 +1,174 @@
-/* * {
-  border: 1px solid #36fdcb;
-} */
+/* Global reset for box-sizing and optional debug border */
+* { box-sizing: border-box; }
+/* Uncomment the following line only when actively debugging layout */
+/* * { border: 1px solid #36fdcb; } */
 
-html,
-body {
-  background-color: #fffbf9;
+:root {
+  --content-width: 1100px;
+
+  /* Layout */
+  --site-max-width: var(--content-width);
+
+  /* Colors (semantic) */
+  --color-bg: #E7EEEC;
+  --color-text: #3A3335;
+  --color-muted: #585756;
+  --color-primary: #FFFBF9;
+  --color-on-primary: #f5f5f5;
+  --color-muted-2: #f0f0f0;
+
+  /* Typography */
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-heading: 'Stack Sans Headline', sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
+
+  --text-base-size: 14px;
+  --text-lg: 20px;
+  --text-xl: 28px;
+  --text-xxl: 84px;
+
+  /* Spacing scale (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radii / shadows */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 28px;
+  --shadow-1: 0 4px 30px rgba(0,0,0,0.08);
+
+  /* Breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 900px;
+  --bp-xl: 1200px;
+
+  /* Z-index scale */
+  --z-foreground: 1000;
+  --z-overlay: 8000;
+
+  /* Transitions */
+  --transition-default: 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-slow: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Global elements */
+html, body {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+
+  font-family: var(--font-sans);
+}
+
+/* Reserve scrollbar gutter to avoid flicker/shift when scrollbars appear */
+html, body {
+  scrollbar-gutter: stable;
+}
+
+/* Fullscreen background video */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -2; /* behind the overlay and content */
+  object-fit: cover;
+  filter: brightness(0.85) saturate(0.85);
+}
+
+#bg-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255,255,255,0.25); /* 25% white overlay */
+  z-index: -1; /* between video (-2) and page content (0+) */
+  pointer-events: none;
 }
 
 p {
-  font-family: 'DM Sans', system-ui;
-  font-size: 16px;
+  font-family: var(--font-sans);
+  font-size: var(--text-base-size);
   margin: 1px;
   line-height: 1.2;
+  color: var(--color-text);
 }
 
-a {
-  color: white;
-  text-decoration: none;
-}
+a { color: var(--color-text); text-decoration: none; }
 
 .container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
+  width: min(var(--site-max-width), 100%);
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
 }
 
 h1 {
   font-size: 24px;
-  font-family: Agdasima;
+  font-family: var(--font-heading);
   font-weight: bold;
-  color: #f5f5f5;
+  color: var(--color-text);
   text-align: center;
   margin: 0;
 }
 
 h2 {
   font-size: 28px;
-  font-family: 'Agdasima', sans-serif;
-  font-weight: 400;
-  color: black;
+  font-family: var(--font-heading);
   font-weight: 600;
+  color: var(--color-text);
   text-align: center;
   margin: 10px;
 }
 
 h3 {
-  font-size: 34px;
-  font-family: 'Agdasima', sans-serif;
+  font-size: 22px;
+  font-family: var(--font-heading);
   font-weight: 600;
-  color: #222222;
   margin: 0;
+  color: var(--color-text);
 }
 
+/* Keyframes */
 @keyframes pulse {
-  0%,
-  100% {
-    transform: translateX(-50%) scale(1); /* Normal size */
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
   }
   50% {
-    transform: translateX(-50%) scale(1.1); /* Slightly bigger */
+    transform: translateX(-50%) scale(1.1);
   }
 }
 
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Cards / layout */
 .sectionCards {
   display: flex;
-  border-radius: 28px;
-  align-items: center;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  color: var(--color-foreground);
   flex-direction: column;
   min-height: 350px;
   width: 450px;
   gap: 20px;
   padding: 30px;
-  grid-column: 12 / 7;
-  grid-row: 1 / 7;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* If you intend to use CSS Grid, ensure start < end for grid-column/grid-row */
+  /* Example: grid-column: 7 / 12; grid-row: 1 / 7; */
+  box-shadow: var(--shadow-1);
   backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
 }
 
 .skillsIcons {
@@ -90,6 +176,7 @@ h3 {
   margin-top: 25px;
 }
 
+/* Fade-in animation helper */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -108,16 +195,22 @@ h3 {
   }
 }
 
+/* Font-face declarations (paths preserved) */
 @font-face {
-  font-family: 'DX Slight Extra';
-  src: url('./fonts/dxslight-extbdultraslant.otf') format('opentype');
+  font-family: 'NeueMetanaMono-Light';
+  src: url('./fonts/NeueMetanaMono-Light.otf') format('opentype');
 }
 @font-face {
-  font-family: 'DX Slight Medium';
-  src: url('./fonts/dxslight-mediumultra.otf') format('opentype');
+  font-family: 'NeueMetanaMono-Regular';
+  src: url('./fonts/NeueMetanaMono-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Tomorrow';
   src: url('./fonts/Tomorrow-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueMetanaNext-SemiBold';
+  src: url('./fonts/NeueMetanaNext-SemiBold.otf') format('truetype');
 }
