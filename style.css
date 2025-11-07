@@ -116,6 +116,16 @@ p {
 
 a { color: var(--color-text); text-decoration: none; }
 
+/* Remove default mobile/UA tap highlight and prevent grey active/focus backgrounds on links */
+a, a * {
+  -webkit-tap-highlight-color: transparent; /* iOS/Android webkit */
+}
+
+a:active, a:focus {
+  background: transparent !important;
+  outline: none !important;
+}
+
 .container {
   width: min(var(--site-max-width), 100%);
   max-width: var(--site-max-width);
