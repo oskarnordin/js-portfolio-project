@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'react-avatar';
@@ -6,7 +6,7 @@ import 'hamburgers/dist/hamburgers.min.css';
 
 const sections = [
   { id: 'herosection', label: 'Home' },
-  { id: 'prologue', label: 'Prologue' },
+  { id: 'aboutme', label: 'About Me' },
   { id: 'showroom', label: 'Showroom' },
   { id: 'techstack', label: 'Tech Stack' },
   { id: 'moodboard', label: 'Moodboard' },
@@ -146,6 +146,43 @@ const AvatarWrapper = styled.div`
   @media (max-width: 768px) {
     margin-right: 0;
   }
+  position: relative; /* anchor for popover */
+
+  &:hover > .avatar-popover,
+  &:focus-within > .avatar-popover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+`;
+
+const PopoverBox = styled.div`
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 12000;
+
+  ${(p) => p.open && `
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  `}
+
+  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  @media (max-width: 768px) {
+    display: none; /* hide on mobile */
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -173,6 +210,20 @@ const StyledNavLink = styled(NavLink)`
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const avatarRef = useRef(null);
+
+  // close popover when clicking outside (use mousedown to avoid event-order issues)
+  useEffect(() => {
+    const onDocPointer = (e) => {
+      if (!avatarRef.current) return;
+      if (!avatarRef.current.contains(e.target)) setPopoverOpen(false);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setPopoverOpen(false); };
+    document.addEventListener('mousedown', onDocPointer);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('mousedown', onDocPointer); document.removeEventListener('keydown', onKey); };
+  }, []);
 
   // Close menu when switching to desktop and track mobile breakpoint
   React.useEffect(() => {
@@ -194,8 +245,27 @@ const Navbar = () => {
 
           <TabList role="tablist" aria-label="Main navigation tabs">
                       <Tab>
-            <AvatarWrapper>
+            <AvatarWrapper
+              ref={avatarRef}
+              tabIndex={0}
+              role="button"
+              aria-label="Profile"
+              aria-expanded={popoverOpen}
+              aria-controls="avatar-popover"
+              onClick={(e) => { e.stopPropagation(); setPopoverOpen((s) => !s); }}
+              onKeyDown={(e) => {
+                // toggle on Enter or Space for keyboard users
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setPopoverOpen((s) => !s);
+                }
+              }}
+            >
               <Avatar src="/img/avatar.png" alt="Oskar" size="61" />
+              <PopoverBox id="avatar-popover" className="avatar-popover" aria-hidden={!popoverOpen} open={popoverOpen}>
+                <img src="/img/avatar.png" alt="Oskar large" />
+              </PopoverBox>
             </AvatarWrapper>
           </Tab>
             {sections.map((s) => (
@@ -235,7 +305,7 @@ const Navbar = () => {
       {/* In-flow mobile menu: when open it pushes page content down */}
       {menuOpen && isMobile && (
         <MobileMenu>
-          <MobileMenuLink href="#prologue" onClick={() => setMenuOpen(false)}>Prologue</MobileMenuLink>
+          <MobileMenuLink href="#aboutme" onClick={() => setMenuOpen(false)}>About Me</MobileMenuLink>
           <MobileMenuLink href="#showroom" onClick={() => setMenuOpen(false)}>Showroom</MobileMenuLink>
           <MobileMenuLink href="#moodboard" onClick={() => setMenuOpen(false)}>Moodboard</MobileMenuLink>
           <MobileMenuLink href="#techstack" onClick={() => setMenuOpen(false)}>Tech Stack</MobileMenuLink>

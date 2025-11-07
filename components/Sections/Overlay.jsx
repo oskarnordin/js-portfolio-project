@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
@@ -6,17 +7,18 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const GlobalStyle = createGlobalStyle``;
 
 const OverlayContainer = styled.div`
-  /* Participate in normal document flow so header/navbar remains above and
-     content below is pushed when the overlay area grows */
-  position: relative;
+  /* Cover the parent (video wrapper) so children can be positioned over the video */
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
-  height: auto;
-  z-index: 20;
+  height: 100%;
+  z-index: 10001; /* sit above the video */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  overflow: visible;
+  pointer-events: none; /* let clicks pass to the video/content unless needed */
 `;
 
 const OverlayCard = styled.div`
@@ -51,7 +53,7 @@ const OverlayCard = styled.div`
 
 const H1overlay = styled.h1`
   font-size: 72px;
-  font-family: 'Agdasima', sans-serif;
+  font-family: --var(--font-heading);
   color: #f8f8f8;
   white-space: nowrap;
 
@@ -91,29 +93,6 @@ const MenuOverlay = styled.div`
   }
 `;
 
-const MenuLink = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  font-family: 'Tomorrow', sans-serif;
-  color: #f8f7f7;
-  text-decoration: none;
-  margin: 32px 0; // increased vertical gap between links
-  font-weight: 400;
-  transition: color 0.4s;
-  &:hover {
-    color: #c6ccff;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 28px;
-    margin: 14px 0;
-    width: 100vw;
-    padding: 18px 0;
-    justify-content: center;
-  }
-`;
 
 const HamburgerContainer = styled.div`
   background: ${({ open }) => (open ? '#3D4CFB' : '#3D4CFB')};
@@ -127,6 +106,59 @@ const HamburgerContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+const TypewriterContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10002;
+  pointer-events: none; /* allow clicks to pass through */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 1100px; /* match video wrapper width */
+  opacity: 0;
+  transform: translate(-50%, -40%);
+  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const TypewriterText = styled.h1`
+  color: #ffffff;
+  font-family: --var(--font-heading);
+  font-size: 60px;
+  white-space: nowrap;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.5);
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    white-space: normal;
+  }
+`;
+
+
+const Char = styled.span`
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 160ms ease-out, transform 220ms cubic-bezier(0.2,0.9,0.2,1);
+  will-change: opacity, transform;
+  /* preserve spacing for spaces */
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+/* Cursor removed per request */
 
 function Overlay() {
   const overlayRef = useRef(null);
@@ -145,6 +177,41 @@ function Overlay() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [menuOpen]);
   const [showTypewriter, setShowTypewriter] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const fullText = "Let's build together";
+
+  // Typing effect: type out fullText one character at a time when showTypewriter becomes true
+  useEffect(() => {
+    if (!showTypewriter) {
+      setTypedText('');
+      return;
+    }
+
+    let idx = 0;
+    let cancelled = false;
+
+    const tick = () => {
+      if (cancelled) return;
+      // move forward one character
+      idx += 1;
+      // immediately consume any following spaces so we don't pause on whitespace
+      while (idx < fullText.length && fullText[idx] === ' ') {
+        idx += 1;
+      }
+      setTypedText(fullText.slice(0, idx));
+      if (idx < fullText.length) {
+        // schedule next visible character
+        timeoutId = setTimeout(tick, 80);
+      }
+    };
+
+    let timeoutId = setTimeout(tick, 80);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
+    };
+  }, [showTypewriter]);
 
   useEffect(() => {
     if (isOverlayVisible) {
@@ -159,12 +226,20 @@ function Overlay() {
   return (
     <>
       <GlobalStyle />
-      <OverlayContainer>
-        <OverlayCard
-          ref={overlayRef}
-          className={isOverlayVisible ? 'visible' : ''}
-        ></OverlayCard>
+      <OverlayContainer ref={overlayRef}>
+        {/* Typewriter text placed above background video */}
+        <TypewriterContainer aria-hidden={!isOverlayVisible} className={showTypewriter ? 'visible' : ''}>
+          <TypewriterText aria-live="polite">
+            {fullText.split('').map((ch, i) => (
+              <Char key={`c-${i}`} className={i < typedText.length ? 'visible' : ''} aria-hidden={i >= typedText.length}>
+                {ch === ' ' ? '\u00A0' : ch}
+              </Char>
+            ))}
+          </TypewriterText>
+        </TypewriterContainer>
+        <OverlayCard className={isOverlayVisible ? 'visible' : ''}></OverlayCard>
       </OverlayContainer>
+      {/* Footer moved to App layout */}
     </>
   );
 }

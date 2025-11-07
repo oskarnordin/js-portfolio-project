@@ -12,7 +12,7 @@ const Card = styled.article`
   min-height: 420px;
   opacity: 0;
   transform: translateY(12px);
-  animation: cardFadeIn 0.6s ease forwards;
+  animation: cardFadeIn 600ms ease-out forwards;
 
   &:hover {
     transform: translateY(-6px);
@@ -68,6 +68,8 @@ const Description = styled.p`
 const Tags = styled.div`
   display: flex;
   gap: 8px;
+  width: 100%;
+  padding: 8px 0;
   flex-wrap: wrap;
 `;
 
@@ -85,9 +87,8 @@ const CardFooter = styled.div`
   gap: 10px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(15,23,42,0.04);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  background-color: #e7e7e7;
+  border-radius: 16px;
 `;
 
 const Action = styled.a`
@@ -108,8 +109,8 @@ const Primary = styled(Action)`
 `;
 
 const Secondary = styled(Action)`
-  background: transparent;
-  color: #374151;
+  background: #3D4CFB;
+  color: #ffffff;
   border: 1px solid rgba(55,65,81,0.08);
 `;
 

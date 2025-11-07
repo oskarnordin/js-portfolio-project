@@ -27,6 +27,16 @@
   --text-xl: 28px;
   --text-xxl: 84px;
 
+
+/* Ensure app root fills viewport so footer sits flush at bottom when content is short */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app-main {
+  flex: 1 1 auto; /* grow to fill available space */
+}
   /* Spacing scale (8px grid) */
   --space-1: 4px;
   --space-2: 8px;
@@ -44,15 +54,6 @@
   --shadow-1: 0 4px 30px rgba(0,0,0,0.08);
 
   /* Breakpoints */
-  --bp-sm: 480px;
-  --bp-md: 768px;
-  --bp-lg: 900px;
-  --bp-xl: 1200px;
-
-  /* Z-index scale */
-  --z-foreground: 1000;
-  --z-overlay: 8000;
-
   /* Transitions */
   --transition-default: 0.2s cubic-bezier(0.23, 1, 0.32, 1);
   --transition-slow: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -66,6 +67,16 @@ html, body {
   overflow-x: hidden;
 
   font-family: var(--font-sans);
+}
+
+/* Ensure app root fills viewport so footer sits flush at bottom when content is short */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app-main {
+  flex: 1 1 auto; /* grow to fill available space */
 }
 
 /* Reserve scrollbar gutter to avoid flicker/shift when scrollbars appear */

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AngleDownImage } from '../SharedComponents';
 import { SectionContainer } from '../SharedComponents';
-import PrologueCard from '../Cards/PrologueCard';
+import AboutMeCard from '../Cards/AboutMeCard';
 import { Inner } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
@@ -35,16 +35,16 @@ const FadeInContainer = styled.div`
   }
 `;
 
-const PrologueSection = () => {
+const AboutMeSection = () => {
   const ref = React.useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
-    <Background id='prologue'>
+    <Background id='aboutme '>
       <SectionContainer style={{ position: 'relative', zIndex: 30 }}>
         <Inner>
           <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>
-            <PrologueCard />
+            <AboutMeCard />
           </FadeInContainer>
         </Inner>
       </SectionContainer>
@@ -52,4 +52,4 @@ const PrologueSection = () => {
   );
 };
 
-export default PrologueSection;
+export default AboutMeSection;

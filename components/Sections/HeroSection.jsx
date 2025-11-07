@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Inner } from '../SharedComponents';
+import Overlay from './Overlay';
 
 const FullHero = styled.section`
   width: 100%;
@@ -19,6 +20,13 @@ const VideoWrapper = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 600ms ease-out forwards;
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 `;
 
 const BgVideo = styled.video`
@@ -40,6 +48,8 @@ const HeroSection = () => {
           loop
           playsInline
         />
+        {/* Overlay (typewriter) sits above the background video */}
+        <Overlay />
       </VideoWrapper>
     </FullHero>
   );

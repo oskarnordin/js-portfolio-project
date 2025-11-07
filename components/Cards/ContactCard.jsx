@@ -36,17 +36,18 @@ const StyledTextarea = styled.textarea`
 
 const PrimaryButton = styled.button`
   display: inline-flex;
+  height: 50px;
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
   border-radius: 10px;
-  background: #0b5cff;
+  background: #5438f7;
   color: white;
   border: none;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.08s ease, opacity 0.12s ease;
-  &:hover { opacity: 0.95; }
+  &:hover { opacity: 0.90; }
   &:active { transform: translateY(1px); }
   &[disabled] { opacity: 0.6; cursor: default; }
 `;
@@ -169,23 +170,50 @@ const ContactCard = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle'); // idle, sending, sent, error
+  // The endpoint should be set in a Vite env var named VITE_FORM_ENDPOINT, e.g.
+  // VITE_FORM_ENDPOINT="https://formspree.io/f/yourid"
+  const FORMS_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // simple validation
-    if (!email.includes('@') || message.trim().length < 5) {
+    // client-side validation
+    if (!email || !email.includes('@') || message.trim().length < 5) {
       setStatus('error');
       return;
     }
+    if (!FORMS_ENDPOINT) {
+      // No endpoint configured – fail fast and inform the user
+      setStatus('error');
+      console.warn('No form endpoint configured. Set VITE_FORM_ENDPOINT in your .env');
+      return;
+    }
+
     setStatus('sending');
-    // simulate network send
-    setTimeout(() => {
-      setStatus('sent');
-      setName('');
-      setEmail('');
-      setMessage('');
-      setTimeout(() => setStatus('idle'), 2500);
-    }, 900);
+
+    try {
+      const res = await fetch(FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (res.ok) {
+        setStatus('sent');
+        setName('');
+        setEmail('');
+        setMessage('');
+        // keep a short visible sent state
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        // try to parse response for better message (Formspree returns JSON)
+        const payload = await res.json().catch(() => ({}));
+        console.error('Form submit failed', payload);
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error('Network error sending form', err);
+      setStatus('error');
+    }
   };
 
   return (

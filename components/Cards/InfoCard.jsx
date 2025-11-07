@@ -64,6 +64,7 @@ const InfoH3 = styled.h3`
 const infoP = styled.p`
   background-color: #434343;
   justify-content: center;
+  align-items: center;
   display: flex;
   color: #2d3748;
   font-weight: 600;
