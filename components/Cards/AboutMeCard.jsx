@@ -22,23 +22,18 @@ const AboutMeCardContainer = styled.div`
 `;
 
 const ColumnsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* center the cluster */
+  align-content: center;
+  gap: 4px
   width: 100%;
   box-sizing: border-box;
+  padding: 8px 0;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    width: auto; /* Prevent overflow */
-    max-width: 100vw;
-    padding: 0 16px; /* Add a little horizontal padding */
-    box-sizing: border-box;
+  @media (max-width: 480px) {
+    gap: 10px;
+    padding: 6px 8px;
   }
 `;
 
@@ -60,13 +55,16 @@ const CardsGrid = styled.div`
 `;
 
 const SmallCard = styled.div`
-  background: #5438F7;;
+  background: #5438F7;
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 14px;
-  color: #ffffff;);
+  color: #ffffff;
   opacity: 0;
-  margin: 8px;
+  margin: 8px auto; /* center the inline-block */
+  display: inline-block; /* shrink to fit content */
+  width: fit-content;
+  max-width: 100%;
   transform: translateY(12px);
   animation: cardFade 600ms ease-out forwards;
   /* allow per-column delay via --col-delay set on parent column */
@@ -132,31 +130,36 @@ const AboutMeCard = ({ title, info }) => {
       <ColumnsContainer>
         {(() => {
           const items = [
-            'Grit > talent',
-            'You can just change your mind if wrong',
-            'Clear writing is clear thinking',
-            'Be the person taking notes, even if it’s just for yourself',
-            'Being helpful compounds',
-            'Study what worked for others, then take your own path',
+            'Traveling opens your mind',
+            'Human connection',
+            'Tech makes the World better',
+            'Everybody needs a tribe',
+            'Surround yourself with people you can learn from',
             'Your best work comes from following your curiosity',
-            'Growth potential > current skill',
-            'Hire people you can learn from',
-            'Listen, build, ship, tell the customer, then repeat forever',
-            'More to come...'
+            'Clear writing is clear thinking',
+            'You can just change your mind if wrong',
+            'Rest is productive',
+            "Make things you’d actually use",
+            'Quantity creates quality',
+            'Great tech feels like magic because it removes friction',
+            'Code is creativity in logic form',
+            'Every line of code is a small act of optimism',
+            "Pressure reveals who’s prepared",
+            "Champions are built in the quiet hours",
+            'The best teams play for each other, not themselves',
+            'The best tech teams build trust before features',
+            'Great teams debate ideas, not people',
+            'Small teams with purpose beat big teams without direction',
+            'A good team celebrates progress, not just launches',
+            'Building is the best form of thinking',
+            "You can’t innovate while staying comfortable",
+            'Growth hides in discomfort',
+            'Every failure is just data with feelings',
+            'The long game is played one focused day at a time',
           ];
 
-          // distribute into 3 columns evenly
-          const cols = [[], [], []];
-          items.forEach((it, idx) => {
-            cols[idx % 3].push(it);
-          });
-
-          return cols.map((colItems, colIndex) => (
-            <div key={`col-${colIndex}`} style={{ ['--col-delay']: `${colIndex * 80}ms` }}>
-              {colItems.map((t, i) => (
-                <SmallCard key={`c${colIndex}-${i}`}>{t}</SmallCard>
-              ))}
-            </div>
+          return items.map((t, i) => (
+            <SmallCard key={`item-${i}`} style={{ ['--col-delay']: `${i * 30}ms` }}>{t}</SmallCard>
           ));
         })()}
       </ColumnsContainer>

@@ -25,6 +25,7 @@ const StyledTextarea = styled.textarea`
   border: 1px solid rgba(0,0,0,0.08);
   background: #fbfbfc;
   font-size: 15px;
+  font-family: inherit;
   outline: none;
   resize: vertical;
   transition: box-shadow 0.15s, border-color 0.15s;

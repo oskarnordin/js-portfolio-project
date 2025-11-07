@@ -114,7 +114,7 @@ const ShowroomH3 = styled.h3`
 const ShowroomP = styled.p`
   flex-direction: column;
   color: #2d3748;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
   font-weight: 400;
   padding-bottom: 32px;
