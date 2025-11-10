@@ -105,13 +105,12 @@ const Action = styled.a`
 `;
 
 const Primary = styled(Action)`
-  background: #3D4CFB;
+  background: #5438F7;
 `;
 
 const Secondary = styled(Action)`
-  background: #3D4CFB;
+  background: #5438F7;
   color: #ffffff;
-  border: 1px solid rgba(55,65,81,0.08);
 `;
 
 const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
