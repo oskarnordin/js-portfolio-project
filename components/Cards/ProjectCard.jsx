@@ -106,11 +106,13 @@ const Action = styled.a`
 
 const Primary = styled(Action)`
   background: #5438F7;
+  &:hover { opacity: 0.90; }
 `;
 
 const Secondary = styled(Action)`
   background: #5438F7;
   color: #ffffff;
+  &:hover { opacity: 0.90; }
 `;
 
 const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
