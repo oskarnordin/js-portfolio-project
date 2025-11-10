@@ -5,7 +5,7 @@ import Avatar from 'react-avatar';
 import 'hamburgers/dist/hamburgers.min.css';
 
 const sections = [
-  { id: 'herosection', label: 'Home' },
+  { id: 'home', label: 'Home' },
   { id: 'aboutme', label: 'About Me' },
   { id: 'showroom', label: 'Showroom' },
   { id: 'techstack', label: 'Tech Stack' },
