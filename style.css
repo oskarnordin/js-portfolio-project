@@ -121,11 +121,6 @@ a, a * {
   -webkit-tap-highlight-color: transparent; /* iOS/Android webkit */
 }
 
-a:active, a:focus {
-  background: transparent !important;
-  outline: none !important;
-}
-
 .container {
   width: min(var(--site-max-width), 100%);
   max-width: var(--site-max-width);
