@@ -4,7 +4,7 @@ import { Inner } from '../SharedComponents';
 
 const FooterContainer = styled.footer`
   width: 100%;
-  height: 160px;
+  height: 100px;
   background: transparent;
   color: #ffffff;
   font-size: 16px;
