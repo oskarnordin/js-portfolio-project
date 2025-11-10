@@ -36,9 +36,9 @@ const BgVideo = styled.video`
   display: block;
 `;
 
-const HeroSection = () => {
+const Home = () => {
   return (
-    <FullHero id="herosection">
+    <FullHero id="home">
       <VideoWrapper>
         <BgVideo
           id="hero-bg-video"
@@ -55,4 +55,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Home;

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Overlay from './components/Sections/Overlay';
 const SkillsSection = React.lazy(() => import('./components/Sections/Techstack'));
 const AboutMeSection = React.lazy(() => import('./components/Sections/AboutMe'));
-const HeroSection = React.lazy(() => import('./components/Sections/HeroSection'));
+const Home = React.lazy(() => import('./components/Sections/Home'));
 const FeaturedProjects = React.lazy(() => import('./components/Sections/Showroom'));
 const MoodboardSection = React.lazy(() => import('./components/Sections/Moodboard'));
 const ContactSection = React.lazy(() => import('./components/Sections/Contact'));
@@ -26,8 +26,8 @@ function App() {
           <main className="app-main">
             <Suspense fallback={<Spinner size="lg" overlay={true} />}>
               <Routes>
-                <Route path="/" element={<Navigate to="/herosection" replace />} />
-                <Route path="/herosection" element={<HeroSection />} />
+                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/aboutme" element={<AboutMeSection />} />
                 <Route path="/showroom" element={<FeaturedProjects />} />
                 <Route path="/techstack" element={<SkillsSection />} />
