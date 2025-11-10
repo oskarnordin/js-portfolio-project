@@ -24,7 +24,7 @@ function App() {
           <div id="bg-overlay" aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.40)', zIndex: -1 }} />
           <Navbar />
           <main className="app-main">
-            <Suspense fallback={<Spinner size="lg" overlay={true} />}>
+            <Suspense fallback={<Spinner size="lg" overlay={false} />}>
               <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="/home" element={<Home />} />
