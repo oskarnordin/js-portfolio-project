@@ -17,6 +17,7 @@ const NavContainer = styled.div`
   width: 100%;
   background: #FFFFFF;
   display: flex;
+  margin-bottom: 20px;
   justify-content: space-between;
   /* Participate in document flow so it pushes content down */
   position: relative;
@@ -156,6 +157,25 @@ const AvatarWrapper = styled.div`
   }
 `;
 
+const MobileAvatar = styled.div`
+  display: none;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1100;
+  align-items: center;
+
+  img, .avatar {
+    border-radius: 20% !important;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
 const PopoverBox = styled.div`
   position: absolute;
   top: calc(100% + 8px);
@@ -238,6 +258,10 @@ const Navbar = () => {
   return (
     <NavContainer>
       <Nav>
+        {/* Mobile-only avatar on the left */}
+        <MobileAvatar>
+          <Avatar src="/img/avatar.png" alt="Oskar" size="48" />
+        </MobileAvatar>
         <NavItems>
           <Tab>
 
@@ -262,7 +286,7 @@ const Navbar = () => {
                 }
               }}
             >
-              <Avatar src="/img/avatar.png" alt="Oskar" size="61" />
+              <Avatar src="/img/avatar.png" alt="Oskar" size="73" />
               <PopoverBox id="avatar-popover" className="avatar-popover" aria-hidden={!popoverOpen} open={popoverOpen}>
                 <img src="/img/avatar.png" alt="Oskar large" />
               </PopoverBox>
