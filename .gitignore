@@ -569,3 +569,4 @@ script.js
 style.css
 test.html
 node_modules
+.env.*

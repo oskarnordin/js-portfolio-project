@@ -1,20 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import { useForm, ValidationError } from '@formspree/react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Spinner as HeroSpinner } from '@heroui/react';
 // Using local styled inputs to mimic HeroUI appearance (no external CSS required)
 
 const StyledInput = styled.input`
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
   font-size: 15px;
   outline: none;
   transition: box-shadow 0.15s, border-color 0.15s;
   &:focus {
     box-shadow: 0 0 0 4px rgba(66,153,225,0.06);
-    border-color: rgba(66,153,225,0.8);
+    border-color: ${props => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
   }
 `;
 
@@ -22,7 +25,7 @@ const StyledTextarea = styled.textarea`
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
   font-size: 15px;
   font-family: inherit;
@@ -31,7 +34,7 @@ const StyledTextarea = styled.textarea`
   transition: box-shadow 0.15s, border-color 0.15s;
   &:focus {
     box-shadow: 0 0 0 4px rgba(66,153,225,0.06);
-    border-color: rgba(66,153,225,0.8);
+    border-color: ${props => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
   }
 `;
 
@@ -48,7 +51,7 @@ const PrimaryButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.08s ease, opacity 0.12s ease;
-  &:hover { opacity: 0.90; }
+  &:not([disabled]):hover { opacity: 0.90; }
   &:active { transform: translateY(1px); }
   &[disabled] { opacity: 0.6; cursor: default; }
 `;
@@ -162,6 +165,53 @@ const SocialIcon = styled.a`
   }
 `;
 
+const FieldError = styled.div`
+  color: crimson;
+  font-size: 13px;
+  margin-top: 4px;
+  text-align: left;
+`;
+
+const SuccessOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  pointer-events: none; /* don't block interactions */
+`;
+
+const SuccessAnimWrapper = styled.div`
+  background: transparent;
+  transform: translateY(20px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 400ms ease-out, opacity 400ms ease-out;
+  animation: slideFadeIn 300ms ease-out forwards;
+
+  @keyframes slideFadeIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+`;
+
+const VisuallyHidden = styled.span`
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+`;
+
 const ContactCard = () => {
   const ref = useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
@@ -170,52 +220,87 @@ const ContactCard = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('idle'); // idle, sending, sent, error
-  // The endpoint should be set in a Vite env var named VITE_FORM_ENDPOINT, e.g.
-  // VITE_FORM_ENDPOINT="https://formspree.io/f/yourid"
-  const FORMS_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || '';
+  const [status, setStatus] = useState('idle'); // idle, sending, sent, error (client-side validation status)
+  const [touched, setTouched] = useState({ name: false, email: false, message: false });
+  // Set your Formspree form id via VITE_FORMSPREE_FORM_ID in .env.local (e.g., "xwkwpzbe")
+  const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || '';
+  // Always initialize the hook with a non-empty placeholder to avoid runtime throws;
+  // we'll block actual submission below if the real ID is missing.
+  const [formState, formspreeSubmit] = useForm(FORMSPREE_FORM_ID || 'placeholder-form-id');
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  const errors = {
+    name: !name.trim() ? 'Please enter your name.' : '',
+    email: !email.trim()
+      ? 'Please enter your email.'
+      : !emailRegex.test(email.trim())
+      ? 'Please enter a valid email address.'
+      : '',
+    message:
+      message.trim().length < 10
+        ? 'Please enter a message of at least 10 characters.'
+        : '',
+  };
+
+  const isValid = !errors.name && !errors.email && !errors.message;
+
+  // Success animation control
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successFading, setSuccessFading] = useState(false);
+
+  const handleFieldChange = (field, setter) => (e) => {
+    setter(e.target.value);
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    if (status === 'error') {
+      // Clear general error state while user fixes inputs
+      setStatus('idle');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // client-side validation
-    if (!email || !email.includes('@') || message.trim().length < 5) {
+    if (!isValid) {
+      setTouched({ name: true, email: true, message: true });
       setStatus('error');
       return;
     }
-    if (!FORMS_ENDPOINT) {
-      // No endpoint configured – fail fast and inform the user
+
+    // Require Formspree ID and submit via Formspree only
+    if (!FORMSPREE_FORM_ID) {
       setStatus('error');
-      console.warn('No form endpoint configured. Set VITE_FORM_ENDPOINT in your .env');
+      console.warn('No Formspree form ID configured. Set VITE_FORMSPREE_FORM_ID in your .env.local');
       return;
     }
-
-    setStatus('sending');
-
-    try {
-      const res = await fetch(FORMS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (res.ok) {
-        setStatus('sent');
-        setName('');
-        setEmail('');
-        setMessage('');
-        // keep a short visible sent state
-        setTimeout(() => setStatus('idle'), 3000);
-      } else {
-        // try to parse response for better message (Formspree returns JSON)
-        const payload = await res.json().catch(() => ({}));
-        console.error('Form submit failed', payload);
-        setStatus('error');
-      }
-    } catch (err) {
-      console.error('Network error sending form', err);
-      setStatus('error');
-    }
+    setStatus('idle');
+    // Ensure the form fields have name attributes so Formspree captures them
+    await formspreeSubmit(e);
   };
+
+  // Clear fields after successful Formspree submission
+  useEffect(() => {
+    if (formState && formState.succeeded) {
+      setName('');
+      setEmail('');
+      setMessage('');
+      setTouched({ name: false, email: false, message: false });
+      setShowSuccess(true);
+      setSuccessFading(false);
+      const holdDuration = 1800; // keep visible before fading (ms)
+      const fadeDuration = 400;  // fade-out transition length (ms)
+      const holdTimer = setTimeout(() => setSuccessFading(true), holdDuration);
+      // Fallback unmount in case transitionend doesn't fire
+      const unmountTimer = setTimeout(() => {
+        setShowSuccess(false);
+        setSuccessFading(false);
+      }, holdDuration + fadeDuration + 100);
+      return () => {
+        clearTimeout(holdTimer);
+        clearTimeout(unmountTimer);
+      };
+    }
+  }, [formState?.succeeded]);
 
   return (
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
@@ -226,33 +311,92 @@ const ContactCard = () => {
       </ContactP>
 
       <FormWrapper onSubmit={handleSubmit} aria-live="polite">
-        <StyledInput
-          placeholder="Your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          aria-label="Your name"
-        />
-        <StyledInput
-          placeholder="Your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-label="Your email"
-          type="email"
-        />
-        <StyledTextarea
-          placeholder="Your message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          aria-label="Your message"
-          rows={6}
-        />
+        {/* Honeypot field to trap bots */}
+        <div style={{ display: 'none' }}>
+          <label htmlFor="gotcha">Leave this field empty</label>
+          <input id="gotcha" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+        </div>
+        <div>
+          <StyledInput
+            placeholder="Your name"
+            value={name}
+            onChange={handleFieldChange('name', setName)}
+            aria-label="Your name"
+            name="name"
+            $hasError={touched.name && !!errors.name}
+          />
+          {touched.name && errors.name && <FieldError>{errors.name}</FieldError>}
+        </div>
 
-        <PrimaryButton type="submit" disabled={status === 'sending'}>
-          {status === 'sent' ? 'Sent!' : status === 'sending' ? 'Sending...' : 'Send message'}
+        <div>
+          <StyledInput
+            placeholder="Your email"
+            value={email}
+            onChange={handleFieldChange('email', setEmail)}
+            aria-label="Your email"
+            type="email"
+            name="email"
+            $hasError={touched.email && !!errors.email}
+          />
+          {touched.email && errors.email && <FieldError>{errors.email}</FieldError>}
+          {/* Server-side validation error from Formspree, if any */}
+          {FORMSPREE_FORM_ID && (
+            <ValidationError prefix="Email" field="email" errors={formState.errors} />
+          )}
+        </div>
+
+        <div>
+          <StyledTextarea
+            placeholder="Your message"
+            value={message}
+            onChange={handleFieldChange('message', setMessage)}
+            aria-label="Your message"
+            rows={6}
+            name="message"
+            $hasError={touched.message && !!errors.message}
+          />
+          {touched.message && errors.message && <FieldError>{errors.message}</FieldError>}
+          {FORMSPREE_FORM_ID && (
+            <ValidationError prefix="Message" field="message" errors={formState.errors} />
+          )}
+        </div>
+
+        <PrimaryButton type="submit" disabled={formState.submitting || !isValid}>
+          {formState.submitting && (
+            <HeroSpinner size="sm" color="default" style={{ marginRight: 8 }} />
+          )}
+          {formState.succeeded ? 'Sent!' : formState.submitting ? 'Sending...' : 'Send message'}
         </PrimaryButton>
 
+        {/* General client-side error */}
         {status === 'error' && (
-          <div style={{ color: 'crimson' }}>Please enter a valid email and a message (min 5 characters).</div>
+          <div style={{ color: 'crimson' }}>Please fix the errors above and try again.</div>
+        )}
+
+        {/* Success animation overlay */}
+        {showSuccess && (
+          <SuccessOverlay>
+            <VisuallyHidden role="status" aria-live="polite">Message sent successfully</VisuallyHidden>
+            <SuccessAnimWrapper
+              onTransitionEnd={() => {
+                if (successFading) {
+                  setShowSuccess(false);
+                  setSuccessFading(false);
+                }
+              }}
+              style={{
+                opacity: successFading ? 0 : 1,
+                transform: successFading ? 'translateY(-4px)' : 'translateY(0)'
+              }}
+            >
+              <DotLottieReact
+                src="/img/CheckmarkSuccess.lottie"
+                autoplay
+                loop={false}
+                style={{ width: 180, height: 180 }}
+              />
+            </SuccessAnimWrapper>
+          </SuccessOverlay>
         )}
       </FormWrapper>
 

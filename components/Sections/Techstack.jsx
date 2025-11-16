@@ -77,38 +77,38 @@ const techStack = {
   frontend: [
     { name: 'html5', label: 'HTML5' },
     { name: 'css3', label: 'CSS3' },
-    { name: 'js', label: 'JavaScript' },
+    { name: 'javascript', label: 'JavaScript' },
     { name: 'typescript', label: 'TypeScript' },
-    { name: 'reactjs', label: 'React' },
+    { name: 'react', label: 'React' },
     { name: 'react-router', label: 'React Router' },
     { name: 'tailwindcss', label: 'Tailwind' },
     { name: 'nextjs', label: 'Next.js' },
-    { name: 'sass', label: 'SASS' },
-    { name: 'accessibility', label: 'Accessibility' },
+    { name: 'sass', label: 'Sass' },
+    { name: 'accessibility', label: 'Accessibility (a11y)' },
   ],
   backend: [
     { name: 'nodejs', label: 'Node.js' },
-    { name: 'expressjs', label: 'Express.js' },
+    { name: 'express', label: 'Express.js' },
     { name: 'rest-apis', label: 'REST APIs' },
     { name: 'mongodb', label: 'MongoDB' },
     { name: 'sql', label: 'SQL' },
-  { name: 'aws', label: 'AWS (S3, Lambda)' },
-    { name: 'terraform', label: 'Terraform' },
   ],
   misc: [
     { name: 'npm', label: 'NPM' },
     { name: 'git', label: 'Git' },
     { name: 'github', label: 'GitHub' },
-    { name: 'vitejs', label: 'Vite' },
+    { name: 'vite', label: 'Vite' },
     { name: 'eslint', label: 'ESLint' },
+    { name: 'aws', label: 'AWS (S3, Lambda)' },
+    { name: 'terraform', label: 'Terraform' },
   ],
   analysis: [
-    { name: 'Python', label: 'Python' },
-    { name: 'Pandas', label: 'Pandas' },
-    { name: 'Matplotlib', label: 'Matplotlib' },
-    { name: 'Seaborn', label: 'Seaborn' },
-    { name: 'Jupyter', label: 'Jupyter' },
-    { name: 'NumPy', label: 'NumPy' },
+    { name: 'python', label: 'Python' },
+    { name: 'pandas', label: 'Pandas' },
+    { name: 'matplotlib', label: 'Matplotlib' },
+    { name: 'seaborn', label: 'Seaborn' },
+    { name: 'jupyter', label: 'Jupyter' },
+    { name: 'numpy', label: 'NumPy' },
     { name: 'ab-testing', label: 'A/B testing' },
   ],  
 };
@@ -242,8 +242,8 @@ const SkillsSection = () => {
             </Column>
 
             <Column>
-              <TechstackIcon src='/img/misc.svg' alt='Misc Icon' />
-              <ColumnTitle>Misc</ColumnTitle>
+              <TechstackIcon src='/img/misc.svg' alt='Tools Icon' />
+              <ColumnTitle>Tools</ColumnTitle>
               <CardsGrid>
                 {techStack.misc.map((item, i) => (
                   <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
@@ -252,8 +252,8 @@ const SkillsSection = () => {
             </Column>
 
             <Column>
-              <TechstackIcon src='/img/analysis.svg' alt='Analysis Icon' />
-              <ColumnTitle>Analysis</ColumnTitle>
+              <TechstackIcon src='/img/analysis.svg' alt='Data & Analysis Icon' />
+              <ColumnTitle>Data & Analysis</ColumnTitle>
               <CardsGrid>
                 {techStack.analysis.map((item, i) => (
                   <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
