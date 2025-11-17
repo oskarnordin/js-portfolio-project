@@ -58,9 +58,8 @@ const H1overlay = styled.h1`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 32px;
+    font-size: 44px;
     text-align: center;
-    line-height: 1.1;
     padding: 0 8px;
     white-space: nowrap;
   }
@@ -70,7 +69,6 @@ const MenuOverlay = styled.div`
   /* Make the slide-out menu part of the page flow so it pushes content
      instead of covering it. Using relative positioning keeps it in flow. */
   position: relative;
-  width: 300px; /* changed from 600px to 300px */
   max-width: 100%;
   background: #3D4CFB;
   backdrop-filter: none;
@@ -84,7 +82,6 @@ const MenuOverlay = styled.div`
   padding: 24px 0;
   transition: transform 0.4s;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')}; /* slide from right */
-  height: auto;
 
   @media (max-width: 758px) {
     width: 100%;
@@ -98,9 +95,8 @@ const HamburgerContainer = styled.div`
   background: ${({ open }) => (open ? '#3D4CFB' : '#3D4CFB')};
   border-radius: 50%;
   padding: 3px;
-  /* Keep the hamburger in the document flow so it doesn't overlap the navbar */
   position: relative;
-  margin: 8px; /* small offset from surrounding content */
+  margin: 8px;
   z-index: 10001;
   display: flex;
   align-items: center;
@@ -178,7 +174,7 @@ function Overlay() {
   }, [menuOpen]);
   const [showTypewriter, setShowTypewriter] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "Hey There";
+  const fullText = "Hello";
 
   // Typing effect: type out fullText one character at a time when showTypewriter becomes true
   useEffect(() => {

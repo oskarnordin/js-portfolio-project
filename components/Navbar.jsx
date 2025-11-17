@@ -23,7 +23,7 @@ const NavContainer = styled.div`
   position: relative;
   margin-top: 20px;
   z-index: 1000;
-  pointer-events: none; /* let inner nav handle pointer-events */
+  pointer-events: auto; /* allow overlays like MobileMenu to receive clicks */
 `;
 
 const Nav = styled.nav`
@@ -46,28 +46,29 @@ const MobileMenu = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
-  border-radius: 12px;
-  position: absolute;
-  top: calc(100% + 8px); /* place just below the nav */
+  padding: 24px;
+  border-radius: 0;
+  position: fixed; /* full-screen overlay on mobile */
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
   z-index: 2000; /* above everything else */
   width: 100%;
-  min-height: vh;
+  height: 100vh; /* requested: take the full viewport height */
+  overflow-y: auto;
 
   @media (max-width: 768px) {
     display: flex; /* show on mobile */
   }
 
-  /* simple slide-down animation */
+  /* simple fade+slide-in animation */
   animation: menuSlideDown 240ms ease forwards;
 
   @keyframes menuSlideDown {
-    from { opacity: 0; transform: translateY(-6px) scaleY(0.98); }
-    to { opacity: 1; transform: translateY(0) scaleY(1); }
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 `;
 
-const MobileMenuLink = styled.a`
+const MobileMenuLink = styled(NavLink)`
   display: block;
   width: 100%;
   text-align: center;
@@ -75,6 +76,7 @@ const MobileMenuLink = styled.a`
   color: #fff;
   text-decoration: none;
   font-size: 20px;
+  &:hover { opacity: 0.9; }
 `;
 
 const HamburgerButton = styled.button`
@@ -83,6 +85,7 @@ const HamburgerButton = styled.button`
   border: none;
   width: 56px;
   height: 56px;
+  z-index: 11000;
 
   display: flex;
   align-items: center;
@@ -98,6 +101,13 @@ const HamburgerButton = styled.button`
 
   @media (max-width: 768px) {
     display: block; /* show on mobile */
+  }
+
+  /* Override hamburger bar color when open */
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: ${p => (p.$open ? '#ffffff' : '#000000')} !important;
   }
 `;
 
@@ -255,6 +265,41 @@ const Navbar = () => {
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
+
+  // Lock body scroll when the mobile menu is open
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (menuOpen && isMobile) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+    // ensure reset when menu closes
+    document.body.style.overflow = '';
+  }, [menuOpen, isMobile]);
+
+  // Close menu and navigate/scroll to href target for mobile menu links
+  const handleMobileMenuLinkClick = (e) => {
+    const href = e.currentTarget.getAttribute('href');
+    setMenuOpen(false);
+    if (!href) return;
+    // Smooth-scroll for hash links within the page
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const id = href.slice(1);
+      // Wait for menu to unmount and body scroll to unlock
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // Fallback to setting the hash (default browser jump)
+          window.location.hash = href;
+        }
+      }, 50);
+    }
+    // Non-hash links fall through to default navigation behavior
+  };
   return (
     <NavContainer>
       <Nav>
@@ -316,6 +361,7 @@ const Navbar = () => {
               aria-label="Menu"
               aria-controls="navigation"
               aria-expanded={menuOpen}
+              $open={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
             >
               <span className="hamburger-box">
@@ -329,11 +375,11 @@ const Navbar = () => {
       {/* In-flow mobile menu: when open it pushes page content down */}
       {menuOpen && isMobile && (
         <MobileMenu>
-          <MobileMenuLink href="#aboutme" onClick={() => setMenuOpen(false)}>About Me</MobileMenuLink>
-          <MobileMenuLink href="#showroom" onClick={() => setMenuOpen(false)}>Showroom</MobileMenuLink>
-          <MobileMenuLink href="#moodboard" onClick={() => setMenuOpen(false)}>Moodboard</MobileMenuLink>
-          <MobileMenuLink href="#techstack" onClick={() => setMenuOpen(false)}>Tech Stack</MobileMenuLink>
-          <MobileMenuLink href="#contact" onClick={() => setMenuOpen(false)}>Let's Talk</MobileMenuLink>
+          <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>
+          <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
+          <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
+          <MobileMenuLink to="/techstack" onClick={handleMobileMenuLinkClick}>Tech Stack</MobileMenuLink>
+          <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>Let's Talk</MobileMenuLink>
         </MobileMenu>
       )}
     </NavContainer>
