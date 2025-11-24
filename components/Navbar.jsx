@@ -321,7 +321,16 @@ const Navbar = () => {
               aria-label="Profile"
               aria-expanded={popoverOpen}
               aria-controls="avatar-popover"
-              onClick={(e) => { e.stopPropagation(); setPopoverOpen((s) => !s); }}
+              onClick={(e) => {
+                // If the click is on the avatar home link, allow navigation and close popover
+                if (e.target.closest('.avatar-home-link')) {
+                  setPopoverOpen(false);
+                  setMenuOpen(false);
+                  return; // let NavLink handle navigation
+                }
+                e.stopPropagation();
+                setPopoverOpen((s) => !s);
+              }}
               onKeyDown={(e) => {
                 // toggle on Enter or Space for keyboard users
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -331,7 +340,18 @@ const Navbar = () => {
                 }
               }}
             >
-              <Avatar src="/img/avatar.png" alt="Oskar" size="73" />
+              <NavLink
+                to="/home"
+                className="avatar-home-link"
+                aria-label="Go to Home"
+                onClick={() => {
+                  setPopoverOpen(false);
+                  setMenuOpen(false);
+                }}
+                style={{ display: 'block' }}
+              >
+                <Avatar src="/img/avatar.png" alt="Oskar" size="73" />
+              </NavLink>
               <PopoverBox id="avatar-popover" className="avatar-popover" aria-hidden={!popoverOpen} open={popoverOpen}>
                 <img src="/img/avatar.png" alt="Oskar large" />
               </PopoverBox>
@@ -375,6 +395,8 @@ const Navbar = () => {
       {/* In-flow mobile menu: when open it pushes page content down */}
       {menuOpen && isMobile && (
         <MobileMenu>
+                    <MobileMenuLink to="/home" onClick={handleMobileMenuLinkClick}>Home</MobileMenuLink>
+
           <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>
           <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
           <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
