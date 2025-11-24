@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 // Hero-like card design using local styled-components (safe, no external API calls)
 const Card = styled.article`
-  background: #ffffff;
+  background: #f0f0f0;
   border-radius: 18px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -13,6 +12,7 @@ const Card = styled.article`
   opacity: 0;
   transform: translateY(12px);
   animation: cardFadeIn 600ms ease-out forwards;
+
 
   &:hover {
     transform: translateY(-6px);
@@ -87,7 +87,6 @@ const CardFooter = styled.div`
   gap: 10px;
   justify-content: space-between;
   align-items: center;
-  background-color: #e7e7e7;
   border-radius: 16px;
 `;
 
