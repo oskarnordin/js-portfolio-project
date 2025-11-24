@@ -114,35 +114,48 @@ const techStack = {
 };
 
 const ColumnsWrapper = styled.div`
+  /* Desktop: single horizontal row of all 4 columns */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  flex-wrap: wrap;
-  gap: 12%; /* Add some space between columns */
+  gap: 96px; /* space between categories on large screens */
+  flex-wrap: nowrap; /* keep in one row */
 
+  @media (max-width: 1024px) {
+    gap: 64px;
+  }
+
+  /* Mobile: 2 columns x 2 rows grid */
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    grid-auto-rows: auto;
     justify-content: center;
-    gap: 0;
+    align-items: start;
+    column-gap: 32px;
+    row-gap: 48px;
   }
 `;
 
 const Column = styled.div`
-  width: 15%;
-  min-width: 120px;
+  flex: 0 0 180px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color:transparent;
+  background-color: transparent;
   border-radius: 16px;
 
+  @media (max-width: 1200px) {
+    flex: 0 0 160px;
+  }
+
   @media (max-width: 768px) {
-    align-items: center;
-    justify-content: center;
-    width: 90%;
+    width: 100%;
+    max-width: none;
+    flex: initial;
   }
 `;
 
@@ -252,8 +265,8 @@ const SkillsSection = () => {
             </Column>
 
             <Column>
-              <TechstackIcon src='/img/analysis.svg' alt='Data & Analysis Icon' />
-              <ColumnTitle>Data & Analysis</ColumnTitle>
+              <TechstackIcon src='/img/analysis.svg' alt='Analysis Icon' />
+              <ColumnTitle>Analysis</ColumnTitle>
               <CardsGrid>
                 {techStack.analysis.map((item, i) => (
                   <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
