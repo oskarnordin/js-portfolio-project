@@ -37,8 +37,7 @@ const VideoWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 15px;
-    /* Use 100% so the wrapper fills the FullHero height (which is calc(100vh - nav)) without adding extra viewport height */
-    height: 90%;
+    height: 70%;
     box-sizing: border-box;
     border-radius: 24px;
   }
@@ -46,7 +45,7 @@ const VideoWrapper = styled.div`
 
 const BgVideo = styled.video`
   width: 100%;
-  height: 60%;
+
   object-fit: cover;
   display: block;
   /* Ensure the video itself has rounded corners so it visually matches the wrapper
