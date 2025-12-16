@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Sections/Footer';
 import ProgressBar from './components/ProgressBar';
 import Spinner from './components/Spinner';
+import BlobCanvas from './components/Blob';
 function App() {
 
   return (
@@ -35,8 +36,9 @@ function App() {
                 <Route path="/contact" element={<ContactSection />} />
               </Routes>
             </Suspense>
+            <BlobCanvas/>
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     </ThemeProvider>

@@ -1,9 +1,17 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export const BlobCanvas = () => {
+const BlobCanvas = () => {
+  const location = useLocation();
   const canvasRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const isHome = location.pathname === '/home';
 
   useEffect(() => {
+    if (!isHome) {
+      setMounted(false);
+      return;
+    }
     // Helper to determine if desktop
     const isDesktop = () => window.innerWidth > 768;
 
@@ -54,7 +62,7 @@ export const BlobCanvas = () => {
           ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
           // ctx.lineTo(p2.x, p2.y);
 
-          ctx.fillStyle = '#000000';
+          ctx.fillStyle = 'var(--color-primary)';
           // ctx.fillRect(p1.x-2.5, p1.y-2.5, 5, 5);
 
           p1 = p2;
@@ -65,11 +73,44 @@ export const BlobCanvas = () => {
         ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
         // ctx.lineTo(_p2.x, _p2.y);
 
-        // ctx.closePath();
-        ctx.fillStyle = 'var(--color-primary)'; // Use your preferred grey color
-        ctx.fill();
+        ctx.closePath();
 
-        // ctx.stroke();
+        // Render as ASCII characters inside the blob path
+        try {
+          const computed = getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '#000';
+          ctx.fillStyle = computed.trim();
+        } catch (e) {
+          ctx.fillStyle = '#000';
+        }
+
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+
+        // choose a small set of characters for shading
+        const chars = ['@', '#', '%', '*', '+', '=', '-', ':', '.', ' '];
+
+        // sampling density (pixel step) — coarser on small canvases
+        const step = canvas.width > 550 ? 12 : 10;
+
+        for (let y = 0; y < canvas.height; y += step) {
+          for (let x = 0; x < canvas.width; x += step) {
+            const sampleX = x + step / 2;
+            const sampleY = y + step / 2;
+            if (ctx.isPointInPath(sampleX, sampleY)) {
+              // distance from center to determine char density
+              const dx = sampleX - center.x;
+              const dy = sampleY - center.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              const t = Math.min(1, Math.max(0, dist / (radius + step * 2)));
+              const idx = Math.floor((1 - t) * (chars.length - 1));
+              const ch = chars[idx];
+
+              // set font size relative to step
+              ctx.font = `${Math.max(8, Math.floor(step * 0.9))}px monospace`;
+              ctx.fillText(ch, sampleX, sampleY);
+            }
+          }
+        }
 
         requestAnimationFrame(this.render.bind(this));
       }
@@ -237,13 +278,13 @@ export const BlobCanvas = () => {
     // Responsive blob size
     const setBlobSize = () => {
       if (isDesktop()) {
-        canvas.width = 1000;
-        canvas.height = 1000;
-        blob.radius = 340;
+        canvas.width = 600;
+        canvas.height = 600;
+        blob.radius = 170;
       } else {
-        canvas.width = 1000;
-        canvas.height = 1000;
-        blob.radius = 270;
+        canvas.width = 500;
+        canvas.height = 500;
+        blob.radius = 135;
       }
     };
 
@@ -255,14 +296,18 @@ export const BlobCanvas = () => {
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
-  blob.color = '#3D4CFB'; // Set custom color here
+  blob.color = 'var(--color-primary)'; // Set custom color here
     setBlobSize();
     blob.init();
     blob.render();
 
-    // Mouse interaction
+    // trigger entrance animation
+    setMounted(true);
+
+    // Mouse interaction (no parallax)
     let oldMousePoint = { x: 0, y: 0 };
     let hover = false;
+
     const mouseMove = (e) => {
       // Get canvas position relative to viewport
       const canvasRect = canvas.getBoundingClientRect();
@@ -280,7 +325,6 @@ export const BlobCanvas = () => {
         let vector = { x: canvasMouseX - pos.x, y: canvasMouseY - pos.y };
         angle = Math.atan2(vector.y, vector.x);
         hover = true;
-        // blob.color = '#77FF00';
       } else if (dist > blob.radius && hover === true) {
         let vector = { x: canvasMouseX - pos.x, y: canvasMouseY - pos.y };
         angle = Math.atan2(vector.y, vector.x);
@@ -304,8 +348,7 @@ export const BlobCanvas = () => {
             x: oldMousePoint.x - canvasMouseX,
             y: oldMousePoint.y - canvasMouseY,
           };
-          strength =
-            Math.sqrt(strength.x * strength.x + strength.y * strength.y) * 10;
+          strength = Math.sqrt(strength.x * strength.x + strength.y * strength.y) * 10;
           if (strength > 100) strength = 100;
           nearestPoint.acceleration = (strength / 100) * (hover ? -1 : 1);
         }
@@ -314,13 +357,16 @@ export const BlobCanvas = () => {
       oldMousePoint.x = canvasMouseX;
       oldMousePoint.y = canvasMouseY;
     };
+
     window.addEventListener('pointermove', mouseMove);
 
     return () => {
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', mouseMove);
     };
-  }, []);
+  }, [isHome]);
+
+  if (!isHome) return null;
 
   return (
     <canvas
@@ -329,12 +375,17 @@ export const BlobCanvas = () => {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: window.innerWidth > 768 ? '1200px' : '1000px',
-        height: window.innerWidth > 768 ? '1200px' : '1000px',
+        transform: mounted ? 'translate(-50%, -50%)' : 'translate(-50%, -46%)',
+        width: window.innerWidth > 768 ? '600px' : '500px',
+        height: window.innerWidth > 768 ? '600px' : '500px',
+        opacity: mounted ? 1 : 0,
+        transition: 'opacity 900ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1)',
         zIndex: 0, // ensure canvas sits behind positioned text inside the same container
         pointerEvents: 'none', // disable pointer events so it doesn't block UI (mouse is tracked via window)
       }}
     />
   );
 };
+
+
+export default BlobCanvas;
