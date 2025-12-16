@@ -5,7 +5,7 @@ import Overlay from './Overlay';
 
 const FullHero = styled.section`
   width: 100%;
-  min-height: 80vh;
+  height: auto;
   margin: 0;
   padding: 0;
   display: flex;
@@ -14,8 +14,10 @@ const FullHero = styled.section`
 
   @media screen and (max-width: 768px) {
     /* Ensure the hero fits inside the viewport on mobile while accounting for the navbar height (assumed 60px). Adjust the 60px if your navbar differs. */
-    min-height: calc(100vh - 60px);
-    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    height: auto;
   }
 `;
 
@@ -63,14 +65,7 @@ const Home = () => {
   return (
     <FullHero id="home">
       <VideoWrapper>
-        <BgVideo
-          id="hero-bg-video"
-          src="/img/bg-video.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+
 
         <Overlay />
       </VideoWrapper>
