@@ -6,13 +6,15 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
-  height: 80vh;
+  display: flex;
+  height: auto;
   width: 100%;
   z-index: 20;
 `;
 
 const GridLayout = styled.div`
-  height: 80vh;
+  height: auto;
+  min-height: 80vh;
   color: #f8f8f8;
   position: relative;
   z-index: 30;
@@ -25,7 +27,7 @@ const GridLayout = styled.div`
   padding: 2rem;
   margin: 0 auto;
   box-sizing: border-box;
-  align-items: center;
+
   @media (max-width: 768px) {
     grid-column: span 1;
   }
