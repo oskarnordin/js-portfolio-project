@@ -15,11 +15,11 @@ const sections = [
 
 const NavContainer = styled.div`
   width: 100%;
+  font-family: var()(--font-sans);
   background: #FFFFFF;
   display: flex;
   margin-bottom: 20px;
   justify-content: space-between;
-  /* Participate in document flow so it pushes content down */
   position: relative;
   margin-top: 20px;
   z-index: 1000;
@@ -31,7 +31,6 @@ const Nav = styled.nav`
   width: min(1100px, 100%);
   margin: 0 auto;
   height: 64px;
-
   display: flex;
   align-items: center;
   justify-content: space-between; /* spread content inside the nav */
@@ -76,6 +75,8 @@ const MobileMenuLink = styled(NavLink)`
   color: #fff;
   text-decoration: none;
   font-size: 20px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   &:hover { opacity: 0.9; }
 `;
 
@@ -221,6 +222,8 @@ const StyledNavLink = styled(NavLink)`
   height: 100%;
   padding: 20px;
   border-radius: 12px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   color: inherit;
   text-decoration: none;
   transition: background var(--transition-default), color var(--transition-default);
@@ -350,7 +353,7 @@ const Navbar = () => {
                 }}
                 style={{ display: 'block' }}
               >
-                <Avatar src="/img/avatar.png" alt="Oskar" size="73" />
+                <Avatar src="/img/avatar.png" alt="Oskar" size="61" />
               </NavLink>
               <PopoverBox id="avatar-popover" className="avatar-popover" aria-hidden={!popoverOpen} open={popoverOpen}>
                 <img src="/img/avatar.png" alt="Oskar large" />
