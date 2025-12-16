@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AngleDownImage } from '../SharedComponents';
 import { SectionContainer } from '../SharedComponents';
 import AboutMeCard from '../Cards/AboutMeCard';
 import { Inner } from '../SharedComponents';
@@ -8,18 +7,17 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
   position: relative;
-  scroll-margin-top: 90px; // Adjust to your navbar height
+  scroll-margin-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80vh;
   width: auto;
   z-index: 20;
-
-  padding: 0 0 2rem 0;
+  padding: var(--space-6);
 
   @media (max-width: 768px) {
-    padding: 0 0 1rem 0;
+    padding: var(--space-3);
     height: auto;
   }
 `;
