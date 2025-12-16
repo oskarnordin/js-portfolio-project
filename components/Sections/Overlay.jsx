@@ -11,14 +11,27 @@ const OverlayContainer = styled.div`
   position: absolute;
   inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
-  height: 100%;
-  z-index: 10001; /* sit above the video */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: visible;
   pointer-events: none; /* let clicks pass to the video/content unless needed */
+
+  @media (max-width: 768px) {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  pointer-events: none; /* let clicks pass to the video/content unless needed */
+
+  }
 `;
 
 const OverlayCard = styled.div`
@@ -54,7 +67,7 @@ const OverlayCard = styled.div`
 const H1overlay = styled.h1`
   font-size: 72px;
   font-family: --var(--font-heading);
-  color: #f8f8f8;
+  color: #131313;
   white-space: nowrap;
 
   @media (max-width: 768px) {
@@ -119,7 +132,6 @@ const TypewriterContainer = styled.div`
   width: 100%;
   max-width: 1100px; /* match video wrapper width */
   opacity: 0;
-  transform: translate(-50%, -40%);
   transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 
   &.visible {
@@ -130,10 +142,12 @@ const TypewriterContainer = styled.div`
 
 const TypewriterText = styled.h1`
   color: #ffffff;
-  font-family: --var(--font-heading);
+  font-family: var(--font-heading);
   font-size: 60px;
   white-space: nowrap;
   text-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  width: 100%;
+  text-align: center;
 
   @media (max-width: 768px) {
     font-size: 20px;
