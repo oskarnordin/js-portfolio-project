@@ -5,7 +5,7 @@ import { Inner } from '../SharedComponents';
 
 const Background = styled.div`
   width: 100%;
-  height: 80vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,6 +85,7 @@ const MoodboardP = styled.p`
 
 const PinterestWrapper = styled.div`
   width: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
 `;
@@ -95,7 +96,7 @@ const PinterestBoardContainer = styled.div`
   overflow: hidden; /* hide any internal scrolling from the embed */
 
   /* Let the embed size itself but provide a sensible minimum */
-  min-height: 600px;
+  min-height: auto;
   height: auto;
 
   /* Ensure any children (anchor/iframe) fill the parent completely */
@@ -140,8 +141,8 @@ const MoodboardSection = () => {
   // board width: Pinterest uses pixel values here. Increasing this value
   // causes the embed to render more columns and therefore smaller-looking
   // tiles/cards. Tweak DESKTOP_BOARD_WIDTH to adjust card size on large screens.
-  const DESKTOP_BOARD_WIDTH = 5000; // increase for smaller cards
-  const MOBILE_BOARD_WIDTH = 720; // smaller value for phones
+  const DESKTOP_BOARD_WIDTH = 720; // increase for smaller cards
+  const MOBILE_BOARD_WIDTH = 320; // smaller value for phones
   const boardWidth = window.innerWidth <= 768 ? MOBILE_BOARD_WIDTH : DESKTOP_BOARD_WIDTH;
   a.setAttribute('data-pin-board-width', String(boardWidth));
 
