@@ -6,7 +6,6 @@ const FooterContainer = styled.footer`
   width: 100%;
   height: 100px;
   background: transparent;
-  color: #ffffff;
   font-size: 16px;
   text-align: center;
   padding: 0 0;
@@ -24,7 +23,7 @@ const Socials = styled.div`
 
 const SocialIcon = styled.a`
   display: inline-block;
-  position: relative; /* needed for tooltip */
+  position: relative;
   transition: transform 0.2s;
   &:hover {
     opacity: 0.9;
@@ -60,19 +59,6 @@ const SocialIcon = styled.a`
   }
 `;
 
-const SubText = styled.p`
-  font-size: 13px;
-  margin-top: 18px;
-  color: #bdbdbd;
-  /* font-family: 'Source Code Pro', monospace; */
-`;
-
-const Copyright = styled.p`
-  font-size: 14px;
-  margin-top: 12px;
-  color: #888;
-`;
-
 const FooterInner = styled.div`
   width: 100%;
   display: flex;
@@ -87,7 +73,7 @@ const Badge = styled.span`
   justify-content: center;
   width: 55px;
   height: 55px;
-  background: #5438F7;
+  background: var(--color-primary);
   border-radius: 50%;
   overflow: hidden;
   img { display: block; width: 30px; height: 30px; filter: invert(1); }
