@@ -12,20 +12,20 @@
   /* Colors (semantic) */
   --color-bg: #E7EEEC;
   --color-text: #3A3335;
-  --color-muted: #585756;
-  --color-primary: #FFFBF9;
+  --color-muted: #3A3335;
+  --color-primary: #3D4CFB;
   --color-on-primary: #f5f5f5;
   --color-muted-2: #f0f0f0;
 
   /* Typography */
-  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  --font-heading: 'Stack Sans Headline', sans-serif;
-  --font-mono: 'Source Code Pro', monospace;
+  --font-sans: 'Space Mono', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-heading: 'Space Mono', monospace;
+  --font-mono: 'Space Mono', monospace;
 
   --text-base-size: 14px;
   --text-lg: 20px;
   --text-xl: 28px;
-  --text-xxl: 84px;
+  --text-xxl: 64px;
 
 
 /* Ensure app root fills viewport so footer sits flush at bottom when content is short */
@@ -65,7 +65,6 @@ html, body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
-
   font-family: var(--font-sans);
 }
 
@@ -101,8 +100,8 @@ html, body {
 #bg-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(255,255,255,0.25); /* 25% white overlay */
-  z-index: -1; /* between video (-2) and page content (0+) */
+  background-color: rgba(255,255,255,0.25);
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -129,11 +128,12 @@ a, a * {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: var(--text-xxl);
   font-family: var(--font-heading);
   font-weight: bold;
   color: var(--color-text);
   text-align: center;
+  letter-spacing: -3px;
   margin: 0;
   line-height: 0.9;
 }
@@ -141,18 +141,20 @@ h1 {
 h2 {
   font-size: 28px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
   text-align: center;
+  letter-spacing: -3px;
   margin: 10px;
 }
 
 h3 {
   font-size: 22px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   color: var(--color-text);
+  letter-spacing: -3px;
 }
 
 /* Keyframes */
