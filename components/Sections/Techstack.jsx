@@ -2,19 +2,17 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { Inner } from '../SharedComponents';
+import { SectionContainer } from '../SharedComponents';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Background = styled.div`
-  /* Adjust to your navbar height */
   scroll-margin-top: 90px;
   position: relative;
-  height: 80vh;
+  height: auto;
   width: 100%;
   z-index: 20;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   @media (max-width: 768px) {
     height: auto;
@@ -50,10 +48,9 @@ const SkillsContainer = styled.div`
 
 const TechstackH1 = styled.h1`
   font-size: 60px;
-  padding: 16px 32px;
+  padding: var(--space-2);
   border-radius: 16px;
   text-decoration: none;
-
   width: auto;
   text-align: center;
 
@@ -64,9 +61,9 @@ const TechstackH1 = styled.h1`
 
 const TechstackP = styled.p`
   font-size: 14px;
+  font-family: var(--font-mono);
   font-weight: 400;
-  text-align: center;
-  padding: 0 32px;
+  padding: var(--space-3);
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -81,7 +78,7 @@ const techStack = {
     { name: 'typescript', label: 'TypeScript' },
     { name: 'react', label: 'React' },
     { name: 'react-router', label: 'React Router' },
-    { name: 'tailwindcss', label: 'Tailwind' },
+    { name: 'tailwindcss', label: 'Tailwind CSS' }, // Added CSS for clarity
     { name: 'nextjs', label: 'Next.js' },
     { name: 'sass', label: 'Sass' },
     { name: 'accessibility', label: 'Accessibility (a11y)' },
@@ -90,17 +87,24 @@ const techStack = {
     { name: 'nodejs', label: 'Node.js' },
     { name: 'express', label: 'Express.js' },
     { name: 'rest-apis', label: 'REST APIs' },
+    // Removed: MongoDB, SQL, AWS, Terraform
+  ],
+  database: [
     { name: 'mongodb', label: 'MongoDB' },
     { name: 'sql', label: 'SQL' },
   ],
-  misc: [
-    { name: 'npm', label: 'NPM' },
+  devops: [
     { name: 'git', label: 'Git' },
     { name: 'github', label: 'GitHub' },
+    { name: 'terraform', label: 'Terraform' },
+  ],
+  cloud: [
+    { name: 'aws', label: 'AWS (S3, Lambda)' }, // Expanded to include general AWS skill
+  ],
+  tools: [ // Renamed from misc
+    { name: 'npm', label: 'NPM' },
     { name: 'vite', label: 'Vite' },
     { name: 'eslint', label: 'ESLint' },
-    { name: 'aws', label: 'AWS (S3, Lambda)' },
-    { name: 'terraform', label: 'Terraform' },
   ],
   analysis: [
     { name: 'python', label: 'Python' },
@@ -109,66 +113,85 @@ const techStack = {
     { name: 'seaborn', label: 'Seaborn' },
     { name: 'jupyter', label: 'Jupyter' },
     { name: 'numpy', label: 'NumPy' },
-    { name: 'ab-testing', label: 'A/B testing' },
-  ],  
+    { name: 'ab-testing', label: 'A/B Testing' },
+  ],
 };
 
 const ColumnsWrapper = styled.div`
-  /* Desktop: single horizontal row of all 4 columns */
-  display: flex;
+  /* Layout into 2 rows: items flow by column so they distribute evenly across two rows */
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(160px, 1fr);
+  grid-template-rows: repeat(2, auto);
+  align-items: start;
   justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  gap: 96px; /* space between categories on large screens */
-  flex-wrap: nowrap; /* keep in one row */
+  width: min(900px, 100%);
+  margin: 0 auto;
+  gap: 12px;
 
   @media (max-width: 1024px) {
-    gap: 64px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(160px, 1fr);
+  grid-template-rows: repeat(2, auto);
+  align-items: start;
+  width: min(900px, 100%);
+  margin: 0 auto;
+  gap: 48px;
   }
 
-  /* Mobile: 2 columns x 2 rows grid */
   @media (max-width: 768px) {
+    /* Mobile: switch back to two columns (single-column items per row) */
     display: grid;
+    grid-auto-flow: initial;
     grid-template-columns: repeat(2, minmax(140px, 1fr));
-    grid-auto-rows: auto;
+    grid-template-rows: none;
     justify-content: center;
-    align-items: start;
     column-gap: 32px;
-    row-gap: 48px;
+    row-gap: 24px;
   }
 `;
 
 const Column = styled.div`
-  flex: 0 0 180px;
-  max-width: 200px;
+  width: min(200px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+  border-radius: 16px;
+
+  @media (max-width: 1200px) {
+  width: min(160px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+  border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+  width: min(160px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border-radius: 16px;
-
-  @media (max-width: 1200px) {
-    flex: 0 0 160px;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    max-width: none;
-    flex: initial;
   }
 `;
 
 const ColumnTitle = styled.h4`
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-mono);
   font-weight: 400;
   margin-top: 12px;
   text-align: center;
   width: 100%;
 
   @media (max-width: 768px) {
-    font-size: 26px;
+    font-size: 16px;
     text-align: center;
   }
 `;
@@ -176,6 +199,8 @@ const ColumnTitle = styled.h4`
 const CardsGrid = styled.div`
   display: grid;
   justify-content: center;
+  justify-items: center;
+  align-items: start;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   width: 100%;
@@ -187,8 +212,8 @@ const CardsGrid = styled.div`
 `;
 
 const SmallCard = styled.div`
-  background: #5438f7;
-  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--color-primary);
+    font-family: var(--font-mono);
   border-radius: 10px;
   padding: 8px 10px;
   font-size: 12px;
@@ -201,9 +226,20 @@ const SmallCard = styled.div`
   justify-content: center;
   text-align: center;
   min-height: 10px;
+  min-width: 100px;
 
   @keyframes cardFade {
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 100%;
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 `;
 
@@ -213,7 +249,6 @@ const TechstackIcon = styled.img`
   width: 55px;
   height: 55px;
   object-fit: contain;
-  border-radius: 50%;
   margin-top: 42px;
   /* Force icon to render dark regardless of source colors */
   filter: brightness(0.2) saturate(100%);
@@ -224,59 +259,31 @@ const SkillsSection = () => {
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
-    <Background id='techstack'>
+    <SectionContainer id='techstack' style={{ minHeight: '80vh' }}>
       <Inner>
         <SkillsContainer
           ref={ref}
           className={isVisible ? 'visible' : ''}
           $visible={isVisible}
         >
-          <TechstackH1>Tech Stack</TechstackH1>
+          <h1>Tech Stack</h1>
           <TechstackP>Tools and technologies I work with</TechstackP>
           <ColumnsWrapper>
-            <Column>
-              <TechstackIcon src='/img/frontend.svg' alt='Frontend Icon' />
-              <ColumnTitle>Frontend</ColumnTitle>
-              <CardsGrid>
-                {techStack.frontend.map((item, i) => (
-                  <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
-                ))}
-              </CardsGrid>
-            </Column>
-
-            <Column>
-              <TechstackIcon src='/img/database.svg' alt='Database Icon' />
-              <ColumnTitle>Backend</ColumnTitle>
-              <CardsGrid>
-                {techStack.backend.map((item, i) => (
-                  <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
-                ))}
-              </CardsGrid>
-            </Column>
-
-            <Column>
-              <TechstackIcon src='/img/misc.svg' alt='Tools Icon' />
-              <ColumnTitle>Tools</ColumnTitle>
-              <CardsGrid>
-                {techStack.misc.map((item, i) => (
-                  <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
-                ))}
-              </CardsGrid>
-            </Column>
-
-            <Column>
-              <TechstackIcon src='/img/analysis.svg' alt='Analysis Icon' />
-              <ColumnTitle>Analysis</ColumnTitle>
-              <CardsGrid>
-                {techStack.analysis.map((item, i) => (
-                  <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
-                ))}
-              </CardsGrid>
-            </Column>
+            {Object.entries(techStack).map(([category, items]) => (
+              <Column key={category}>
+                <TechstackIcon src={`/img/${category}.svg`} alt={`${category} Icon`} />
+                <ColumnTitle>{category.split(/[-_]/).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ')}</ColumnTitle>
+                <CardsGrid>
+                  {items.map((item, i) => (
+                    <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
+                  ))}
+                </CardsGrid>
+              </Column>
+            ))}
           </ColumnsWrapper>
         </SkillsContainer>
       </Inner>
-    </Background>
+    </SectionContainer>
   );
 };
 
