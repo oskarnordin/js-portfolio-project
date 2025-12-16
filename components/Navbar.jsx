@@ -230,13 +230,8 @@ const StyledNavLink = styled(NavLink)`
 
   &.active {
     background: #000000;
-    
     color: #ffffff;
     opacity: 0.9;
-  }
-
-  &:hover {
-    background: rgba(0,0,0,0.06);
   }
 `;
 

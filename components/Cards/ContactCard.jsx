@@ -374,6 +374,21 @@ const ContactCard = () => {
           <div style={{ color: 'crimson' }}>Please fix the errors above and try again.</div>
         )}
 
+        {/* Social links under the send message */}
+        <ContactIconsWrapper aria-hidden={false}>
+          <SocialIcon href="https://www.linkedin.com/in/oskarnordin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile /oskarnordin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.84v2.06h.05c.54-1.02 1.86-2.06 3.83-2.06 4.1 0 4.86 2.7 4.86 6.21V24h-4v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.99V24h-4V8.5z" />
+            </svg>
+          </SocialIcon>
+
+          <SocialIcon href="https://github.com/oskarnordin" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile /oskarnordin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M12 .296a12 12 0 00-3.797 23.4c.6.111.82-.26.82-.577 0-.285-.01-1-.015-2.04-3.11.676-3.77-1.608-3.77-1.608-.546-1.387-1.333-1.756-1.333-1.756-1.09-.746.083-.731.083-.731 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.466-1.333-5.466-5.93 0-1.31.468-2.381 1.235-3.221-.123-.303-.535-1.524.117-3.176 0 0 .95-.322 3.301 1.23a11.52 11.52 0 016.003 0c2.293-1.552 3.299-1.23 3.299-1.23.653 1.653.241 2.874.118 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.804 5.623-5.475 5.921.43.372.815 1.102.815 2.222 0 1.606-.014 2.902-.014 3.293 0 .319.216.694.825.576A12 12 0 0012 .296z" />
+            </svg>
+          </SocialIcon>
+        </ContactIconsWrapper>
+
         {/* Success animation overlay */}
         {showSuccess && (
           <SuccessOverlay>

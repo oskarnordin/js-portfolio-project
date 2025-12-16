@@ -74,8 +74,9 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  background: transparent;
-  color: var(--primary-color);
+  background: #3D4CFB;
+  color: #ffffff;
+  font-family: var(--font-mono);
   border: 1px solid var(--primary-color);
   padding: 6px 8px;
   border-radius: 8px;
@@ -92,8 +93,7 @@ const CardFooter = styled.div`
 `;
 
 const Action = styled.a`
-  background: transparent;
-  border: 1px solid var(--primary-color);
+  background: #3D4CFB;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -103,15 +103,12 @@ const Action = styled.a`
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  color: var(--primary-color);
-`;
+  color: #ffffff;
+  font-family: var(--font-mono);
 
-const Primary = styled(Action)`
-  &:hover { opacity: 0.9; background: var(--primary-color); color: #ffffff; }
-`;
-
-const Secondary = styled(Action)`
-  &:hover { opacity: 0.9; background: var(--primary-color); color: #ffffff; }
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
@@ -131,8 +128,8 @@ const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLin
       </CardBody>
       <CardFooter>
         <div style={{ display: 'flex', gap: 8 }}>
-          <Secondary href={codeLink} target="_blank" rel="noopener noreferrer">Code</Secondary>
-          <Primary href={liveDemo} target="_blank" rel="noopener noreferrer">Live</Primary>
+          <Action href={codeLink} target="_blank" rel="noopener noreferrer">Code</Action>
+          <Action href={liveDemo} target="_blank" rel="noopener noreferrer">Live</Action>
         </div>
       </CardFooter>
     </Card>
