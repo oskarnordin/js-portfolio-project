@@ -14,7 +14,7 @@ const Background = styled.div`
   min-height: 100%;
   width: 100%;
   z-index: 20;
-  padding-bottom: 32px;
+  padding: 32px;
 
   @media (max-width: 768px) {
     min-height: auto;
@@ -96,12 +96,12 @@ const SectionContainer = styled.section`
   }
 `;
 
-const ShowroomH3 = styled.h3`
+const ShowroomH1 = styled.h1`
   scroll-margin-top: 90px; /* Match or exceed navbar height */
   max-width: ${({ theme }) => theme.maxWidth};
   color: #2d3748;
   font-size: 60px;
-  padding: 64px 32px 16px 32px;
+  padding: var(--space-6);
   text-decoration: none;
   text-align: center;
   align-self: center;
@@ -151,8 +151,8 @@ const FeaturedProjects = () => {
         className={isVisible ? 'visible' : ''}
         $visible={isVisible}
       >
-        <ShowroomH3 id='showroom'>Showroom</ShowroomH3>
-        <ShowroomP>Here are some projects I've been working on.</ShowroomP>
+        <ShowroomH1 id='showroom'>Showroom</ShowroomH1>
+        <ShowroomP>Projects I've been working on</ShowroomP>
       </HeaderWrapper>
       <Inner>
         <ProjectContainer
