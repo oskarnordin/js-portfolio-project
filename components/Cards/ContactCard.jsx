@@ -45,7 +45,7 @@ const PrimaryButton = styled.button`
   justify-content: center;
   padding: 10px 16px;
   border-radius: 10px;
-  background: #5438f7;
+  background: var(--color-primary);
   color: white;
   border: none;
   font-weight: 600;
@@ -107,6 +107,7 @@ const FormWrapper = styled.form`
 const ContactH1 = styled.h1`
   font-size: 60px;
   margin-bottom: 10px;
+  letter-spacing: -3px;
 
   @media (max-width: 768px) {
     font-size: 64px;

@@ -46,7 +46,7 @@ const InfoH2 = styled.h2`
 `;
 
 const InfoH3 = styled.h3`
-  background-color: #4b4efc;
+  background-color: var(--color-primary);
   min-width: 120px;
   justify-content: center;
   align-items: center;
@@ -85,7 +85,7 @@ const InfoPContainer = styled.div`
   flex-direction: row; /* Arrange InfoH3 elements in a row */
   gap: 10px; /* Add spacing between the elements */
   justify-content: center; /* Center the row */
-  flex-wrap: wrap; /* Allow wrapping if there are too many items */
+  flex-wrap: wrap; /* Allow wrapping if tF too many items */
 `;
 
 const InfoCard = ({ title, info }) => {

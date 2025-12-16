@@ -74,8 +74,9 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  background: #5438F7;
-  color: #ffffff;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   padding: 6px 8px;
   border-radius: 8px;
   font-size: 12px;
@@ -91,6 +92,8 @@ const CardFooter = styled.div`
 `;
 
 const Action = styled.a`
+  background: transparent;
+  border: 1px solid var(--primary-color);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -100,18 +103,15 @@ const Action = styled.a`
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  color: white;
+  color: var(--primary-color);
 `;
 
 const Primary = styled(Action)`
-  background: #5438F7;
-  &:hover { opacity: 0.90; }
+  &:hover { opacity: 0.9; background: var(--primary-color); color: #ffffff; }
 `;
 
 const Secondary = styled(Action)`
-  background: #5438F7;
-  color: #ffffff;
-  &:hover { opacity: 0.90; }
+  &:hover { opacity: 0.9; background: var(--primary-color); color: #ffffff; }
 `;
 
 const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
