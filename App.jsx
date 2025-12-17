@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Overlay from './components/Sections/Overlay';
 const SkillsSection = React.lazy(() => import('./components/Sections/Techstack'));
 const AboutMeSection = React.lazy(() => import('./components/Sections/AboutMe'));
@@ -18,6 +18,57 @@ import ProgressBar from './components/ProgressBar';
 import Spinner from './components/Spinner';
 import BlobCanvas from './components/Blob';
 function App() {
+  // Keyboard navigation component: left/right arrows navigate between main routes
+  const KeyNav = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+    // follow the visible navbar sections order (left → right)
+    const routes = ['/aboutme', '/cv', '/techstack', '/showroom', '/moodboard', '/contact'];
+
+      const handler = (e) => {
+        // ignore when modifier keys are held
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        // ignore when focusing form fields
+        const active = document.activeElement;
+        if (!active) return;
+        const tag = active.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || active.isContentEditable) return;
+
+        // Special-case: when the user is on `/home` allow arrows to jump
+        // into the first/last visible section. After leaving `/home`, the routes
+        // array intentionally does NOT include `/home`, so arrows will never take
+        // the user back to `/home` (they must use the avatar link).
+        if (location.pathname === '/home') {
+          if (e.key === 'ArrowRight') {
+            const next = routes[0];
+            if (next) navigate(next);
+          } else if (e.key === 'ArrowLeft') {
+            const prev = routes[routes.length - 1];
+            if (prev) navigate(prev);
+          }
+          return;
+        }
+
+        const idx = routes.indexOf(location.pathname);
+        if (idx === -1) return;
+
+        if (e.key === 'ArrowRight') {
+          const next = routes[(idx + 1) % routes.length];
+          if (next && next !== location.pathname) navigate(next);
+        } else if (e.key === 'ArrowLeft') {
+          const prev = routes[(idx - 1 + routes.length) % routes.length];
+          if (prev && prev !== location.pathname) navigate(prev);
+        }
+      };
+
+      window.addEventListener('keydown', handler);
+      return () => window.removeEventListener('keydown', handler);
+    }, [navigate, location]);
+
+    return null;
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,6 +76,7 @@ function App() {
         <div className="app-root">
           <div id="bg-overlay" aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.40)', zIndex: -1 }} />
           <Navbar />
+          <KeyNav />
           <main className="app-main">
             <Suspense fallback={<Spinner size="lg" overlay={false} />}>
               <Routes>

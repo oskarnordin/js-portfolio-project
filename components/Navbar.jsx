@@ -235,10 +235,57 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const HintContainer = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%) translateY(6px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: auto;
+  animation: hintShow 360ms ease forwards;
+
+  @keyframes hintShow {
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    display: none; /* hide hint on small screens */
+  }
+`;
+
+const HintText = styled.span`
+  display: inline-block;
+  line-height: 1;
+`;
+
+const HintClose = styled.button`
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 6px;
+  transition: opacity 160ms ease;
+  &:hover { opacity: 0.85; }
+`;
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const avatarRef = useRef(null);
 
   // close popover when clicking outside (use mousedown to avoid event-order issues)
@@ -276,6 +323,19 @@ const Navbar = () => {
     document.body.style.overflow = '';
   }, [menuOpen, isMobile]);
 
+  // Keyboard hint: show once unless dismissed
+  useEffect(() => {
+    try {
+      const dismissed = localStorage.getItem('keyboardHintDismissed');
+      if (!dismissed) {
+        const t = setTimeout(() => setShowHint(true), 600);
+        return () => clearTimeout(t);
+      }
+    } catch (e) {
+      setShowHint(true);
+    }
+  }, []);
+
   // Close menu and navigate/scroll to href target for mobile menu links
   const handleMobileMenuLinkClick = (e) => {
     const href = e.currentTarget.getAttribute('href');
@@ -298,6 +358,11 @@ const Navbar = () => {
     }
     // Non-hash links fall through to default navigation behavior
   };
+
+  const dismissHint = () => {
+    try { localStorage.setItem('keyboardHintDismissed', '1'); } catch (e) {}
+    setShowHint(false);
+  };
   return (
     <NavContainer>
       <Nav>
@@ -311,6 +376,13 @@ const Navbar = () => {
           </Tab>
 
           <TabList role="tablist" aria-label="Main navigation tabs">
+          {/* Keyboard hint (dismissible) */}
+          {showHint && !isMobile && (
+            <HintContainer role="status" aria-live="polite">
+              <HintText>Use ← → to navigate</HintText>
+              <HintClose onClick={dismissHint} aria-label="Dismiss hint">×</HintClose>
+            </HintContainer>
+          )}
                       <Tab>
             <AvatarWrapper
               ref={avatarRef}
