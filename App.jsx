@@ -7,6 +7,7 @@ const Home = React.lazy(() => import('./components/Sections/Home'));
 const FeaturedProjects = React.lazy(() => import('./components/Sections/Showroom'));
 const MoodboardSection = React.lazy(() => import('./components/Sections/Moodboard'));
 const ContactSection = React.lazy(() => import('./components/Sections/Contact'));
+const CurriculumVitae = React.lazy(() => import('./components/Sections/CurriculumVitae'));
 import { ThemeProvider } from 'styled-components';
 import { theme } from '/components/theme';
 import './style.css';
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/techstack" element={<SkillsSection />} />
                 <Route path="/moodboard" element={<MoodboardSection />} />
                 <Route path="/contact" element={<ContactSection />} />
+                <Route path="/cv" element={<CurriculumVitae />} />
               </Routes>
             </Suspense>
             <BlobCanvas/>
