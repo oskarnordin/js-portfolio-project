@@ -5,10 +5,10 @@ import Avatar from 'react-avatar';
 import 'hamburgers/dist/hamburgers.min.css';
 
 const sections = [
-  { id: 'home', label: 'Home' },
   { id: 'aboutme', label: 'About Me' },
-  { id: 'showroom', label: 'Showroom' },
+  { id: 'cv', label: 'CV' },
   { id: 'techstack', label: 'Tech Stack' },
+  { id: 'showroom', label: 'Showroom' },
   { id: 'moodboard', label: 'Moodboard' },
   { id: 'contact', label: "Let's Talk" },
 ];
@@ -393,11 +393,10 @@ const Navbar = () => {
       {/* In-flow mobile menu: when open it pushes page content down */}
       {menuOpen && isMobile && (
         <MobileMenu>
-                    <MobileMenuLink to="/home" onClick={handleMobileMenuLinkClick}>Home</MobileMenuLink>
-
           <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>
           <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
           <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
+          <MobileMenuLink to="/cv" onClick={handleMobileMenuLinkClick}>CV</MobileMenuLink>
           <MobileMenuLink to="/techstack" onClick={handleMobileMenuLinkClick}>Tech Stack</MobileMenuLink>
           <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>Let's Talk</MobileMenuLink>
         </MobileMenu>
