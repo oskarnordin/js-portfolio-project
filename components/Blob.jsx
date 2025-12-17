@@ -77,8 +77,15 @@ const BlobCanvas = () => {
 
         // Render as ASCII characters inside the blob path
         try {
-          const computed = getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '#000';
-          ctx.fillStyle = computed.trim();
+          // use the explicit blob color if set; resolve CSS var if provided
+          const c = this.color;
+          if (typeof c === 'string' && c.trim().startsWith('var(')) {
+            const varName = c.trim().slice(4, -1);
+            const resolved = getComputedStyle(document.documentElement).getPropertyValue(varName) || '#000';
+            ctx.fillStyle = resolved.trim();
+          } else {
+            ctx.fillStyle = c || '#000';
+          }
         } catch (e) {
           ctx.fillStyle = '#000';
         }
@@ -125,7 +132,7 @@ const BlobCanvas = () => {
         this._color = value;
       }
       get color() {
-        return this._color || 'var(--color-primary)'; // Changed to a red color
+        return this._color || '#000000'; // Changed to a red color
       }
 
       set canvas(value) {
@@ -296,7 +303,8 @@ const BlobCanvas = () => {
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
-  blob.color = 'var(--color-primary)'; // Set custom color here
+    // force the blob color to solid black
+    blob.color = '#000000';
     setBlobSize();
     blob.init();
     blob.render();
