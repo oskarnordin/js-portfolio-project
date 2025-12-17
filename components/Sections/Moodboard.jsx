@@ -17,7 +17,6 @@ const Background = styled.div`
   @media (max-width: 768px) {
     height: auto;
     width: auto;
-    padding: 0 0 1rem 0;
   }
 `;
 
@@ -196,7 +195,7 @@ const MoodboardSection = () => {
   return (
     <Background id='moodboard'>
       <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
-        <MoodboardH3>Moodboard</MoodboardH3>
+        <h2>Moodboard</h2>
         <MoodboardP>
           My collection of tech content I draw inspiration from.
         </MoodboardP>

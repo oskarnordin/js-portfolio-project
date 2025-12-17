@@ -24,7 +24,7 @@ const GridLayout = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 2rem;
+
   margin: 0 auto;
   box-sizing: border-box;
 

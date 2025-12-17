@@ -14,11 +14,10 @@ const Background = styled.div`
   min-height: 100%;
   width: 100%;
   z-index: 20;
-  padding: 32px;
+  padding: 12px;
 
   @media (max-width: 768px) {
     min-height: auto;
-    /* ...existing mobile styles... */
   }
 `;
 
@@ -151,7 +150,7 @@ const FeaturedProjects = () => {
         className={isVisible ? 'visible' : ''}
         $visible={isVisible}
       >
-        <ShowroomH1 id='showroom'>Showroom</ShowroomH1>
+        <h2>Showroom</h2>
         <ShowroomP>Projects I've been working on</ShowroomP>
       </HeaderWrapper>
       <Inner>

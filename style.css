@@ -25,7 +25,7 @@
   --text-base-size: 14px;
   --text-lg: 20px;
   --text-xl: 28px;
-  --text-xxl: 64px;
+  --text-xxl: 54px;
 
 
 /* Ensure app root fills viewport so footer sits flush at bottom when content is short */
@@ -139,12 +139,12 @@ h1 {
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 36px;
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-text);
   text-align: center;
-  letter-spacing: -3px;
+  letter-spacing: -1px;
   margin: 10px;
 }
 
@@ -154,7 +154,7 @@ h3 {
   font-weight: 700;
   margin: 0;
   color: var(--color-text);
-  letter-spacing: -3px;
+  letter-spacing: -1px;
 }
 
 /* Keyframes */

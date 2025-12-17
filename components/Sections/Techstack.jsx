@@ -47,7 +47,7 @@ const SkillsContainer = styled.div`
 `;
 
 const TechstackH1 = styled.h1`
-  font-size: 60px;
+  font-size: var(--text-xxl);
   padding: var(--space-2);
   border-radius: 16px;
   text-decoration: none;
@@ -55,18 +55,18 @@ const TechstackH1 = styled.h1`
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 64px;
+    font-size: var(--text-xl);
   }
 `;
 
 const TechstackP = styled.p`
-  font-size: 14px;
-  font-family: var(--font-mono);
+  color: var(--color-text);
   font-weight: 400;
-  padding: var(--space-3);
+  text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
+    margin: 0 0 12px 0;
   }
 `;
 
@@ -118,37 +118,23 @@ const techStack = {
 };
 
 const ColumnsWrapper = styled.div`
-  /* Layout into 2 rows: items flow by column so they distribute evenly across two rows */
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(160px, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
   align-items: start;
   justify-content: center;
-  width: min(900px, 100%);
+  width: min(1000px, 100%);
   margin: 0 auto;
-  gap: 12px;
+  gap: 20px;
 
   @media (max-width: 1024px) {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(160px, 1fr);
-  grid-template-rows: repeat(2, auto);
-  align-items: start;
-  width: min(900px, 100%);
-  margin: 0 auto;
-  gap: 48px;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    gap: 18px;
   }
 
   @media (max-width: 768px) {
-    /* Mobile: switch back to two columns (single-column items per row) */
-    display: grid;
-    grid-auto-flow: initial;
+    /* Mobile: two columns */
     grid-template-columns: repeat(2, minmax(140px, 1fr));
-    grid-template-rows: none;
-    justify-content: center;
-    column-gap: 32px;
-    row-gap: 24px;
+    gap: 16px;
   }
 `;
 
@@ -183,9 +169,9 @@ const Column = styled.div`
 `;
 
 const ColumnTitle = styled.h4`
-  font-size: 16px;
+  font-size: 18px;
   font-family: var(--font-mono);
-  font-weight: 400;
+  font-weight: 600;
   margin-top: 12px;
   text-align: center;
   width: 100%;
@@ -202,44 +188,44 @@ const CardsGrid = styled.div`
   justify-items: center;
   align-items: start;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  width: 100%;
-  padding: 8px 0;
+  gap: 10px;
+  width: 280px;
+  padding: 16px;
+  background: transparent;
+    box-shadow: var(--shadow-1);
+  border-radius: 12px;
+  margin-bottom: 12px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    width: 150px;
+    padding: 8px;
   }
 `;
 
 const SmallCard = styled.div`
   background: var(--color-primary);
-    font-family: var(--font-mono);
+  font-family: var(--font-mono);
   border-radius: 10px;
   padding: 8px 10px;
-  font-size: 12px;
+  font-size: 14px;
   color: #ffffff;
   opacity: 0;
   transform: translateY(12px);
   animation: cardFade 600ms ease-out forwards;
+  box-shadow: var(--shadow-1);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 10px;
-  min-width: 100px;
+  min-height: 36px;
+  width: 90%;
 
   @keyframes cardFade {
     to { opacity: 1; transform: translateY(0); }
   }
 
   @media (max-width: 768px) {
-    font-size: 12px;
-    width: 100%;
-    max-width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
   }
 `;
 
@@ -266,8 +252,8 @@ const SkillsSection = () => {
           className={isVisible ? 'visible' : ''}
           $visible={isVisible}
         >
-          <h1>Tech Stack</h1>
-          <TechstackP>Tools and technologies I work with</TechstackP>
+          <h2>Tech Stack</h2>
+          <TechstackP>Technologies and tools I use</TechstackP>
           <ColumnsWrapper>
             {Object.entries(techStack).map(([category, items]) => (
               <Column key={category}>
