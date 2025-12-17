@@ -33,6 +33,7 @@ const ProjectContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
   margin: 0 auto;
+  padding: 24px;
   box-sizing: border-box;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) =>
