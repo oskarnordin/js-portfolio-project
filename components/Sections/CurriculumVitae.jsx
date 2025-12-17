@@ -6,7 +6,7 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.section`
   position: relative;
   scroll-margin-top: 90px;
-  padding: 48px 24px;
+  padding: 48px 0px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -50,6 +50,7 @@ const Column = styled.div``;
 const ColumnHeading = styled.h3`
   font-size: 20px;
   margin: 0 0 12px 0;
+  text-align: center;
 `;
 
 const Card = styled.article`
@@ -73,6 +74,14 @@ const Meta = styled.div`
 
 const BulletList = styled.ul`
   margin: 8px 0 0 16px;
+`;
+
+const Icon = styled.img`
+  display: block;
+  margin: 0 auto 8px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 `;
 
 const CvP = styled.p`
@@ -100,6 +109,7 @@ const CurriculumVitae = () => {
             <CvP>Work Experience, Education, and Certificates</CvP>
             <Grid>
             <Column>
+              <Icon src="/img/work.png" alt="Work experience" />
               <ColumnHeading>Work Experience</ColumnHeading>
 
               <Card>
@@ -141,6 +151,7 @@ const CurriculumVitae = () => {
             </Column>
 
             <Column>
+              <Icon src="/img/school.png" alt="Education" />
               <ColumnHeading>Education</ColumnHeading>
 
               <Card>
@@ -167,6 +178,7 @@ const CurriculumVitae = () => {
             </Column>
 
             <Column>
+              <Icon src="/img/cert.png" alt="Certificates" />
               <ColumnHeading>Certificates</ColumnHeading>
 
               <Card>

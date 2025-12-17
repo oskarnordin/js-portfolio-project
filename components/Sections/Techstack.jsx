@@ -13,17 +13,16 @@ const Background = styled.div`
   z-index: 20;
   display: flex;
   flex-direction: column;
+  padding: 48px 0px;
 
   @media (max-width: 768px) {
     height: auto;
-    padding: 0 0 2rem 0;
   }
 `;
 
 const SkillsContainer = styled.div`
-  max-width: 100%; 
+  width: 100%; 
   background-color: transparent;
-  font-family: Teko, sans-serif;
   color: #2d3748;
   position: relative;
   z-index: 30;
@@ -33,8 +32,6 @@ const SkillsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  box-sizing: border-box;
 
   opacity: 0;
   transform: translateY(20px);
@@ -63,6 +60,7 @@ const TechstackP = styled.p`
   color: var(--color-text);
   font-weight: 400;
   text-align: center;
+  padding: 0 0 32px 0;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -99,7 +97,7 @@ const techStack = {
     { name: 'terraform', label: 'Terraform' },
   ],
   cloud: [
-    { name: 'aws', label: 'AWS (S3, Lambda)' }, // Expanded to include general AWS skill
+    { name: 'aws', label: 'AWS (S3, Lambda)' },
   ],
   tools: [ // Renamed from misc
     { name: 'npm', label: 'NPM' },
@@ -119,87 +117,63 @@ const techStack = {
 
 const ColumnsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   align-items: start;
+  justify-items: center;
   justify-content: center;
   width: min(1000px, 100%);
-  margin: 0 auto;
-  gap: 20px;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, minmax(140px, 1fr));
-    gap: 18px;
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 768px) {
-    /* Mobile: two columns */
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
-    gap: 16px;
+  @media (max-width: 700px) {
+    grid-template-columns: 2fr;
   }
 `;
 
 const Column = styled.div`
-  width: min(200px, 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: transparent;
-  border-radius: 16px;
-
-  @media (max-width: 1200px) {
-  width: min(160px, 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: transparent;
-  border-radius: 16px;
-  }
-
-  @media (max-width: 768px) {
-  width: min(160px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border-radius: 16px;
-  }
+  width: 100%;
 `;
 
 const ColumnTitle = styled.h4`
-  font-size: 18px;
+  font-size: 20px;
   font-family: var(--font-mono);
   font-weight: 600;
-  margin-top: 12px;
+  margin: 0 0 12px 0;
   text-align: center;
   width: 100%;
 
   @media (max-width: 768px) {
     font-size: 16px;
-    text-align: center;
   }
 `;
 
-const CardsGrid = styled.div`
+const Card  = styled.div`
   display: grid;
-  justify-content: center;
-  justify-items: center;
-  align-items: start;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  width: 280px;
+  gap: 20px;
   padding: 16px;
-  background: transparent;
-    box-shadow: var(--shadow-1);
   border-radius: 12px;
+  align-items: start;
+  box-shadow: var(--shadow-1);
+  background: rgba(255,255,255,0.6);
   margin-bottom: 12px;
+  width: 100%;
+  box-sizing: border-box;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    width: 150px;
-    padding: 8px;
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
@@ -208,7 +182,7 @@ const SmallCard = styled.div`
   font-family: var(--font-mono);
   border-radius: 10px;
   padding: 8px 10px;
-  font-size: 14px;
+  font-size: 12px;
   color: #ffffff;
   opacity: 0;
   transform: translateY(12px);
@@ -219,24 +193,23 @@ const SmallCard = styled.div`
   justify-content: center;
   text-align: center;
   min-height: 36px;
-  width: 90%;
+  width: 100%;
 
   @keyframes cardFade {
     to { opacity: 1; transform: translateY(0); }
   }
 
   @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
-// Single shared icon component for tech stack icons
 const TechstackIcon = styled.img`
   display: block;
-  width: 55px;
-  height: 55px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  margin-top: 42px;
-  /* Force icon to render dark regardless of source colors */
+  margin: 0 auto 8px;
   filter: brightness(0.2) saturate(100%);
 `;
 
@@ -245,6 +218,7 @@ const SkillsSection = () => {
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
+    <Background>
     <SectionContainer id='techstack' style={{ minHeight: '80vh' }}>
       <Inner>
         <SkillsContainer
@@ -257,19 +231,20 @@ const SkillsSection = () => {
           <ColumnsWrapper>
             {Object.entries(techStack).map(([category, items]) => (
               <Column key={category}>
-                <TechstackIcon src={`/img/${category}.svg`} alt={`${category} Icon`} />
+                <TechstackIcon src={`/img/${category}.png`} alt={`${category} Icon`} />
                 <ColumnTitle>{category.split(/[-_]/).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ')}</ColumnTitle>
-                <CardsGrid>
+                <Card>
                   {items.map((item, i) => (
                     <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
                   ))}
-                </CardsGrid>
+                </Card>
               </Column>
             ))}
           </ColumnsWrapper>
         </SkillsContainer>
       </Inner>
     </SectionContainer>
+    </Background>
   );
 };
 
