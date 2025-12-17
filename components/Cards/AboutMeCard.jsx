@@ -26,11 +26,8 @@ const ColumnsContainer = styled.div`
   flex-wrap: wrap;  gap: 4px;
   width: 100%;
   box-sizing: border-box;
-  padding: 8px 0;
 
   @media (max-width: 480px) {
-    gap: 10px;
-    padding: 6px 8px;
   }
 `;
 
@@ -104,20 +101,6 @@ const ColText = styled.div`
   }
 `;
 
-const AboutMeH1 = styled.h1`
-  color: --var(--color-text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 60px;
-  padding: 16px;
-  text-decoration: none;
-
-  @media (max-width: 768px) {
-    font-size: 64px;
-  }
-`;
-
 const InfoP = styled.p`
   font-weight: 400;
   max-width: auto;
@@ -153,7 +136,7 @@ const AboutMeP = styled.p`
 const AboutMeCard = ({ title, info }) => {
   return (
     <AboutMeCardContainer className='visible'>
-      <AboutMeH1>About Me</AboutMeH1>
+      <h2>About Me</h2>
       <AboutMeP>My journey</AboutMeP>
       <ColumnsContainer>
         <TwoColGrid>

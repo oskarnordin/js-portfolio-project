@@ -2,20 +2,22 @@ import styled from 'styled-components';
 
 // Hero-like card design using local styled-components (safe, no external API calls)
 const Card = styled.article`
-  background: #f0f0f0;
-  border-radius: 18px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   height: 100%;
-  min-height: 420px;
+  min-height: 350px;
   opacity: 0;
   transform: translateY(12px);
   animation: cardFadeIn 600ms ease-out forwards;
-
+  box-shadow: var(--shadow-1);
+  margin-bottom: 12px;
 
   &:hover {
     transform: translateY(-6px);
+    box-shadow: 0 8px 36px rgba(0,0,0,0.10);
   }
 
   @keyframes cardFadeIn {
@@ -38,13 +40,12 @@ const CardMedia = styled.div`
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
-    border-radius: 20px;
-    padding: 12px;
+    border-radius: 12px;
   }
 `;
 
 const CardBody = styled.div`
-  padding: 18px 18px 14px 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -55,6 +56,7 @@ const Title = styled.h4`
   margin: 0;
   font-size: 16px;
   color: #2E3647;
+  font-family: var(--font-heading);
 `;
 
 const Description = styled.p`
@@ -84,12 +86,11 @@ const Tag = styled.span`
 `;
 
 const CardFooter = styled.div`
-  padding: 14px 18px;
+  padding: 16px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
   align-items: center;
-  border-radius: 16px;
 `;
 
 const Action = styled.a`
@@ -114,9 +115,6 @@ const Action = styled.a`
 const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLink }) => {
   return (
     <Card className="project-card">
-      <CardMedia>
-        {imgSrc ? <img src={imgSrc} alt={title} /> : null}
-      </CardMedia>
       <CardBody>
         <Title>{title}</Title>
         <Description>{description}</Description>

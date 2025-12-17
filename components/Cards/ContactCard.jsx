@@ -12,7 +12,8 @@ const StyledInput = styled.input`
   border-radius: 10px;
   border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
-  font-size: 15px;
+  font-family: 'Space Mono', var(--font-mono);
+  font-size: 14px;
   outline: none;
   transition: box-shadow 0.15s, border-color 0.15s;
   &:focus {
@@ -27,8 +28,7 @@ const StyledTextarea = styled.textarea`
   border-radius: 10px;
   border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
-  font-size: 15px;
-  font-family: inherit;
+  font-family: 'Space Mono', var(--font-mono);
   outline: none;
   resize: vertical;
   transition: box-shadow 0.15s, border-color 0.15s;
@@ -49,6 +49,7 @@ const PrimaryButton = styled.button`
   color: white;
   border: none;
   font-weight: 600;
+  font-family: 'Space Mono', var(--font-mono);
   cursor: pointer;
   transition: transform 0.08s ease, opacity 0.12s ease;
   &:not([disabled]):hover { opacity: 0.90; }
@@ -67,7 +68,6 @@ const ContactCardContainer = styled.div`
   width: 100%;
   max-width: 540px;
   margin: 0 auto;
-  gap: 10px;
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
@@ -106,7 +106,6 @@ const FormWrapper = styled.form`
 
 const ContactH1 = styled.h1`
   font-size: 60px;
-  margin-bottom: 10px;
   letter-spacing: -3px;
 
   @media (max-width: 768px) {
@@ -115,10 +114,13 @@ const ContactH1 = styled.h1`
 `;
 
 const ContactP = styled.p`
+  color: var(--color-text);
   font-weight: 400;
   text-align: center;
+  padding-bottom: 32px;
 
   @media (max-width: 768px) {
+    font-size: 16px;
     margin: 0 0 12px 0;
   }
 `;
@@ -135,6 +137,7 @@ const ContactIconsWrapper = styled.div`
 
 const ButtonIcon = styled.span`
   display: flex;
+  font-family: var(--font-mono);
   align-items: center;
   justify-content: center;
   border-radius: 8px;
@@ -161,8 +164,8 @@ const SocialIcon = styled.a`
     opacity: 0.8;
   }
   svg {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 `;
 
@@ -305,7 +308,7 @@ const ContactCard = () => {
 
   return (
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
-      <ContactH1>Let's Talk</ContactH1>
+      <h2>Let's Talk</h2>
       <ContactP>
         I'm always open to discussing new projects, creative ideas, or
         opportunities to be part of your vision.
@@ -371,7 +374,7 @@ const ContactCard = () => {
 
         {/* General client-side error */}
         {status === 'error' && (
-          <div style={{ color: 'crimson' }}>Please fix the errors above and try again.</div>
+          <div style={{ color: 'crimson' }}>Please fix the errors Cve and try again.</div>
         )}
 
         {/* Social links under the send message */}
