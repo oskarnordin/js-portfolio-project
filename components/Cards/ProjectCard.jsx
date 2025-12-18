@@ -30,17 +30,17 @@ const Card = styled.article`
 
 const CardMedia = styled.div`
   width: 100%;
-  height: 220px;
+  height: 60px;
   background: transparent;
-  display: block;
+  display: flex;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
     transition: transform 0.4s ease;
     border-radius: 12px;
+    width: 40px;
+    height: 40px;
   }
 `;
 
@@ -57,6 +57,7 @@ const Title = styled.h4`
   font-size: 16px;
   color: #2E3647;
   font-family: var(--font-heading);
+  align-self: center;
 `;
 
 const Description = styled.p`
@@ -116,11 +117,15 @@ const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLin
   return (
     <Card className="project-card">
       <CardBody>
+        <CardMedia>
+          <img src={imgSrc} alt={`${title}`} />
+        </CardMedia>
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Tags>
           {stack.map((s, i) => (
             <Tag key={i}>{s}</Tag>
+            
           ))}
         </Tags>
       </CardBody>

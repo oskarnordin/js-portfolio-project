@@ -175,7 +175,7 @@ const FeaturedProjects = () => {
             'Bcrypt',
             'Zustand',
           ]}
-          imgSrc={'/img/netflix.png'}
+          imgSrc={'/img/subscribee.png'}
           liveDemo='https://subscribee-project.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-movies'
         />
@@ -183,7 +183,7 @@ const FeaturedProjects = () => {
           title='Movie App'
           description='An app where users can search for movies, view details, and save their favorites. It uses a backend API to fetch movie data.'
           stack={['HTML5', 'CSS3', 'React', 'API']}
-          imgSrc={'/img/movie.png'}
+          imgSrc={'/img/popcorn.png'}
           liveDemo='https://effervescent-praline-71a88e.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-movies'
         />
@@ -191,7 +191,7 @@ const FeaturedProjects = () => {
           title='Happy Thoughts'
           description='An app where users can share their happy thoughts and like others. It uses a backend API to store and retrieve messages.'
           stack={['HTML5', 'CSS3', 'React', 'API']}
-          imgSrc='/img/happy.jpg'
+          imgSrc='/img/flower.png'
           liveDemo='https://smilezone78.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-api'
         />
@@ -199,20 +199,20 @@ const FeaturedProjects = () => {
           title='Recipe Library'
           description='A library of recipes with filters for dietary restrictions, time to cook and random recipe. It allows users to easily find and save their favorite recipes.'
           stack={['HTML5', 'CSS3', 'JavaScript', 'API']}
-          imgSrc='/img/cooking.jpg'
+          imgSrc='/img/carrot.png'
           liveDemo='https://recipe-libary-on.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-recipe-library'
         />
         <ProjectCard
-          title='Win 98 Style To-Do App'
+          title='To-Do App'
           description='A to-do app with a touch of retro. It mimics the look and feel of Windows 98, allowing users to manage their tasks in a nostalgic interface.'
           stack={['HTML5', 'CSS3', 'React']}
-          imgSrc='/img/w98.png'
+          imgSrc='/img/check.png'
           liveDemo='https://windows98-todo.netlify.app/'
           codeLink='https://github.com/oskarnordin/project-to-dos-zustand-vite'
         />
         <ProjectCard
-          title='This Portfolio'
+          title='Portfolio'
           description='This portfolio showcases my work and skills as a developer. It includes various projects and information about my background and experience.'
           stack={['HTML5', 'CSS3', 'React']}
           imgSrc='/img/portfolio.png'
@@ -223,7 +223,7 @@ const FeaturedProjects = () => {
           title='Accessibility Quiz'
           description='An interactive quiz application designed to educate users about web accessibility best practices. It includes multiple-choice questions and provides feedback on answers.'
           stack={['HTML5', 'CSS3', 'JavaScript']}
-          imgSrc='/img/access.png'
+          imgSrc='/img/heart.png'
           liveDemo='https://js-project-accessibility-on.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-accessibility'
         />

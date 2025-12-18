@@ -197,7 +197,7 @@ const MoodboardSection = () => {
       <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
         <h2>Moodboard</h2>
         <MoodboardP>
-          My collection of tech content I draw inspiration from.
+          My collection of tech content I draw inspiration from
         </MoodboardP>
         <Inner>
           <PinterestBoardContainer ref={boardContainerRef}></PinterestBoardContainer>

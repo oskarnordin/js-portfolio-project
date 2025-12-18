@@ -311,7 +311,7 @@ const ContactCard = () => {
       <h2>Let's Talk</h2>
       <ContactP>
         I'm always open to discussing new projects, creative ideas, or
-        opportunities to be part of your vision.
+        opportunities to be part of your vision
       </ContactP>
 
       <FormWrapper onSubmit={handleSubmit} aria-live="polite">

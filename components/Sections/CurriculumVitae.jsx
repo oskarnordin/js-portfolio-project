@@ -79,8 +79,8 @@ const BulletList = styled.ul`
 const Icon = styled.img`
   display: block;
   margin: 0 auto 8px;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 `;
 

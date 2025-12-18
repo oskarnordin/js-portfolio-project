@@ -206,8 +206,8 @@ const SmallCard = styled.div`
 
 const TechstackIcon = styled.img`
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   margin: 0 auto 8px;
   filter: brightness(0.2) saturate(100%);
