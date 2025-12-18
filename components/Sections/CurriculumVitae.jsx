@@ -6,7 +6,7 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Background = styled.section`
   position: relative;
   scroll-margin-top: 90px;
-  padding: 48px 0px;
+  padding: 12px 0px;
   width: 100%;
   display: flex;
   justify-content: center;

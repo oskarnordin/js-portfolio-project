@@ -65,8 +65,6 @@ const Home = () => {
   return (
     <FullHero id="home">
       <VideoWrapper>
-
-
         <Overlay />
       </VideoWrapper>
     </FullHero>

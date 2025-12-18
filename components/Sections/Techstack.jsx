@@ -13,7 +13,7 @@ const Background = styled.div`
   z-index: 20;
   display: flex;
   flex-direction: column;
-  padding: 48px 0px;
+  padding: 12px 0px;
 
   @media (max-width: 768px) {
     height: auto;

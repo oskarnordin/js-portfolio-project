@@ -11,7 +11,7 @@ const OverlayContainer = styled.div`
   position: absolute;
   inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +23,7 @@ const OverlayContainer = styled.div`
   position: absolute;
   inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,8 +39,9 @@ const OverlayCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   background: transparent;
   border-radius: 36px;
   padding: 0; /* Remove extra padding */
