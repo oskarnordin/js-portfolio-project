@@ -189,7 +189,7 @@ function Overlay() {
   }, [menuOpen]);
   const [showTypewriter, setShowTypewriter] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "Hello";
+  const fullText = "";
 
   // Typing effect: type out fullText one character at a time when showTypewriter becomes true
   useEffect(() => {

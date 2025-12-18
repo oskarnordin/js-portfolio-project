@@ -10,7 +10,7 @@ const sections = [
   { id: 'techstack', label: 'Tech Stack' },
   { id: 'showroom', label: 'Showroom' },
   { id: 'moodboard', label: 'Moodboard' },
-  { id: 'contact', label: "Let's Talk" },
+  { id: 'contact', label: "Contact" },
 ];
 
 const NavContainer = styled.div`
@@ -366,9 +366,20 @@ const Navbar = () => {
   return (
     <NavContainer>
       <Nav>
-        {/* Mobile-only avatar on the left */}
+        {/* Mobile-only avatar on the left (navigate to /home on tap) */}
         <MobileAvatar>
-          <Avatar src="/img/avatar.png" alt="Oskar" size="48" />
+          <NavLink
+            to="/home"
+            className="avatar-home-link"
+            aria-label="Go to Home"
+            onClick={() => {
+              setPopoverOpen(false);
+              setMenuOpen(false);
+            }}
+            style={{ display: 'block' }}
+          >
+            <Avatar src="/img/avatar.png" alt="Oskar" size="48" />
+          </NavLink>
         </MobileAvatar>
         <NavItems>
           <Tab>
@@ -466,11 +477,11 @@ const Navbar = () => {
       {menuOpen && isMobile && (
         <MobileMenu>
           <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>
-          <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
-          <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
           <MobileMenuLink to="/cv" onClick={handleMobileMenuLinkClick}>CV</MobileMenuLink>
           <MobileMenuLink to="/techstack" onClick={handleMobileMenuLinkClick}>Tech Stack</MobileMenuLink>
-          <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>Let's Talk</MobileMenuLink>
+          <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
+          <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
+          <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>Contact</MobileMenuLink>
         </MobileMenu>
       )}
     </NavContainer>
