@@ -38,7 +38,6 @@ const CardMedia = styled.div`
   align-items: center;
   img {
     transition: transform 0.4s ease;
-    border-radius: 12px;
     width: 40px;
     height: 40px;
   }

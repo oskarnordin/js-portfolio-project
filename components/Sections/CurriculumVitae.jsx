@@ -59,6 +59,17 @@ const Card = styled.article`
   padding: 16px;
   box-shadow: var(--shadow-1);
   margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(12px);
+
+  @keyframes cardFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  &.visible {
+    animation: cardFadeIn 600ms ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
 `;
 
 const Role = styled.div`
@@ -73,6 +84,7 @@ const Meta = styled.div`
 `;
 
 const BulletList = styled.ul`
+font-size: 14px;
   margin: 8px 0 0 16px;
 `;
 
@@ -86,6 +98,7 @@ const Icon = styled.img`
 
 const CvP = styled.p`
   color: var(--color-text);
+  font-size: 14px;
   font-weight: 400;
   text-align: center;
   padding-bottom: 32px;
@@ -112,7 +125,7 @@ const CurriculumVitae = () => {
               <Icon src="/img/work.png" alt="Work experience" />
               <ColumnHeading>Work Experience</ColumnHeading>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 0 }}>
                 <Role>Web Developer Intern — T-Box</Role>
                 <Meta>09/2025 - 10/2025</Meta>
                 <BulletList>
@@ -122,7 +135,7 @@ const CurriculumVitae = () => {
                 </BulletList>
               </Card>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 1 }}>
                 <Role>CRO Specialist — Tele2</Role>
                 <Meta>01/2022 - 09/2022</Meta>
                 <BulletList>
@@ -132,7 +145,7 @@ const CurriculumVitae = () => {
                 </BulletList>
               </Card>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 2 }}>
                 <Role>Web Analyst Intern — Bombayworks</Role>
                 <Meta>09/2021 - 01/2022</Meta>
                 <BulletList>
@@ -141,7 +154,7 @@ const CurriculumVitae = () => {
                 </BulletList>
               </Card>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 3 }}>
                 <Role>Senior Servicedesk Analyst — Telia Company</Role>
                 <Meta>09/2015 - 08/2021</Meta>
                 <BulletList>
@@ -154,7 +167,7 @@ const CurriculumVitae = () => {
               <Icon src="/img/school.png" alt="Education" />
               <ColumnHeading>Education</ColumnHeading>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 4 }}>
                 <Role>JavaScript Development Bootcamp (160 YH) — Technigo</Role>
                 <Meta>01/2025 - 11/2025</Meta>
                 <BulletList>
@@ -166,7 +179,7 @@ const CurriculumVitae = () => {
                 </BulletList>
               </Card>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 5 }}>
                 <Role>Digital Analytics (320 YH) — Medieinstitutet</Role>
                 <Meta>08/2020 - 01/2022</Meta>
                 <BulletList>
@@ -181,7 +194,7 @@ const CurriculumVitae = () => {
               <Icon src="/img/cert.png" alt="Certificates" />
               <ColumnHeading>Certificates</ColumnHeading>
 
-              <Card>
+              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 6 }}>
                 <Role>Data Scientist: Inference Specialist — Codecademy</Role>
                 <Meta>2024 — Credential ID: A505BA3D-6</Meta>
               </Card>

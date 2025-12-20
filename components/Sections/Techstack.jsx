@@ -168,6 +168,17 @@ const Card  = styled.div`
   margin-bottom: 12px;
   width: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(12px);
+
+  @keyframes cardFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  &.visible {
+    animation: cardFadeIn 600ms ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
@@ -229,13 +240,13 @@ const SkillsSection = () => {
           <h2>Tech Stack</h2>
           <TechstackP>Technologies and tools I use</TechstackP>
           <ColumnsWrapper>
-            {Object.entries(techStack).map(([category, items]) => (
+            {Object.entries(techStack).map(([category, items], colIndex) => (
               <Column key={category}>
                 <TechstackIcon src={`/img/${category}.png`} alt={`${category} Icon`} />
                 <ColumnTitle>{category.split(/[-_]/).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ')}</ColumnTitle>
-                <Card>
-                  {items.map((item, i) => (
-                    <SmallCard key={item.name} style={{ animationDelay: `${i * 80}ms` }}>{item.label}</SmallCard>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: colIndex }}>
+                  {items.map((item) => (
+                    <SmallCard key={item.name}>{item.label}</SmallCard>
                   ))}
                 </Card>
               </Column>

@@ -38,7 +38,7 @@ const ProjectContainer = styled.div`
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) =>
     $visible ? 'translateY(0)' : 'translateY(30px)'};
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 0.9s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   overflow-x: hidden;
   overflow-y: hidden; /* prevent transient vertical scrollbar while cards animate in */
 
@@ -133,7 +133,7 @@ const HeaderWrapper = styled.div`
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) =>
     $visible ? 'translateY(0)' : 'translateY(30px)'};
-  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 0.9s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
@@ -191,7 +191,7 @@ const FeaturedProjects = () => {
           title='Happy Thoughts'
           description='An app where users can share their happy thoughts and like others. It uses a backend API to store and retrieve messages.'
           stack={['HTML5', 'CSS3', 'React', 'API']}
-          imgSrc='/img/flower.png'
+          imgSrc='/img/happy.png'
           liveDemo='https://smilezone78.netlify.app/'
           codeLink='https://github.com/oskarnordin/js-project-api'
         />
