@@ -42,6 +42,7 @@ const VideoWrapper = styled.div`
     height: 70%;
     box-sizing: border-box;
     border-radius: 24px;
+    max-width: 100%; /* ensure it doesn't exceed viewport */
   }
 `;
 

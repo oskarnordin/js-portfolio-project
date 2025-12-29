@@ -28,7 +28,7 @@ const OverlayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: visible;
+  overflow: hidden; /* prevent horizontal scrolling on mobile */
   pointer-events: none; /* let clicks pass to the video/content unless needed */
 
   }
@@ -75,7 +75,8 @@ const H1overlay = styled.h1`
     font-size: 44px;
     text-align: center;
     padding: 0 8px;
-    white-space: nowrap;
+    white-space: normal; /* allow text wrapping on mobile */
+    word-break: break-word; /* break long words if necessary */
   }
 `;
 
@@ -138,6 +139,11 @@ const TypewriterContainer = styled.div`
   &.visible {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 768px) {
+    max-width: calc(100% - 32px); /* respect viewport bounds with padding */
+    padding: 8px;
   }
 `;
 
