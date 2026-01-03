@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 // Hero-like card design using local styled-components (safe, no external API calls)
 const Card = styled.article`
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
   height: 100%;
   min-height: 350px;
   opacity: 0;
@@ -17,7 +19,7 @@ const Card = styled.article`
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 8px 36px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 36px rgba(0, 0, 0, 0.1);
   }
 
   @keyframes cardFadeIn {
@@ -54,14 +56,14 @@ const CardBody = styled.div`
 const Title = styled.h4`
   margin: 0;
   font-size: 16px;
-  color: #2E3647;
+  color: #2e3647;
   font-family: var(--font-heading);
   align-self: center;
 `;
 
 const Description = styled.p`
   margin: 0;
-  color: #2E3647;
+  color: #2e3647;
   font-size: 14px;
   line-height: 1.2;
   flex: 0 0 auto;
@@ -76,7 +78,7 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  background: #3D4CFB;
+  background: #3d4cfb;
   color: #ffffff;
   font-family: var(--font-mono);
   border: 1px solid var(--primary-color);
@@ -94,7 +96,7 @@ const CardFooter = styled.div`
 `;
 
 const Action = styled.a`
-  background: #3D4CFB;
+  background: #3d4cfb;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,14 +126,17 @@ const ProjectCard = ({ title, description, stack = [], imgSrc, liveDemo, codeLin
         <Tags>
           {stack.map((s, i) => (
             <Tag key={i}>{s}</Tag>
-            
           ))}
         </Tags>
       </CardBody>
       <CardFooter>
         <div style={{ display: 'flex', gap: 8 }}>
-          <Action href={codeLink} target="_blank" rel="noopener noreferrer">Code</Action>
-          <Action href={liveDemo} target="_blank" rel="noopener noreferrer">Live</Action>
+          <Action href={codeLink} target="_blank" rel="noopener noreferrer">
+            Code
+          </Action>
+          <Action href={liveDemo} target="_blank" rel="noopener noreferrer">
+            Live
+          </Action>
         </div>
       </CardFooter>
     </Card>

@@ -24,7 +24,7 @@ const Background = styled.div`
 `;
 
 const SkillsContainer = styled.div`
-  width: 100%; 
+  width: 100%;
   background-color: transparent;
   color: #2d3748;
   position: relative;
@@ -38,7 +38,9 @@ const SkillsContainer = styled.div`
 
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
@@ -86,10 +88,9 @@ const techStack = {
     { name: 'github', label: 'GitHub' },
     { name: 'terraform', label: 'Terraform' },
   ],
-  cloud: [
-    { name: 'aws', label: 'AWS (S3, Lambda)' },
-  ],
-  tools: [ // Renamed from misc
+  cloud: [{ name: 'aws', label: 'AWS (S3, Lambda)' }],
+  tools: [
+    // Renamed from misc
     { name: 'npm', label: 'NPM' },
     { name: 'vite', label: 'Vite' },
     { name: 'eslint', label: 'ESLint' },
@@ -146,7 +147,7 @@ const ColumnTitle = styled.h4`
   }
 `;
 
-const Card  = styled.div`
+const Card = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -154,7 +155,7 @@ const Card  = styled.div`
   border-radius: 12px;
   align-items: start;
   box-shadow: var(--shadow-1);
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   margin-bottom: 12px;
   width: 100%;
   box-sizing: border-box;
@@ -162,7 +163,10 @@ const Card  = styled.div`
   transform: translateY(12px);
 
   @keyframes cardFadeIn {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &.visible {
@@ -197,7 +201,10 @@ const SmallCard = styled.div`
   width: 100%;
 
   @keyframes cardFade {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media (max-width: 768px) {
@@ -220,31 +227,32 @@ const SkillsSection = () => {
 
   return (
     <Background>
-    <SectionContainer id='techstack' style={{ minHeight: '80vh' }}>
-      <Inner>
-        <SkillsContainer
-          ref={ref}
-          className={isVisible ? 'visible' : ''}
-          $visible={isVisible}
-        >
-          <h2>Tech Stack</h2>
-          <TechstackP>Technologies and tools I use</TechstackP>
-          <ColumnsWrapper>
-            {Object.entries(techStack).map(([category, items], colIndex) => (
-              <Column key={category}>
-                <TechstackIcon src={`/img/${category}.png`} alt={`${category} Icon`} />
-                <ColumnTitle>{category.split(/[-_]/).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ')}</ColumnTitle>
-                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: colIndex }}>
-                  {items.map((item) => (
-                    <SmallCard key={item.name}>{item.label}</SmallCard>
-                  ))}
-                </Card>
-              </Column>
-            ))}
-          </ColumnsWrapper>
-        </SkillsContainer>
-      </Inner>
-    </SectionContainer>
+      <SectionContainer id="techstack" style={{ minHeight: '80vh' }}>
+        <Inner>
+          <SkillsContainer ref={ref} className={isVisible ? 'visible' : ''} $visible={isVisible}>
+            <h2>Tech Stack</h2>
+            <TechstackP>Technologies and tools I use</TechstackP>
+            <ColumnsWrapper>
+              {Object.entries(techStack).map(([category, items], colIndex) => (
+                <Column key={category}>
+                  <TechstackIcon src={`/img/${category}.png`} alt={`${category} Icon`} />
+                  <ColumnTitle>
+                    {category
+                      .split(/[-_]/)
+                      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+                      .join(' ')}
+                  </ColumnTitle>
+                  <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: colIndex }}>
+                    {items.map((item) => (
+                      <SmallCard key={item.name}>{item.label}</SmallCard>
+                    ))}
+                  </Card>
+                </Column>
+              ))}
+            </ColumnsWrapper>
+          </SkillsContainer>
+        </Inner>
+      </SectionContainer>
     </Background>
   );
 };

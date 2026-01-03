@@ -24,7 +24,6 @@ const FullHero = styled.section`
   }
 `;
 
-
 const VideoWrapper = styled.div`
   width: min(1100px, 100%);
   max-width: 1100px;
@@ -38,7 +37,10 @@ const VideoWrapper = styled.div`
   box-sizing: border-box;
 
   @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media screen and (max-width: 768px) {

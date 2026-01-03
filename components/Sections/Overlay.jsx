@@ -42,7 +42,9 @@ const OverlayCard = styled.div`
   padding: 0;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 
   &.visible {
     opacity: 1;
@@ -63,7 +65,7 @@ const OverlayCard = styled.div`
 const MenuOverlay = styled.div`
   position: relative;
   max-width: 100%;
-  background: #3D4CFB;
+  background: #3d4cfb;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -99,7 +101,9 @@ const TypewriterContainer = styled.div`
   width: 100%;
   max-width: 1100px;
   opacity: 0;
-  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
   box-sizing: border-box;
 
   &.visible {
@@ -119,7 +123,7 @@ const TypewriterText = styled.h1`
   font-family: var(--font-heading);
   font-size: 60px;
   white-space: nowrap;
-  text-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   width: 100%;
   text-align: center;
   max-width: 100%;
@@ -133,12 +137,13 @@ const TypewriterText = styled.h1`
   }
 `;
 
-
 const Char = styled.span`
   display: inline-block;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 160ms ease-out, transform 220ms cubic-bezier(0.2,0.9,0.2,1);
+  transition:
+    opacity 160ms ease-out,
+    transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
   will-change: opacity, transform;
 
   &.visible {
@@ -165,7 +170,7 @@ function Overlay() {
   }, [menuOpen]);
   const [showTypewriter, setShowTypewriter] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = "";
+  const fullText = '';
 
   useEffect(() => {
     if (!showTypewriter) {
@@ -208,10 +213,17 @@ function Overlay() {
   return (
     <>
       <OverlayContainer ref={overlayRef}>
-        <TypewriterContainer aria-hidden={!isOverlayVisible} className={showTypewriter ? 'visible' : ''}>
+        <TypewriterContainer
+          aria-hidden={!isOverlayVisible}
+          className={showTypewriter ? 'visible' : ''}
+        >
           <TypewriterText aria-live="polite">
             {fullText.split('').map((ch, i) => (
-              <Char key={`c-${i}`} className={i < typedText.length ? 'visible' : ''} aria-hidden={i >= typedText.length}>
+              <Char
+                key={`c-${i}`}
+                className={i < typedText.length ? 'visible' : ''}
+                aria-hidden={i >= typedText.length}
+              >
                 {ch === ' ' ? '\u00A0' : ch}
               </Char>
             ))}

@@ -7,7 +7,7 @@ const BarContainer = styled.div`
   left: 0;
   width: 100%;
   height: 6px;
-  background: #3D4CFB33;
+  background: #3d4cfb33;
   z-index: 9999;
 
   @media screen {
@@ -19,7 +19,7 @@ const BarContainer = styled.div`
 
 const Progress = styled.div`
   height: 100%;
-  background: #3D4CFB;
+  background: #3d4cfb;
   width: ${({ progress }) => progress}%;
   transition: width 0.2s ease;
   border-radius: 0 0 5px 0px;
@@ -31,8 +31,7 @@ export const ProgressBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (scrollTop / docHeight) * 100;
       setProgress(scrolled);
     };

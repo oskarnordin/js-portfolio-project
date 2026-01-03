@@ -23,7 +23,9 @@ const TimelineLink = styled.a`
   font-weight: ${(props) => (props.active ? '700' : '400')};
   color: ${(props) => (props.active ? '#FC5F5A' : '#222')};
   text-decoration: none;
-  transition: font-size 0.2s, color 0.2s;
+  transition:
+    font-size 0.2s,
+    color 0.2s;
   padding: 6px 18px;
   border-radius: 12px;
   background: ${(props) => (props.active ? 'rgba(252,95,90,0.08)' : 'none')};
@@ -69,11 +71,7 @@ const Timeline = () => {
   return (
     <TimelineContainer>
       {sections.map((sec) => (
-        <TimelineLink
-          key={sec.id}
-          href={`#${sec.id}`}
-          active={active === sec.id}
-        >
+        <TimelineLink key={sec.id} href={`#${sec.id}`} active={active === sec.id}>
           {sec.label}
         </TimelineLink>
       ))}

@@ -10,15 +10,17 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
+  border: 1px solid ${(props) => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
   font-family: 'Space Mono', var(--font-mono);
   font-size: 14px;
   outline: none;
-  transition: box-shadow 0.15s, border-color 0.15s;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
   &:focus {
-    box-shadow: 0 0 0 4px rgba(66,153,225,0.06);
-    border-color: ${props => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.06);
+    border-color: ${(props) => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
   }
 `;
 
@@ -26,15 +28,17 @@ const StyledTextarea = styled.textarea`
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid ${props => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
+  border: 1px solid ${(props) => (props.$hasError ? 'crimson' : 'rgba(0,0,0,0.08)')};
   background: #fbfbfc;
   font-family: 'Space Mono', var(--font-mono);
   outline: none;
   resize: vertical;
-  transition: box-shadow 0.15s, border-color 0.15s;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
   &:focus {
-    box-shadow: 0 0 0 4px rgba(66,153,225,0.06);
-    border-color: ${props => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.06);
+    border-color: ${(props) => (props.$hasError ? 'crimson' : 'rgba(66,153,225,0.8)')};
   }
 `;
 
@@ -51,10 +55,19 @@ const PrimaryButton = styled.button`
   font-weight: 600;
   font-family: 'Space Mono', var(--font-mono);
   cursor: pointer;
-  transition: transform 0.08s ease, opacity 0.12s ease;
-  &:not([disabled]):hover { opacity: 0.90; }
-  &:active { transform: translateY(1px); }
-  &[disabled] { opacity: 0.6; cursor: default; }
+  transition:
+    transform 0.08s ease,
+    opacity 0.12s ease;
+  &:not([disabled]):hover {
+    opacity: 0.9;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
 `;
 
 const ContactCardContainer = styled.div`
@@ -71,7 +84,9 @@ const ContactCardContainer = styled.div`
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 
   &.visible {
     opacity: 1;
@@ -131,7 +146,9 @@ const ButtonIcon = styled.span`
   justify-content: center;
   border-radius: 8px;
   padding: 6px;
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
   &:hover {
     opacity: 0.8;
   }
@@ -148,7 +165,9 @@ const ButtonIcon = styled.span`
 
 const SocialIcon = styled.a`
   display: inline-block;
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
   &:hover {
     opacity: 0.8;
   }
@@ -180,7 +199,9 @@ const SuccessAnimWrapper = styled.div`
   transform: translateY(20px);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 400ms ease-out, opacity 400ms ease-out;
+  transition:
+    transform 400ms ease-out,
+    opacity 400ms ease-out;
   animation: slideFadeIn 300ms ease-out forwards;
 
   @keyframes slideFadeIn {
@@ -226,12 +247,9 @@ const ContactCard = () => {
     email: !email.trim()
       ? 'Please enter your email.'
       : !emailRegex.test(email.trim())
-      ? 'Please enter a valid email address.'
-      : '',
-    message:
-      message.trim().length < 10
-        ? 'Please enter a message of at least 10 characters.'
+        ? 'Please enter a valid email address.'
         : '',
+    message: message.trim().length < 10 ? 'Please enter a message of at least 10 characters.' : '',
   };
 
   const isValid = !errors.name && !errors.email && !errors.message;
@@ -274,10 +292,13 @@ const ContactCard = () => {
       const holdDuration = 1800;
       const fadeDuration = 400;
       const holdTimer = setTimeout(() => setSuccessFading(true), holdDuration);
-      const unmountTimer = setTimeout(() => {
-        setShowSuccess(false);
-        setSuccessFading(false);
-      }, holdDuration + fadeDuration + 100);
+      const unmountTimer = setTimeout(
+        () => {
+          setShowSuccess(false);
+          setSuccessFading(false);
+        },
+        holdDuration + fadeDuration + 100
+      );
       return () => {
         clearTimeout(holdTimer);
         clearTimeout(unmountTimer);
@@ -289,8 +310,8 @@ const ContactCard = () => {
     <ContactCardContainer ref={ref} className={isVisible ? 'visible' : ''}>
       <h2>Let's Talk</h2>
       <ContactP>
-        I'm always open to discussing new projects, creative ideas, or
-        opportunities to be part of your vision
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+        your vision
       </ContactP>
 
       <FormWrapper onSubmit={handleSubmit} aria-live="polite">
@@ -354,13 +375,23 @@ const ContactCard = () => {
         )}
 
         <ContactIconsWrapper aria-hidden={false}>
-          <SocialIcon href="https://www.linkedin.com/in/oskarnordin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile /oskarnordin">
+          <SocialIcon
+            href="https://www.linkedin.com/in/oskarnordin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile /oskarnordin"
+          >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.84v2.06h.05c.54-1.02 1.86-2.06 3.83-2.06 4.1 0 4.86 2.7 4.86 6.21V24h-4v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.99V24h-4V8.5z" />
             </svg>
           </SocialIcon>
 
-          <SocialIcon href="https://github.com/oskarnordin" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile /oskarnordin">
+          <SocialIcon
+            href="https://github.com/oskarnordin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile /oskarnordin"
+          >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M12 .296a12 12 0 00-3.797 23.4c.6.111.82-.26.82-.577 0-.285-.01-1-.015-2.04-3.11.676-3.77-1.608-3.77-1.608-.546-1.387-1.333-1.756-1.333-1.756-1.09-.746.083-.731.083-.731 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.466-1.333-5.466-5.93 0-1.31.468-2.381 1.235-3.221-.123-.303-.535-1.524.117-3.176 0 0 .95-.322 3.301 1.23a11.52 11.52 0 016.003 0c2.293-1.552 3.299-1.23 3.299-1.23.653 1.653.241 2.874.118 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.804 5.623-5.475 5.921.43.372.815 1.102.815 2.222 0 1.606-.014 2.902-.014 3.293 0 .319.216.694.825.576A12 12 0 0012 .296z" />
             </svg>
@@ -369,7 +400,9 @@ const ContactCard = () => {
 
         {showSuccess && (
           <SuccessOverlay>
-            <VisuallyHidden role="status" aria-live="polite">Message sent successfully</VisuallyHidden>
+            <VisuallyHidden role="status" aria-live="polite">
+              Message sent successfully
+            </VisuallyHidden>
             <SuccessAnimWrapper
               onTransitionEnd={() => {
                 if (successFading) {
@@ -379,7 +412,7 @@ const ContactCard = () => {
               }}
               style={{
                 opacity: successFading ? 0 : 1,
-                transform: successFading ? 'translateY(-4px)' : 'translateY(0)'
+                transform: successFading ? 'translateY(-4px)' : 'translateY(0)',
               }}
             >
               <DotLottieReact
@@ -392,7 +425,6 @@ const ContactCard = () => {
           </SuccessOverlay>
         )}
       </FormWrapper>
-
     </ContactCardContainer>
   );
 };

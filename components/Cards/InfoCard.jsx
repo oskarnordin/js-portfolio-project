@@ -16,7 +16,9 @@ const InfoCardContainer = styled.div`
   text-align: center;
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start with offset */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 
   &.visible {
     opacity: 1;

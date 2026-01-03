@@ -41,7 +41,7 @@ const ScrollAni = ({ scrollY, fade }) => {
           }}
         >
           <DotLottieReact
-            src='https://lottie.host/aa92881a-1194-4aab-841b-8439e64a39fe/iGObAcx37H.lottie'
+            src="https://lottie.host/aa92881a-1194-4aab-841b-8439e64a39fe/iGObAcx37H.lottie"
             loop
             autoplay
           />

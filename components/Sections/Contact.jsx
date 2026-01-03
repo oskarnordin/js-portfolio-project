@@ -39,7 +39,9 @@ const FadeInContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 2s ease,
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   &.visible {
     opacity: 1;
     transform: translateY(0);
@@ -52,7 +54,7 @@ const ContactSection = () => {
 
   return (
     <Background>
-      <GridLayout id='contact'>
+      <GridLayout id="contact">
         <Inner>
           <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>
             <ContactCard />

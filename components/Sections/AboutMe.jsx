@@ -25,7 +25,9 @@ const Background = styled.div`
 const FadeInContainer = styled.div`
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 2s ease,
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;

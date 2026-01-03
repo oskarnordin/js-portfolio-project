@@ -49,10 +49,7 @@ const BlobCanvas = () => {
         ctx.moveTo((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
 
         for (let i = 1; i < points; i++) {
-          pointsArray[i].solveWith(
-            pointsArray[i - 1],
-            pointsArray[i + 1] || pointsArray[0]
-          );
+          pointsArray[i].solveWith(pointsArray[i - 1], pointsArray[i + 1] || pointsArray[0]);
 
           let p2 = pointsArray[i].position;
           var xc = (p1.x + p2.x) / 2;
@@ -74,7 +71,8 @@ const BlobCanvas = () => {
           const c = this.color;
           if (typeof c === 'string' && c.trim().startsWith('var(')) {
             const varName = c.trim().slice(4, -1);
-            const resolved = getComputedStyle(document.documentElement).getPropertyValue(varName) || '#000';
+            const resolved =
+              getComputedStyle(document.documentElement).getPropertyValue(varName) || '#000';
             ctx.fillStyle = resolved.trim();
           } else {
             ctx.fillStyle = c || '#000';
@@ -125,10 +123,7 @@ const BlobCanvas = () => {
       }
 
       set canvas(value) {
-        if (
-          value instanceof HTMLElement &&
-          value.tagName.toLowerCase() === 'canvas'
-        ) {
+        if (value instanceof HTMLElement && value.tagName.toLowerCase() === 'canvas') {
           this._canvas = value;
           this.ctx = this._canvas.getContext('2d');
         }
@@ -235,12 +230,8 @@ const BlobCanvas = () => {
 
       get position() {
         return {
-          x:
-            this.parent.center.x +
-            this.components.x * (this.parent.radius + this.radialEffect),
-          y:
-            this.parent.center.y +
-            this.components.y * (this.parent.radius + this.radialEffect),
+          x: this.parent.center.x + this.components.x * (this.parent.radius + this.radialEffect),
+          y: this.parent.center.y + this.components.y * (this.parent.radius + this.radialEffect),
         };
       }
 
@@ -373,13 +364,13 @@ const BlobCanvas = () => {
         maxWidth: '100vw',
         maxHeight: '100vh',
         opacity: mounted ? 1 : 0,
-        transition: 'opacity 900ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1)',
+        transition:
+          'opacity 900ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1)',
         zIndex: 0,
         pointerEvents: 'none',
       }}
     />
   );
 };
-
 
 export default BlobCanvas;

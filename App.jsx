@@ -24,7 +24,7 @@ function App() {
     const location = useLocation();
 
     useEffect(() => {
-    const routes = ['/aboutme', '/cv', '/techstack', '/showroom', '/moodboard', '/contact'];
+      const routes = ['/aboutme', '/cv', '/techstack', '/showroom', '/moodboard', '/contact'];
 
       const handler = (e) => {
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
@@ -67,7 +67,19 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className="app-root">
-          <div id="bg-overlay" aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255, 255, 255, 0.40)', zIndex: -1 }} />
+          <div
+            id="bg-overlay"
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0.40)',
+              zIndex: -1,
+            }}
+          />
           <Navbar />
           <KeyNav />
           <main className="app-main">
@@ -83,7 +95,7 @@ function App() {
                 <Route path="/cv" element={<CurriculumVitae />} />
               </Routes>
             </Suspense>
-            <BlobCanvas/>
+            <BlobCanvas />
           </main>
         </div>
       </BrowserRouter>

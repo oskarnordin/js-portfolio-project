@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const MyWordsCardContainer = styled.div`
   background-color: transp;
   display: flex;
@@ -15,7 +14,9 @@ const MyWordsCardContainer = styled.div`
   text-align: center;
   gap: 10px;
   transform: translateY(20px); /* Start with offset */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 
   &.visible {
     opacity: 1;
@@ -38,7 +39,7 @@ const MyWordsImage = styled.img`
 
 const MyWordsH2 = styled.h2`
   color: #333; /* Adjust color */
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   font-size: 28px; /* Adjust font size */
   font-weight: bold;
   margin: 10px 0;
@@ -48,11 +49,11 @@ const MyWordsH2 = styled.h2`
 
 const Description = styled.p`
   color: #000000; /* Adjust color */
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   font-size: 16px; /* Adjust font size */
   font-weight: normal;
   margin: 5px 0;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   word-wrap: break-word; /* Prevent long words from breaking layout */
   text-align: left; /* Center text */
 `;

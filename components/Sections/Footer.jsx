@@ -36,7 +36,7 @@ const SocialIcon = styled.a`
     bottom: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%) translateY(6px);
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
     color: #fff;
     padding: 6px 8px;
     border-radius: 6px;
@@ -44,7 +44,9 @@ const SocialIcon = styled.a`
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 160ms ease, transform 160ms ease;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
     z-index: 40;
   }
 
@@ -76,7 +78,12 @@ const Badge = styled.span`
   background: var(--color-primary);
   border-radius: 50%;
   overflow: hidden;
-  img { display: block; width: 30px; height: 30px; filter: invert(1); }
+  img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+  }
 `;
 
 const Footer = () => (

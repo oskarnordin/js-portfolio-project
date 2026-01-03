@@ -10,14 +10,14 @@ const sections = [
   { id: 'techstack', label: 'Tech Stack' },
   { id: 'showroom', label: 'Showroom' },
   { id: 'moodboard', label: 'Moodboard' },
-  { id: 'contact', label: "Contact" },
+  { id: 'contact', label: 'Contact' },
 ];
 
 const NavContainer = styled.div`
   width: 100%;
   max-width: 100vw;
   font-family: var(--font-sans);
-  background: #FFFFFF;
+  background: #ffffff;
   display: flex;
   margin-bottom: 20px;
   justify-content: space-between;
@@ -45,7 +45,7 @@ const Nav = styled.nav`
 `;
 
 const MobileMenu = styled.div`
-  background: #3D4CFB;
+  background: #3d4cfb;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +61,7 @@ const MobileMenu = styled.div`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -74,8 +74,14 @@ const MobileMenu = styled.div`
   animation: menuSlideDown 240ms ease forwards;
 
   @keyframes menuSlideDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
@@ -89,7 +95,9 @@ const MobileMenuLink = styled(NavLink)`
   font-size: 20px;
   font-family: var(--font-sans);
   font-weight: 400;
-  &:hover { opacity: 0.9; }
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const HamburgerButton = styled.button`
@@ -119,7 +127,7 @@ const HamburgerButton = styled.button`
   .hamburger-inner,
   .hamburger-inner::before,
   .hamburger-inner::after {
-    background-color: ${p => (p.$open ? '#ffffff' : '#000000')} !important;
+    background-color: ${(p) => (p.$open ? '#ffffff' : '#000000')} !important;
   }
 `;
 
@@ -164,7 +172,8 @@ const AvatarWrapper = styled.div`
   height: 100%;
   overflow: hidden;
 
-  img, .avatar {
+  img,
+  .avatar {
     border-radius: 25% !important;
     display: block;
   }
@@ -190,7 +199,8 @@ const MobileAvatar = styled.div`
   z-index: 1100;
   align-items: center;
 
-  img, .avatar {
+  img,
+  .avatar {
     border-radius: 20% !important;
     display: block;
   }
@@ -210,19 +220,28 @@ const PopoverBox = styled.div`
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
   z-index: 12000;
 
-  ${(p) => p.open && `
+  ${(p) =>
+    p.open &&
+    `
     opacity: 1;
     transform: translateX(-50%) translateY(0);
     pointer-events: auto;
   `}
 
-  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -239,7 +258,9 @@ const StyledNavLink = styled(NavLink)`
   font-weight: 400;
   color: inherit;
   text-decoration: none;
-  transition: background var(--transition-default), color var(--transition-default);
+  transition:
+    background var(--transition-default),
+    color var(--transition-default);
 
   &.active {
     background: #000000;
@@ -256,11 +277,11 @@ const HintContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   color: #fff;
   padding: 8px 12px;
   border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
   font-family: var(--font-mono);
   font-size: 13px;
   opacity: 0;
@@ -268,7 +289,10 @@ const HintContainer = styled.div`
   animation: hintShow 360ms ease forwards;
 
   @keyframes hintShow {
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
   @media (max-width: 768px) {
@@ -284,19 +308,23 @@ const HintText = styled.span`
 const HintClose = styled.button`
   background: transparent;
   border: none;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
   padding: 0 6px;
   border-radius: 6px;
   transition: opacity 160ms ease;
-  &:hover { opacity: 0.85; }
+  &:hover {
+    opacity: 0.85;
+  }
 `;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  );
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const avatarRef = useRef(null);
@@ -306,10 +334,15 @@ const Navbar = () => {
       if (!avatarRef.current) return;
       if (!avatarRef.current.contains(e.target)) setPopoverOpen(false);
     };
-    const onKey = (e) => { if (e.key === 'Escape') setPopoverOpen(false); };
+    const onKey = (e) => {
+      if (e.key === 'Escape') setPopoverOpen(false);
+    };
     document.addEventListener('mousedown', onDocPointer);
     document.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('mousedown', onDocPointer); document.removeEventListener('keydown', onKey); };
+    return () => {
+      document.removeEventListener('mousedown', onDocPointer);
+      document.removeEventListener('keydown', onKey);
+    };
   }, []);
 
   // Close menu when switching to desktop and track mobile breakpoint
@@ -328,7 +361,9 @@ const Navbar = () => {
     if (menuOpen && isMobile) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      return () => { document.body.style.overflow = prev; };
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
     // ensure reset when menu closes
     document.body.style.overflow = '';
@@ -366,7 +401,9 @@ const Navbar = () => {
   };
 
   const dismissHint = () => {
-    try { localStorage.setItem('keyboardHintDismissed', '1'); } catch (e) {}
+    try {
+      localStorage.setItem('keyboardHintDismissed', '1');
+    } catch (e) {}
     setShowHint(false);
   };
   return (
@@ -387,59 +424,64 @@ const Navbar = () => {
           </NavLink>
         </MobileAvatar>
         <NavItems>
-          <Tab>
-
-          </Tab>
+          <Tab></Tab>
 
           <TabList role="tablist" aria-label="Main navigation tabs">
-          {showHint && !isMobile && (
-            <HintContainer role="status" aria-live="polite">
-              <HintText>Use ← → to navigate</HintText>
-              <HintClose onClick={dismissHint} aria-label="Dismiss hint">×</HintClose>
-            </HintContainer>
-          )}
-                      <Tab>
-            <AvatarWrapper
-              ref={avatarRef}
-              tabIndex={0}
-              role="button"
-              aria-label="Profile"
-              aria-expanded={popoverOpen}
-              aria-controls="avatar-popover"
-              onClick={(e) => {
-                if (e.target.closest('.avatar-home-link')) {
-                  setPopoverOpen(false);
-                  setMenuOpen(false);
-                  return; // let NavLink handle navigation
-                }
-                e.stopPropagation();
-                setPopoverOpen((s) => !s);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
+            {showHint && !isMobile && (
+              <HintContainer role="status" aria-live="polite">
+                <HintText>Use ← → to navigate</HintText>
+                <HintClose onClick={dismissHint} aria-label="Dismiss hint">
+                  ×
+                </HintClose>
+              </HintContainer>
+            )}
+            <Tab>
+              <AvatarWrapper
+                ref={avatarRef}
+                tabIndex={0}
+                role="button"
+                aria-label="Profile"
+                aria-expanded={popoverOpen}
+                aria-controls="avatar-popover"
+                onClick={(e) => {
+                  if (e.target.closest('.avatar-home-link')) {
+                    setPopoverOpen(false);
+                    setMenuOpen(false);
+                    return; // let NavLink handle navigation
+                  }
                   e.stopPropagation();
                   setPopoverOpen((s) => !s);
-                }
-              }}
-            >
-              <NavLink
-                to="/home"
-                className="avatar-home-link"
-                aria-label="Go to Home"
-                onClick={() => {
-                  setPopoverOpen(false);
-                  setMenuOpen(false);
                 }}
-                style={{ display: 'block' }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setPopoverOpen((s) => !s);
+                  }
+                }}
               >
-                <Avatar src="/img/avatar.png" alt="Oskar" size="61" />
-              </NavLink>
-              <PopoverBox id="avatar-popover" className="avatar-popover" aria-hidden={!popoverOpen} open={popoverOpen}>
-                <img src="/img/avatar.png" alt="Oskar large" />
-              </PopoverBox>
-            </AvatarWrapper>
-          </Tab>
+                <NavLink
+                  to="/home"
+                  className="avatar-home-link"
+                  aria-label="Go to Home"
+                  onClick={() => {
+                    setPopoverOpen(false);
+                    setMenuOpen(false);
+                  }}
+                  style={{ display: 'block' }}
+                >
+                  <Avatar src="/img/avatar.png" alt="Oskar" size="61" />
+                </NavLink>
+                <PopoverBox
+                  id="avatar-popover"
+                  className="avatar-popover"
+                  aria-hidden={!popoverOpen}
+                  open={popoverOpen}
+                >
+                  <img src="/img/avatar.png" alt="Oskar large" />
+                </PopoverBox>
+              </AvatarWrapper>
+            </Tab>
             {sections.map((s) => (
               <Tab role="presentation" key={s.id}>
                 <StyledNavLink
@@ -451,7 +493,6 @@ const Navbar = () => {
                 >
                   {s.label}
                 </StyledNavLink>
-                
               </Tab>
             ))}
           </TabList>
@@ -476,12 +517,24 @@ const Navbar = () => {
 
       {menuOpen && isMobile && (
         <MobileMenu>
-          <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>
-          <MobileMenuLink to="/cv" onClick={handleMobileMenuLinkClick}>CV</MobileMenuLink>
-          <MobileMenuLink to="/techstack" onClick={handleMobileMenuLinkClick}>Tech Stack</MobileMenuLink>
-          <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>Showroom</MobileMenuLink>
-          <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>Moodboard</MobileMenuLink>
-          <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>Contact</MobileMenuLink>
+          <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>
+            About Me
+          </MobileMenuLink>
+          <MobileMenuLink to="/cv" onClick={handleMobileMenuLinkClick}>
+            CV
+          </MobileMenuLink>
+          <MobileMenuLink to="/techstack" onClick={handleMobileMenuLinkClick}>
+            Tech Stack
+          </MobileMenuLink>
+          <MobileMenuLink to="/showroom" onClick={handleMobileMenuLinkClick}>
+            Showroom
+          </MobileMenuLink>
+          <MobileMenuLink to="/moodboard" onClick={handleMobileMenuLinkClick}>
+            Moodboard
+          </MobileMenuLink>
+          <MobileMenuLink to="/contact" onClick={handleMobileMenuLinkClick}>
+            Contact
+          </MobileMenuLink>
         </MobileMenu>
       )}
     </NavContainer>

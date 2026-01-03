@@ -47,7 +47,9 @@ const GridLayout = styled.div`
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 2s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 2s ease,
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   overflow-x: hidden; /* Prevent horizontal scroll */
   &.visible {
     opacity: 1;
@@ -119,10 +121,10 @@ const MoodboardSection = () => {
       const a = document.createElement('a');
       a.setAttribute('data-pin-do', 'embedBoard');
 
-  const DESKTOP_BOARD_WIDTH = 720;
-  const MOBILE_BOARD_WIDTH = 320;
-  const boardWidth = window.innerWidth <= 768 ? MOBILE_BOARD_WIDTH : DESKTOP_BOARD_WIDTH;
-  a.setAttribute('data-pin-board-width', String(boardWidth));
+      const DESKTOP_BOARD_WIDTH = 720;
+      const MOBILE_BOARD_WIDTH = 320;
+      const boardWidth = window.innerWidth <= 768 ? MOBILE_BOARD_WIDTH : DESKTOP_BOARD_WIDTH;
+      a.setAttribute('data-pin-board-width', String(boardWidth));
 
       const measuredHeight = Math.max(boardContainerRef.current.clientHeight || 600, 400);
       a.setAttribute('data-pin-scale-height', String(Math.round(measuredHeight)));
@@ -164,12 +166,10 @@ const MoodboardSection = () => {
   }, []);
 
   return (
-    <Background id='moodboard'>
+    <Background id="moodboard">
       <GridLayout ref={ref} className={isVisible ? 'visible' : ''}>
         <h2>Moodboard</h2>
-        <MoodboardP>
-          My collection of tech content I draw inspiration from
-        </MoodboardP>
+        <MoodboardP>My collection of tech content I draw inspiration from</MoodboardP>
         <Inner>
           <PinterestBoardContainer ref={boardContainerRef}></PinterestBoardContainer>
         </Inner>

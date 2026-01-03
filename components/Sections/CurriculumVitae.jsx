@@ -37,7 +37,9 @@ const Grid = styled.div`
 const FadeInContainer = styled.div`
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.9s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 0.9s ease-out,
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
   &.visible {
     opacity: 1;
@@ -54,7 +56,7 @@ const ColumnHeading = styled.h3`
 `;
 
 const Card = styled.article`
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
   padding: 16px;
   box-shadow: var(--shadow-1);
@@ -63,7 +65,10 @@ const Card = styled.article`
   transform: translateY(12px);
 
   @keyframes cardFadeIn {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &.visible {
@@ -79,12 +84,12 @@ const Role = styled.div`
 
 const Meta = styled.div`
   font-size: 13px;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 8px;
 `;
 
 const BulletList = styled.ul`
-font-size: 14px;
+  font-size: 14px;
   margin: 8px 0 0 16px;
 `;
 
@@ -121,85 +126,84 @@ const CurriculumVitae = () => {
             <h2>Curriculum Vitae</h2>
             <CvP>Work Experience, Education, and Certificates</CvP>
             <Grid>
-            <Column>
-              <Icon src="/img/work.png" alt="Work experience" />
-              <ColumnHeading>Work Experience</ColumnHeading>
+              <Column>
+                <Icon src="/img/work.png" alt="Work experience" />
+                <ColumnHeading>Work Experience</ColumnHeading>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 0 }}>
-                <Role>Web Developer Intern — T-Box</Role>
-                <Meta>09/2025 - 10/2025</Meta>
-                <BulletList>
-                  <li>Built and maintained a React frontend integrated with AWS serverless.</li>
-                  <li>Implemented Lambda functions for data validation and transformation.</li>
-                  <li>Automated deployments using Terraform for repeatable infra.</li>
-                </BulletList>
-              </Card>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 0 }}>
+                  <Role>Web Developer Intern — T-Box</Role>
+                  <Meta>09/2025 - 10/2025</Meta>
+                  <BulletList>
+                    <li>Built and maintained a React frontend integrated with AWS serverless.</li>
+                    <li>Implemented Lambda functions for data validation and transformation.</li>
+                    <li>Automated deployments using Terraform for repeatable infra.</li>
+                  </BulletList>
+                </Card>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 1 }}>
-                <Role>CRO Specialist — Tele2</Role>
-                <Meta>01/2022 - 09/2022</Meta>
-                <BulletList>
-                  <li>Optimized purchase flows via data-driven A/B testing (95% CI).</li>
-                  <li>Delivered reports and actionable insights to stakeholders.</li>
-                  <li>Improved analytics and conversion optimization practices.</li>
-                </BulletList>
-              </Card>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 1 }}>
+                  <Role>CRO Specialist — Tele2</Role>
+                  <Meta>01/2022 - 09/2022</Meta>
+                  <BulletList>
+                    <li>Optimized purchase flows via data-driven A/B testing (95% CI).</li>
+                    <li>Delivered reports and actionable insights to stakeholders.</li>
+                    <li>Improved analytics and conversion optimization practices.</li>
+                  </BulletList>
+                </Card>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 2 }}>
-                <Role>Web Analyst Intern — Bombayworks</Role>
-                <Meta>09/2021 - 01/2022</Meta>
-                <BulletList>
-                  <li>Implemented GA4 tracking for BoKlok’s new website.</li>
-                  <li>Migrated Toyota Sweden dealerships from UA to GA4.</li>
-                </BulletList>
-              </Card>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 2 }}>
+                  <Role>Web Analyst Intern — Bombayworks</Role>
+                  <Meta>09/2021 - 01/2022</Meta>
+                  <BulletList>
+                    <li>Implemented GA4 tracking for BoKlok’s new website.</li>
+                    <li>Migrated Toyota Sweden dealerships from UA to GA4.</li>
+                  </BulletList>
+                </Card>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 3 }}>
-                <Role>Senior Servicedesk Analyst — Telia Company</Role>
-                <Meta>09/2015 - 08/2021</Meta>
-                <BulletList>
-                  <li>Provided technical support for SMBs (web hosting, Office 365).</li>
-                </BulletList>
-              </Card>
-            </Column>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 3 }}>
+                  <Role>Senior Servicedesk Analyst — Telia Company</Role>
+                  <Meta>09/2015 - 08/2021</Meta>
+                  <BulletList>
+                    <li>Provided technical support for SMBs (web hosting, Office 365).</li>
+                  </BulletList>
+                </Card>
+              </Column>
 
-            <Column>
-              <Icon src="/img/school.png" alt="Education" />
-              <ColumnHeading>Education</ColumnHeading>
+              <Column>
+                <Icon src="/img/school.png" alt="Education" />
+                <ColumnHeading>Education</ColumnHeading>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 4 }}>
-                <Role>JavaScript Development Bootcamp (160 YH) — Technigo</Role>
-                <Meta>01/2025 - 11/2025</Meta>
-                <BulletList>
-                  <li>React & state management (Hooks, component architecture).</li>
-                  <li>Modern JavaScript & TypeScript (ES6+, async, modules).</li>
-                  <li>Fullstack: REST APIs, Node.js/Express, MongoDB.</li>
-                  <li>Accessibility & product workflows (WCAG, Agile).</li>
-                  <li>Hands-on projects from idea to deployment.</li>
-                </BulletList>
-              </Card>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 4 }}>
+                  <Role>JavaScript Development Bootcamp (160 YH) — Technigo</Role>
+                  <Meta>01/2025 - 11/2025</Meta>
+                  <BulletList>
+                    <li>React & state management (Hooks, component architecture).</li>
+                    <li>Modern JavaScript & TypeScript (ES6+, async, modules).</li>
+                    <li>Fullstack: REST APIs, Node.js/Express, MongoDB.</li>
+                    <li>Accessibility & product workflows (WCAG, Agile).</li>
+                    <li>Hands-on projects from idea to deployment.</li>
+                  </BulletList>
+                </Card>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 5 }}>
-                <Role>Digital Analytics (320 YH) — Medieinstitutet</Role>
-                <Meta>08/2020 - 01/2022</Meta>
-                <BulletList>
-                  <li>Tools: GA4, GTM, BigQuery, Hotjar.</li>
-                  <li>Web tech: HTML, JavaScript, SQL.</li>
-                  <li>Data & reporting: statistics, visualization, conversion optimization.</li>
-                </BulletList>
-              </Card>
-            </Column>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 5 }}>
+                  <Role>Digital Analytics (320 YH) — Medieinstitutet</Role>
+                  <Meta>08/2020 - 01/2022</Meta>
+                  <BulletList>
+                    <li>Tools: GA4, GTM, BigQuery, Hotjar.</li>
+                    <li>Web tech: HTML, JavaScript, SQL.</li>
+                    <li>Data & reporting: statistics, visualization, conversion optimization.</li>
+                  </BulletList>
+                </Card>
+              </Column>
 
-            <Column>
-              <Icon src="/img/cert.png" alt="Certificates" />
-              <ColumnHeading>Certificates</ColumnHeading>
+              <Column>
+                <Icon src="/img/cert.png" alt="Certificates" />
+                <ColumnHeading>Certificates</ColumnHeading>
 
-              <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 6 }}>
-                <Role>Data Scientist: Inference Specialist — Codecademy</Role>
-                <Meta>2024 — Credential ID: A505BA3D-6</Meta>
-              </Card>
-
-            </Column>
+                <Card className={isVisible ? 'visible' : ''} style={{ ['--i']: 6 }}>
+                  <Role>Data Scientist: Inference Specialist — Codecademy</Role>
+                  <Meta>2024 — Credential ID: A505BA3D-6</Meta>
+                </Card>
+              </Column>
             </Grid>
           </FadeInContainer>
         </Inner>
