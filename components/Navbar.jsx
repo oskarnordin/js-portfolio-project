@@ -59,6 +59,14 @@ const MobileMenu = styled.div`
   width: 100%;
   height: 100vh; /* requested: take the full viewport height */
   overflow-y: auto;
+  
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 
   @media (max-width: 768px) {
     display: flex; /* show on mobile */

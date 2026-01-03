@@ -90,7 +90,7 @@ function App() {
                 <Route path="/cv" element={<CurriculumVitae />} />
               </Routes>
             </Suspense>
-            <BlobCanvas/>
+            {/* <BlobCanvas/> */}
           </main>
           {/* <Footer /> */}
         </div>
