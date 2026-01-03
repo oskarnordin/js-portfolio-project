@@ -44,26 +44,3 @@ export const MarginArrowContainer = styled.div`
     display: none;
   }
 `;
-
-export const AngleDownImage = styled.img`
-  display: none;
-  margin: 0px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  animation: pulse 2s infinite ease-in-out;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-  }
-`;

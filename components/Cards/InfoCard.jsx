@@ -24,13 +24,6 @@ const InfoCardContainer = styled.div`
   }
 `;
 
-const InfoIcons = styled.img`
-  display: none;
-  width: 70px;
-  height: 70px;
-  margin-bottom: 10px;
-`;
-
 const InfoH2 = styled.h2`
   font-family: DM sans;
   display: flex;
@@ -61,40 +54,21 @@ const InfoH3 = styled.h3`
   text-decoration: none;
 `;
 
-const infoP = styled.p`
-  background-color: #434343;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  color: #2d3748;
-  font-weight: 600;
-  width: 120px;
-  font-size: 16px;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 16px;
-  text-decoration: none;
-
-  @media (max-width: 1200px) {
-    padding: 0px;
-  }
-`;
-
 const InfoPContainer = styled.div`
   display: flex;
-  flex-direction: row; /* Arrange InfoH3 elements in a row */
-  gap: 10px; /* Add spacing between the elements */
-  justify-content: center; /* Center the row */
-  flex-wrap: wrap; /* Allow wrapping if tF too many items */
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const InfoCard = ({ title, info }) => {
   return (
-    <InfoCardContainer className={'visible'}>
+    <InfoCardContainer className="visible">
       <InfoH2>{title}</InfoH2>
       <InfoPContainer>
-        {info.map((info, index) => (
-          <InfoH3 key={index}>{info}</InfoH3>
+        {info.map((item, index) => (
+          <InfoH3 key={index}>{item}</InfoH3>
         ))}
       </InfoPContainer>
     </InfoCardContainer>

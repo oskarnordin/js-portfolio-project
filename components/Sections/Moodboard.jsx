@@ -59,19 +59,6 @@ const GridLayout = styled.div`
   }
 `;
 
-const MoodboardH3 = styled.h3`
-  color: #2d3748;
-  font-size: 60px;
-  margin-bottom: 10px;
-  padding: 32px 32px 16px 32px;
-  text-decoration: none;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 64px;
-  }
-`;
-
 const MoodboardP = styled.p`
   font-weight: 400;
   color: #4a5568;
@@ -118,13 +105,6 @@ const PinterestBoardContainer = styled.div`
   }
 `;
 
-// Add this styled-component for the Pinterest embed anchor
-const PinterestEmbed = styled.a`
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-`;
-
 const MoodboardSection = () => {
   const ref = useRef(null);
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
@@ -134,44 +114,34 @@ const MoodboardSection = () => {
     const renderPinterestBoard = () => {
       if (!boardContainerRef.current) return;
 
-      // remove any previous content
       boardContainerRef.current.innerHTML = '';
 
-      // create the anchor Pinterest expects
       const a = document.createElement('a');
       a.setAttribute('data-pin-do', 'embedBoard');
 
-  // board width: Pinterest uses pixel values here. Increasing this value
-  // causes the embed to render more columns and therefore smaller-looking
-  // tiles/cards. Tweak DESKTOP_BOARD_WIDTH to adjust card size on large screens.
-  const DESKTOP_BOARD_WIDTH = 720; // increase for smaller cards
-  const MOBILE_BOARD_WIDTH = 320; // smaller value for phones
+  const DESKTOP_BOARD_WIDTH = 720;
+  const MOBILE_BOARD_WIDTH = 320;
   const boardWidth = window.innerWidth <= 768 ? MOBILE_BOARD_WIDTH : DESKTOP_BOARD_WIDTH;
   a.setAttribute('data-pin-board-width', String(boardWidth));
 
-      // set scale-height dynamically from the container's current height so the iframe won't be too short
       const measuredHeight = Math.max(boardContainerRef.current.clientHeight || 600, 400);
       a.setAttribute('data-pin-scale-height', String(Math.round(measuredHeight)));
 
-      // keep scale width high so the board fills horizontally
       a.setAttribute('data-pin-scale-width', '100');
 
       a.href = 'https://se.pinterest.com/oskarnordin/tech/';
       a.style.width = '100%';
       a.style.maxWidth = '100%';
       a.style.display = 'block';
-      // set explicit heights so child iframe will inherit correctly
       a.style.height = measuredHeight + 'px';
       a.style.boxSizing = 'border-box';
 
       boardContainerRef.current.appendChild(a);
 
       if (window.PinUtils && window.PinUtils.build) {
-        // build the new embed
         window.PinUtils.build();
       }
     };
-    // initial render (and load script if needed)
     if (!document.querySelector('script[src="https://assets.pinterest.com/js/pinit.js"]')) {
       const script = document.createElement('script');
       script.src = 'https://assets.pinterest.com/js/pinit.js';
@@ -183,14 +153,11 @@ const MoodboardSection = () => {
       renderPinterestBoard();
     }
 
-    // Re-render on resize so Pinterest iframe can be recreated with new scale-height
     const onResize = () => {
-      // throttle via rAF for smoothness
       window.requestAnimationFrame(() => renderPinterestBoard());
     };
     window.addEventListener('resize', onResize);
 
-    // cleanup
     return () => {
       window.removeEventListener('resize', onResize);
     };

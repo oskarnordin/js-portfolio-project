@@ -104,15 +104,6 @@ const FormWrapper = styled.form`
   padding: 8px 0;
 `;
 
-const ContactH1 = styled.h1`
-  font-size: 60px;
-  letter-spacing: -3px;
-
-  @media (max-width: 768px) {
-    font-size: 64px;
-  }
-`;
-
 const ContactP = styled.p`
   color: var(--color-text);
   font-weight: 400;
@@ -132,8 +123,6 @@ const ContactIconsWrapper = styled.div`
   gap: 20px;
   margin-top: 18px;
 `;
-
-// (legacy Button styles removed - using HeroUI Button component)
 
 const ButtonIcon = styled.span`
   display: flex;
@@ -159,7 +148,7 @@ const ButtonIcon = styled.span`
 
 const SocialIcon = styled.a`
   display: inline-block;
-  transition: opacity 0.3s, transform 0.3s; // Add opacity to transition
+  transition: opacity 0.3s, transform 0.3s;
   &:hover {
     opacity: 0.8;
   }
@@ -226,10 +215,8 @@ const ContactCard = () => {
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle'); // idle, sending, sent, error (client-side validation status)
   const [touched, setTouched] = useState({ name: false, email: false, message: false });
-  // Set your Formspree form id via VITE_FORMSPREE_FORM_ID in .env.local (e.g., "xwkwpzbe")
+
   const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || '';
-  // Always initialize the hook with a non-empty placeholder to avoid runtime throws;
-  // we'll block actual submission below if the real ID is missing.
   const [formState, formspreeSubmit] = useForm(FORMSPREE_FORM_ID || 'placeholder-form-id');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -249,7 +236,6 @@ const ContactCard = () => {
 
   const isValid = !errors.name && !errors.email && !errors.message;
 
-  // Success animation control
   const [showSuccess, setShowSuccess] = useState(false);
   const [successFading, setSuccessFading] = useState(false);
 
@@ -257,32 +243,26 @@ const ContactCard = () => {
     setter(e.target.value);
     setTouched((prev) => ({ ...prev, [field]: true }));
     if (status === 'error') {
-      // Clear general error state while user fixes inputs
       setStatus('idle');
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // client-side validation
     if (!isValid) {
       setTouched({ name: true, email: true, message: true });
       setStatus('error');
       return;
     }
 
-    // Require Formspree ID and submit via Formspree only
     if (!FORMSPREE_FORM_ID) {
       setStatus('error');
-      console.warn('No Formspree form ID configured. Set VITE_FORMSPREE_FORM_ID in your .env.local');
       return;
     }
     setStatus('idle');
-    // Ensure the form fields have name attributes so Formspree captures them
     await formspreeSubmit(e);
   };
 
-  // Clear fields after successful Formspree submission
   useEffect(() => {
     if (formState && formState.succeeded) {
       setName('');
@@ -291,10 +271,9 @@ const ContactCard = () => {
       setTouched({ name: false, email: false, message: false });
       setShowSuccess(true);
       setSuccessFading(false);
-      const holdDuration = 1800; // keep visible before fading (ms)
-      const fadeDuration = 400;  // fade-out transition length (ms)
+      const holdDuration = 1800;
+      const fadeDuration = 400;
       const holdTimer = setTimeout(() => setSuccessFading(true), holdDuration);
-      // Fallback unmount in case transitionend doesn't fire
       const unmountTimer = setTimeout(() => {
         setShowSuccess(false);
         setSuccessFading(false);
@@ -315,7 +294,6 @@ const ContactCard = () => {
       </ContactP>
 
       <FormWrapper onSubmit={handleSubmit} aria-live="polite">
-        {/* Honeypot field to trap bots */}
         <div style={{ display: 'none' }}>
           <label htmlFor="gotcha">Leave this field empty</label>
           <input id="gotcha" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
@@ -343,7 +321,6 @@ const ContactCard = () => {
             $hasError={touched.email && !!errors.email}
           />
           {touched.email && errors.email && <FieldError>{errors.email}</FieldError>}
-          {/* Server-side validation error from Formspree, if any */}
           {FORMSPREE_FORM_ID && (
             <ValidationError prefix="Email" field="email" errors={formState.errors} />
           )}
@@ -372,12 +349,10 @@ const ContactCard = () => {
           {formState.succeeded ? 'Sent!' : formState.submitting ? 'Sending...' : 'Send message'}
         </PrimaryButton>
 
-        {/* General client-side error */}
         {status === 'error' && (
-          <div style={{ color: 'crimson' }}>Please fix the errors Cve and try again.</div>
+          <div style={{ color: 'crimson' }}>Please fix the errors above and try again.</div>
         )}
 
-        {/* Social links under the send message */}
         <ContactIconsWrapper aria-hidden={false}>
           <SocialIcon href="https://www.linkedin.com/in/oskarnordin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile /oskarnordin">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
@@ -392,7 +367,6 @@ const ContactCard = () => {
           </SocialIcon>
         </ContactIconsWrapper>
 
-        {/* Success animation overlay */}
         {showSuccess && (
           <SuccessOverlay>
             <VisuallyHidden role="status" aria-live="polite">Message sent successfully</VisuallyHidden>

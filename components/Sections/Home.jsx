@@ -16,10 +16,9 @@ const FullHero = styled.section`
   box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
-    /* Ensure the hero fits inside the viewport on mobile while accounting for the navbar height (assumed 60px). Adjust the 60px if your navbar differs. */
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     height: auto;
     overflow-x: hidden;
   }
@@ -27,7 +26,7 @@ const FullHero = styled.section`
 
 
 const VideoWrapper = styled.div`
-  width: min(1100px, 100%); /* match site content width but respect small viewports */
+  width: min(1100px, 100%);
   max-width: 1100px;
   margin: 0 auto;
   position: relative;
@@ -47,22 +46,18 @@ const VideoWrapper = styled.div`
     height: 70%;
     box-sizing: border-box;
     border-radius: 24px;
-    max-width: 100vw; /* ensure it doesn't exceed viewport */
+    max-width: 100vw;
     width: 100%;
   }
 `;
 
 const BgVideo = styled.video`
   width: 100%;
-
   object-fit: cover;
   display: block;
-  /* Ensure the video itself has rounded corners so it visually matches the wrapper
-     even when the wrapper has padding on mobile. Use the same radius by default. */
   border-radius: 32px;
 
   @media screen and (max-width: 768px) {
-    /* Reduce the video's radius inside the wrapper padding so corners look correct */
     border-radius: calc(32px - 15px);
     height: 100%;
   }

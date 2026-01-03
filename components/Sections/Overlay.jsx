@@ -1,15 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
-// Keep empty GlobalStyle placeholder for future global overrides
-const GlobalStyle = createGlobalStyle``;
-
 const OverlayContainer = styled.div`
-  /* Cover the parent (video wrapper) so children can be positioned over the video */
   position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -17,20 +13,19 @@ const OverlayContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: visible;
-  pointer-events: none; /* let clicks pass to the video/content unless needed */
+  pointer-events: none;
 
   @media (max-width: 768px) {
-  position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* prevent horizontal scrolling on mobile */
-  pointer-events: none; /* let clicks pass to the video/content unless needed */
-
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none;
   }
 `;
 
@@ -44,7 +39,7 @@ const OverlayCard = styled.div`
   margin: 0 auto;
   background: transparent;
   border-radius: 36px;
-  padding: 0; /* Remove extra padding */
+  padding: 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -65,28 +60,7 @@ const OverlayCard = styled.div`
   }
 `;
 
-const H1overlay = styled.h1`
-  font-size: 72px;
-  font-family: --var(--font-heading);
-  color: #131313;
-  white-space: nowrap;
-  max-width: 100%;
-  box-sizing: border-box;
-
-  @media (max-width: 768px) {
-    font-size: 44px;
-    text-align: center;
-    padding: 0 16px;
-    white-space: normal; /* allow text wrapping on mobile */
-    word-break: break-word; /* break long words if necessary */
-    max-width: 100vw;
-    overflow-wrap: break-word;
-  }
-`;
-
 const MenuOverlay = styled.div`
-  /* Make the slide-out menu part of the page flow so it pushes content
-     instead of covering it. Using relative positioning keeps it in flow. */
   position: relative;
   max-width: 100%;
   background: #3D4CFB;
@@ -95,12 +69,12 @@ const MenuOverlay = styled.div`
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 8000;
   display: flex;
-  flex-direction: column; /* column layout */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 24px 0;
   transition: transform 0.4s;
-  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')}; /* slide from right */
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
 
   @media (max-width: 758px) {
     width: 100%;
@@ -109,26 +83,13 @@ const MenuOverlay = styled.div`
   }
 `;
 
-
-const HamburgerContainer = styled.div`
-  background: ${({ open }) => (open ? '#3D4CFB' : '#3D4CFB')};
-  border-radius: 50%;
-  padding: 3px;
-  position: relative;
-  margin: 8px;
-  z-index: 10001;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const TypewriterContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10002;
-  pointer-events: none; /* allow clicks to pass through */
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,7 +97,7 @@ const TypewriterContainer = styled.div`
   text-align: center;
   padding: 8px 16px;
   width: 100%;
-  max-width: 1100px; /* match video wrapper width */
+  max-width: 1100px;
   opacity: 0;
   transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
   box-sizing: border-box;
@@ -147,7 +108,7 @@ const TypewriterContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    max-width: calc(100vw - 32px); /* respect viewport bounds with padding */
+    max-width: calc(100vw - 32px);
     padding: 8px;
     width: calc(100vw - 32px);
   }
@@ -179,13 +140,12 @@ const Char = styled.span`
   transform: translateY(6px);
   transition: opacity 160ms ease-out, transform 220ms cubic-bezier(0.2,0.9,0.2,1);
   will-change: opacity, transform;
-  /* preserve spacing for spaces */
+
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
 `;
-/* Cursor removed per request */
 
 function Overlay() {
   const overlayRef = useRef(null);
@@ -207,7 +167,6 @@ function Overlay() {
   const [typedText, setTypedText] = useState('');
   const fullText = "";
 
-  // Typing effect: type out fullText one character at a time when showTypewriter becomes true
   useEffect(() => {
     if (!showTypewriter) {
       setTypedText('');
@@ -219,15 +178,12 @@ function Overlay() {
 
     const tick = () => {
       if (cancelled) return;
-      // move forward one character
       idx += 1;
-      // immediately consume any following spaces so we don't pause on whitespace
       while (idx < fullText.length && fullText[idx] === ' ') {
         idx += 1;
       }
       setTypedText(fullText.slice(0, idx));
       if (idx < fullText.length) {
-        // schedule next visible character
         timeoutId = setTimeout(tick, 80);
       }
     };
@@ -242,7 +198,6 @@ function Overlay() {
 
   useEffect(() => {
     if (isOverlayVisible) {
-      // Delay slightly to ensure transition is visible
       const timeout = setTimeout(() => setShowTypewriter(true), 600);
       return () => clearTimeout(timeout);
     } else {
@@ -252,9 +207,7 @@ function Overlay() {
 
   return (
     <>
-      <GlobalStyle />
       <OverlayContainer ref={overlayRef}>
-        {/* Typewriter text placed above background video */}
         <TypewriterContainer aria-hidden={!isOverlayVisible} className={showTypewriter ? 'visible' : ''}>
           <TypewriterText aria-live="polite">
             {fullText.split('').map((ch, i) => (
@@ -266,7 +219,6 @@ function Overlay() {
         </TypewriterContainer>
         <OverlayCard className={isOverlayVisible ? 'visible' : ''}></OverlayCard>
       </OverlayContainer>
-      {/* Footer moved to App layout */}
     </>
   );
 }

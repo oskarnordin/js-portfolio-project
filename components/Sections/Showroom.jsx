@@ -99,21 +99,6 @@ const SectionContainer = styled.section`
   }
 `;
 
-const ShowroomH1 = styled.h1`
-  scroll-margin-top: 90px; /* Match or exceed navbar height */
-  max-width: ${({ theme }) => theme.maxWidth};
-  color: #2d3748;
-  font-size: 60px;
-  padding: var(--space-6);
-  text-decoration: none;
-  text-align: center;
-  align-self: center;
-
-  @media (max-width: 768px) {
-    font-size: 64px;
-  }
-`;
-
 const ShowroomP = styled.p`
   flex-direction: column;
   color: #2d3748;

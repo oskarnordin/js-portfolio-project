@@ -38,7 +38,7 @@ const AboutMeSection = () => {
   const isVisible = useIntersectionObserver(ref, { threshold: 0.1 });
 
   return (
-    <Background id='aboutme '>
+    <Background id="aboutme">
       <SectionContainer style={{ position: 'relative', zIndex: 30 }}>
         <Inner>
           <FadeInContainer ref={ref} className={isVisible ? 'visible' : ''}>

@@ -1,11 +1,6 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const Title = styled.h1`
-  color: black;
-  font-size: 32px;
-  font-family: "DM Sans";
-`;
 
 const MyWordsCardContainer = styled.div`
   background-color: transp;
@@ -85,8 +80,8 @@ const MyWordsCard = ({ imgSrc, title, info }) => {
     <MyWordsCardContainer>
       <MyWordsImage src={imgSrc} alt={title} />
       <MyWordsH2>{title}</MyWordsH2>
-      {info.map((info, index) => (
-        <Description key={index}>{info}</Description>
+      {info.map((item, index) => (
+        <Description key={index}>{item}</Description>
       ))}
       <Button>Read more</Button>
     </MyWordsCardContainer>

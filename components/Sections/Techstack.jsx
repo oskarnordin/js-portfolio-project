@@ -46,19 +46,6 @@ const SkillsContainer = styled.div`
   }
 `;
 
-const TechstackH1 = styled.h1`
-  font-size: var(--text-xxl);
-  padding: var(--space-2);
-  border-radius: 16px;
-  text-decoration: none;
-  width: auto;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: var(--text-xl);
-  }
-`;
-
 const TechstackP = styled.p`
   color: var(--color-text);
   font-weight: 400;

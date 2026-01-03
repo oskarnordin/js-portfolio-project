@@ -16,7 +16,7 @@ const sections = [
 const NavContainer = styled.div`
   width: 100%;
   max-width: 100vw;
-  font-family: var()(--font-sans);
+  font-family: var(--font-sans);
   background: #FFFFFF;
   display: flex;
   margin-bottom: 20px;
@@ -24,7 +24,7 @@ const NavContainer = styled.div`
   position: relative;
   margin-top: 20px;
   z-index: 1000;
-  pointer-events: auto; /* allow overlays like MobileMenu to receive clicks */
+  pointer-events: auto;
   overflow-x: hidden;
   box-sizing: border-box;
 `;
@@ -37,10 +37,10 @@ const Nav = styled.nav`
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* spread content inside the nav */
+  justify-content: space-between;
   border-radius: 32px;
   background: transparent;
-  position: relative; /* anchor for absolute mobile menu */
+  position: relative;
   box-sizing: border-box;
   overflow-x: hidden;
 `;
@@ -53,19 +53,18 @@ const MobileMenu = styled.div`
   justify-content: center;
   padding: 24px;
   border-radius: 0;
-  position: fixed; /* full-screen overlay on mobile */
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  z-index: 2000; /* above everything else */
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
   width: 100%;
-  height: 100vh; /* requested: take the full viewport height */
+  height: 100vh;
   overflow-y: auto;
-  
-  /* Hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
 
   @media (max-width: 768px) {
@@ -95,7 +94,7 @@ const MobileMenuLink = styled(NavLink)`
 `;
 
 const HamburgerButton = styled.button`
-  display: none; /* hide by default on desktop */
+  display: none;
   background: transparent;
   border: none;
   width: 56px;
@@ -106,16 +105,15 @@ const HamburgerButton = styled.button`
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
-    display: block; /* show on mobile */
+    display: block;
   }
 
-  /* ensure hidden on desktop explicitly */
   @media (min-width: 769px) {
     display: none !important;
   }
 
   @media (max-width: 768px) {
-    display: block; /* show on mobile */
+    display: block;
   }
 
   /* Override hamburger bar color when open */
@@ -132,11 +130,11 @@ const TabList = styled.div`
   align-items: center;
   margin: 0;
   height: 100%;
-  flex: 1; /* allow the tab list to take available space so it can be centered */
+  flex: 1;
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    display: none; /* hide nav links on mobile, use hamburger menu */
+    display: none;
   }
 `;
 
@@ -152,7 +150,7 @@ const NavItems = styled.div`
   gap: 12px;
   width: 100%;
   max-width: 100%;
-  justify-content: space-between; /* avatar left, tabs center, hamburger right */
+  justify-content: space-between;
   box-sizing: border-box;
   @media (max-width: 768px) {
     padding: 0 16px;
@@ -174,7 +172,7 @@ const AvatarWrapper = styled.div`
   @media (max-width: 768px) {
     margin-right: 0;
   }
-  position: relative; /* anchor for popover */
+  position: relative;
 
   &:hover > .avatar-popover,
   &:focus-within > .avatar-popover {
@@ -228,7 +226,7 @@ const PopoverBox = styled.div`
   img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   @media (max-width: 768px) {
-    display: none; /* hide on mobile */
+    display: none;
   }
 `;
 
@@ -304,7 +302,6 @@ const Navbar = () => {
   const [showHint, setShowHint] = useState(false);
   const avatarRef = useRef(null);
 
-  // close popover when clicking outside (use mousedown to avoid event-order issues)
   useEffect(() => {
     const onDocPointer = (e) => {
       if (!avatarRef.current) return;
@@ -327,7 +324,6 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // Lock body scroll when the mobile menu is open
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (menuOpen && isMobile) {
@@ -339,7 +335,6 @@ const Navbar = () => {
     document.body.style.overflow = '';
   }, [menuOpen, isMobile]);
 
-  // Keyboard hint: show once unless dismissed
   useEffect(() => {
     try {
       const dismissed = localStorage.getItem('keyboardHintDismissed');
@@ -352,27 +347,23 @@ const Navbar = () => {
     }
   }, []);
 
-  // Close menu and navigate/scroll to href target for mobile menu links
   const handleMobileMenuLinkClick = (e) => {
     const href = e.currentTarget.getAttribute('href');
     setMenuOpen(false);
     if (!href) return;
-    // Smooth-scroll for hash links within the page
+
     if (href.startsWith('#')) {
       e.preventDefault();
       const id = href.slice(1);
-      // Wait for menu to unmount and body scroll to unlock
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          // Fallback to setting the hash (default browser jump)
           window.location.hash = href;
         }
       }, 50);
     }
-    // Non-hash links fall through to default navigation behavior
   };
 
   const dismissHint = () => {
@@ -382,7 +373,6 @@ const Navbar = () => {
   return (
     <NavContainer>
       <Nav>
-        {/* Mobile-only avatar on the left (navigate to /home on tap) */}
         <MobileAvatar>
           <NavLink
             to="/home"
@@ -403,7 +393,6 @@ const Navbar = () => {
           </Tab>
 
           <TabList role="tablist" aria-label="Main navigation tabs">
-          {/* Keyboard hint (dismissible) */}
           {showHint && !isMobile && (
             <HintContainer role="status" aria-live="polite">
               <HintText>Use ← → to navigate</HintText>
@@ -419,7 +408,6 @@ const Navbar = () => {
               aria-expanded={popoverOpen}
               aria-controls="avatar-popover"
               onClick={(e) => {
-                // If the click is on the avatar home link, allow navigation and close popover
                 if (e.target.closest('.avatar-home-link')) {
                   setPopoverOpen(false);
                   setMenuOpen(false);
@@ -429,7 +417,6 @@ const Navbar = () => {
                 setPopoverOpen((s) => !s);
               }}
               onKeyDown={(e) => {
-                // toggle on Enter or Space for keyboard users
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
                   e.stopPropagation();
@@ -470,7 +457,6 @@ const Navbar = () => {
             ))}
           </TabList>
 
-          {/* Hamburger button for mobile / narrow view */}
           {isMobile && (
             <HamburgerButton
               className={`hamburger hamburger--emphatic${menuOpen ? ' is-active' : ''}`}
@@ -489,7 +475,6 @@ const Navbar = () => {
         </NavItems>
       </Nav>
 
-      {/* In-flow mobile menu: when open it pushes page content down */}
       {menuOpen && isMobile && (
         <MobileMenu>
           <MobileMenuLink to="/aboutme" onClick={handleMobileMenuLinkClick}>About Me</MobileMenuLink>

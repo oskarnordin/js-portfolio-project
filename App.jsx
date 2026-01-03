@@ -17,29 +17,22 @@ import Footer from './components/Sections/Footer';
 import ProgressBar from './components/ProgressBar';
 import Spinner from './components/Spinner';
 import BlobCanvas from './components/Blob';
+
 function App() {
-  // Keyboard navigation component: left/right arrows navigate between main routes
   const KeyNav = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-    // follow the visible navbar sections order (left → right)
     const routes = ['/aboutme', '/cv', '/techstack', '/showroom', '/moodboard', '/contact'];
 
       const handler = (e) => {
-        // ignore when modifier keys are held
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
-        // ignore when focusing form fields
         const active = document.activeElement;
         if (!active) return;
         const tag = active.tagName;
         if (tag === 'INPUT' || tag === 'TEXTAREA' || active.isContentEditable) return;
 
-        // Special-case: when the user is on `/home` allow arrows to jump
-        // into the first/last visible section. After leaving `/home`, the routes
-        // array intentionally does NOT include `/home`, so arrows will never take
-        // the user back to `/home` (they must use the avatar link).
         if (location.pathname === '/home') {
           if (e.key === 'ArrowRight') {
             const next = routes[0];
@@ -92,7 +85,6 @@ function App() {
             </Suspense>
             <BlobCanvas/>
           </main>
-          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     </ThemeProvider>

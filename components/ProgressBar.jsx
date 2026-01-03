@@ -7,7 +7,7 @@ const BarContainer = styled.div`
   left: 0;
   width: 100%;
   height: 6px;
-  background: #3D4CFB33; /* faint blue background */
+  background: #3D4CFB33;
   z-index: 9999;
 
   @media screen {
@@ -19,7 +19,7 @@ const BarContainer = styled.div`
 
 const Progress = styled.div`
   height: 100%;
-  background: #3D4CFB; /* primary blue */
+  background: #3D4CFB;
   width: ${({ progress }) => progress}%;
   transition: width 0.2s ease;
   border-radius: 0 0 5px 0px;

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const AboutMeCardContainer = styled.div`
@@ -23,7 +23,8 @@ const AboutMeCardContainer = styled.div`
 
 const ColumnsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;  gap: 4px;
+  flex-wrap: wrap;
+  gap: 4px;
   width: 100%;
   box-sizing: border-box;
 
@@ -114,11 +115,6 @@ const InfoP = styled.p`
     font-size: 16px;
     width: 100%;
   }
-`;
-
-const WordSpan = styled.span`
-  transition: font-style 0.2s ease;
-  cursor: default;
 `;
 
 const AboutMeP = styled.p`

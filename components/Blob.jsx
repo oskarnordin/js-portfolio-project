@@ -12,7 +12,6 @@ const BlobCanvas = () => {
       setMounted(false);
       return;
     }
-    // Helper to determine if desktop
     const isDesktop = () => window.innerWidth > 768;
 
     class Blob {
@@ -23,7 +22,6 @@ const BlobCanvas = () => {
       init() {
         for (let i = 0; i < this.numPoints; i++) {
           let point = new Point(this.divisional * (i + 1), this);
-          // point.acceleration = -1 + Math.random() * 2;
           this.push(point);
         }
       }
@@ -60,10 +58,8 @@ const BlobCanvas = () => {
           var xc = (p1.x + p2.x) / 2;
           var yc = (p1.y + p2.y) / 2;
           ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
-          // ctx.lineTo(p2.x, p2.y);
 
           ctx.fillStyle = 'var(--color-primary)';
-          // ctx.fillRect(p1.x-2.5, p1.y-2.5, 5, 5);
 
           p1 = p2;
         }
@@ -71,13 +67,10 @@ const BlobCanvas = () => {
         var xc = (p1.x + _p2.x) / 2;
         var yc = (p1.y + _p2.y) / 2;
         ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
-        // ctx.lineTo(_p2.x, _p2.y);
 
         ctx.closePath();
 
-        // Render as ASCII characters inside the blob path
         try {
-          // use the explicit blob color if set; resolve CSS var if provided
           const c = this.color;
           if (typeof c === 'string' && c.trim().startsWith('var(')) {
             const varName = c.trim().slice(4, -1);
@@ -93,10 +86,8 @@ const BlobCanvas = () => {
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
 
-        // choose a small set of characters for shading
         const chars = ['@', '#', '%', '*', '+', '=', '-', ':', '.', ' '];
 
-        // sampling density (pixel step) — coarser on small canvases
         const step = canvas.width > 550 ? 12 : 10;
 
         for (let y = 0; y < canvas.height; y += step) {
@@ -104,7 +95,6 @@ const BlobCanvas = () => {
             const sampleX = x + step / 2;
             const sampleY = y + step / 2;
             if (ctx.isPointInPath(sampleX, sampleY)) {
-              // distance from center to determine char density
               const dx = sampleX - center.x;
               const dy = sampleY - center.y;
               const dist = Math.sqrt(dx * dx + dy * dy);
@@ -112,7 +102,6 @@ const BlobCanvas = () => {
               const idx = Math.floor((1 - t) * (chars.length - 1));
               const ch = chars[idx];
 
-              // set font size relative to step
               ctx.font = `${Math.max(8, Math.floor(step * 0.9))}px monospace`;
               ctx.fillText(ch, sampleX, sampleY);
             }
@@ -132,7 +121,7 @@ const BlobCanvas = () => {
         this._color = value;
       }
       get color() {
-        return this._color || '#000000'; // Changed to a red color
+        return this._color || '#000000';
       }
 
       set canvas(value) {
@@ -282,7 +271,6 @@ const BlobCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Responsive blob size
     const setBlobSize = () => {
       if (isDesktop()) {
         canvas.width = 600;
@@ -303,21 +291,17 @@ const BlobCanvas = () => {
     setTimeout(resize, 0);
 
     blob.canvas = canvas;
-    // force the blob color to solid black
     blob.color = '#000000';
     setBlobSize();
     blob.init();
     blob.render();
 
-    // trigger entrance animation
     setMounted(true);
 
-    // Mouse interaction (no parallax)
     let oldMousePoint = { x: 0, y: 0 };
     let hover = false;
 
     const mouseMove = (e) => {
-      // Get canvas position relative to viewport
       const canvasRect = canvas.getBoundingClientRect();
       const canvasMouseX = e.clientX - canvasRect.left;
       const canvasMouseY = e.clientY - canvasRect.top;
@@ -390,8 +374,8 @@ const BlobCanvas = () => {
         maxHeight: '100vh',
         opacity: mounted ? 1 : 0,
         transition: 'opacity 900ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1)',
-        zIndex: 0, // ensure canvas sits behind positioned text inside the same container
-        pointerEvents: 'none', // disable pointer events so it doesn't block UI (mouse is tracked via window)
+        zIndex: 0,
+        pointerEvents: 'none',
       }}
     />
   );

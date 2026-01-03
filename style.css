@@ -1,9 +1,7 @@
-/* Global reset for box-sizing and optional debug border */
+/* Global reset for box-sizing */
 *, *::before, *::after { 
   box-sizing: border-box; 
 }
-/* Uncomment the following line only when actively debugging layout */
-/* * { border: 1px solid #36fdcb; } */
 
 :root {
   --content-width: 1100px;
@@ -214,8 +212,6 @@ h3 {
   width: 450px;
   gap: 20px;
   padding: 30px;
-  /* If you intend to use CSS Grid, ensure start < end for grid-column/grid-row */
-  /* Example: grid-column: 7 / 12; grid-row: 1 / 7; */
   box-shadow: var(--shadow-1);
   backdrop-filter: blur(7.1px);
 }
