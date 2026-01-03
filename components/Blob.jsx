@@ -385,7 +385,7 @@ const BlobCanvas = () => {
         left: '50%',
         transform: mounted ? 'translate(-50%, -50%)' : 'translate(-50%, -46%)',
         width: window.innerWidth > 768 ? 'min(600px, 90vw)' : 'min(500px, 90vw)',
-        height: window.innerWidth > 768 ? 'min(600px, 90vh)' : 'min(500px, 90vh)',
+        height: window.innerWidth > 768 ? 'min(600px, 90vw)' : 'min(500px, 90vw)',
         maxWidth: '100vw',
         maxHeight: '100vh',
         opacity: mounted ? 1 : 0,
