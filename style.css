@@ -29,16 +29,6 @@
   --text-xl: 28px;
   --text-xxl: 54px;
 
-
-/* Ensure app root fills viewport so footer sits flush at bottom when content is short */
-.app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.app-main {
-  flex: 1 1 auto; /* grow to fill available space */
-}
   /* Spacing scale (8px grid) */
   --space-1: 4px;
   --space-2: 8px;
@@ -83,9 +73,15 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  max-width: 100vw;
+  overflow-x: hidden;
+  width: 100%;
 }
 .app-main {
   flex: 1 1 auto; /* grow to fill available space */
+  max-width: 100vw;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Reserve scrollbar gutter to avoid flicker/shift when scrollbars appear */

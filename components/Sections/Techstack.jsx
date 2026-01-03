@@ -10,10 +10,13 @@ const Background = styled.div`
   position: relative;
   height: auto;
   width: 100%;
+  max-width: 100vw;
   z-index: 20;
   display: flex;
   flex-direction: column;
   padding: 12px 0px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     height: auto;

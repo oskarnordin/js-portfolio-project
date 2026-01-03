@@ -32,6 +32,7 @@ const NavContainer = styled.div`
 const Nav = styled.nav`
   pointer-events: auto;
   width: min(1100px, 100%);
+  max-width: 100vw;
   margin: 0 auto;
   height: 64px;
   display: flex;
@@ -40,6 +41,8 @@ const Nav = styled.nav`
   border-radius: 32px;
   background: transparent;
   position: relative; /* anchor for absolute mobile menu */
+  box-sizing: border-box;
+  overflow-x: hidden;
 `;
 
 const MobileMenu = styled.div`
@@ -140,9 +143,11 @@ const NavItems = styled.div`
   align-items: center;
   gap: 12px;
   width: 100%;
+  max-width: 100%;
   justify-content: space-between; /* avatar left, tabs center, hamburger right */
+  box-sizing: border-box;
   @media (max-width: 768px) {
-    padding: 0 24px;
+    padding: 0 16px;
     gap: 8px;
   }
 `;

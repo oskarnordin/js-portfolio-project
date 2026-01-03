@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const SectionContainer = styled.div`
   position: relative;
   width: 100%;
+  max-width: 100vw;
   height: 100%;
   background-color: transparent;
   display: flex;
@@ -10,15 +11,18 @@ export const SectionContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
+  overflow-x: hidden;
+  box-sizing: border-box;
 `;
 
 // Reusable inner content container: centers content and caps width to 1100px
 export const Inner = styled.div`
   width: min(1100px, 100%);
-  max-width: 1100px;
+  max-width: min(1100px, 100vw);
   margin: 0 auto;
   padding: 0 24px; /* breathing room on small viewports */
   box-sizing: border-box;
+  overflow-x: hidden;
 `;
 
 export const MarginArrowContainer = styled.div`

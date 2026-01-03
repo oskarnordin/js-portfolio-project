@@ -13,8 +13,11 @@ const Background = styled.div`
   align-items: center;
   min-height: 100%;
   width: 100%;
+  max-width: 100vw;
   z-index: 20;
   padding: 12px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     min-height: auto;
@@ -23,7 +26,7 @@ const Background = styled.div`
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: min(1200px, 100vw);
   background-color: transparent;
   font-family: Teko, sans-serif;
   color: #2d3748;

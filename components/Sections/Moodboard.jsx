@@ -5,6 +5,7 @@ import { Inner } from '../SharedComponents';
 
 const Background = styled.div`
   width: 100%;
+  max-width: 100vw;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -13,10 +14,12 @@ const Background = styled.div`
   position: relative;
   z-index: 20;
   padding-bottom: 32px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     height: auto;
-    width: auto;
+    width: 100%;
   }
 `;
 
@@ -91,6 +94,7 @@ const PinterestWrapper = styled.div`
 
 const PinterestBoardContainer = styled.div`
   width: 100%;
+  max-width: 100vw;
   box-sizing: border-box;
   overflow: hidden; /* hide any internal scrolling from the embed */
 
