@@ -15,6 +15,7 @@ const sections = [
 
 const NavContainer = styled.div`
   width: 100%;
+  max-width: 100vw;
   font-family: var()(--font-sans);
   background: #FFFFFF;
   display: flex;
@@ -24,6 +25,8 @@ const NavContainer = styled.div`
   margin-top: 20px;
   z-index: 1000;
   pointer-events: auto; /* allow overlays like MobileMenu to receive clicks */
+  overflow-x: hidden;
+  box-sizing: border-box;
 `;
 
 const Nav = styled.nav`

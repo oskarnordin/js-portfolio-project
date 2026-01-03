@@ -5,12 +5,15 @@ import Overlay from './Overlay';
 
 const FullHero = styled.section`
   width: 100%;
+  max-width: 100vw;
   height: auto;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
+  box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
     /* Ensure the hero fits inside the viewport on mobile while accounting for the navbar height (assumed 60px). Adjust the 60px if your navbar differs. */
@@ -18,6 +21,7 @@ const FullHero = styled.section`
     align-items: center;
     justify-content: center;  
     height: auto;
+    overflow-x: hidden;
   }
 `;
 
@@ -32,6 +36,7 @@ const VideoWrapper = styled.div`
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 600ms ease-out forwards;
+  box-sizing: border-box;
 
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
@@ -42,7 +47,8 @@ const VideoWrapper = styled.div`
     height: 70%;
     box-sizing: border-box;
     border-radius: 24px;
-    max-width: 100%; /* ensure it doesn't exceed viewport */
+    max-width: 100vw; /* ensure it doesn't exceed viewport */
+    width: 100%;
   }
 `;
 

@@ -1,5 +1,7 @@
 /* Global reset for box-sizing and optional debug border */
-* { box-sizing: border-box; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
 /* Uncomment the following line only when actively debugging layout */
 /* * { border: 1px solid #36fdcb; } */
 
@@ -66,6 +68,14 @@ html, body {
   margin: 0;
   overflow-x: hidden;
   font-family: var(--font-sans);
+  max-width: 100vw;
+}
+
+/* Ensure root element doesn't overflow */
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 /* Ensure app root fills viewport so footer sits flush at bottom when content is short */

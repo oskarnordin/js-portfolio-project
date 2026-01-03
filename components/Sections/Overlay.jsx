@@ -70,13 +70,17 @@ const H1overlay = styled.h1`
   font-family: --var(--font-heading);
   color: #131313;
   white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 44px;
     text-align: center;
-    padding: 0 8px;
+    padding: 0 16px;
     white-space: normal; /* allow text wrapping on mobile */
     word-break: break-word; /* break long words if necessary */
+    max-width: 100vw;
+    overflow-wrap: break-word;
   }
 `;
 
@@ -135,6 +139,7 @@ const TypewriterContainer = styled.div`
   max-width: 1100px; /* match video wrapper width */
   opacity: 0;
   transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-sizing: border-box;
 
   &.visible {
     opacity: 1;
@@ -142,8 +147,9 @@ const TypewriterContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    max-width: calc(100% - 32px); /* respect viewport bounds with padding */
+    max-width: calc(100vw - 32px); /* respect viewport bounds with padding */
     padding: 8px;
+    width: calc(100vw - 32px);
   }
 `;
 
@@ -155,10 +161,14 @@ const TypewriterText = styled.h1`
   text-shadow: 0 6px 18px rgba(0,0,0,0.5);
   width: 100%;
   text-align: center;
+  max-width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 20px;
     white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 `;
 
