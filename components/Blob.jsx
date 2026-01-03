@@ -384,8 +384,10 @@ const BlobCanvas = () => {
         top: '50%',
         left: '50%',
         transform: mounted ? 'translate(-50%, -50%)' : 'translate(-50%, -46%)',
-        width: window.innerWidth > 768 ? '600px' : '500px',
-        height: window.innerWidth > 768 ? '600px' : '500px',
+        width: window.innerWidth > 768 ? 'min(600px, 90vw)' : 'min(500px, 90vw)',
+        height: window.innerWidth > 768 ? 'min(600px, 90vh)' : 'min(500px, 90vh)',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
         opacity: mounted ? 1 : 0,
         transition: 'opacity 900ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1)',
         zIndex: 0, // ensure canvas sits behind positioned text inside the same container
