@@ -38,7 +38,6 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 32px;
   background: transparent;
   position: relative;
   box-sizing: border-box;
